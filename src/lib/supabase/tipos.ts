@@ -22,6 +22,12 @@ export type GrupoMuscular =
   | "cardio"
   | "cuerpo_completo";
 export type EstadoSesion = "programada" | "completada" | "omitida" | "cancelada";
+export type EstadoPedido =
+  | "nuevo"
+  | "confirmado"
+  | "enviado"
+  | "entregado"
+  | "cancelado";
 export type EstadoSuscripcion =
   | "activa"
   | "pendiente"
@@ -385,6 +391,51 @@ export type RegistroComida = {
   creado_en: string;
 };
 
+export type Producto = {
+  id: string;
+  slug: string;
+  nombre: string;
+  categoria: string;
+  descripcion: string;
+  especificaciones: string[];
+  cuidado: string | null;
+  /** Vacío significa talla única. */
+  tallas: string[];
+  precio: number;
+  imagen_url: string;
+  /** Lo que falta validar antes de anunciarlo. Solo lo ve el personal. */
+  notas_internas: string | null;
+  activo: boolean;
+  orden: number;
+  creado_en: string;
+};
+
+export type Pedido = {
+  id: string;
+  /** Número corto para hablarlo por WhatsApp. */
+  numero: number;
+  cliente_id: string | null;
+  nombre: string;
+  telefono: string;
+  correo: string | null;
+  entrega: string | null;
+  notas: string | null;
+  total: number;
+  estado: EstadoPedido;
+  avisado_whatsapp: boolean;
+  creado_en: string;
+};
+
+export type PedidoItem = {
+  id: string;
+  pedido_id: string;
+  producto_id: string | null;
+  nombre: string;
+  talla: string | null;
+  cantidad: number;
+  precio_unitario: number;
+};
+
 type Tabla<Fila, Insertar = Partial<Fila>> = {
   Row: Fila;
   Insert: Insertar;
@@ -396,6 +447,9 @@ export type Database = {
   public: {
     Tables: {
       perfiles: Tabla<Perfil>;
+      productos: Tabla<Producto>;
+      pedidos: Tabla<Pedido>;
+      pedido_items: Tabla<PedidoItem>;
       clientes: Tabla<Cliente>;
       notas_cliente: Tabla<NotaCliente>;
       evaluaciones: Tabla<Evaluacion>;

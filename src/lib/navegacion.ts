@@ -28,6 +28,7 @@ export function enlacesDePanel(rol: RolUsuario): EnlacePanel[] {
       { href: "/admin/usuarios", texto: "Usuarios", icono: "usuarios" },
       { href: "/admin/configuracion", texto: "Configuración", icono: "configuracion" },
       { href: "/admin/planes", texto: "Planes y pagos", icono: "pagos" },
+      { href: "/admin/pedidos", texto: "Pedidos", icono: "pedidos" },
       { href: "/admin/analytics", texto: "Analytics", icono: "analytics" },
       { href: "/entrenador/perfil", texto: "Mi perfil", icono: "perfil" },
     ];

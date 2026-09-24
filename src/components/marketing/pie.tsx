@@ -34,6 +34,7 @@ const navegacion = [
   { href: "#yiyo", texto: "Sobre Yiyo" },
   { href: "#planes", texto: "Planes" },
   { href: "#historias", texto: "Historias" },
+  { href: "/tienda", texto: "Tienda" },
 ];
 
 export function Pie() {

@@ -12,6 +12,8 @@ const enlaces = [
   { href: "#yiyo", texto: "Sobre Yiyo" },
   { href: "#planes", texto: "Planes" },
   { href: "#historias", texto: "Historias" },
+  // Página propia, no un ancla de la portada.
+  { href: "/tienda", texto: "Tienda" },
 ];
 
 export function Navegacion() {

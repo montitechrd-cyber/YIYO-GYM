@@ -15,6 +15,7 @@ import {
   Menu,
   MessageCircle,
   Salad,
+  Package,
   Settings,
   TrendingUp,
   User,
@@ -48,6 +49,7 @@ const ICONOS = {
   analytics: BarChart3,
   perfil: User,
   configuracion: Settings,
+  pedidos: Package,
 } as const;
 
 export type NombreIcono = keyof typeof ICONOS;
