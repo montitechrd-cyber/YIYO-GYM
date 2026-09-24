@@ -1,0 +1,9 @@
+# Material de origen: los videos sin comprimir viven en Supabase Storage.
+fotos-originales/
+
+# Solo servían para el despliegue anterior en el VPS de Hostinger.
+DESPLIEGUE_HOSTINGER.md
+ecosystem.config.js
+actualizar.sh
+abrir-navegador.ps1
+Iniciar YIYO GYM.cmd
