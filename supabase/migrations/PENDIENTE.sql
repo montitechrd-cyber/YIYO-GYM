@@ -1,8 +1,10 @@
 -- =====================================================================
--- YIYO GYM — Ejercicio Push up
--- Para una base que ya tiene 0001 a 0018 ejecutados.
--- Añade el ejercicio Push up, lo fija al principio de la biblioteca y lo
--- programa en los días de pecho del catálogo.
+-- YIYO GYM — Lo que falta por ejecutar
+-- Para la base que ya está en marcha.
+--
+-- Las fichas de 0020 (los 143 ejercicios con demostración animada) ya
+-- están metidas en la base en marcha, así que ese archivo no aparece aquí;
+-- sigue en INSTALAR_TODO para quien parta de cero.
 -- =====================================================================
 
 

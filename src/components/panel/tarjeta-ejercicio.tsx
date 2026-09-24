@@ -54,8 +54,9 @@ export function TarjetaEjercicio({
       )}
     >
       {!videoActivo && casillaHecho}
-      {/* Media: el video manda; si no hay, la imagen; si no, el icono.
-          Todas mantienen la misma proporción para que la cuadrícula quede pareja. */}
+      {/* Media: el video manda; si no hay, la demostración animada; si no,
+          el icono. Las tres en cuadrado para que la cuadrícula quede pareja
+          —antes la imagen iba en 4/3 y rompía la fila—. */}
       {ejercicio.video_url ? (
         <VistaPreviaVideo
           url={ejercicio.video_url}
@@ -67,10 +68,13 @@ export function TarjetaEjercicio({
         <img
           src={ejercicio.imagen_url}
           alt={ejercicio.nombre}
-          className="aspect-4/3 w-full object-cover"
+          loading="lazy"
+          // Fondo blanco y `contain`: las demostraciones vienen sobre blanco,
+          // y recortarlas le corta la cabeza o los pies justo al ejercicio.
+          className="aspect-square w-full bg-white object-contain"
         />
       ) : (
-        <div className="flex aspect-4/3 w-full items-center justify-center bg-gradient-to-br from-lila-100 to-lila-200">
+        <div className="flex aspect-square w-full items-center justify-center bg-gradient-to-br from-lila-100 to-lila-200">
           <Dumbbell size={40} strokeWidth={1.1} className="text-violeta-500/40" />
         </div>
       )}

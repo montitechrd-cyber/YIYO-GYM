@@ -2,6 +2,7 @@ import { Dumbbell, Search } from "lucide-react";
 import { exigirRol } from "@/lib/autenticacion";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { GRUPOS, NIVELES } from "@/lib/etiquetas";
+import { cn } from "@/lib/utils";
 import { Encabezado, Tarjeta, Vacio } from "@/components/panel/piezas";
 import { Entrada, Seleccion } from "@/components/ui/campo";
 import { GestorEjercicios } from "./gestor";
@@ -25,13 +26,19 @@ export default async function BibliotecaEjercicios({
 
   // Orden de la biblioteca, de más a menos prioritario:
   //   1. Los destacados, que Yiyo fija a mano cuando graba algo nuevo.
-  //   2. Los que tienen video, que son los que de verdad le sirven a la
-  //      clienta para ver cómo se hace.
-  //   3. Alfabético dentro de cada grupo.
+  //   2. Los que tienen video, grabados por ella.
+  //   3. Los que tienen la demostración animada.
+  //   4. Alfabético dentro de cada grupo.
+  //
+  // Los que no enseñan nada van al final: son fichas a medio hacer, y
+  // encabezando la lista solo estorban a quien busca con qué armar el día.
   const ejercicios = (data ?? []).sort((a, b) => {
     const destacado = Number(!!b.destacado) - Number(!!a.destacado);
     const tieneVideo = Number(!!b.video_url) - Number(!!a.video_url);
-    return destacado || tieneVideo || a.nombre.localeCompare(b.nombre, "es");
+    const tieneImagen = Number(!!b.imagen_url) - Number(!!a.imagen_url);
+    return (
+      destacado || tieneVideo || tieneImagen || a.nombre.localeCompare(b.nombre, "es")
+    );
   });
 
   return (
@@ -84,13 +91,25 @@ export default async function BibliotecaEjercicios({
                 {e.video_url ? (
                   <VistaPreviaVideo url={e.video_url} titulo={e.nombre} />
                 ) : (
-                  <div className="flex aspect-4/3 w-full items-center justify-center overflow-hidden bg-gradient-to-br from-lila-100 to-lila-200">
+                  <div
+                    className={cn(
+                      "flex aspect-square w-full items-center justify-center overflow-hidden",
+                      // Las demostraciones vienen sobre blanco: un fondo lila
+                      // dejaría un cuadrado blanco recortado dentro del marco.
+                      e.imagen_url
+                        ? "bg-white"
+                        : "bg-gradient-to-br from-lila-100 to-lila-200"
+                    )}
+                  >
                     {e.imagen_url ? (
                       /* eslint-disable-next-line @next/next/no-img-element */
                       <img
                         src={e.imagen_url}
                         alt={e.nombre}
-                        className="h-full w-full object-cover"
+                        loading="lazy"
+                        // `contain` y no `cover`: recortar una demostración le
+                        // corta la cabeza o los pies justo al ejercicio.
+                        className="h-full w-full object-contain"
                       />
                     ) : (
                       <Dumbbell
