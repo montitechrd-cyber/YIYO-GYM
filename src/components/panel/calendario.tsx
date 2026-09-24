@@ -103,8 +103,8 @@ export function Calendario({
     // la más alta. Sin esto, el panel de la derecha crecía al elegir un día
     // con varias sesiones y eso volvía a estirar —y a deformar— el calendario
     // de la izquierda, que no tiene nada que ver con ese contenido.
-    <div className="grid items-start gap-5 lg:grid-cols-[1.5fr_1fr]">
-      <div className="rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-7">
+    <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+      <div className="min-w-0 rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-7">
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-xl font-light text-violeta-900 first-letter:uppercase">
             {MESES[mes]} {anio}
@@ -191,7 +191,7 @@ export function Calendario({
         </div>
       </div>
 
-      <div className="rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-7">
+      <div className="min-w-0 rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-7">
         <h3 className="text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
           {seleccionado
             ? new Date(seleccionado + "T00:00:00").toLocaleDateString("es-DO", {
