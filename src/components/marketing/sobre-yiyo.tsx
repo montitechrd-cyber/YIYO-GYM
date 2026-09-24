@@ -1,6 +1,6 @@
 import { Target, Eye, Gem } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
-import { Corazon, Puntitos } from "@/components/brand/decoraciones";
+import { Puntitos } from "@/components/brand/decoraciones";
 
 const bloques = [
   {
@@ -41,10 +41,6 @@ export function SobreYiyo() {
                 className="animate-flotar mx-auto h-52 drop-shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
                 invertido
               />
-              <p className="font-script mt-6 text-xl text-lila-100">
-                Tú puedes. Tú vales. Tú eres YIYO.{" "}
-                <Corazon className="inline h-4 w-4 align-baseline" />
-              </p>
             </div>
           </div>
 

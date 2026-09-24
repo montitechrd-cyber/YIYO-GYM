@@ -104,6 +104,8 @@ export type Evaluacion = {
 export type Ejercicio = {
   id: string;
   nombre: string;
+  /** Encabeza la biblioteca, por encima del orden habitual. */
+  destacado: boolean;
   grupo: GrupoMuscular;
   equipo: string | null;
   nivel: NivelExperiencia;

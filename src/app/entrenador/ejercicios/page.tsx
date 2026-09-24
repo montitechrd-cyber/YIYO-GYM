@@ -23,12 +23,15 @@ export default async function BibliotecaEjercicios({
 
   const { data } = await consulta;
 
-  // Los ejercicios con video demostrativo van siempre primero —son los que
-  // de verdad le sirven a la clienta para ver cómo se hace—, y dentro de
-  // cada grupo (con/sin video) se mantiene el orden alfabético.
+  // Orden de la biblioteca, de más a menos prioritario:
+  //   1. Los destacados, que Yiyo fija a mano cuando graba algo nuevo.
+  //   2. Los que tienen video, que son los que de verdad le sirven a la
+  //      clienta para ver cómo se hace.
+  //   3. Alfabético dentro de cada grupo.
   const ejercicios = (data ?? []).sort((a, b) => {
+    const destacado = Number(!!b.destacado) - Number(!!a.destacado);
     const tieneVideo = Number(!!b.video_url) - Number(!!a.video_url);
-    return tieneVideo || a.nombre.localeCompare(b.nombre, "es");
+    return destacado || tieneVideo || a.nombre.localeCompare(b.nombre, "es");
   });
 
   return (
