@@ -97,11 +97,16 @@ export async function registrar(
 
   if (error) return { error: error.message };
 
-  // Con confirmación de correo activada no hay sesión todavía.
+  // Con la confirmación de correo activada todavía no hay sesión: la cuenta
+  // queda en pie pero dormida hasta que se pincha el enlace. La ficha de
+  // clienta se crea entonces, en `/auth/confirm`, y no aquí: crearla ahora
+  // llenaría el CRM de expedientes de direcciones que nadie confirmó.
   if (!data.session) {
     return {
       exito:
-        "Te enviamos un correo para confirmar tu cuenta. Revísalo y luego inicia sesión.",
+        "Te enviamos un correo a " +
+        correo +
+        ". Abre el enlace para activar tu cuenta y entras directo.",
     };
   }
 

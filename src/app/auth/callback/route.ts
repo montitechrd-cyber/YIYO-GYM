@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
-import { rutaInicio } from "@/lib/autenticacion";
+import { destinoPedido, destinoTrasActivar } from "@/lib/primer-acceso";
 
 /**
  * Vuelta desde Google, Facebook o Apple.
@@ -12,7 +12,7 @@ import { rutaInicio } from "@/lib/autenticacion";
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const codigo = url.searchParams.get("code");
-  const siguiente = url.searchParams.get("siguiente");
+  const siguiente = destinoPedido(url.searchParams.get("siguiente"));
 
   // El proveedor puede devolver un error (por ejemplo si la persona cancela
   // en la pantalla de Google). Se vuelve al login con un aviso legible en vez
@@ -42,37 +42,12 @@ export async function GET(request: NextRequest) {
   }
 
   // Quien entra por primera vez con Google no pasó por el formulario de
-  // registro, así que su ficha de clienta no existe todavía: se crea aquí
-  // para que llegue directo a su evaluación inicial, igual que en el
-  // registro normal.
-  const { data: perfil } = await supabase
-    .from("perfiles")
-    .select("rol")
-    .eq("id", data.user.id)
-    .maybeSingle();
+  // registro, así que su ficha de clienta no existe todavía. Lo mismo le
+  // pasa a quien confirma su correo, y por eso ambos comparten la misma
+  // función: cuando esto vivía suelto aquí, el otro camino se quedó sin
+  // ficha.
+  const destino =
+    siguiente ?? (await destinoTrasActivar(supabase, data.user.id, "registro social"));
 
-  if (perfil?.rol === "cliente") {
-    const { data: cliente } = await supabase
-      .from("clientes")
-      .select("id")
-      .eq("perfil_id", data.user.id)
-      .maybeSingle();
-
-    if (!cliente) {
-      await supabase.from("clientes").insert({
-        perfil_id: data.user.id,
-        estado: "prospecto",
-        origen: "registro social",
-      });
-      return NextResponse.redirect(new URL("/panel/bienvenida", url.origin));
-    }
-  }
-
-  // Cada rol entra por su propia puerta. Antes esto mandaba siempre a
-  // `/panel`, dando por hecho que el middleware reencaminaría según el rol
-  // —y no lo hace: solo protege `/admin` y `/entrenador`—, así que una
-  // administradora acababa dentro del panel de clienta.
-  return NextResponse.redirect(
-    new URL(siguiente ?? rutaInicio(perfil?.rol ?? "cliente"), url.origin)
-  );
+  return NextResponse.redirect(new URL(destino, url.origin));
 }

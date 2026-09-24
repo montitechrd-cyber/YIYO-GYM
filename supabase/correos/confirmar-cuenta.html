@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Confirma tu cuenta</title>
+</head>
+<body style="margin:0;padding:0;background-color:#faf6ff;">
+<!-- Vista previa de la bandeja: lo que se lee junto al asunto sin abrir. -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Confirma tu cuenta — YIYO GYM</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#faf6ff;">
+<tr><td align="center" style="padding:32px 16px;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background-color:#ffffff;border-radius:24px;overflow:hidden;border:1px solid #e9d6ff;">
+
+  <tr><td align="center" style="background-color:#6a2cab;padding:34px 24px;">
+    <img src="{{ .SiteURL }}/logo-yiyo-gym-horizontal-blanco.png" alt="YIYO GYM" width="180" style="display:block;width:180px;max-width:70%;height:auto;border:0;" />
+  </td></tr>
+
+  <tr><td style="padding:40px 36px 8px 36px;">
+    <h1 style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:27px;line-height:1.25;font-weight:300;color:#3f1a6b;">
+      Ya casi estás <span style="font-family:Georgia,'Times New Roman',serif;font-style:italic;color:#6a2cab;">dentro</span>
+    </h1>
+    <p style="margin:18px 0 0 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.65;color:#4a4458;">
+      Bienvenida a YIYO GYM. Solo falta confirmar que esta dirección es tuya y tu cuenta queda activa —entras directo, sin escribir la contraseña otra vez—.
+    </p>
+  </td></tr>
+
+  <tr><td align="center" style="padding:30px 36px 8px 36px;">
+    <!-- Tabla y no un <a> suelto: Outlook ignora el relleno de un enlace y
+         el botón quedaría del alto del texto. -->
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+      <tr><td align="center" bgcolor="#6a2cab" style="border-radius:999px;">
+        <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=signup" style="display:inline-block;padding:16px 38px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;font-weight:500;color:#ffffff;text-decoration:none;border-radius:999px;">Activar mi cuenta</a>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <tr><td style="padding:22px 36px 36px 36px;">
+    <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;line-height:1.6;color:#8b8398;">
+      El enlace vale una sola vez y caduca en 24 horas. Si no creaste ninguna cuenta, puedes ignorar este correo: sin este clic no se activa nada.
+    </p>
+    <p style="margin:16px 0 0 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;line-height:1.6;color:#8b8398;">
+      Si el botón no funciona, copia esta dirección en tu navegador:<br />
+      <!-- Sin ella, quien use un lector que bloquea botones se queda sin salida. -->
+      <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=signup" style="color:#6a2cab;word-break:break-all;">{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=signup</a>
+    </p>
+  </td></tr>
+
+</table>
+
+<p style="margin:22px 0 0 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#a49cb0;text-align:center;">
+  YIYO GYM · Entrenamiento y nutrición con Daniela «Yiyo» Chacón<br />Santo Domingo, República Dominicana
+</p>
+
+</td></tr>
+</table>
+</body>
+</html>
