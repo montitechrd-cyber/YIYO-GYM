@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { Isotipo } from "@/components/brand/logo";
+import { Logo } from "@/components/brand/logo";
 import { Auroras, Corazon, Hoja, Puntitos } from "@/components/brand/decoraciones";
 import { BotonEnlace } from "@/components/ui/boton";
 
@@ -73,16 +73,8 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-br from-lila-200/20 to-violeta-500/15" />
 
               {/* Sello de marca sobre la foto */}
-              <div className="vidrio absolute bottom-6 left-6 flex items-center gap-3 rounded-3xl px-5 py-3.5 shadow-suave">
-                <Isotipo className="h-9" />
-                <span className="flex flex-col leading-none">
-                  <span className="letra-ancha text-base font-light text-violeta-700">
-                    YIYO
-                  </span>
-                  <span className="letra-ancha mt-1 text-[8px] font-light text-violeta-500">
-                    GYM
-                  </span>
-                </span>
+              <div className="vidrio absolute bottom-6 left-6 rounded-3xl px-5 py-3.5 shadow-suave">
+                <Logo tamano="sm" />
               </div>
             </div>
 

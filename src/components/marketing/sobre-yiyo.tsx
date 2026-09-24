@@ -1,5 +1,5 @@
 import { Target, Eye, Gem } from "lucide-react";
-import { Isotipo } from "@/components/brand/logo";
+import { Logo } from "@/components/brand/logo";
 import { Corazon, Puntitos } from "@/components/brand/decoraciones";
 
 const bloques = [
@@ -34,14 +34,13 @@ export function SobreYiyo() {
         <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="relative">
             <div className="vidrio relative overflow-hidden rounded-[3rem] border-white/30 bg-white/15 p-12 text-center shadow-elevada">
-              <Isotipo
-                className="animate-flotar mx-auto h-40 drop-shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+              {/* La marca completa en vertical: aquí sobra altura, y el
+                  nombre ya viene en el propio logo con su tipografía. */}
+              <Logo
+                orientacion="vertical"
+                className="animate-flotar mx-auto h-52 drop-shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
                 invertido
               />
-              <p className="letra-ancha mt-8 text-3xl font-light text-white">YIYO</p>
-              <p className="letra-ancha mt-2 text-[10px] font-light text-lila-200">
-                — GYM —
-              </p>
               <p className="font-script mt-6 text-xl text-lila-100">
                 Tú puedes. Tú vales. Tú eres YIYO.{" "}
                 <Corazon className="inline h-4 w-4 align-baseline" />

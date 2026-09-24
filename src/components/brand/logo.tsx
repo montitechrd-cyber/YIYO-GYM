@@ -1,75 +1,68 @@
+/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
 
 type MarcaProps = {
   className?: string;
-  /** Usa tonos claros para fondos oscuros */
+  /** Versión en blanco, para fondos oscuros */
   invertido?: boolean;
 };
 
 /**
- * Isotipo YIYO GYM: figura femenina con los brazos alzados formando una «Y»,
- * hoja germinando arriba y cuenco/swoosh inferior.
+ * Marca YIYO GYM.
+ *
+ * Las piezas salen todas del mismo archivo original —la marca vertical que
+ * entregó Yiyo— recortada en tres presentaciones, porque una sola no sirve
+ * en todos los sitios:
+ *
+ * - `Isotipo`: solo el símbolo, para cuando no hay espacio para el nombre.
+ * - `Logo` horizontal: símbolo y nombre en línea. Es la que va en las barras
+ *   de navegación, que son bajas y anchas; la vertical dejaría el texto a
+ *   cinco píxeles de alto, ilegible.
+ * - `Logo` vertical: la composición original, para donde sí hay altura.
+ *
+ * De cada una hay un negativo en blanco: sobre los fondos violeta de la
+ * plataforma el magenta de la marca queda turbio y se lee mal.
+ *
+ * Se usa `<img>` y no `next/image` a propósito: son PNG con transparencia de
+ * pocos KB que aparecen en todas las páginas, y el optimizador no aporta
+ * nada mientras añade una petición más al servidor.
  */
-export function Isotipo({ className, invertido = false }: MarcaProps) {
-  const oscuro = invertido ? "#E9D6FF" : "#6A2CAB";
-  const medio = invertido ? "#C7A6F7" : "#9170F5";
-  const claro = invertido ? "#FFFFFF" : "#C7A6F7";
 
+const ARCHIVOS = {
+  isotipo: {
+    color: "/isotipo-yiyo-gym.png",
+    blanco: "/isotipo-yiyo-gym-blanco.png",
+    proporcion: 606 / 512,
+  },
+  horizontal: {
+    color: "/logo-yiyo-gym-horizontal.png",
+    blanco: "/logo-yiyo-gym-horizontal-blanco.png",
+    proporcion: 825 / 200,
+  },
+  vertical: {
+    color: "/logo-yiyo-gym.png",
+    blanco: "/logo-yiyo-gym-blanco.png",
+    proporcion: 597 / 512,
+  },
+} as const;
+
+export function Isotipo({ className, invertido = false }: MarcaProps) {
+  const { color, blanco } = ARCHIVOS.isotipo;
   return (
-    <svg
-      viewBox="0 0 120 130"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("h-auto w-auto", className)}
+    <img
+      src={invertido ? blanco : color}
+      alt=""
       aria-hidden="true"
-    >
-      {/* Cuenco inferior — abraza la figura */}
-      <path
-        d="M24 62c-6 26 6 48 36 48s42-22 36-48"
-        stroke={claro}
-        strokeWidth="9"
-        strokeLinecap="round"
-      />
-      {/* Brazo izquierdo, trazo grueso descendente */}
-      <path
-        d="M18 14c2 30 14 52 42 66"
-        stroke={oscuro}
-        strokeWidth="11"
-        strokeLinecap="round"
-      />
-      {/* Brazo derecho */}
-      <path
-        d="M96 26c-2 26-14 45-36 54"
-        stroke={medio}
-        strokeWidth="10"
-        strokeLinecap="round"
-      />
-      {/* Tallo central */}
-      <path
-        d="M60 78v26"
-        stroke={oscuro}
-        strokeWidth="9"
-        strokeLinecap="round"
-      />
-      {/* Hoja germinando */}
-      <path
-        d="M62 34c0-11 7-19 17-21 2 11-4 20-17 21Z"
-        fill={medio}
-      />
-      <path
-        d="M62 34c4-7 10-13 17-16"
-        stroke={oscuro}
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        opacity="0.55"
-      />
-    </svg>
+      className={cn("h-11 w-auto object-contain", className)}
+    />
   );
 }
 
 type LogoProps = MarcaProps & {
-  /** Oculta el texto y deja solo el isotipo */
+  /** Oculta el nombre y deja solo el símbolo */
   soloIcono?: boolean;
+  /** `vertical` apila símbolo y nombre: solo donde sobre altura */
+  orientacion?: "horizontal" | "vertical";
   tamano?: "sm" | "md" | "lg";
 };
 
@@ -77,45 +70,37 @@ export function Logo({
   className,
   invertido = false,
   soloIcono = false,
+  orientacion = "horizontal",
   tamano = "md",
 }: LogoProps) {
-  const iconos = { sm: "h-8", md: "h-11", lg: "h-20" };
-  const titulos = {
-    sm: "text-lg",
-    md: "text-2xl",
-    lg: "text-5xl",
+  // Alturas pensadas para que el nombre siempre se lea: la versión apilada
+  // necesita bastante más que la de una línea para el mismo tamaño de letra.
+  const alturas = {
+    horizontal: { sm: "h-8", md: "h-11", lg: "h-16" },
+    vertical: { sm: "h-14", md: "h-20", lg: "h-32" },
   };
-  const subtitulos = { sm: "text-[7px]", md: "text-[9px]", lg: "text-sm" };
 
   if (soloIcono) {
-    return <Isotipo className={cn(iconos[tamano], className)} invertido={invertido} />;
+    const soloIconoAltura = { sm: "h-8", md: "h-11", lg: "h-20" };
+    return (
+      <Isotipo
+        className={cn(soloIconoAltura[tamano], className)}
+        invertido={invertido}
+      />
+    );
   }
 
+  const pieza = ARCHIVOS[orientacion];
+
   return (
-    <span className={cn("inline-flex items-center gap-3", className)}>
-      <Isotipo className={iconos[tamano]} invertido={invertido} />
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-light letra-ancha",
-            titulos[tamano],
-            invertido ? "text-white" : "text-violeta-700"
-          )}
-        >
-          YIYO
-        </span>
-        <span
-          className={cn(
-            "mt-1 flex items-center gap-1.5 font-light letra-ancha",
-            subtitulos[tamano],
-            invertido ? "text-lila-200" : "text-violeta-500"
-          )}
-        >
-          <span className="h-px w-3 bg-current opacity-60" />
-          GYM
-          <span className="h-px w-3 bg-current opacity-60" />
-        </span>
-      </span>
-    </span>
+    <img
+      src={invertido ? pieza.blanco : pieza.color}
+      alt="YIYO GYM"
+      className={cn(
+        "w-auto object-contain",
+        alturas[orientacion][tamano],
+        className
+      )}
+    />
   );
 }
