@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Paleta YIYO GYM ---- */
+  --color-lila-50: #faf6ff;
+  --color-lila-100: #f3eaff;
+  --color-lila-200: #e9d6ff;
+  --color-lila-300: #dcc3fb;
+  --color-lila-400: #c7a6f7;
+  --color-lila-500: #a98bf6;
+  --color-violeta-500: #9170f5;
+  --color-violeta-600: #7b52e0;
+  --color-violeta-700: #6a2cab;
+  --color-violeta-800: #55208b;
+  --color-violeta-900: #3f1a6b;
+
+  --color-crema: #fffdfa;
+  --color-rosa: #f7c8e0;
+
+  /* ---- Tipografía ---- */
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-dancing), cursive;
+
+  /* ---- Radios generosos (estética suave) ---- */
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.75rem;
+
+  /* ---- Sombras violeta ---- */
+  --shadow-suave: 0 8px 30px -12px rgb(106 44 171 / 0.18);
+  --shadow-elevada: 0 24px 60px -20px rgb(106 44 171 / 0.28);
+  --shadow-neon: 0 0 40px -6px rgb(145 112 245 / 0.55);
+
+  /* ---- Animaciones ---- */
+  --animate-flotar: flotar 7s ease-in-out infinite;
+  --animate-brillo: brillo 3.5s ease-in-out infinite;
+  --animate-aparecer: aparecer 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes brillo {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:root {
+  --background: var(--color-crema);
+  --foreground: #2c1a3f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-lila-200);
+  color: var(--color-violeta-800);
+}
+
+/* Scrollbar de marca */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-lila-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-lila-400);
+  border-radius: 999px;
+  border: 2px solid var(--color-lila-50);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-violeta-500);
+}
+
+@utility text-degradado {
+  background-image: linear-gradient(
+    120deg,
+    var(--color-violeta-700),
+    var(--color-violeta-500) 55%,
+    var(--color-lila-400)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@utility fondo-degradado {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-violeta-700),
+    var(--color-violeta-500) 60%,
+    var(--color-lila-400)
+  );
+}
+
+@utility vidrio {
+  background-color: color-mix(in srgb, white 72%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--color-lila-300) 55%, transparent);
+}
+
+@utility letra-ancha {
+  letter-spacing: 0.32em;
+}

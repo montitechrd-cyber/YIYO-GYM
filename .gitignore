@@ -1,0 +1,51 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# ---- YIYO GYM ----
+# Material de origen: los videos y fotos sin comprimir viven en Supabase
+# Storage, no en el repositorio. Son 73 MB que no aportan nada al despliegue
+# y GitHub rechaza archivos grandes.
+/fotos-originales
+
+# La plantilla de configuración sí se versiona: no lleva claves, solo dice
+# qué variables hacen falta.
+!.env.local.example
