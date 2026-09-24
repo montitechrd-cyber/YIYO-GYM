@@ -6,6 +6,19 @@ Plataforma web de coaching fitness y nutrición de Daniela «Yiyo» Chacón.
 
 ---
 
+## Dónde vive
+
+| Pieza | Servicio |
+|---|---|
+| Código | [GitHub](https://github.com/montitechrd-cyber/YIYO-GYM) |
+| Despliegue | Railway — se publica solo al subir a `main` |
+| Base de datos, cuentas y archivos | Supabase |
+| Dominio | Hostinger |
+
+En producción: **https://web-production-6bd61.up.railway.app**
+
+---
+
 ## Puesta en marcha
 
 ```bash
