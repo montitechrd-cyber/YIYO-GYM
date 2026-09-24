@@ -41,7 +41,7 @@ export function NuevaSesion({
         abierto={abierto}
         alCerrar={() => setAbierto(false)}
         titulo="Programar sesión"
-        descripcion="Puedes repetirla varias semanas seguidas de una vez."
+        descripcion="Puedes repetirla varias semanas seguidas de una vez"
       >
         <form action={enviar} className="space-y-5">
           {estado.error && <Aviso tono="error">{estado.error}</Aviso>}

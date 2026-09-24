@@ -30,7 +30,7 @@ export default async function NuevaDieta({
 
       <Encabezado
         titulo="Nueva dieta desde cero"
-        descripcion="Solo si necesitas algo a medida. Para lo habitual hay planes ya armados."
+        descripcion="Solo si necesitas algo a medida. Para lo habitual hay planes ya armados"
         acciones={
           <BotonEnlace href="/entrenador/dietas" variante="contorno">
             <Sparkles size={16} />

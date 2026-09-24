@@ -25,7 +25,7 @@ export function CancelarSuscripcion({ id }: { id: string }) {
         abierto={abierto}
         alCerrar={() => setAbierto(false)}
         titulo="¿Cancelar tu suscripción?"
-        descripcion="Mantendrás el acceso hasta el final del período que ya pagaste. Puedes volver cuando quieras."
+        descripcion="Mantendrás el acceso hasta el final del período que ya pagaste. Puedes volver cuando quieras"
         ancho="max-w-lg"
       >
         {error && (

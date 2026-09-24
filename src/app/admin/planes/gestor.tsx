@@ -72,7 +72,7 @@ export function GestorPlan({
         abierto={abierto}
         alCerrar={() => setAbierto(false)}
         titulo={modo === "crear" ? "Nuevo plan" : "Editar plan"}
-        descripcion="Estos planes son los que ven tus clientas al suscribirse."
+        descripcion="Estos planes son los que ven tus clientas al suscribirse"
       >
         <form action={enviar} className="space-y-5">
           {plan && <input type="hidden" name="id" value={plan.id} />}

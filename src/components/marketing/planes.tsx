@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { BotonEnlace } from "@/components/ui/boton";
+import { Isotipo } from "@/components/brand/logo";
 import { Separador } from "@/components/brand/decoraciones";
 import { cn } from "@/lib/utils";
 
@@ -43,8 +44,12 @@ const planes = [
 
 export function Planes() {
   return (
-    <section id="planes" className="relative bg-crema py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="planes" className="relative overflow-hidden bg-crema py-24">
+      {/* Marca de agua: aquí es donde la clienta decide, y el sello de la
+          casa detrás refuerza a quién le está confiando el proceso. */}
+      <Isotipo className="pointer-events-none absolute -right-16 top-1/2 hidden h-[28rem] -translate-y-1/2 opacity-[0.045] lg:block" />
+
+      <div className="relative mx-auto max-w-6xl px-6">
         <div className="text-center">
           <p className="text-[11px] tracking-[0.28em] text-violeta-500 uppercase">
             Planes

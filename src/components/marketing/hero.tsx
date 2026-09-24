@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { Logo } from "@/components/brand/logo";
-import { Auroras, Corazon, Hoja, Puntitos } from "@/components/brand/decoraciones";
+import { Isotipo, Logo } from "@/components/brand/logo";
+import { Auroras, Corazon, Puntitos } from "@/components/brand/decoraciones";
 import { BotonEnlace } from "@/components/ui/boton";
 
 export function Hero() {
@@ -10,8 +10,10 @@ export function Hero() {
       <Auroras />
       <Puntitos className="opacity-20" />
 
-      <Hoja className="animate-flotar absolute top-32 left-[8%] hidden h-16 w-16 text-lila-300 lg:block" />
-      <Hoja className="animate-flotar absolute right-[10%] bottom-32 hidden h-12 w-12 rotate-180 text-lila-400 [animation-delay:2s] lg:block" />
+      {/* La figura de la marca como adorno: el isotipo ya es una hoja, así
+          que el fondo habla de YIYO GYM en vez de decorar por decorar. */}
+      <Isotipo className="animate-flotar absolute top-28 left-[6%] hidden h-20 opacity-[0.13] lg:block" />
+      <Isotipo className="animate-flotar absolute right-[8%] bottom-28 hidden h-14 rotate-12 opacity-[0.10] [animation-delay:2s] lg:block" />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="animate-aparecer">
@@ -20,12 +22,12 @@ export function Hero() {
             Coaching fitness &amp; nutrición online
           </span>
 
-          <h1 className="mt-7 text-5xl leading-[1.05] font-light tracking-tight text-violeta-900 md:text-7xl">
-            No se trata de ser
-            <span className="block font-normal">la mejor.</span>
-            <span className="text-degradado mt-2 block font-medium">
-              Se trata de ser tu mejor versión.
-            </span>
+          {/* El gancho sale de su propia bio: sus clientas «quieren dejar de
+              empezar de cero cada lunes». Nombrar ese dolor concreto pesa más
+              que una frase de gimnasio que valdría para cualquier marca. */}
+          <h1 className="mt-7 text-6xl leading-[1] font-light tracking-tight text-violeta-900 md:text-8xl">
+            Deja de empezar
+            <span className="text-degradado mt-1 block font-medium">de cero</span>
           </h1>
 
           <p className="mt-7 max-w-lg text-base leading-relaxed font-light text-violeta-900/70">

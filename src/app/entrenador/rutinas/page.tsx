@@ -46,7 +46,7 @@ export default async function Rutinas({
     <div>
       <Encabezado
         titulo="Rutinas"
-        descripcion="Elige un programa, dile a quién y el calendario se llena solo."
+        descripcion="Elige un programa, dile a quién y el calendario se llena solo"
         acciones={
           <BotonEnlace href="/entrenador/rutinas/nueva" variante="contorno">
             <Plus size={16} />

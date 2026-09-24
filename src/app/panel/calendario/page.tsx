@@ -16,7 +16,7 @@ export default async function CalendarioCliente() {
         <Vacio
           icono={CalendarDays}
           titulo="Sin ficha activa"
-          descripcion="Completa tu evaluación inicial para empezar a recibir sesiones."
+          descripcion="Completa tu evaluación inicial para empezar a recibir sesiones"
         />
       </div>
     );
@@ -36,7 +36,7 @@ export default async function CalendarioCliente() {
     <div>
       <Encabezado
         titulo="Mi calendario"
-        descripcion="Marca cada sesión cuando la completes."
+        descripcion="Marca cada sesión cuando la completes"
       />
       <Calendario
         sesiones={sesiones ?? []}

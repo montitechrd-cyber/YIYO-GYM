@@ -37,12 +37,12 @@ export default async function ResumenCliente() {
       <div>
         <Encabezado
           titulo={`${saludo()}, ${perfil.nombre_completo.split(" ")[0] || "bienvenida"}`}
-          descripcion="Todavía no tienes una ficha de cliente activa."
+          descripcion="Todavía no tienes una ficha de cliente activa"
         />
         <Vacio
           icono={ClipboardList}
           titulo="Completa tu evaluación inicial"
-          descripcion="Es el primer paso para que Yiyo diseñe tu plan personalizado."
+          descripcion="Es el primer paso para que Yiyo diseñe tu plan personalizado"
           accion={
             <BotonEnlace href="/panel/bienvenida">Empezar evaluación</BotonEnlace>
           }
@@ -105,7 +105,7 @@ export default async function ResumenCliente() {
             <Corazon className="inline h-6 w-6 text-lila-400" />
           </>
         }
-        descripcion="Este es tu espacio. Aquí vive todo tu proceso."
+        descripcion="Este es tu espacio. Aquí vive todo tu proceso"
         acciones={
           <BotonEnlace href="/panel/entrenamientos">
             Entrenar hoy
@@ -194,7 +194,7 @@ export default async function ResumenCliente() {
             <Vacio
               icono={CalendarDays}
               titulo="Sin sesiones programadas"
-              descripcion="Cuando Yiyo te asigne una rutina verás aquí tus próximos entrenamientos."
+              descripcion="Cuando Yiyo te asigne una rutina verás aquí tus próximos entrenamientos"
             />
           )}
         </Tarjeta>
@@ -236,7 +236,7 @@ export default async function ResumenCliente() {
             <Vacio
               icono={TrendingUp}
               titulo="Aún sin registros"
-              descripcion="Anota tu peso y medidas para ver tu evolución en gráficas."
+              descripcion="Anota tu peso y medidas para ver tu evolución en gráficas"
               accion={
                 <BotonEnlace href="/panel/progreso" tamano="sm">
                   Registrar ahora

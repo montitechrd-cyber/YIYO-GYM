@@ -11,7 +11,7 @@ export default async function PerfilEntrenador() {
     <div className="max-w-4xl">
       <Encabezado
         titulo="Mi perfil"
-        descripcion="Tus datos como entrenadora en la plataforma."
+        descripcion="Tus datos como entrenadora en la plataforma"
       />
 
       <div className="space-y-5">

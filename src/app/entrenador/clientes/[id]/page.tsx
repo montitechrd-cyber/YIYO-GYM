@@ -240,7 +240,7 @@ export default async function FichaCliente({
               <Vacio
                 icono={ClipboardList}
                 titulo="Sin evaluación todavía"
-                descripcion="Registra medidas, objetivos e historial médico para diseñar su plan."
+                descripcion="Registra medidas, objetivos e historial médico para diseñar su plan"
                 accion={
                   <BotonEnlace
                     href={`/entrenador/clientes/${cliente.id}/evaluacion`}

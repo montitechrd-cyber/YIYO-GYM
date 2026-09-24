@@ -62,7 +62,7 @@ export function GestorEjercicios({
         abierto={abierto}
         alCerrar={() => setAbierto(false)}
         titulo={modo === "crear" ? "Nuevo ejercicio" : "Editar ejercicio"}
-        descripcion="Los ejercicios de la biblioteca se usan al construir rutinas."
+        descripcion="Los ejercicios de la biblioteca se usan al construir rutinas"
       >
         <form action={enviar} className="space-y-5">
           {ejercicio && <input type="hidden" name="id" value={ejercicio.id} />}

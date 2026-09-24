@@ -25,7 +25,7 @@ export default async function MiPerfil() {
     <div className="max-w-4xl">
       <Encabezado
         titulo="Mi perfil"
-        descripcion="Tus datos personales y tu evaluación inicial."
+        descripcion="Tus datos personales y tu evaluación inicial"
       />
 
       <div className="space-y-5">

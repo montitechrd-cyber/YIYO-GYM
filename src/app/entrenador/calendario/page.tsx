@@ -31,7 +31,7 @@ export default async function CalendarioEntrenador() {
     <div>
       <Encabezado
         titulo="Calendario"
-        descripcion="Programa y da seguimiento a las sesiones de tus clientas."
+        descripcion="Programa y da seguimiento a las sesiones de tus clientas"
         acciones={
           <NuevaSesion
             clientes={lista.map((c) => ({

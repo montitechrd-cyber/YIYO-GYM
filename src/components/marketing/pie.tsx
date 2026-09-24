@@ -1,7 +1,12 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { Logo } from "@/components/brand/logo";
-import { Corazon, IconoInstagram, Puntitos } from "@/components/brand/decoraciones";
+import { Mail, MapPin } from "lucide-react";
+import { Isotipo, Logo } from "@/components/brand/logo";
+import {
+  Corazon,
+  IconoInstagram,
+  IconoWhatsApp,
+  Puntitos,
+} from "@/components/brand/decoraciones";
 
 const contacto: {
   icono: React.ComponentType<{ className?: string }>;
@@ -9,8 +14,18 @@ const contacto: {
   href: string | null;
 }[] = [
   { icono: IconoInstagram, texto: "@yiyogym", href: "https://instagram.com/yiyogym" },
-  { icono: Phone, texto: "809 123 4567", href: "tel:+18091234567" },
-  { icono: Mail, texto: "hola@yiyogym.com", href: "mailto:hola@yiyogym.com" },
+  // El enlace de WhatsApp lleva el número sin espacios ni símbolos, que es
+  // el único formato que acepta wa.me; el texto sí se muestra legible.
+  {
+    icono: IconoWhatsApp,
+    texto: "+1 (829) 879-7333",
+    href: "https://wa.me/18298797333",
+  },
+  {
+    icono: Mail,
+    texto: "Yiyogymtrainer@gmail.com",
+    href: "mailto:Yiyogymtrainer@gmail.com",
+  },
   { icono: MapPin, texto: "Santo Domingo, RD", href: null },
 ];
 
@@ -25,6 +40,12 @@ export function Pie() {
   return (
     <footer className="relative overflow-hidden bg-violeta-900 pt-16 pb-8 text-lila-200">
       <Puntitos className="opacity-10" />
+      {/* Sello grande al cierre de la página, como la firma del pie. */}
+      <Isotipo
+        className="pointer-events-none absolute -bottom-20 -left-16 hidden h-80 opacity-[0.07] lg:block"
+        invertido
+      />
+
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>

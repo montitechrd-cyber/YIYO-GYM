@@ -108,7 +108,7 @@ export default async function DiaDeEntrenamiento({
         <Vacio
           icono={Dumbbell}
           titulo="Día de descanso"
-          descripcion="Este día no tiene ejercicios asignados. Aprovecha para recuperarte."
+          descripcion="Este día no tiene ejercicios asignados. Aprovecha para recuperarte"
         />
       )}
     </div>

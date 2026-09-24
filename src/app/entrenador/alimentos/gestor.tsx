@@ -68,7 +68,7 @@ export function GestorAlimento({
         abierto={abierto}
         alCerrar={() => setAbierto(false)}
         titulo={modo === "crear" ? "Nuevo alimento" : "Editar alimento"}
-        descripcion="Los valores se guardan por 100 g o 100 ml, salvo los que se cuentan por unidad."
+        descripcion="Los valores se guardan por 100 g o 100 ml, salvo los que se cuentan por unidad"
       >
         <form action={enviar} className="space-y-5">
           {alimento && <input type="hidden" name="id" value={alimento.id} />}

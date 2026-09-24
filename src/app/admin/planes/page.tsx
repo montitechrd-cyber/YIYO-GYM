@@ -65,7 +65,7 @@ export default async function PlanesYPagos() {
     <div>
       <Encabezado
         titulo="Planes y pagos"
-        descripcion="Define los planes de suscripción y revisa el estado de los cobros."
+        descripcion="Define los planes de suscripción y revisa el estado de los cobros"
         acciones={<GestorPlan modo="crear" />}
       />
 

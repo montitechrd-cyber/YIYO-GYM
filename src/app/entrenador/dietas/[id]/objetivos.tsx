@@ -30,7 +30,7 @@ export function EditorObjetivos({ plan }: { plan: PlanAlimentacion }) {
         abierto={abierto}
         alCerrar={() => setAbierto(false)}
         titulo="Objetivo diario"
-        descripcion="Las barras del plan se comparan contra estos valores."
+        descripcion="Las barras del plan se comparan contra estos valores"
         ancho="max-w-xl"
       >
         <form action={enviar} className="space-y-5">

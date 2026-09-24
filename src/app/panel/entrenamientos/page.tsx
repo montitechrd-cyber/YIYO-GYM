@@ -27,7 +27,7 @@ export default async function MisEntrenamientos() {
         <Vacio
           icono={Dumbbell}
           titulo="Sin ficha activa"
-          descripcion="Completa tu evaluación inicial para recibir tu primera rutina."
+          descripcion="Completa tu evaluación inicial para recibir tu primera rutina"
           accion={<BotonEnlace href="/panel/bienvenida">Empezar</BotonEnlace>}
         />
       </div>
@@ -150,7 +150,7 @@ export default async function MisEntrenamientos() {
         <Vacio
           icono={Dumbbell}
           titulo="Sin rutina asignada"
-          descripcion="En cuanto Yiyo revise tu evaluación te asignará tu plan de entrenamiento."
+          descripcion="En cuanto Yiyo revise tu evaluación te asignará tu plan de entrenamiento"
         />
       )}
 

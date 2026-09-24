@@ -172,7 +172,7 @@ export default async function ProgresoDeCliente({
           <Vacio
             icono={TrendingUp}
             titulo="Sin datos suficientes"
-            descripcion="Esta clienta necesita al menos dos registros de progreso para ver gráficas."
+            descripcion="Esta clienta necesita al menos dos registros de progreso para ver gráficas"
           />
         </div>
       )}

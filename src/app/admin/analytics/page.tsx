@@ -165,7 +165,7 @@ export default async function Analytics() {
     <div>
       <Encabezado
         titulo="Analytics"
-        descripcion="Los últimos 6 meses del negocio."
+        descripcion="Los últimos 6 meses del negocio"
       />
 
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -290,7 +290,7 @@ export default async function Analytics() {
               <Vacio
                 icono={Users}
                 titulo="Sin entrenadoras asignadas"
-                descripcion="Asigna clientas a una entrenadora para ver su desempeño."
+                descripcion="Asigna clientas a una entrenadora para ver su desempeño"
               />
             )}
           </Tarjeta>

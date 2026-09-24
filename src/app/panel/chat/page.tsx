@@ -18,7 +18,7 @@ export default async function ChatCliente() {
         <Vacio
           icono={MessageCircle}
           titulo="Sin ficha activa"
-          descripcion="Completa tu evaluación inicial para abrir tu canal directo con Yiyo."
+          descripcion="Completa tu evaluación inicial para abrir tu canal directo con Yiyo"
           accion={<BotonEnlace href="/panel/bienvenida">Empezar</BotonEnlace>}
         />
       </div>
@@ -34,7 +34,7 @@ export default async function ChatCliente() {
         <Vacio
           icono={MessageCircle}
           titulo="Chat no disponible todavía"
-          descripcion="Aún no hay una entrenadora asignada a la plataforma."
+          descripcion="Aún no hay una entrenadora asignada a la plataforma"
         />
       </div>
     );
@@ -58,7 +58,7 @@ export default async function ChatCliente() {
     <div>
       <Encabezado
         titulo="Chat con Yiyo"
-        descripcion="Dudas, ajustes, cómo te sientes. Aquí estoy."
+        descripcion="Dudas, ajustes, cómo te sientes. Aquí estoy"
       />
       <Chat
         conversacionId={conversacion.id}

@@ -13,6 +13,17 @@ import { cn } from "@/lib/utils";
 const EVENTO_REPRODUCCION = "yiyo:video-reproduciendo";
 
 /**
+ * Quién manda ahora mismo, compartido por todas las tarjetas de la página.
+ *
+ * Hace falta porque `onPlay` llega de forma asíncrona: al pulsar varias
+ * tarjetas muy seguidas, el aviso de una pulsación anterior podía llegar
+ * después del de la última y cerrarla, dejándola abierta pero congelada.
+ * Con este apuntador, la última pulsación manda y los avisos que llegan
+ * tarde se descartan.
+ */
+let reproductorActivo: string | null = null;
+
+/**
  * Convierte un enlace de YouTube o Vimeo en su URL para incrustar.
  * Devuelve null si no es ninguno de los dos (entonces se trata como
  * archivo de video directo, por ejemplo uno subido a Supabase Storage).
@@ -87,7 +98,11 @@ export function VistaPreviaVideo({
   const video = useRef<HTMLVideoElement>(null);
   const propio = useId();
 
-  const marcarReproduciendo = () => {
+  // El aviso al resto se emite solo desde `onPlay`, que es el único punto
+  // por el que pasa cualquier reproducción —el botón, o los controles
+  // nativos después de una pausa—.
+  const tomarElMando = () => {
+    reproductorActivo = propio;
     setReproduciendo(true);
     onCambioReproduccion?.(true);
     window.dispatchEvent(
@@ -96,30 +111,74 @@ export function VistaPreviaVideo({
   };
 
   const arrancar = () => {
+    // El mando se toma en el mismo clic, no al arrancar el video: así el
+    // orden lo marcan las pulsaciones y no el azar de qué video carga antes.
+    tomarElMando();
     // `play()` va dentro del propio clic: si se aplaza, el navegador deja de
     // considerarlo un gesto de la persona y bloquea la reproducción.
     video.current?.play().catch(() => {});
-    marcarReproduciendo();
   };
 
-  const cerrar = () => {
-    video.current?.pause();
+  /**
+   * El navegador avisa de que este video empezó a sonar.
+   *
+   * Si para entonces el mando ya es de otra tarjeta, es un eco tardío: se
+   * pulsó esta y enseguida otra, y el `play()` de la primera tardó en
+   * arrancar. En ese caso este video se calla solo. Antes tomaba el mando
+   * al arrancar, y cerraba la tarjeta que la persona acababa de abrir.
+   */
+  const alReproducir = () => {
+    if (reproductorActivo === propio) return;
+    const v = video.current;
+    if (v) {
+      v.pause();
+      v.currentTime = 0.1;
+    }
     setReproduciendo(false);
     onCambioReproduccion?.(false);
   };
+
+  /** Vuelve a la portada: pausa y rebobina al fotograma inicial. */
+  const cerrar = () => {
+    if (reproductorActivo === propio) reproductorActivo = null;
+    const v = video.current;
+    if (v) {
+      v.pause();
+      // Sin rebobinar, la tarjeta cerrada se quedaba mostrando el fotograma
+      // donde se pausó: cada tarjeta con una imagen distinta y la cuadrícula
+      // hecha un desorden.
+      v.currentTime = 0.1;
+    }
+    setReproduciendo(false);
+    onCambioReproduccion?.(false);
+  };
+
+  // El aviso a la tarjeta se guarda aparte para que la suscripción no se
+  // rehaga en cada render si quien nos usa pasa una función nueva cada vez.
+  const avisarTarjeta = useRef(onCambioReproduccion);
+  useEffect(() => {
+    avisarTarjeta.current = onCambioReproduccion;
+  }, [onCambioReproduccion]);
 
   // Solo un video abierto a la vez en toda la pantalla.
   useEffect(() => {
     const alReproducirOtro = (e: Event) => {
       if ((e as CustomEvent<string>).detail === propio) return;
-      video.current?.pause();
+      // Aviso rezagado de una pulsación anterior: si el mando sigue siendo
+      // nuestro, se descarta en vez de cerrarnos.
+      if (reproductorActivo === propio) return;
+      const v = video.current;
+      if (v) {
+        v.pause();
+        v.currentTime = 0.1;
+      }
       setReproduciendo(false);
-      onCambioReproduccion?.(false);
+      avisarTarjeta.current?.(false);
     };
     window.addEventListener(EVENTO_REPRODUCCION, alReproducirOtro);
     return () =>
       window.removeEventListener(EVENTO_REPRODUCCION, alReproducirOtro);
-  }, [propio, onCambioReproduccion]);
+  }, [propio]);
 
   return (
     <div
@@ -159,7 +218,7 @@ export function VistaPreviaVideo({
           muted
           playsInline
           preload="metadata"
-          onPlay={marcarReproduciendo}
+          onPlay={alReproducir}
           className={cn(
             "absolute inset-0 h-full w-full",
             // Portada recortada para que la cuadrícula quede pareja; al

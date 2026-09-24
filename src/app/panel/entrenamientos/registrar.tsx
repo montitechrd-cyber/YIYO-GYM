@@ -63,7 +63,7 @@ export function RegistrarEntrenamiento({
         abierto={abierto}
         alCerrar={() => setAbierto(false)}
         titulo="Registrar entrenamiento"
-        descripcion="Anota lo que hiciste hoy. Deja en blanco lo que no aplique."
+        descripcion="Anota lo que hiciste hoy. Deja en blanco lo que no aplique"
         ancho="max-w-3xl"
       >
         <form action={enviar} className="space-y-7">

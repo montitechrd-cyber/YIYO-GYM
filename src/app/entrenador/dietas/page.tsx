@@ -42,7 +42,7 @@ export default async function Dietas({
     <div>
       <Encabezado
         titulo="Nutrición"
-        descripcion="Elige un plan, dile a quién y las cantidades se ajustan solas a sus calorías."
+        descripcion="Elige un plan, dile a quién y las cantidades se ajustan solas a sus calorías"
         acciones={
           <BotonEnlace href="/entrenador/dietas/nueva" variante="contorno">
             <Plus size={16} />

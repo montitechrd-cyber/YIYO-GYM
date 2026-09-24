@@ -18,7 +18,7 @@ export default async function MiAlimentacion() {
         <Vacio
           icono={Salad}
           titulo="Sin ficha activa"
-          descripcion="Completa tu evaluación inicial para recibir tu plan de alimentación."
+          descripcion="Completa tu evaluación inicial para recibir tu plan de alimentación"
           accion={<BotonEnlace href="/panel/bienvenida">Empezar</BotonEnlace>}
         />
       </div>
@@ -34,7 +34,7 @@ export default async function MiAlimentacion() {
         <Vacio
           icono={Salad}
           titulo="Sin plan de alimentación"
-          descripcion="En cuanto Yiyo prepare tu dieta la verás aquí, con tus comidas de cada día y tus macros."
+          descripcion="En cuanto Yiyo prepare tu dieta la verás aquí, con tus comidas de cada día y tus macros"
         />
       </div>
     );

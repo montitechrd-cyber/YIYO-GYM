@@ -1,6 +1,7 @@
 import { ArrowRight, ClipboardCheck, Sparkles, UserPlus, Zap } from "lucide-react";
 import { BotonEnlace } from "@/components/ui/boton";
-import { Corazon, Hoja, Puntitos } from "@/components/brand/decoraciones";
+import { Corazon, Puntitos } from "@/components/brand/decoraciones";
+import { Isotipo } from "@/components/brand/logo";
 
 const PASOS = [
   {
@@ -43,7 +44,10 @@ export function Comienza() {
           <Puntitos className="opacity-15" />
           <div className="absolute -top-24 -left-16 h-80 w-80 rounded-full bg-white/15 blur-3xl" />
           <div className="absolute -right-20 -bottom-28 h-80 w-80 rounded-full bg-lila-200/25 blur-3xl" />
-          <Hoja className="animate-flotar absolute top-10 right-10 hidden h-20 w-20 text-white/15 lg:block" />
+          <Isotipo
+            className="animate-flotar absolute top-10 right-10 hidden h-24 opacity-20 lg:block"
+            invertido
+          />
 
           <div className="relative text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-[11px] tracking-[0.2em] text-white uppercase backdrop-blur">

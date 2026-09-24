@@ -32,7 +32,7 @@ export default async function MiSuscripcion() {
         <Vacio
           icono={CreditCard}
           titulo="Sin ficha activa"
-          descripcion="Completa tu evaluación inicial antes de elegir un plan."
+          descripcion="Completa tu evaluación inicial antes de elegir un plan"
           accion={<BotonEnlace href="/panel/bienvenida">Empezar</BotonEnlace>}
         />
       </div>
@@ -70,7 +70,7 @@ export default async function MiSuscripcion() {
     <div>
       <Encabezado
         titulo="Mi suscripción"
-        descripcion="Gestiona tu plan y consulta tus pagos."
+        descripcion="Gestiona tu plan y consulta tus pagos"
       />
 
       {!paypalConfigurado() && (

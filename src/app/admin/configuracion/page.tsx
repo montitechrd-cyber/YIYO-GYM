@@ -15,12 +15,12 @@ export default async function Configuracion() {
     <div>
       <Encabezado
         titulo="Configuración"
-        descripcion="Los parámetros de cálculo de la plataforma."
+        descripcion="Los parámetros de cálculo de la plataforma"
       />
       <Vacio
         icono={Settings}
         titulo="Próximamente"
-        descripcion="Aquí podrás ajustar los factores del cálculo de calorías y macros sin tocar código."
+        descripcion="Aquí podrás ajustar los factores del cálculo de calorías y macros sin tocar código"
       />
     </div>
   );

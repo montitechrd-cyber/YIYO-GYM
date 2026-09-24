@@ -27,7 +27,7 @@ export default async function MiProgreso() {
         <Vacio
           icono={TrendingUp}
           titulo="Sin ficha activa"
-          descripcion="Completa tu evaluación inicial para empezar a medir tu evolución."
+          descripcion="Completa tu evaluación inicial para empezar a medir tu evolución"
           accion={<BotonEnlace href="/panel/bienvenida">Empezar</BotonEnlace>}
         />
       </div>
@@ -92,7 +92,7 @@ export default async function MiProgreso() {
     <div>
       <Encabezado
         titulo="Mi progreso"
-        descripcion="Los datos no mienten. Aquí ves tu evolución real."
+        descripcion="Los datos no mienten. Aquí ves tu evolución real"
         acciones={<RegistrarProgreso />}
       />
 
@@ -216,7 +216,7 @@ export default async function MiProgreso() {
                 ? "Necesitas al menos dos registros"
                 : "Sin registros todavía"
             }
-            descripcion="Registra tu peso y medidas cada semana para ver tus gráficas de evolución."
+            descripcion="Registra tu peso y medidas cada semana para ver tus gráficas de evolución"
             accion={<RegistrarProgreso />}
           />
         </div>

@@ -32,7 +32,7 @@ export default async function NuevaRutina({
 
       <Encabezado
         titulo="Nueva rutina desde cero"
-        descripcion="Solo si necesitas algo a medida. Para lo habitual hay programas ya armados."
+        descripcion="Solo si necesitas algo a medida. Para lo habitual hay programas ya armados"
         acciones={
           <BotonEnlace href="/entrenador/rutinas" variante="contorno">
             <Sparkles size={16} />

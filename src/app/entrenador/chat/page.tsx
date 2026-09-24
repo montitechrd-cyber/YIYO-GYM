@@ -30,7 +30,7 @@ export default async function ChatEntrenador({
         <Vacio
           icono={MessageCircle}
           titulo="Sin conversaciones"
-          descripcion="Cuando una clienta abra su chat, la conversación aparecerá aquí."
+          descripcion="Cuando una clienta abra su chat, la conversación aparecerá aquí"
         />
       </div>
     );

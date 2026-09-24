@@ -53,7 +53,7 @@ export default async function ResumenAdmin() {
     <div>
       <Encabezado
         titulo="Panel de administración"
-        descripcion="Salud del negocio YIYO GYM en tiempo real."
+        descripcion="Salud del negocio YIYO GYM en tiempo real"
         acciones={
           <BotonEnlace href="/admin/analytics">
             Ver analytics
@@ -140,7 +140,7 @@ export default async function ResumenAdmin() {
             <Vacio
               icono={CreditCard}
               titulo="Sin pagos todavía"
-              descripcion="Cuando una clienta se suscriba, el pago aparecerá aquí."
+              descripcion="Cuando una clienta se suscriba, el pago aparecerá aquí"
             />
           )}
         </Tarjeta>

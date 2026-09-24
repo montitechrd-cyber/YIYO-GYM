@@ -46,7 +46,7 @@ export default async function ResumenEntrenador() {
     <div>
       <Encabezado
         titulo={`Hola, ${perfil.nombre_completo.split(" ")[0] || "entrenadora"}`}
-        descripcion="Tu cartera de clientas de un vistazo."
+        descripcion="Tu cartera de clientas de un vistazo"
         acciones={
           <BotonEnlace href="/entrenador/clientes">
             Ver clientes
@@ -131,7 +131,7 @@ export default async function ResumenEntrenador() {
             <Vacio
               icono={Users}
               titulo="Todavía no tienes clientas"
-              descripcion="Cuando alguien se registre en la plataforma aparecerá aquí."
+              descripcion="Cuando alguien se registre en la plataforma aparecerá aquí"
             />
           )}
         </Tarjeta>
@@ -175,7 +175,7 @@ export default async function ResumenEntrenador() {
             <Vacio
               icono={MessageCircle}
               titulo="Agenda despejada"
-              descripcion="No hay sesiones programadas próximamente."
+              descripcion="No hay sesiones programadas próximamente"
             />
           )}
         </Tarjeta>

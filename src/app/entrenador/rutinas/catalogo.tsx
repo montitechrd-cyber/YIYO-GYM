@@ -34,14 +34,14 @@ export function Catalogo({
     <>
       <Seccion
         titulo="Por nivel"
-        descripcion="Elige según la experiencia que tenga. Es el punto de partida para casi todas."
+        descripcion="Elige según la experiencia que tenga. Es el punto de partida para casi todas"
         programas={niveles}
         alElegir={setElegido}
       />
 
       <Seccion
         titulo="Por objetivo"
-        descripcion="Cuando ya sabes qué busca: glúteos, bajar grasa, tonificar o esculpir."
+        descripcion="Cuando ya sabes qué busca: glúteos, bajar grasa, tonificar o esculpir"
         programas={objetivos}
         alElegir={setElegido}
       />
