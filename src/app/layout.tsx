@@ -28,10 +28,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es">
-      <body className={`${poppins.variable} ${dancing.variable} antialiased`}>
-        {children}
-      </body>
+    // Las variables de las fuentes van en <html> y no en <body>: el tema de
+    // Tailwind define `--font-sans` y `--font-script` sobre `:root`, que es
+    // el propio <html>. Puestas en <body> quedaban en un descendiente, y
+    // desde `:root` no se veían: ambas se quedaban sin resolver y todo el
+    // sitio caía a la tipografía del sistema —la cursiva de la marca no
+    // llegó a mostrarse nunca—.
+    <html lang="es" className={`${poppins.variable} ${dancing.variable}`}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
