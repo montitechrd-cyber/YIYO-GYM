@@ -50,11 +50,7 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-14 sm:pb-16 lg:pb-24">
         <div className="animate-aparecer max-w-xl">
-          <span className="letra-ancha inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[10px] text-white/90 uppercase backdrop-blur">
-            Coaching fitness &amp; nutrición
-          </span>
-
-          <h1 className="mt-6 text-6xl leading-[0.95] font-light tracking-tight text-white [text-shadow:0_2px_24px_rgb(63_26_107_/_0.55)] sm:text-7xl lg:text-8xl">
+          <h1 className="text-6xl leading-[0.95] font-light tracking-tight text-white [text-shadow:0_2px_24px_rgb(63_26_107_/_0.55)] sm:text-7xl lg:text-8xl">
             Fuerza que
             <span className="font-script mt-1 block text-[1.15em] leading-[1] text-lila-200">
               transforma
