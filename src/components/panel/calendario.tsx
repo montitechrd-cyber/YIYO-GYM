@@ -104,7 +104,7 @@ export function Calendario({
     // con varias sesiones y eso volvía a estirar —y a deformar— el calendario
     // de la izquierda, que no tiene nada que ver con ese contenido.
     <div className="grid items-start gap-5 lg:grid-cols-[1.5fr_1fr]">
-      <div className="rounded-4xl border border-lila-200 bg-white p-7 shadow-suave">
+      <div className="rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-7">
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-xl font-light text-violeta-900 first-letter:uppercase">
             {MESES[mes]} {anio}
@@ -133,7 +133,7 @@ export function Calendario({
           </div>
         </div>
 
-        <div className="mb-3 grid grid-cols-7 gap-1.5">
+        <div className="mb-3 grid grid-cols-7 gap-1 sm:gap-1.5">
           {DIAS.map((d, i) => (
             <div
               key={i}
@@ -144,7 +144,7 @@ export function Calendario({
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-1.5">
+        <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
           {celdas.map((dia, i) => {
             if (dia === null) return <div key={`v${i}`} />;
 
@@ -191,7 +191,7 @@ export function Calendario({
         </div>
       </div>
 
-      <div className="rounded-4xl border border-lila-200 bg-white p-7 shadow-suave">
+      <div className="rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-7">
         <h3 className="text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
           {seleccionado
             ? new Date(seleccionado + "T00:00:00").toLocaleDateString("es-DO", {

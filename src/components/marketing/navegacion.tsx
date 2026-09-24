@@ -35,7 +35,7 @@ export function Navegacion() {
       <nav
         className={cn(
           "mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-500",
-          fija ? "vidrio shadow-suave" : "bg-transparent"
+          fija || abierto ? "vidrio shadow-suave" : "bg-transparent"
         )}
       >
         <Link href="/" aria-label="YIYO GYM — inicio">
@@ -75,8 +75,19 @@ export function Navegacion() {
       </nav>
 
       {abierto && (
-        <div className="animate-aparecer mx-auto mt-2 max-w-6xl md:hidden">
-          <div className="vidrio flex flex-col gap-1 rounded-4xl p-4 shadow-elevada">
+        <button
+          type="button"
+          onClick={() => setAbierto(false)}
+          aria-label="Cerrar menú"
+          className="fixed inset-0 -z-10 cursor-default bg-violeta-900/25 backdrop-blur-[2px] md:hidden"
+        />
+      )}
+
+      {abierto && (
+        <div className="animate-aparecer mx-auto mt-2 max-w-6xl px-4 md:hidden">
+          {/* Blanco sólido, no `vidrio`: ese cristal es blanco al 72% y con
+              el titular del hero detrás las opciones no se leían. */}
+          <div className="flex flex-col gap-1 rounded-4xl border border-lila-200 bg-white p-4 shadow-elevada">
             {enlaces.map((e) => (
               <a
                 key={e.href}
