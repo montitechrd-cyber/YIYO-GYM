@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { origenPublico } from "@/lib/url-publica";
 import { createServerClient } from "@supabase/ssr";
 
 const RUTAS_PRIVADAS = ["/panel", "/entrenador", "/admin"];
@@ -53,7 +54,7 @@ export async function middleware(request: NextRequest) {
   if (!idUsuario) {
     // Sin sesión no hay nada que verificar.
     return esVerificar
-      ? NextResponse.redirect(new URL("/entrar", request.url))
+      ? NextResponse.redirect(new URL("/entrar", origenPublico(request)))
       : respuesta;
   }
 
@@ -69,13 +70,13 @@ export async function middleware(request: NextRequest) {
   if (esVerificar) {
     // Nada que verificar: o ya lo hizo, o no tiene segundo factor.
     if (!faltaSegundoPaso) {
-      return NextResponse.redirect(new URL("/panel", request.url));
+      return NextResponse.redirect(new URL("/panel", origenPublico(request)));
     }
     return respuesta;
   }
 
   if (esPrivada && faltaSegundoPaso) {
-    return NextResponse.redirect(new URL(RUTA_VERIFICAR, request.url));
+    return NextResponse.redirect(new URL(RUTA_VERIFICAR, origenPublico(request)));
   }
 
   // El rol solo se consulta cuando hace falta decidir con él. El área de la

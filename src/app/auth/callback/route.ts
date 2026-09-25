@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { destinoPedido, destinoTrasActivar } from "@/lib/primer-acceso";
+import { origenPublico } from "@/lib/url-publica";
 
 /**
  * Vuelta desde Google, Facebook o Apple.
@@ -11,6 +12,8 @@ import { destinoPedido, destinoTrasActivar } from "@/lib/primer-acceso";
  */
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
+  // Detrás del proxy de Railway, `url.origin` es el puerto interno.
+  const origen = origenPublico(request);
   const codigo = url.searchParams.get("code");
   const siguiente = destinoPedido(url.searchParams.get("siguiente"));
 
@@ -21,12 +24,12 @@ export async function GET(request: NextRequest) {
     url.searchParams.get("error_description") ?? url.searchParams.get("error");
   if (errorProveedor) {
     return NextResponse.redirect(
-      new URL(`/entrar?error=${encodeURIComponent(errorProveedor)}`, url.origin)
+      new URL(`/entrar?error=${encodeURIComponent(errorProveedor)}`, origen)
     );
   }
 
   if (!codigo) {
-    return NextResponse.redirect(new URL("/entrar", url.origin));
+    return NextResponse.redirect(new URL("/entrar", origen));
   }
 
   const supabase = await crearClienteServidor();
@@ -36,7 +39,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(
       new URL(
         `/entrar?error=${encodeURIComponent(error?.message ?? "No se pudo completar el acceso.")}`,
-        url.origin
+        origen
       )
     );
   }
@@ -49,5 +52,5 @@ export async function GET(request: NextRequest) {
   const destino =
     siguiente ?? (await destinoTrasActivar(supabase, data.user.id, "registro social"));
 
-  return NextResponse.redirect(new URL(destino, url.origin));
+  return NextResponse.redirect(new URL(destino, origen));
 }

@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import type { EmailOtpType } from "@supabase/supabase-js";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { destinoPedido, destinoTrasActivar } from "@/lib/primer-acceso";
+import { origenPublico } from "@/lib/url-publica";
 
 const TIPOS: EmailOtpType[] = [
   "signup",
@@ -25,12 +26,14 @@ const TIPOS: EmailOtpType[] = [
  */
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
+  // Detrás del proxy de Railway, `url.origin` es el puerto interno.
+  const origen = origenPublico(request);
   const tokenHash = url.searchParams.get("token_hash");
   const tipo = url.searchParams.get("type") as EmailOtpType | null;
 
   const fallo = (mensaje: string) =>
     NextResponse.redirect(
-      new URL(`/entrar?error=${encodeURIComponent(mensaje)}`, url.origin)
+      new URL(`/entrar?error=${encodeURIComponent(mensaje)}`, origen)
     );
 
   if (!tokenHash || !tipo || !TIPOS.includes(tipo)) {
@@ -62,12 +65,12 @@ export async function GET(request: NextRequest) {
   // Recuperar contraseña deja la sesión abierta a propósito y solo para
   // esto: el formulario de nueva clave la necesita para poder guardarla.
   if (tipo === "recovery") {
-    return NextResponse.redirect(new URL("/nueva-contrasena", url.origin));
+    return NextResponse.redirect(new URL("/nueva-contrasena", origen));
   }
 
   const destino =
     destinoPedido(url.searchParams.get("siguiente")) ??
     (await destinoTrasActivar(supabase, data.user.id, "registro web"));
 
-  return NextResponse.redirect(new URL(destino, url.origin));
+  return NextResponse.redirect(new URL(destino, origen));
 }
