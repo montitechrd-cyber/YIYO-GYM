@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowLeft, Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { BotonEnlace } from "@/components/ui/boton";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,15 @@ const enlaces = [
   { href: "/tienda", texto: "Tienda" },
 ];
 
-export function Navegacion() {
+/**
+ * Barra superior del sitio público.
+ *
+ * Casi todos sus enlaces son anclas de la portada —«Método», «Sobre Yiyo»…—,
+ * así que fuera de ella no llevan a ninguna parte: en la tienda se pulsaban
+ * y no pasaba nada. Por eso hay una versión reducida con lo único que tiene
+ * sentido desde otra página: volver a la portada.
+ */
+export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
   const [fija, setFija] = useState(false);
   const [abierto, setAbierto] = useState(false);
 
@@ -31,7 +39,7 @@ export function Navegacion() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        fija ? "py-2" : "py-5"
+        fija ? "py-2" : "py-5",
       )}
     >
       <nav
@@ -44,39 +52,48 @@ export function Navegacion() {
           <Logo tamano="sm" />
         </Link>
 
-        <ul className="hidden items-center gap-9 md:flex">
-          {enlaces.map((e) => (
-            <li key={e.href}>
-              <a
-                href={e.href}
-                className="group relative text-sm font-light tracking-wide text-violeta-800/80 transition-colors hover:text-violeta-700"
-              >
-                {e.texto}
-                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-violeta-500 transition-all duration-300 group-hover:w-full" />
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <BotonEnlace href="/entrar" variante="fantasma" tamano="sm">
-            Entrar
+        {soloInicio ? (
+          <BotonEnlace href="/" variante="contorno" tamano="sm">
+            <ArrowLeft size={15} />
+            Ir al inicio
           </BotonEnlace>
-          <BotonEnlace href="/registro" tamano="sm">
-            Empezar
-          </BotonEnlace>
-        </div>
+        ) : (
+          <>
+            <ul className="hidden items-center gap-9 md:flex">
+              {enlaces.map((e) => (
+                <li key={e.href}>
+                  <a
+                    href={e.href}
+                    className="group relative text-sm font-light tracking-wide text-violeta-800/80 transition-colors hover:text-violeta-700"
+                  >
+                    {e.texto}
+                    <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-violeta-500 transition-all duration-300 group-hover:w-full" />
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-        <button
-          onClick={() => setAbierto((v) => !v)}
-          className="rounded-full p-2 text-violeta-700 transition-colors hover:bg-lila-100 md:hidden"
-          aria-label="Abrir menú"
-        >
-          {abierto ? <X size={20} /> : <Menu size={20} />}
-        </button>
+            <div className="hidden items-center gap-3 md:flex">
+              <BotonEnlace href="/entrar" variante="fantasma" tamano="sm">
+                Entrar
+              </BotonEnlace>
+              <BotonEnlace href="/registro" tamano="sm">
+                Empezar
+              </BotonEnlace>
+            </div>
+
+            <button
+              onClick={() => setAbierto((v) => !v)}
+              className="rounded-full p-2 text-violeta-700 transition-colors hover:bg-lila-100 md:hidden"
+              aria-label="Abrir menú"
+            >
+              {abierto ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </>
+        )}
       </nav>
 
-      {abierto && (
+      {!soloInicio && abierto && (
         <button
           type="button"
           onClick={() => setAbierto(false)}
@@ -85,7 +102,7 @@ export function Navegacion() {
         />
       )}
 
-      {abierto && (
+      {!soloInicio && abierto && (
         <div className="animate-aparecer mx-auto mt-2 max-w-6xl px-4 md:hidden">
           {/* Blanco sólido, no `vidrio`: ese cristal es blanco al 72% y con
               el titular del hero detrás las opciones no se leían. */}
@@ -101,7 +118,12 @@ export function Navegacion() {
               </a>
             ))}
             <div className="mt-2 flex gap-2 px-1">
-              <BotonEnlace href="/entrar" variante="contorno" tamano="sm" className="flex-1">
+              <BotonEnlace
+                href="/entrar"
+                variante="contorno"
+                tamano="sm"
+                className="flex-1"
+              >
                 Entrar
               </BotonEnlace>
               <BotonEnlace href="/registro" tamano="sm" className="flex-1">

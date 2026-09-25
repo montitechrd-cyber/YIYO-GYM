@@ -28,7 +28,9 @@ export default async function Tienda() {
 
   return (
     <>
-      <Navegacion />
+      {/* Sin los enlaces de la portada: son anclas y desde aquí no van a
+          ningún sitio. Solo la vuelta al inicio. */}
+      <Navegacion soloInicio />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-lila-100 via-crema to-crema pt-36 pb-24 md:pt-44">
         <Auroras />
