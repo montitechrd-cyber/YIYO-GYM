@@ -5,6 +5,7 @@ import { GRUPOS, NIVELES } from "@/lib/etiquetas";
 import { Encabezado, Tarjeta, Vacio } from "@/components/panel/piezas";
 import { Entrada, Seleccion } from "@/components/ui/campo";
 import { GestorEjercicios } from "./gestor";
+import { BotonVisibilidad } from "./boton-visibilidad";
 import { VistaPreviaVideo } from "@/components/panel/video-ejercicio";
 import { Demostracion } from "@/components/panel/demostracion-ejercicio";
 import type { GrupoMuscular } from "@/lib/supabase/tipos";
@@ -12,13 +13,21 @@ import type { GrupoMuscular } from "@/lib/supabase/tipos";
 export default async function BibliotecaEjercicios({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; grupo?: string }>;
+  searchParams: Promise<{ q?: string; grupo?: string; ver?: string }>;
 }) {
   await exigirRol("entrenador", "admin");
-  const { q = "", grupo = "" } = await searchParams;
+  const { q = "", grupo = "", ver = "" } = await searchParams;
 
   const supabase = await crearClienteServidor();
   let consulta = supabase.from("ejercicios").select("*").order("nombre");
+
+  // La biblioteca enseña solo los ejercicios en uso. Los demás —los que se
+  // quedaron sin demostración— siguen ahí, con su video y todo, pero
+  // apartados: se llega a ellos con el filtro «Ocultos», y desde ahí se
+  // devuelven a la biblioteca con un botón.
+  if (ver === "ocultos") consulta = consulta.eq("publico", false);
+  else if (ver !== "todos") consulta = consulta.eq("publico", true);
+
   if (grupo) consulta = consulta.eq("grupo", grupo as GrupoMuscular);
   if (q.trim()) consulta = consulta.ilike("nombre", `%${q.trim()}%`);
 
@@ -71,6 +80,11 @@ export default async function BibliotecaEjercicios({
               </option>
             ))}
           </Seleccion>
+          <Seleccion name="ver" defaultValue={ver} className="w-44">
+            <option value="">En la biblioteca</option>
+            <option value="ocultos">Ocultos</option>
+            <option value="todos">Todos</option>
+          </Seleccion>
           <button
             type="submit"
             className="h-11 cursor-pointer rounded-full fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
@@ -80,8 +94,10 @@ export default async function BibliotecaEjercicios({
         </form>
       </Tarjeta>
 
+      {/* Dos por fila: la demostración se lee mucho mejor grande, y a tres
+          por fila el muñeco quedaba del tamaño de una moneda. */}
       {ejercicios.length > 0 ? (
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2">
           {ejercicios.map((e) => (
             <article
               key={e.id}
@@ -117,8 +133,9 @@ export default async function BibliotecaEjercicios({
                     {e.instrucciones}
                   </p>
                 )}
-                <div className="mt-5">
+                <div className="mt-5 flex items-center gap-2">
                   <GestorEjercicios modo="editar" ejercicio={e} />
+                  <BotonVisibilidad id={e.id} visible={e.publico} />
                 </div>
               </div>
             </article>

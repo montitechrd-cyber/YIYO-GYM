@@ -23,7 +23,10 @@ export default async function DetalleRutina({
   // Rutina completa, catálogo de ejercicios y fichas: todo en paralelo.
   const [contenido, { data: ejercicios }, clientes] = await Promise.all([
     rutinaConDias(id),
-    supabase.from("ejercicios").select("*").order("nombre"),
+    // Solo los que están en la biblioteca: los apartados no deben poder
+    // colarse al armar un día. Se devuelven desde la biblioteca, no desde
+    // aquí.
+    supabase.from("ejercicios").select("*").eq("publico", true).order("nombre"),
     clientesConPerfil(),
   ]);
 

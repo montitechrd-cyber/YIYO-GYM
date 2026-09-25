@@ -104,3 +104,22 @@ export async function borrarEjercicio(id: string) {
   if (error) throw new Error(error.message);
   revalidatePath("/entrenador/ejercicios");
 }
+
+/**
+ * Aparta un ejercicio de la biblioteca, o lo devuelve.
+ *
+ * No lo borra: la ficha, su video y su historial siguen intactos, solo deja
+ * de aparecer al armar rutinas. Es lo que hace falta para los que se
+ * quedaron sin demostración animada —hay 19 con video grabado por Yiyo que
+ * algún día vuelven— y borrarlos habría sido irreversible.
+ */
+export async function alternarVisibilidad(id: string, visible: boolean) {
+  await exigirRol("entrenador", "admin");
+  const supabase = await crearClienteServidor();
+  const { error } = await supabase
+    .from("ejercicios")
+    .update({ publico: visible })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/entrenador/ejercicios");
+}
