@@ -94,10 +94,11 @@ export default async function BibliotecaEjercicios({
         </form>
       </Tarjeta>
 
-      {/* Dos por fila: la demostración se lee mucho mejor grande, y a tres
-          por fila el muñeco quedaba del tamaño de una moneda. */}
+      {/* Cuatro por fila en pantalla ancha, y va bajando hasta una en el
+          teléfono: con 143 ejercicios, la biblioteca se recorre buscando, y
+          cuantas más quepan de un vistazo menos hay que bajar. */}
       {ejercicios.length > 0 ? (
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {ejercicios.map((e) => (
             <article
               key={e.id}
