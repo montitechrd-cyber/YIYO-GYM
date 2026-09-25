@@ -46,9 +46,25 @@ export default async function BibliotecaEjercicios({
     const tieneVideo = Number(!!b.video_url) - Number(!!a.video_url);
     const tieneImagen = Number(!!b.imagen_url) - Number(!!a.imagen_url);
     return (
-      destacado || tieneVideo || tieneImagen || a.nombre.localeCompare(b.nombre, "es")
+      destacado ||
+      tieneVideo ||
+      tieneImagen ||
+      a.nombre.localeCompare(b.nombre, "es")
     );
   });
+
+  // La biblioteca se parte por parte del cuerpo. Con 143 fichas, una lista
+  // corrida obliga a recordar dónde acababa el pecho y empezaba la espalda;
+  // por secciones se baja hasta el bloque que interesa y se para ahí.
+  // El orden de las secciones es el de `GRUPOS`, que va de arriba abajo del
+  // cuerpo, no alfabético: es como se piensa un entrenamiento.
+  const porGrupo = (Object.keys(GRUPOS) as GrupoMuscular[])
+    .map((g) => ({
+      grupo: g,
+      titulo: GRUPOS[g],
+      lista: ejercicios.filter((e) => e.grupo === g),
+    }))
+    .filter((s) => s.lista.length > 0);
 
   return (
     <div>
@@ -94,52 +110,68 @@ export default async function BibliotecaEjercicios({
         </form>
       </Tarjeta>
 
-      {/* Cuatro por fila en pantalla ancha, y va bajando hasta una en el
-          teléfono: con 143 ejercicios, la biblioteca se recorre buscando, y
-          cuantas más quepan de un vistazo menos hay que bajar. */}
       {ejercicios.length > 0 ? (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {ejercicios.map((e) => (
-            <article
-              key={e.id}
-              className="group overflow-hidden rounded-4xl border border-lila-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
-            >
-              <div className="relative">
-                {e.video_url ? (
-                  <VistaPreviaVideo url={e.video_url} titulo={e.nombre} />
-                ) : e.imagen_url ? (
-                  <Demostracion url={e.imagen_url} titulo={e.nombre} />
-                ) : (
-                  <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-gradient-to-br from-lila-100 to-lila-200">
-                    <Dumbbell
-                      size={34}
-                      strokeWidth={1.2}
-                      className="text-violeta-500/40"
-                    />
-                  </div>
-                )}
-                <span className="pointer-events-none absolute top-3 left-3 rounded-full bg-white/85 px-3 py-1 text-[10px] tracking-wide text-violeta-700 backdrop-blur">
-                  {GRUPOS[e.grupo]}
+        <div className="space-y-10">
+          {porGrupo.map((seccion) => (
+            <section key={seccion.grupo}>
+              <div className="mb-4 flex items-baseline gap-3">
+                <h2 className="text-lg font-medium text-violeta-800">
+                  {seccion.titulo}
+                </h2>
+                <span className="text-xs font-light text-violeta-900/45">
+                  {seccion.lista.length}
                 </span>
+                <span className="h-px flex-1 bg-lila-200" />
               </div>
 
-              <div className="p-6">
-                <h3 className="font-medium text-violeta-800">{e.nombre}</h3>
-                <p className="mt-1 text-xs font-light text-violeta-900/50">
-                  {NIVELES[e.nivel]}
-                  {e.equipo ? ` · ${e.equipo}` : ""}
-                </p>
-                {e.instrucciones && (
-                  <p className="mt-3 line-clamp-2 text-xs leading-relaxed font-light text-violeta-900/60">
-                    {e.instrucciones}
-                  </p>
-                )}
-                <div className="mt-5 flex items-center gap-2">
-                  <GestorEjercicios modo="editar" ejercicio={e} />
-                  <BotonVisibilidad id={e.id} visible={e.publico} />
-                </div>
+              {/* Cuatro por fila desde el portátil. El corte va en `md` y no
+                  en `xl`: una pantalla de portátil con la escala de Windows
+                  al 150 % reporta menos de 1280 px, así que con `xl` nunca
+                  llegaba a cuatro por mucho que la pantalla fuera grande. */}
+              <div className="grid gap-5 grid-cols-2 md:grid-cols-4">
+                {seccion.lista.map((e) => (
+                  <article
+                    key={e.id}
+                    className="group overflow-hidden rounded-4xl border border-lila-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
+                  >
+                    <div className="relative">
+                      {e.video_url ? (
+                        <VistaPreviaVideo url={e.video_url} titulo={e.nombre} />
+                      ) : e.imagen_url ? (
+                        <Demostracion url={e.imagen_url} titulo={e.nombre} />
+                      ) : (
+                        <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-gradient-to-br from-lila-100 to-lila-200">
+                          <Dumbbell
+                            size={34}
+                            strokeWidth={1.2}
+                            className="text-violeta-500/40"
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="p-6">
+                      <h3 className="font-medium text-violeta-800">
+                        {e.nombre}
+                      </h3>
+                      <p className="mt-1 text-xs font-light text-violeta-900/50">
+                        {NIVELES[e.nivel]}
+                        {e.equipo ? ` · ${e.equipo}` : ""}
+                      </p>
+                      {e.instrucciones && (
+                        <p className="mt-3 line-clamp-2 text-xs leading-relaxed font-light text-violeta-900/60">
+                          {e.instrucciones}
+                        </p>
+                      )}
+                      <div className="mt-5 flex items-center gap-2">
+                        <GestorEjercicios modo="editar" ejercicio={e} />
+                        <BotonVisibilidad id={e.id} visible={e.publico} />
+                      </div>
+                    </div>
+                  </article>
+                ))}
               </div>
-            </article>
+            </section>
           ))}
         </div>
       ) : (
