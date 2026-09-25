@@ -3,14 +3,10 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Play, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+// El aviso se comparte con la demostración animada: pulsar una tiene que
+// callar al otro, y para eso los dos han de hablar por el mismo canal.
+import { EVENTO_REPRODUCCION } from "./mando-reproduccion";
 
-/**
- * Aviso de «he empezado a reproducir»: lo escuchan todas las tarjetas para
- * cerrarse si la que arrancó no es ella. Pausar el `<video>` no bastaba —la
- * tarjeta anterior se quedaba abierta, con sus controles y su «X», dando a
- * entender que seguía activa.
- */
-const EVENTO_REPRODUCCION = "yiyo:video-reproduciendo";
 
 /**
  * Quién manda ahora mismo, compartido por todas las tarjetas de la página.

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Dumbbell, Repeat, Timer, Weight } from "lucide-react";
 import { VistaPreviaVideo } from "./video-ejercicio";
+import { Demostracion } from "./demostracion-ejercicio";
 import { GRUPOS, NIVELES } from "@/lib/etiquetas";
 import { cn } from "@/lib/utils";
 import type { Ejercicio, RutinaEjercicio } from "@/lib/supabase/tipos";
@@ -64,14 +65,10 @@ export function TarjetaEjercicio({
           onCambioReproduccion={setVideoActivo}
         />
       ) : ejercicio.imagen_url ? (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img
-          src={ejercicio.imagen_url}
-          alt={ejercicio.nombre}
-          loading="lazy"
-          // Fondo blanco y `contain`: las demostraciones vienen sobre blanco,
-          // y recortarlas le corta la cabeza o los pies justo al ejercicio.
-          className="aspect-square w-full bg-white object-contain"
+        <Demostracion
+          url={ejercicio.imagen_url}
+          titulo={ejercicio.nombre}
+          onCambioReproduccion={setVideoActivo}
         />
       ) : (
         <div className="flex aspect-square w-full items-center justify-center bg-gradient-to-br from-lila-100 to-lila-200">

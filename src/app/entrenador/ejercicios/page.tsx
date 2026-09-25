@@ -2,11 +2,11 @@ import { Dumbbell, Search } from "lucide-react";
 import { exigirRol } from "@/lib/autenticacion";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { GRUPOS, NIVELES } from "@/lib/etiquetas";
-import { cn } from "@/lib/utils";
 import { Encabezado, Tarjeta, Vacio } from "@/components/panel/piezas";
 import { Entrada, Seleccion } from "@/components/ui/campo";
 import { GestorEjercicios } from "./gestor";
 import { VistaPreviaVideo } from "@/components/panel/video-ejercicio";
+import { Demostracion } from "@/components/panel/demostracion-ejercicio";
 import type { GrupoMuscular } from "@/lib/supabase/tipos";
 
 export default async function BibliotecaEjercicios({
@@ -90,34 +90,15 @@ export default async function BibliotecaEjercicios({
               <div className="relative">
                 {e.video_url ? (
                   <VistaPreviaVideo url={e.video_url} titulo={e.nombre} />
+                ) : e.imagen_url ? (
+                  <Demostracion url={e.imagen_url} titulo={e.nombre} />
                 ) : (
-                  <div
-                    className={cn(
-                      "flex aspect-square w-full items-center justify-center overflow-hidden",
-                      // Las demostraciones vienen sobre blanco: un fondo lila
-                      // dejaría un cuadrado blanco recortado dentro del marco.
-                      e.imagen_url
-                        ? "bg-white"
-                        : "bg-gradient-to-br from-lila-100 to-lila-200"
-                    )}
-                  >
-                    {e.imagen_url ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        src={e.imagen_url}
-                        alt={e.nombre}
-                        loading="lazy"
-                        // `contain` y no `cover`: recortar una demostración le
-                        // corta la cabeza o los pies justo al ejercicio.
-                        className="h-full w-full object-contain"
-                      />
-                    ) : (
-                      <Dumbbell
-                        size={34}
-                        strokeWidth={1.2}
-                        className="text-violeta-500/40"
-                      />
-                    )}
+                  <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-gradient-to-br from-lila-100 to-lila-200">
+                    <Dumbbell
+                      size={34}
+                      strokeWidth={1.2}
+                      className="text-violeta-500/40"
+                    />
                   </div>
                 )}
                 <span className="pointer-events-none absolute top-3 left-3 rounded-full bg-white/85 px-3 py-1 text-[10px] tracking-wide text-violeta-700 backdrop-blur">
