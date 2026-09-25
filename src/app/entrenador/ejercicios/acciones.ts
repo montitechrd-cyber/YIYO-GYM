@@ -97,29 +97,32 @@ export async function guardarEjercicio(
   return { exito: id ? "Ejercicio actualizado." : "Ejercicio creado." };
 }
 
-export async function borrarEjercicio(id: string) {
+/**
+ * Borra un ejercicio de la biblioteca. No hay vuelta atrás.
+ *
+ * Devuelve el error en vez de lanzarlo: el más frecuente es que el
+ * ejercicio esté programado en alguna rutina —la base lo impide— y decirlo
+ * con palabras es más útil que una pantalla de error genérica.
+ */
+export async function borrarEjercicio(id: string): Promise<Resultado> {
   await exigirRol("entrenador", "admin");
   const supabase = await crearClienteServidor();
+
+  const { count } = await supabase
+    .from("rutina_ejercicios")
+    .select("id", { count: "exact", head: true })
+    .eq("ejercicio_id", id);
+
+  if (count) {
+    return {
+      error: `Está programado en ${count} día${count === 1 ? "" : "s"} de rutina. Quítalo de ahí antes de borrarlo.`,
+    };
+  }
+
   const { error } = await supabase.from("ejercicios").delete().eq("id", id);
-  if (error) throw new Error(error.message);
+  if (error) return { error: error.message };
+
   revalidatePath("/entrenador/ejercicios");
+  return { exito: "Ejercicio borrado." };
 }
 
-/**
- * Aparta un ejercicio de la biblioteca, o lo devuelve.
- *
- * No lo borra: la ficha, su video y su historial siguen intactos, solo deja
- * de aparecer al armar rutinas. Es lo que hace falta para los que se
- * quedaron sin demostración animada —hay 19 con video grabado por Yiyo que
- * algún día vuelven— y borrarlos habría sido irreversible.
- */
-export async function alternarVisibilidad(id: string, visible: boolean) {
-  await exigirRol("entrenador", "admin");
-  const supabase = await crearClienteServidor();
-  const { error } = await supabase
-    .from("ejercicios")
-    .update({ publico: visible })
-    .eq("id", id);
-  if (error) throw new Error(error.message);
-  revalidatePath("/entrenador/ejercicios");
-}

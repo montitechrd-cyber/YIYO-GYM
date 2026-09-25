@@ -99,14 +99,22 @@ export async function alimentacionPorDia(
          plan_comidas ( id, nombre, orden, hora,
            comida_alimentos ( orden, alimentos ( nombre ) ) ) )`
     )
-    .eq("activo", true);
+    .eq("activo", true)
+    // Solo dietas asignadas a alguien. Las plantillas del catálogo también
+    // están activas y también traen una fecha de inicio —la del día que se
+    // sembraron—, así que sin esto el calendario pintaba cuatro «clientas»
+    // fantasma durante las cuatro semanas siguientes a esa fecha.
+    .eq("es_sistema", false)
+    .not("cliente_id", "is", null);
 
   if (clientes?.length) consulta = consulta.in("cliente_id", clientes);
 
-  // `returns` porque los tipos generados no saben deducir la forma de una
-  // consulta anidada: es el mismo apaño que usa `planActivoDe`.
-  const { data: planes } = await consulta.returns<PlanParaAgenda[]>();
-  if (!planes?.length) return [];
+  // El cast va aquí y no con `returns`: los tipos generados no saben deducir
+  // la forma de una consulta anidada, y encadenar filtros después de
+  // `returns` vuelve a perderla.
+  const { data } = await consulta;
+  const planes = (data ?? []) as unknown as PlanParaAgenda[];
+  if (!planes.length) return [];
 
   const dias: DiaDeAlimentacion[] = [];
 

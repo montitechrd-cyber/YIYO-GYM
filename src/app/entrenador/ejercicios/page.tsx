@@ -5,7 +5,6 @@ import { GRUPOS, NIVELES } from "@/lib/etiquetas";
 import { Encabezado, Tarjeta, Vacio } from "@/components/panel/piezas";
 import { Entrada, Seleccion } from "@/components/ui/campo";
 import { GestorEjercicios } from "./gestor";
-import { BotonVisibilidad } from "./boton-visibilidad";
 import { VistaPreviaVideo } from "@/components/panel/video-ejercicio";
 import { Demostracion } from "@/components/panel/demostracion-ejercicio";
 import type { GrupoMuscular } from "@/lib/supabase/tipos";
@@ -150,22 +149,20 @@ export default async function BibliotecaEjercicios({
                       )}
                     </div>
 
-                    <div className="p-6">
-                      <h3 className="font-medium text-violeta-800">
+                    {/* El pie va justo: con la demostración cuadrada arriba,
+                        cada línea que se añada aquí aleja la tarjeta del
+                        cuadrado. El nombre a dos líneas como mucho, y las
+                        instrucciones no se asoman —se leen al editar—. */}
+                    <div className="p-4">
+                      <h3 className="line-clamp-2 text-sm leading-snug font-medium text-violeta-800">
                         {e.nombre}
                       </h3>
-                      <p className="mt-1 text-xs font-light text-violeta-900/50">
+                      <p className="mt-1 truncate text-[11px] font-light text-violeta-900/50">
                         {NIVELES[e.nivel]}
                         {e.equipo ? ` · ${e.equipo}` : ""}
                       </p>
-                      {e.instrucciones && (
-                        <p className="mt-3 line-clamp-2 text-xs leading-relaxed font-light text-violeta-900/60">
-                          {e.instrucciones}
-                        </p>
-                      )}
-                      <div className="mt-5 flex items-center gap-2">
+                      <div className="mt-3">
                         <GestorEjercicios modo="editar" ejercicio={e} />
-                        <BotonVisibilidad id={e.id} visible={e.publico} />
                       </div>
                     </div>
                   </article>

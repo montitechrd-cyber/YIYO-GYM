@@ -24,7 +24,24 @@ export function GestorEjercicios({
     guardarEjercicio,
     () => setAbierto(false)
   );
+  // Borrar pide dos confirmaciones y no una. La primera se pulsa sola: la
+  // papelera vive al lado de «Editar», y bastó un clic de más para vaciar
+  // media biblioteca. La segunda obliga a leer qué se está borrando.
+  const [paso, setPaso] = useState<0 | 1 | 2>(0);
   const [borrando, setBorrando] = useState(false);
+  const [errorBorrado, setErrorBorrado] = useState<string | null>(null);
+
+  const borrar = async () => {
+    setBorrando(true);
+    setErrorBorrado(null);
+    try {
+      const r = await borrarEjercicio(ejercicio!.id);
+      if (r.error) setErrorBorrado(r.error);
+      else setPaso(0);
+    } finally {
+      setBorrando(false);
+    }
+  };
 
   return (
     <>
@@ -42,21 +59,73 @@ export function GestorEjercicios({
           <Boton
             variante="fantasma"
             tamano="sm"
-            disabled={borrando}
-            onClick={async () => {
-              setBorrando(true);
-              try {
-                await borrarEjercicio(ejercicio!.id);
-              } finally {
-                setBorrando(false);
-              }
+            onClick={() => {
+              setErrorBorrado(null);
+              setPaso(1);
             }}
+            aria-label={`Borrar ${ejercicio!.nombre}`}
             className="text-rose-600 hover:bg-rose-50"
           >
-            {borrando ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />}
+            <Trash2 size={13} />
           </Boton>
         </div>
       )}
+
+      <Dialogo
+        abierto={paso > 0}
+        alCerrar={() => setPaso(0)}
+        titulo={paso === 1 ? "Borrar ejercicio" : "Confírmalo otra vez"}
+        ancho="max-w-md"
+      >
+        <div className="space-y-5">
+          {errorBorrado && <Aviso tono="error">{errorBorrado}</Aviso>}
+
+          <p className="text-sm leading-relaxed font-light text-violeta-900/70">
+            {paso === 1 ? (
+              <>
+                Vas a borrar{" "}
+                <strong className="font-medium text-violeta-800">
+                  {ejercicio?.nombre}
+                </strong>{" "}
+                de la biblioteca, con su demostración. No se puede deshacer.
+              </>
+            ) : (
+              <>
+                Última oportunidad:{" "}
+                <strong className="font-medium text-violeta-800">
+                  {ejercicio?.nombre}
+                </strong>{" "}
+                desaparece para siempre.
+              </>
+            )}
+          </p>
+
+          <div className="flex flex-wrap gap-3">
+            {paso === 1 ? (
+              <Boton onClick={() => setPaso(2)} className="bg-rose-600 hover:bg-rose-700">
+                <Trash2 size={14} />
+                Sí, quiero borrarlo
+              </Boton>
+            ) : (
+              <Boton
+                onClick={borrar}
+                disabled={borrando}
+                className="bg-rose-600 hover:bg-rose-700"
+              >
+                {borrando ? (
+                  <Loader2 size={14} className="animate-spin" />
+                ) : (
+                  <Trash2 size={14} />
+                )}
+                {borrando ? "Borrando…" : "Borrar definitivamente"}
+              </Boton>
+            )}
+            <Boton variante="contorno" onClick={() => setPaso(0)}>
+              Cancelar
+            </Boton>
+          </div>
+        </div>
+      </Dialogo>
 
       <Dialogo
         abierto={abierto}
