@@ -36,7 +36,13 @@ export async function destinoTrasActivar(
     .eq("id", usuarioId)
     .maybeSingle();
 
-  if (perfil?.rol === "cliente") {
+  // Sin perfil se trata como clienta, igual que hace `rutaInicio` más
+  // abajo. Si no, quien llegara antes que su fila de perfil acabaría en el
+  // panel de clienta pero sin expediente, que es el único caso que esta
+  // función existe para evitar.
+  const rol = perfil?.rol ?? "cliente";
+
+  if (rol === "cliente") {
     const { data: cliente } = await supabase
       .from("clientes")
       .select("id")
@@ -55,5 +61,5 @@ export async function destinoTrasActivar(
   // `/panel`, dando por hecho que el middleware reencaminaría según el rol
   // —y no lo hace: solo protege `/admin` y `/entrenador`—, así que una
   // administradora acababa dentro del panel de clienta.
-  return rutaInicio(perfil?.rol ?? "cliente");
+  return rutaInicio(rol);
 }
