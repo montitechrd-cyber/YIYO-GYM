@@ -13,7 +13,7 @@ import { join } from "node:path";
 const DIR = "supabase/migrations";
 
 // Las que aún no se han ejecutado en la base que está en marcha.
-const PENDIENTES = ["0019_ejercicio_destacado.sql"];
+const PENDIENTES = ["0019_ejercicio_destacado.sql", "0021_plan_semanas.sql"];
 
 const migraciones = readdirSync(DIR)
   .filter((f) => /^\d{4}_.*\.sql$/.test(f))
@@ -41,9 +41,13 @@ writeFileSync(
 -- YIYO GYM — Lo que falta por ejecutar
 -- Para la base que ya está en marcha.
 --
--- Las fichas de 0020 (los ${143} ejercicios con demostración animada) ya
--- están metidas en la base en marcha, así que ese archivo no aparece aquí;
--- sigue en INSTALAR_TODO para quien parta de cero.
+-- Las fichas de 0020 (los 143 ejercicios con demostración animada) ya están
+-- metidas en la base en marcha, así que ese archivo no aparece aquí; sigue
+-- en INSTALAR_TODO para quien parta de cero.
+--
+-- 0021 hace falta para poder decir cuántas semanas dura una dieta. Sin él
+-- el calendario sigue funcionando —da por hecho cuatro semanas— pero no se
+-- pueden asignar ni editar las fechas.
 -- =====================================================================
 ` + juntar(PENDIENTES),
   "utf8"

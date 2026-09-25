@@ -177,6 +177,48 @@ export async function actualizarObjetivos(
   return { exito: "Objetivos guardados." };
 }
 
+/**
+ * Cambia cuándo empieza un plan y cuánto dura.
+ *
+ * El fin no se guarda: se calcula del inicio más las semanas. Guardarlo
+ * aparte obligaría a recalcularlo cada vez que se mueve el inicio, y basta
+ * con olvidarse una vez para que el calendario enseñe un plan que terminó
+ * hace un mes.
+ */
+export async function actualizarFechasPlan(
+  _previo: Resultado,
+  datos: FormData
+): Promise<Resultado> {
+  await exigirRol("entrenador", "admin");
+  const supabase = await crearClienteServidor();
+
+  const id = texto(datos, "plan_id");
+  if (!id) return { error: "Falta el plan." };
+
+  const inicio = texto(datos, "inicio");
+  if (!inicio) return { error: "Elige el día en que empieza." };
+
+  const semanas = Number(texto(datos, "semanas"));
+  if (!Number.isInteger(semanas) || semanas < 1 || semanas > 52) {
+    return { error: "Las semanas van de 1 a 52." };
+  }
+
+  const { error } = await supabase
+    .from("planes_alimentacion")
+    .update({ inicio, semanas })
+    .eq("id", id);
+
+  if (error) return { error: error.message };
+
+  revalidatePath(`/entrenador/dietas/${id}`);
+  revalidatePath("/entrenador/dietas");
+  // El calendario de las dos partes vive de estas fechas.
+  revalidatePath("/entrenador/calendario");
+  revalidatePath("/panel/calendario");
+  revalidatePath("/panel/alimentacion");
+  return { exito: "Fechas guardadas." };
+}
+
 export async function borrarPlanAlimentacion(id: string) {
   await exigirRol("entrenador", "admin");
   const supabase = await crearClienteServidor();

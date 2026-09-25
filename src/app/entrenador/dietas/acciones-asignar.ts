@@ -69,6 +69,13 @@ export async function asignarPlanAlimentacion(
   const objetivo = Number(texto(datos, "calorias_objetivo"));
   const inicio = texto(datos, "fecha_inicio") || hoyTexto();
 
+  // Sin semanas el plan no tiene final, y el calendario lo enseñaría para
+  // siempre. Cuatro es lo que traía por defecto antes de poder elegirlas.
+  const semanas = Number(texto(datos, "semanas")) || 4;
+  if (!Number.isInteger(semanas) || semanas < 1 || semanas > 52) {
+    return { error: "Las semanas van de 1 a 52." };
+  }
+
   const { data, error: errorLectura } = await supabase
     .from("planes_alimentacion")
     .select(
@@ -101,6 +108,7 @@ export async function asignarPlanAlimentacion(
     .insert({
       cliente_id: clienteId,
       entrenador_id: perfil.id,
+      semanas,
       nombre: plantilla.nombre,
       descripcion: plantilla.descripcion,
       es_sistema: false,

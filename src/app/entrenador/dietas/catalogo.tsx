@@ -167,7 +167,7 @@ function DialogoAsignarDieta({
                 </Aviso>
               )}
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-3">
                 {/* La clave reinicia el campo al cambiar de clienta, para que
                     tome su propuesta sin necesidad de un efecto. */}
                 <Campo etiqueta="Calorías al día" htmlFor="calorias_objetivo">
@@ -198,6 +198,18 @@ function DialogoAsignarDieta({
                     name="fecha_inicio"
                     type="date"
                     defaultValue={hoy}
+                  />
+                </Campo>
+                {/* En semanas, que es como se piensa una dieta. El día en que
+                    termina lo calcula el calendario a partir de esto. */}
+                <Campo etiqueta="Durante (semanas)" htmlFor="dieta_semanas">
+                  <Entrada
+                    id="dieta_semanas"
+                    name="semanas"
+                    type="number"
+                    min="1"
+                    max="52"
+                    defaultValue="4"
                   />
                 </Campo>
               </div>

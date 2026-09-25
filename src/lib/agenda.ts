@@ -8,14 +8,14 @@ import { fechaATexto } from "./programacion";
  *
  * Los entrenamientos se guardan fecha a fecha porque cada uno es distinto y
  * se marca como hecho por separado. La alimentación no: un plan es una
- * semana que se repite durante el mes, así que guardar treinta filas
- * idénticas solo serviría para que se desincronizaran en cuanto Yiyo
- * cambiara una comida. Se deduce del plan en cada consulta, y así el
- * calendario siempre enseña lo que el plan dice hoy.
+ * semana que se repite durante las que dure, así que guardar una fila por
+ * día solo serviría para que se desincronizaran en cuanto Yiyo cambiara una
+ * comida o moviera la fecha de inicio. Se deduce del plan en cada consulta,
+ * y así el calendario enseña siempre lo que el plan dice hoy.
  */
 
-/** Cuánto dura un plan de alimentación. Todos duran lo mismo: un mes. */
-export const MESES_DE_PLAN = 1;
+/** Semanas que dura un plan cuando no lo dice —planes de antes de 0021—. */
+export const SEMANAS_POR_DEFECTO = 4;
 
 export type ComidaDelDia = {
   id: string;
@@ -34,11 +34,15 @@ export type DiaDeAlimentacion = {
   comidas: ComidaDelDia[];
 };
 
-/** Último día que cubre un plan que empezó en `inicio`. */
-export function finDePlan(inicio: string): string {
+/**
+ * Último día que cubre un plan.
+ *
+ * Tres semanas desde el 1 de octubre terminan el 21, no el 22: el día de
+ * inicio cuenta como el primero de la primera semana.
+ */
+export function finDePlan(inicio: string, semanas?: number | null): string {
   const f = new Date(inicio + "T00:00:00");
-  f.setMonth(f.getMonth() + MESES_DE_PLAN);
-  f.setDate(f.getDate() - 1);
+  f.setDate(f.getDate() + (semanas || SEMANAS_POR_DEFECTO) * 7 - 1);
   return fechaATexto(f);
 }
 
@@ -48,6 +52,8 @@ type PlanParaAgenda = {
   nombre: string;
   cliente_id: string;
   inicio: string;
+  /** Ausente hasta que se ejecute 0021. */
+  semanas?: number;
   plan_dias: {
     numero: number;
     plan_comidas: {
@@ -84,7 +90,11 @@ export async function alimentacionPorDia(
   let consulta = supabase
     .from("planes_alimentacion")
     .select(
-      `id, nombre, cliente_id, inicio,
+      // `*` y no la lista de columnas: mientras 0021 no se haya ejecutado,
+      // `semanas` no existe y nombrarla haría fallar la consulta entera
+      // —el calendario se quedaría en blanco—. Con `*` simplemente no
+      // viene, y `finDePlan` cae en su valor por defecto.
+      `*,
        plan_dias ( numero,
          plan_comidas ( id, nombre, orden, hora,
            comida_alimentos ( orden, alimentos ( nombre ) ) ) )`
@@ -103,8 +113,9 @@ export async function alimentacionPorDia(
   for (const plan of planes) {
     // La ventana del plan recortada a la que pide el calendario: sin esto,
     // un plan de hace un año generaría trescientos días que nadie va a ver.
+    const finPlan = finDePlan(plan.inicio, plan.semanas);
     const desdePlan = plan.inicio > desde ? plan.inicio : desde;
-    const hastaPlan = finDePlan(plan.inicio) < hasta ? finDePlan(plan.inicio) : hasta;
+    const hastaPlan = finPlan < hasta ? finPlan : hasta;
     if (desdePlan > hastaPlan) continue;
 
     const porNumero = new Map(

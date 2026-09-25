@@ -8,6 +8,7 @@ import { planCompleto } from "@/lib/dietas";
 import { Insignia } from "@/components/panel/piezas";
 import { ConstructorDieta } from "./constructor";
 import { EditorObjetivos } from "./objetivos";
+import { EditorFechas } from "./fechas";
 
 export default async function DetalleDieta({
   params,
@@ -74,6 +75,9 @@ export default async function DetalleDieta({
           <Insignia tono={plan.activo ? "verde" : "gris"}>
             {plan.activo ? "Activa" : "Inactiva"}
           </Insignia>
+          {/* Solo en las dietas de alguien: una plantilla del catálogo no
+              empieza ningún día, se asigna. */}
+          {plan.cliente_id && <EditorFechas plan={plan} />}
           <EditorObjetivos plan={plan} />
         </div>
       </header>

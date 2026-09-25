@@ -346,6 +346,8 @@ export type PlanAlimentacion = {
   grasa_objetivo_g: number | null;
   activo: boolean;
   inicio: string;
+  /** Cuánto dura, en semanas, contadas desde `inicio`. */
+  semanas: number;
   creado_en: string;
   actualizado_en: string;
   es_sistema: boolean;
