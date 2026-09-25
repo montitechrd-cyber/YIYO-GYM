@@ -80,7 +80,9 @@ export default async function MisEntrenamientos() {
             sesionHoy={sesionesHoy?.[0]?.id ?? null}
           />
 
-          <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+          {/* Dos por fila como en la biblioteca: la demostración se lee bien
+              grande, y a tres el muñeco quedaba diminuto. */}
+          <div className="grid gap-5 lg:grid-cols-2">
             {dias.map((d) => (
               <Link
                 key={d.id}

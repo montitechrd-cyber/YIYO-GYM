@@ -3,6 +3,7 @@ import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { clientesConPerfil, nombreVisible } from "@/lib/datos";
 import { diasAgendables } from "@/lib/rutinas";
 import { hoyTexto, ventanaCalendario } from "@/lib/programacion";
+import { alimentacionPorDia } from "@/lib/agenda";
 import { Encabezado } from "@/components/panel/piezas";
 import { Calendario } from "@/components/panel/calendario";
 import { NuevaSesion } from "./nueva-sesion";
@@ -12,16 +13,18 @@ export default async function CalendarioEntrenador() {
   const supabase = await crearClienteServidor();
 
   const { desde, hasta } = ventanaCalendario();
-  const [{ data: sesiones }, lista, diasDeRutina] = await Promise.all([
-    supabase
-      .from("sesiones")
-      .select("*")
-      .gte("fecha", desde)
-      .lte("fecha", hasta)
-      .order("fecha"),
-    clientesConPerfil(),
-    diasAgendables(),
-  ]);
+  const [{ data: sesiones }, lista, diasDeRutina, alimentacion] =
+    await Promise.all([
+      supabase
+        .from("sesiones")
+        .select("*")
+        .gte("fecha", desde)
+        .lte("fecha", hasta)
+        .order("fecha"),
+      clientesConPerfil(),
+      diasAgendables(),
+      alimentacionPorDia(desde, hasta),
+    ]);
 
   const nombrePorCliente = new Map(
     lista.map((c) => [c.id, nombreVisible(c.perfil)])
@@ -31,7 +34,7 @@ export default async function CalendarioEntrenador() {
     <div>
       <Encabezado
         titulo="Calendario"
-        descripcion="Programa y da seguimiento a las sesiones de tus clientas"
+        descripcion="Qué tiene cada clienta, día a día: entrenamiento y alimentación"
         acciones={
           <NuevaSesion
             clientes={lista.map((c) => ({
@@ -45,11 +48,14 @@ export default async function CalendarioEntrenador() {
 
       <Calendario
         puedeGestionar
+        porCliente
         hoy={hoyTexto()}
         sesiones={(sesiones ?? []).map((s) => ({
           ...s,
           nombreCliente: nombrePorCliente.get(s.cliente_id),
         }))}
+        alimentacion={alimentacion}
+        nombresPorCliente={Object.fromEntries(nombrePorCliente)}
       />
     </div>
   );

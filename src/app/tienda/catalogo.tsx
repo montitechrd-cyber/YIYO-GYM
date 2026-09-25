@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Check, ShoppingBag } from "lucide-react";
 import { useCarrito } from "@/lib/carrito";
 import { Boton } from "@/components/ui/boton";
+import { Dialogo } from "@/components/ui/dialogo";
 import { cn } from "@/lib/utils";
 import type { Producto } from "@/lib/supabase/tipos";
 import { PanelCarrito } from "./panel-carrito";
@@ -88,6 +89,7 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
   const [talla, setTalla] = useState<string | null>(null);
   const [anadido, setAnadido] = useState(false);
   const [falta, setFalta] = useState(false);
+  const [detalle, setDetalle] = useState(false);
 
   const alAnadir = () => {
     if (conTallas && !talla) {
@@ -110,7 +112,9 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
 
   return (
     <article className="flex min-w-0 flex-col overflow-hidden rounded-4xl border border-lila-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada">
-      <div className="relative aspect-square bg-lila-50">
+      {/* 4:3 y no cuadrada: con la foto cuadrada arriba, la tarjeta pasaba
+          de la altura de la pantalla y en el móvil se veía cortada. */}
+      <div className="relative aspect-4/3 bg-lila-50">
         <Image
           src={producto.imagen_url}
           alt={producto.nombre}
@@ -127,28 +131,21 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
         <h2 className="mt-2 text-lg font-medium text-violeta-800">
           {producto.nombre}
         </h2>
-        <p className="mt-2 text-xs leading-relaxed font-light text-violeta-900/60">
+        <p className="mt-2 line-clamp-2 text-xs leading-relaxed font-light text-violeta-900/60">
           {producto.descripcion}
         </p>
 
-        <details className="mt-3 text-xs font-light text-violeta-900/55">
-          <summary className="cursor-pointer text-violeta-600 marker:text-violeta-400">
-            Ver detalles
-          </summary>
-          <ul className="mt-2 space-y-1">
-            {producto.especificaciones.map((e) => (
-              <li key={e} className="flex gap-2">
-                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-lila-400" />
-                {e}
-              </li>
-            ))}
-          </ul>
-          {producto.cuidado && (
-            <p className="mt-3 border-t border-lila-100 pt-2 text-violeta-900/45">
-              {producto.cuidado}
-            </p>
-          )}
-        </details>
+        {/* Las especificaciones salen de la tarjeta: desplegadas dentro
+            empujaban el precio y el botón fuera de la vista, y con una lista
+            abierta la cuadrícula quedaba a saltos. Aquí solo queda el
+            enlace; el detalle se lee en su propia ventana. */}
+        <button
+          type="button"
+          onClick={() => setDetalle(true)}
+          className="mt-2 cursor-pointer self-start text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+        >
+          Ver detalles
+        </button>
 
         {conTallas && (
           <div className="mt-4">
@@ -193,6 +190,28 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
           </Boton>
         </div>
       </div>
+
+      <Dialogo
+        abierto={detalle}
+        alCerrar={() => setDetalle(false)}
+        titulo={producto.nombre}
+        descripcion={producto.descripcion}
+        ancho="max-w-lg"
+      >
+        <ul className="space-y-1.5 text-sm font-light text-violeta-900/70">
+          {producto.especificaciones.map((e) => (
+            <li key={e} className="flex gap-2">
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-lila-400" />
+              {e}
+            </li>
+          ))}
+        </ul>
+        {producto.cuidado && (
+          <p className="mt-4 border-t border-lila-100 pt-3 text-sm font-light text-violeta-900/50">
+            {producto.cuidado}
+          </p>
+        )}
+      </Dialogo>
     </article>
   );
 }
