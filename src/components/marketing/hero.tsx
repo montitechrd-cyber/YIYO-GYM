@@ -6,8 +6,8 @@ import { Isotipo } from "@/components/brand/logo";
  * Portada de la plataforma.
  *
  * En móvil, la foto conserva su composición inmersiva con texto superpuesto.
- * En escritorio, el retrato mantiene su proporción completa junto al texto:
- * cubrir una pantalla horizontal con esta foto vertical recortaba el cuerpo.
+ * En escritorio, un marco rectangular amplio da protagonismo al retrato
+ * junto al texto, sin extender la foto a todo el ancho de la pantalla.
  */
 export function Hero() {
   return (
@@ -15,7 +15,7 @@ export function Hero() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_at_85%_45%,var(--color-lila-200),transparent_65%)] lg:block" />
       {/* Dos archivos: el teléfono no descarga la versión grande. En una
           portada, que es lo primero que se pinta, ese peso se nota. */}
-      <picture className="lg:absolute lg:top-28 lg:right-[max(2rem,calc((100vw-1152px)/2+24px))] lg:bottom-10 lg:w-[38%] lg:max-w-[420px]">
+      <picture className="lg:absolute lg:top-28 lg:right-[max(2rem,calc((100vw-1152px)/2+24px))] lg:bottom-8 lg:w-[42%] lg:max-w-[500px]">
         <source media="(min-width: 768px)" srcSet="/yiyo-portada.webp" />
         <img
           src="/yiyo-portada-movil.webp"
@@ -23,7 +23,7 @@ export function Hero() {
           fetchPriority="high"
           width={820}
           height={1364}
-          className="absolute inset-0 h-full w-full object-cover object-[54%_20%] lg:inset-auto lg:right-0 lg:bottom-0 lg:w-auto lg:max-w-full lg:rounded-t-[10rem] lg:rounded-b-4xl lg:object-contain lg:shadow-elevada"
+          className="absolute inset-0 h-full w-full object-cover object-[54%_20%] lg:rounded-xl lg:object-[54%_40%] lg:shadow-elevada"
         />
       </picture>
 
@@ -44,7 +44,7 @@ export function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-14 sm:pb-16 lg:pointer-events-none lg:pt-32 lg:pb-16">
-        <div className="animate-aparecer max-w-xl lg:pointer-events-auto lg:max-w-[54%]">
+        <div className="animate-aparecer max-w-xl lg:pointer-events-auto lg:max-w-[50%]">
           <p className="mb-6 hidden items-center gap-3 text-[11px] font-medium tracking-[0.24em] text-violeta-700 uppercase lg:flex">
             <span aria-hidden="true" className="h-px w-9 bg-violeta-500" />
             Entrenamiento · Nutrición · Hábitos
