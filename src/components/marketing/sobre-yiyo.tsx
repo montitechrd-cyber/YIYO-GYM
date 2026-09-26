@@ -7,18 +7,18 @@ const bloques = [
     icono: Target,
     titulo: "Misión",
     texto:
-      "Inspirar a las mujeres a alcanzar su mejor versión a través del entrenamiento, la comunidad y el bienestar integral.",
+      "Educarte y acompañarte en tu proceso de transformación mediante un entrenamiento eficiente, una comunicación cercana y hábitos sostenibles que impulsen tu salud física y mental.",
   },
   {
     icono: Eye,
     titulo: "Visión",
     texto:
-      "Ser el gimnasio femenino líder que transforma vidas, empoderando a mujeres fuertes, saludables y seguras de sí mismas.",
+      "Ser la plataforma y comunidad de bienestar femenino referente en Latinoamérica, reconocida por su enfoque humano, educativo y sostenible para empoderar a mujeres fuertes y seguras.",
   },
   {
     icono: Gem,
     titulo: "Valores",
-    texto: "Fuerza · Disciplina · Respeto · Bienestar · Comunidad",
+    texto: "Comunicación Humana · Educación · Sostenibilidad · Fuerza · Bienestar Integral",
   },
 ];
 
@@ -52,29 +52,35 @@ export function SobreYiyo() {
               Daniela «Yiyo» Chacón
             </h2>
             <p className="mt-6 max-w-xl leading-relaxed font-light text-lila-100/85">
-              Venezolana, entrenadora personal y coach fitness online con años de
-              experiencia en fitness, wellness, salud, nutrición y estilo de vida.
-              Trabajo desde Santo Domingo con mujeres de toda Latinoamérica que
-              quieren dejar de empezar de cero cada lunes.
+              Venezolana, licenciada en Comunicación Social, entrenadora personal
+              y coach de bienestar integral. Desde Santo Domingo, combino la
+              comunicación y la ciencia del entrenamiento para guiar a mujeres de
+              toda Latinoamérica a construir hábitos sostenibles, entender su
+              cuerpo y lograr una transformación real.
             </p>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {bloques.map((b) => (
-                <div
-                  key={b.titulo}
-                  className="rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur transition-colors duration-500 hover:bg-white/20"
-                >
-                  <b.icono size={22} strokeWidth={1.5} className="text-lila-200" />
-                  <h3 className="mt-4 text-sm tracking-widest text-white uppercase">
-                    {b.titulo}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed font-light text-lila-100/80">
-                    {b.texto}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p className="mt-4 max-w-xl leading-relaxed font-light text-lila-100/85">
+              Mi propósito no es solo decirte qué hacer, sino comunicarme contigo
+              desde la empatía y la educación, brindándote las herramientas
+              necesarias para activar tu metabolismo, ganar fuerza y romper
+              definitivamente el ciclo de &quot;empezar de cero cada lunes&quot;.
+            </p>
           </div>
+        </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {bloques.map((b) => (
+            <div
+              key={b.titulo}
+              className="rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur transition-colors duration-500 hover:bg-white/20"
+            >
+              <b.icono size={22} strokeWidth={1.5} className="text-lila-200" />
+              <h3 className="mt-4 text-sm tracking-widest text-white uppercase">
+                {b.titulo}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed font-light text-lila-100/90">
+                {b.texto}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
