@@ -11,7 +11,7 @@ import { Isotipo } from "@/components/brand/logo";
  */
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[94svh] flex-col justify-end overflow-hidden lg:min-h-[min(820px,max(700px,94svh))] lg:justify-center lg:bg-crema">
+    <section className="relative isolate flex min-h-[calc(94svh-48px)] flex-col justify-end overflow-hidden md:min-h-[94svh] lg:min-h-[min(820px,max(700px,94svh))] lg:justify-center lg:bg-crema">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_at_85%_45%,var(--color-lila-200),transparent_65%)] lg:block" />
       {/* Dos archivos: el teléfono no descarga la versión grande. En una
           portada, que es lo primero que se pinta, ese peso se nota. */}
@@ -43,7 +43,7 @@ export function Hero() {
         className="pointer-events-none absolute right-[43%] bottom-12 hidden h-24 text-violeta-700 opacity-[0.08] lg:block"
       />
 
-      <div className="relative mx-auto w-full max-w-6xl px-6 pb-14 sm:pb-16 lg:pointer-events-none lg:pt-32 lg:pb-16">
+      <div className="relative mx-auto w-full max-w-6xl px-6 pt-24 pb-14 sm:pb-16 lg:pointer-events-none lg:pt-32 lg:pb-16">
         <div className="animate-aparecer max-w-xl lg:pointer-events-auto lg:max-w-[50%]">
           <p className="mb-6 hidden items-center gap-3 text-[11px] font-medium tracking-[0.24em] text-violeta-700 uppercase lg:flex">
             <span aria-hidden="true" className="h-px w-9 bg-violeta-500" />

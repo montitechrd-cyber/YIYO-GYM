@@ -1,7 +1,6 @@
 import { CreditCard, Receipt } from "lucide-react";
 import { exigirPerfil, clienteActual } from "@/lib/autenticacion";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
-import { paypalConfigurado } from "@/lib/paypal";
 import {
   ESTADOS_SUSCRIPCION,
   FECHA_LARGA,
@@ -73,12 +72,10 @@ export default async function MiSuscripcion() {
         descripcion="Gestiona tu plan y consulta tus pagos"
       />
 
-      {!paypalConfigurado() && (
-        <Aviso tono="info" className="mb-6">
-          Los pagos con PayPal aún no están configurados. Añade tus credenciales de
-          PayPal en el archivo <code>.env.local</code> para activar el cobro.
-        </Aviso>
-      )}
+      <Aviso tono="info" className="mb-6">
+        Los pagos online están deshabilitados por ahora. Contacta con Yiyo para
+        coordinar tu plan y la forma de pago.
+      </Aviso>
 
       {suscripcion && planActual ? (
         <div className="space-y-5">
@@ -131,18 +128,10 @@ export default async function MiSuscripcion() {
             )}
           </Tarjeta>
 
-          {!tieneActiva && (
-            <SelectorPlanes
-              planes={listaPlanes}
-              clientId={process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? null}
-            />
-          )}
+          {!tieneActiva && <SelectorPlanes planes={listaPlanes} />}
         </div>
       ) : (
-        <SelectorPlanes
-          planes={listaPlanes}
-          clientId={process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? null}
-        />
+        <SelectorPlanes planes={listaPlanes} />
       )}
 
       <div className="mt-6">

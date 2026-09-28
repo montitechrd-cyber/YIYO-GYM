@@ -126,18 +126,6 @@ export function GestorPlan({
             />
           </Campo>
 
-          <Campo
-            etiqueta="ID del plan en PayPal"
-            htmlFor="paypal_plan_id"
-            ayuda="Créalo en PayPal → Subscriptions → Plans. Sin esto no se puede cobrar."
-          >
-            <Entrada
-              id="paypal_plan_id"
-              name="paypal_plan_id"
-              defaultValue={plan?.paypal_plan_id ?? ""}
-              placeholder="P-5ML4271244454362XMQIZHI"
-            />
-          </Campo>
 
           <div className="grid gap-5 sm:grid-cols-3">
             <Campo etiqueta="Orden" htmlFor="orden">

@@ -1,4 +1,3 @@
-import { AlertCircle } from "lucide-react";
 import { exigirRol } from "@/lib/autenticacion";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { mapaPerfiles, nombreVisible } from "@/lib/datos";
@@ -59,7 +58,6 @@ export default async function PlanesYPagos() {
     nombreVisible(perfiles.get(perfilPorCliente.get(clienteId) ?? ""));
 
   const planPorId = new Map(listaPlanes.map((p) => [p.id, p]));
-  const sinPaypal = listaPlanes.filter((p) => p.activo && !p.paypal_plan_id);
 
   return (
     <div>
@@ -69,17 +67,10 @@ export default async function PlanesYPagos() {
         acciones={<GestorPlan modo="crear" />}
       />
 
-      {sinPaypal.length > 0 && (
-        <Aviso tono="info" className="mb-6">
-          <span>
-            {sinPaypal.length === 1
-              ? `El plan «${sinPaypal[0].nombre}» no tiene`
-              : `${sinPaypal.length} planes activos no tienen`}{" "}
-            un <code>paypal_plan_id</code>. Créalo en tu panel de PayPal
-            (Subscriptions → Plans) y pégalo aquí para poder cobrar.
-          </span>
-        </Aviso>
-      )}
+      <Aviso tono="info" className="mb-6">
+        Los pagos online están deshabilitados. Puedes editar tus planes y consultar
+        el historial; coordina los nuevos pagos directamente con tus clientas.
+      </Aviso>
 
       <div className="grid gap-4 lg:grid-cols-3">
         {listaPlanes.map((p) => (
@@ -114,17 +105,6 @@ export default async function PlanesYPagos() {
             >
               {MONEDA.format(Number(p.precio_mensual))}
               <span className="ml-1 text-sm opacity-60">/mes</span>
-            </p>
-
-            <p
-              className={`mt-3 flex items-center gap-1.5 text-[11px] font-light ${
-                p.destacado ? "text-lila-100/80" : "text-violeta-900/50"
-              }`}
-            >
-              {!p.paypal_plan_id && <AlertCircle size={12} />}
-              {p.paypal_plan_id
-                ? `PayPal: ${p.paypal_plan_id}`
-                : "Sin plan de PayPal"}
             </p>
 
             <div className="mt-6">

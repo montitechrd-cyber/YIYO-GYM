@@ -53,7 +53,6 @@ export async function guardarPlan(
     descripcion: texto(datos, "descripcion") || null,
     precio_mensual: precio,
     beneficios,
-    paypal_plan_id: texto(datos, "paypal_plan_id") || null,
     destacado: datos.get("destacado") === "on",
     activo: datos.get("activo") === "on",
     orden: Number(texto(datos, "orden")) || 0,

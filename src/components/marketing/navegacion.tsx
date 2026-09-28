@@ -36,15 +36,15 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 py-1">
+    <header className="relative inset-x-0 top-0 z-50 bg-lila-100 md:fixed md:bg-transparent md:py-1">
       <nav
         className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-2 transition-all duration-500",
+          "mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-1 transition-all duration-500 md:py-2",
           fija || abierto ? "vidrio shadow-suave" : "bg-transparent"
         )}
       >
         <Link href="/" aria-label="YIYO GYM — inicio">
-          <Logo tamano="sm" />
+          <Logo tamano="sm" className="max-md:h-8" />
         </Link>
 
         {soloInicio ? (
@@ -81,6 +81,7 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
               onClick={() => setAbierto((v) => !v)}
               className="rounded-full p-2 text-violeta-700 transition-colors hover:bg-lila-100 md:hidden"
               aria-label="Abrir menú"
+              aria-expanded={abierto}
             >
               {abierto ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -98,7 +99,7 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
       )}
 
       {!soloInicio && abierto && (
-        <div className="animate-aparecer mx-auto mt-2 max-w-6xl px-4 md:hidden">
+        <div className="animate-aparecer absolute inset-x-0 top-full mx-auto mt-2 max-w-6xl px-4 md:hidden">
           {/* Blanco sólido, no `vidrio`: ese cristal es blanco al 72% y con
               el titular del hero detrás las opciones no se leían. */}
           <div className="flex flex-col gap-1 rounded-4xl border border-lila-200 bg-white p-4 shadow-elevada">
