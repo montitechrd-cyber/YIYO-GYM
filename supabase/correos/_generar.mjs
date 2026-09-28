@@ -99,8 +99,8 @@ const correos = {
       "Bienvenida a YIYO GYM. Solo falta confirmar que esta dirección es tuya y tu cuenta queda activa —entras directo, sin escribir la contraseña otra vez—.",
     boton: "Activar mi cuenta",
     enlace:
-      "{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=signup",
-    pie: "El enlace vale una sola vez y caduca en 24 horas. Si no creaste ninguna cuenta, puedes ignorar este correo: sin este clic no se activa nada.",
+      "{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&amp;type=signup",
+    pie: "El enlace es temporal y solo puede usarse una vez. Si vence, solicita otro desde «Reenviar confirmación» en la página de acceso. Si no creaste esta cuenta, ignora este correo.",
   }),
 
   "recuperar-contrasena.html": plantilla({
@@ -111,8 +111,8 @@ const correos = {
       "Pediste recuperar el acceso a tu cuenta de YIYO GYM. Pincha abajo y te llevamos directo a crear una contraseña nueva.",
     boton: "Crear contraseña nueva",
     enlace:
-      "{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery",
-    pie: "El enlace vale una sola vez y caduca en 1 hora. Si no fuiste tú quien lo pidió, ignora este correo: tu contraseña actual sigue funcionando y nadie la ha visto.",
+      "{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&amp;type=recovery",
+    pie: "El enlace es temporal y solo puede usarse una vez. Si vence, solicita otro desde «¿Olvidaste tu contraseña?». Si no fuiste tú quien lo pidió, ignora este correo: tu contraseña actual sigue funcionando.",
   }),
 
   "cambio-de-correo.html": plantilla({

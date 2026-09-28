@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
 
   const fallo = (mensaje: string) =>
     NextResponse.redirect(
-      new URL(`/entrar?error=${encodeURIComponent(mensaje)}`, origen)
+      new URL(`${tipo === "recovery" ? "/recuperar" : tipo === "signup" ? "/confirmar-correo" : "/entrar"}?error=${encodeURIComponent(mensaje)}`, origen)
     );
 
   if (!tokenHash || !tipo || !TIPOS.includes(tipo)) {
@@ -57,8 +57,10 @@ export async function GET(request: NextRequest) {
 
     return fallo(
       caducado
-        ? "Ese enlace ya caducó o se usó antes. Pide uno nuevo desde «¿Olvidaste tu contraseña?»."
-        : (error?.message ?? "No se pudo validar el enlace del correo.")
+        ? tipo === "recovery"
+          ? "Ese enlace ya caducó o se usó antes. Solicita un enlace nuevo para recuperar tu contraseña."
+          : "Ese enlace ya caducó o se usó antes. Si ya activaste tu cuenta, inicia sesión; si no, solicita un enlace nuevo."
+        : "No se pudo validar el enlace del correo. Solicita uno nuevo e inténtalo otra vez."
     );
   }
 

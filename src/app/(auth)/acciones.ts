@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { rutaInicio } from "@/lib/autenticacion";
+import { errorCorreo, retornoCorreo } from "@/lib/correos-auth";
 
 export type EstadoFormulario = { error?: string; exito?: string };
 
@@ -35,6 +36,9 @@ export async function entrar(
   });
 
   if (error) {
+    if (error.code === "email_not_confirmed") {
+      return { error: "Confirma tu correo antes de entrar. Si no encuentras el mensaje, usa «Reenviar confirmación»." };
+    }
     return {
       error:
         error.message === "Invalid login credentials"
@@ -92,7 +96,10 @@ export async function registrar(
   const { data, error } = await supabase.auth.signUp({
     email: correo,
     password: contrasena,
-    options: { data: { nombre_completo: nombre, rol: "cliente" } },
+    options: {
+      data: { nombre_completo: nombre, rol: "cliente" },
+      emailRedirectTo: retornoCorreo(),
+    },
   });
 
   if (error) return { error: error.message };
@@ -106,7 +113,7 @@ export async function registrar(
       exito:
         "Te enviamos un correo a " +
         correo +
-        ". Abre el enlace para activar tu cuenta y entras directo.",
+        ". Revisa también la carpeta de spam y abre el enlace para activar tu cuenta. Si ya tienes una cuenta, inicia sesión o recupera tu contraseña.",
     };
   }
 
@@ -121,6 +128,23 @@ export async function registrar(
   redirect("/panel/bienvenida");
 }
 
+export async function reenviarConfirmacion(
+  _previo: EstadoFormulario,
+  datos: FormData
+): Promise<EstadoFormulario> {
+  if (faltanCredenciales()) return { error: AVISO_CONFIG };
+  const correo = String(datos.get("correo") ?? "").trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return { error: "Escribe un correo válido." };
+  const supabase = await crearClienteServidor();
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email: correo,
+    options: { emailRedirectTo: retornoCorreo() },
+  });
+  if (error) return { error: errorCorreo(error) };
+  return { exito: "Si tu cuenta está pendiente de confirmar, recibirás un enlace nuevo. Revisa la carpeta de spam y utiliza el correo más reciente. Si ya la confirmaste, puedes iniciar sesión." };
+}
+
 export async function recuperar(
   _previo: EstadoFormulario,
   datos: FormData
@@ -132,12 +156,12 @@ export async function recuperar(
 
   const supabase = await crearClienteServidor();
   const { error } = await supabase.auth.resetPasswordForEmail(correo, {
-    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}/nueva-contrasena`,
+    redirectTo: retornoCorreo(true),
   });
 
-  if (error) return { error: error.message };
+  if (error) return { error: errorCorreo(error) };
   return {
-    exito: "Si el correo existe, te enviamos un enlace para restablecer tu contraseña.",
+    exito: "Si el correo existe, te enviamos un enlace para restablecer tu contraseña. Revisa también la carpeta de spam y utiliza el mensaje más reciente.",
   };
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import Link from "next/link";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { registrar, type EstadoFormulario } from "../acciones";
 import { Boton } from "@/components/ui/boton";
@@ -16,7 +17,7 @@ export function FormularioRegistro() {
   return (
     <form action={accion} className="space-y-5">
       {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
-      {estado.exito && <Aviso tono="exito">{estado.exito}</Aviso>}
+      {estado.exito && <Aviso tono="exito">{estado.exito}<Link href="/confirmar-correo" className="mt-3 block underline">Reenviar confirmación</Link></Aviso>}
 
       <Campo etiqueta="Nombre completo" htmlFor="nombre">
         <Entrada

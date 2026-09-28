@@ -32,6 +32,9 @@ export default async function PaginaEntrar({
       <div className="mt-9 space-y-6">
         <AccesoSocial texto="Entrar con" />
         <FormularioEntrar />
+        <p className="text-center text-sm text-violeta-600">
+          <Link href="/confirmar-correo" className="hover:underline">¿No recibiste el correo? Reenviar confirmación</Link>
+        </p>
       </div>
 
       <p className="mt-8 text-center text-sm font-light text-violeta-900/60">

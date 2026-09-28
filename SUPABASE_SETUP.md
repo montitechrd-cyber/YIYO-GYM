@@ -80,12 +80,38 @@ Se puede ejecutar más de una vez sin duplicar nada.
 
 **Authentication** → **Sign In / Providers** → **Email**:
 
-- Durante el desarrollo, **desactiva "Confirm email"** para poder registrarte y
-  entrar de inmediato. Cuando la plataforma salga a producción lo reactivamos.
+- En producción, **activa "Confirm email"** una vez configurado y probado el
+  proveedor de correo. Desactivarlo hace que las cuentas se activen sin correo.
 
 **Authentication** → **URL Configuration**:
 
-- **Site URL:** `http://localhost:3000` (cámbialo a tu dominio real al publicar)
+- **Site URL:** `https://web-production-6bd61.up.railway.app`
+- **Redirect URLs:** añade `https://web-production-6bd61.up.railway.app/auth/callback`
+  y `https://web-production-6bd61.up.railway.app/auth/callback?siguiente=%2Fnueva-contrasena`.
+  Conserva las URLs de proveedores sociales que ya utilices.
+- `NEXT_PUBLIC_SITE_URL` en Railway debe coincidir con Site URL (sin barra final).
+- Para desarrollo añade por separado las mismas rutas con `http://localhost:3000`.
+
+**Authentication → Email:**
+
+1. Configura SMTP propio con un remitente verificado. El servicio predeterminado
+   de Supabase restringe los destinatarios a miembros de la organización y no
+   sirve para enviar a todas las clientas:
+   https://supabase.com/docs/guides/auth/auth-smtp
+2. En **Confirm signup**, pega `supabase/correos/confirmar-cuenta.html` y usa el
+   asunto `Confirma tu cuenta — YIYO GYM`.
+3. En **Reset password**, pega `supabase/correos/recuperar-contrasena.html` y usa
+   el asunto `Recupera tu contraseña — YIYO GYM`.
+4. Guarda ambas plantillas. Editar los archivos del repositorio o desplegar
+   Railway **no actualiza** las plantillas guardadas en Supabase.
+5. Comprueba con un correo de prueba autorizado: recepción, activación,
+   recuperación, guardado de contraseña e inicio de sesión con la nueva clave.
+   Prueba abrir las plantillas personalizadas desde otro navegador también.
+
+Las plantillas usan `/auth/confirm` y `TokenHash` para permitir abrir el correo
+en otro dispositivo. Si siguen instaladas las plantillas predeterminadas, la
+app usa `/auth/callback` para canjear el código PKCE; en ese caso hay que abrir
+el correo en el mismo navegador donde se pidió.
 
 ---
 
@@ -103,7 +129,7 @@ Se puede ejecutar más de una vez sin duplicar nada.
 
 - **"relation already exists"** al correr una migración: ya la habías ejecutado.
   Puedes continuar con la siguiente.
-- **No puedo entrar después de registrarme:** revisa que desactivaste
-  *Confirm email* en el paso 5.
+- **No puedo entrar después de registrarme:** confirma el correo o solicita
+  otro desde `/confirmar-correo`; revisa SMTP y spam si no llega.
 - **La app dice que faltan credenciales:** revisa que `.env.local` tenga los
   valores correctos y **reinicia** `npm run dev`.

@@ -16,6 +16,10 @@ export async function GET(request: NextRequest) {
   const origen = origenPublico(request);
   const codigo = url.searchParams.get("code");
   const siguiente = destinoPedido(url.searchParams.get("siguiente"));
+  const rutaError = siguiente === "/nueva-contrasena" ? "/recuperar" : "/entrar";
+  const mensajeError = siguiente === "/nueva-contrasena"
+    ? "El enlace no pudo validarse. Puede haber vencido, haberse usado o haberse abierto en otro navegador. Solicita uno nuevo y ábrelo en el navegador donde lo pediste."
+    : "No se pudo completar el acceso. Inténtalo de nuevo; si estabas confirmando tu cuenta, solicita otro correo de confirmación.";
 
   // El proveedor puede devolver un error (por ejemplo si la persona cancela
   // en la pantalla de Google). Se vuelve al login con un aviso legible en vez
@@ -24,12 +28,12 @@ export async function GET(request: NextRequest) {
     url.searchParams.get("error_description") ?? url.searchParams.get("error");
   if (errorProveedor) {
     return NextResponse.redirect(
-      new URL(`/entrar?error=${encodeURIComponent(errorProveedor)}`, origen)
+      new URL(`${rutaError}?error=${encodeURIComponent(mensajeError)}`, origen)
     );
   }
 
   if (!codigo) {
-    return NextResponse.redirect(new URL("/entrar", origen));
+    return NextResponse.redirect(new URL(`${rutaError}?error=${encodeURIComponent(mensajeError)}`, origen));
   }
 
   const supabase = await crearClienteServidor();
@@ -38,7 +42,7 @@ export async function GET(request: NextRequest) {
   if (error || !data.user) {
     return NextResponse.redirect(
       new URL(
-        `/entrar?error=${encodeURIComponent(error?.message ?? "No se pudo completar el acceso.")}`,
+        `${rutaError}?error=${encodeURIComponent(mensajeError)}`,
         origen
       )
     );
