@@ -36,15 +36,17 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
   }, []);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 bg-lila-100 md:fixed md:bg-transparent md:py-1">
+    <header className="fixed inset-x-0 top-0 z-50 py-1">
       <nav
         className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-1 transition-all duration-500 md:py-2",
-          fija || abierto ? "vidrio shadow-suave" : "bg-transparent"
+          "mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-colors duration-300 max-md:border-0 md:py-2 md:transition-all md:duration-500",
+          fija || abierto
+            ? "bg-white/70 backdrop-blur-lg md:vidrio md:shadow-suave"
+            : "bg-transparent"
         )}
       >
         <Link href="/" aria-label="YIYO GYM — inicio">
-          <Logo tamano="sm" className="max-md:h-8" />
+          <Logo tamano="sm" />
         </Link>
 
         {soloInicio ? (

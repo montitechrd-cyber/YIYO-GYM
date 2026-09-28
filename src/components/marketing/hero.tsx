@@ -11,7 +11,7 @@ import { Isotipo } from "@/components/brand/logo";
  */
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[calc(94svh-48px)] flex-col justify-end overflow-hidden md:min-h-[94svh] lg:min-h-[min(820px,max(700px,94svh))] lg:justify-center lg:bg-crema">
+    <section className="relative isolate flex min-h-[94svh] flex-col justify-end overflow-hidden lg:min-h-[min(820px,max(700px,94svh))] lg:justify-center lg:bg-crema">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_at_85%_45%,var(--color-lila-200),transparent_65%)] lg:block" />
       {/* Dos archivos: el teléfono no descarga la versión grande. En una
           portada, que es lo primero que se pinta, ese peso se nota. */}
