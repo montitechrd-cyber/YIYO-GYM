@@ -36,7 +36,7 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
   }, []);
 
   return (
-    <header className="relative inset-x-0 top-0 z-50 bg-lila-100 md:fixed md:bg-transparent md:py-1">
+    <header className="sticky inset-x-0 top-0 z-50 bg-lila-100 md:fixed md:bg-transparent md:py-1">
       <nav
         className={cn(
           "mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-1 transition-all duration-500 md:py-2",
