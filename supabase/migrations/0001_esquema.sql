@@ -54,7 +54,7 @@ begin
     new.id,
     coalesce(new.email, ''),
     coalesce(new.raw_user_meta_data->>'nombre_completo', ''),
-    coalesce((new.raw_user_meta_data->>'rol')::rol_usuario, 'cliente')
+    'cliente'::rol_usuario
   );
   return new;
 end;

@@ -1,15 +1,3 @@
--- =====================================================================
--- YIYO GYM — Lo que falta por ejecutar
--- Para la base que ya está en marcha.
---
--- Hasta 0022 está aplicado en la base en marcha.
--- 0023 obliga a crear todas las cuentas nuevas como clientas, sin confiar
--- en roles enviados desde el registro. Es seguro volver a ejecutarlo.
--- =====================================================================
-
-
--- ///////////////// 0023_registro_sin_privilegios.sql /////////////////
-
 -- El registro público nunca decide permisos mediante user_metadata.
 -- Conserva nombre/avatar de los proveedores y los roles de cuentas existentes.
 begin;

@@ -13,7 +13,7 @@ import { join } from "node:path";
 const DIR = "supabase/migrations";
 
 // Las que aún no se han ejecutado en la base que está en marcha.
-const PENDIENTES = ["0022_perfil_desde_google.sql"];
+const PENDIENTES = ["0023_registro_sin_privilegios.sql"];
 
 const migraciones = readdirSync(DIR)
   .filter((f) => /^\d{4}_.*\.sql$/.test(f))
@@ -41,12 +41,9 @@ writeFileSync(
 -- YIYO GYM — Lo que falta por ejecutar
 -- Para la base que ya está en marcha.
 --
--- 0019, 0020 y 0021 ya están ejecutados en la base en marcha; siguen en
--- INSTALAR_TODO para quien parta de cero.
---
--- 0022 arregla el perfil de quien entra con Google: el disparador solo
--- miraba el campo de nombre que rellena nuestro formulario, y Google manda
--- otro, así que esas cuentas se quedaban sin nombre.
+-- Hasta 0022 está aplicado en la base en marcha.
+-- 0023 obliga a crear todas las cuentas nuevas como clientas, sin confiar
+-- en roles enviados desde el registro. Es seguro volver a ejecutarlo.
 -- =====================================================================
 ` + juntar(PENDIENTES),
   "utf8"

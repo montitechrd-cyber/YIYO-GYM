@@ -1,7 +1,7 @@
 -- =====================================================================
 -- YIYO GYM — Instalación completa
 -- Para una base de datos NUEVA y vacía.
--- 22 migraciones, de 0001_esquema.sql a 0022_perfil_desde_google.sql.
+-- 23 migraciones, de 0001_esquema.sql a 0023_registro_sin_privilegios.sql.
 -- =====================================================================
 
 
@@ -63,7 +63,7 @@ begin
     new.id,
     coalesce(new.email, ''),
     coalesce(new.raw_user_meta_data->>'nombre_completo', ''),
-    coalesce((new.raw_user_meta_data->>'rol')::rol_usuario, 'cliente')
+    'cliente'::rol_usuario
   );
   return new;
 end;
@@ -4183,7 +4183,7 @@ begin
       nullif(new.raw_user_meta_data->>'avatar_url', ''),
       nullif(new.raw_user_meta_data->>'picture', '')
     ),
-    coalesce((new.raw_user_meta_data->>'rol')::rol_usuario, 'cliente')
+    'cliente'::rol_usuario
   );
   return new;
 end;
@@ -4210,3 +4210,38 @@ set
 from auth.users u
 where u.id = p.id
   and trim(p.nombre_completo) = '';
+
+
+-- ///////////////// 0023_registro_sin_privilegios.sql /////////////////
+
+-- El registro público nunca decide permisos mediante user_metadata.
+-- Conserva nombre/avatar de los proveedores y los roles de cuentas existentes.
+begin;
+
+create or replace function public.manejar_nuevo_usuario()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  insert into public.perfiles (id, correo, nombre_completo, avatar_url, rol)
+  values (
+    new.id,
+    coalesce(new.email, ''),
+    coalesce(
+      nullif(new.raw_user_meta_data->>'nombre_completo', ''),
+      nullif(new.raw_user_meta_data->>'full_name', ''),
+      nullif(new.raw_user_meta_data->>'name', ''),
+      ''
+    ),
+    coalesce(
+      nullif(new.raw_user_meta_data->>'avatar_url', ''),
+      nullif(new.raw_user_meta_data->>'picture', '')
+    ),
+    'cliente'::public.rol_usuario
+  );
+  return new;
+end;
+$$;
+
+commit;

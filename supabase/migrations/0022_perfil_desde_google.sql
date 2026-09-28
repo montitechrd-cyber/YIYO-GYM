@@ -34,7 +34,7 @@ begin
       nullif(new.raw_user_meta_data->>'avatar_url', ''),
       nullif(new.raw_user_meta_data->>'picture', '')
     ),
-    coalesce((new.raw_user_meta_data->>'rol')::rol_usuario, 'cliente')
+    'cliente'::rol_usuario
   );
   return new;
 end;

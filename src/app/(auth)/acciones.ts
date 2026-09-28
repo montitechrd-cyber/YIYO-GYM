@@ -97,7 +97,7 @@ export async function registrar(
     email: correo,
     password: contrasena,
     options: {
-      data: { nombre_completo: nombre, rol: "cliente" },
+      data: { nombre_completo: nombre },
       emailRedirectTo: retornoCorreo(),
     },
   });
