@@ -1,0 +1,38 @@
+# Mantiene despierto el proyecto de Supabase.
+#
+# El plan gratuito lo pausa tras una semana sin actividad. Esto le da un
+# toque cada tres días, con margen de sobra, y avisa si la plataforma no
+# responde —así nos enteramos nosotros antes que una clienta—.
+#
+# Ojo: GitHub desactiva los cron de los repositorios sin actividad durante
+# 60 días. Si el repositorio se queda quieto meses, hay que reactivarlo a
+# mano desde la pestaña Actions.
+name: Mantener la plataforma despierta
+
+on:
+  schedule:
+    # 09:00 UTC (05:00 en Santo Domingo) los lunes, jueves y sábados.
+    - cron: "0 9 * * 1,4,6"
+  # Para poder lanzarlo a mano desde la pestaña Actions.
+  workflow_dispatch:
+
+jobs:
+  latido:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Llamar al latido
+        run: |
+          URL="https://web-production-6bd61.up.railway.app/api/latido"
+          # Tres intentos: un despliegue en curso no debería dar la alarma.
+          for i in 1 2 3; do
+            RESPUESTA=$(curl -s -m 30 -w "\n%{http_code}" "$URL" || true)
+            CODIGO=$(echo "$RESPUESTA" | tail -1)
+            CUERPO=$(echo "$RESPUESTA" | head -n -1)
+            echo "Intento $i → HTTP $CODIGO · $CUERPO"
+            if [ "$CODIGO" = "200" ]; then
+              exit 0
+            fi
+            sleep 30
+          done
+          echo "::error::La plataforma no respondió al latido. Revisa si Supabase está pausado."
+          exit 1
