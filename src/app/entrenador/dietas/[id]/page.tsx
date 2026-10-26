@@ -44,7 +44,7 @@ export default async function DetalleDieta({
     <div>
       <Link
         href="/entrenador/dietas"
-        className="mb-6 inline-flex items-center gap-2 text-xs font-light text-violeta-600 transition-colors hover:text-violeta-800"
+        className="mb-6 inline-flex items-center gap-2 text-xs font-normal text-violeta-600 transition-colors hover:text-violeta-800"
       >
         <ArrowLeft size={14} />
         Volver a dietas
@@ -52,8 +52,8 @@ export default async function DetalleDieta({
 
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-light text-violeta-900">{plan.nombre}</h1>
-          <p className="mt-2 flex items-center gap-2 text-sm font-light text-violeta-900/55">
+          <h1 className="text-3xl font-normal text-violeta-900">{plan.nombre}</h1>
+          <p className="mt-2 flex items-center gap-2 text-sm font-normal text-violeta-900/55">
             <User size={14} className="text-lila-400" />
             {nombreCliente}
             {diasConContenido > 0 && (
@@ -65,7 +65,7 @@ export default async function DetalleDieta({
             )}
           </p>
           {plan.descripcion && (
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed font-light text-violeta-900/65">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed font-normal text-violeta-900/65">
               {plan.descripcion}
             </p>
           )}

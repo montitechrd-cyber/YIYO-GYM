@@ -44,7 +44,7 @@ export function TarjetaProgresion({
             <span aria-hidden>{fase.emoji}</span>
             {fase.titulo}
           </h3>
-          <p className="mt-1 text-sm font-light text-violeta-900/65">
+          <p className="mt-1 text-sm font-normal text-violeta-900/65">
             {fase.indicacion}
           </p>
         </div>
@@ -61,7 +61,7 @@ export function TarjetaProgresion({
               title={`Semana ${f.semana} — ${f.titulo}`}
               aria-current={actual ? "step" : undefined}
               className={cn(
-                "h-1.5 flex-1 rounded-full transition-colors",
+                "h-1.5 flex-1 rounded-sm transition-colors",
                 actual
                   ? "fondo-degradado"
                   : pasada
@@ -75,10 +75,10 @@ export function TarjetaProgresion({
 
       {detallada && (
         <div className="mt-6 space-y-3 border-t border-lila-100 pt-5">
-          <p className="text-xs leading-relaxed font-light text-violeta-900/70">
+          <p className="text-xs leading-relaxed font-normal text-violeta-900/70">
             {fase.detalle}
           </p>
-          <p className="flex gap-2.5 rounded-2xl bg-lila-50 px-5 py-3 text-xs leading-relaxed font-light text-violeta-900/70">
+          <p className="flex gap-2.5 rounded-2xl bg-lila-50 px-5 py-3 text-xs leading-relaxed font-normal text-violeta-900/70">
             <Info size={14} className="mt-0.5 shrink-0 text-lila-400" />
             {REGLA_DE_CARGA}
           </p>

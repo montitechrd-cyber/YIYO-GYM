@@ -85,7 +85,7 @@ export default async function MiSuscripcion() {
                 <p className="text-[10px] tracking-[0.22em] text-lila-100 uppercase">
                   Plan actual
                 </p>
-                <p className="mt-3 text-4xl font-light">{planActual.nombre}</p>
+                <p className="mt-3 text-4xl font-normal">{planActual.nombre}</p>
                 <p className="mt-2 text-lila-100/85">
                   {MONEDA.format(Number(planActual.precio_mensual))} / mes
                 </p>
@@ -103,7 +103,7 @@ export default async function MiSuscripcion() {
                 <dt className="text-[10px] tracking-[0.18em] text-lila-100 uppercase">
                   Inicio
                 </dt>
-                <dd className="mt-1 font-light">
+                <dd className="mt-1 font-normal">
                   {suscripcion.inicio
                     ? FECHA_LARGA.format(fechaLocal(suscripcion.inicio))
                     : "—"}
@@ -113,7 +113,7 @@ export default async function MiSuscripcion() {
                 <dt className="text-[10px] tracking-[0.18em] text-lila-100 uppercase">
                   Próximo cobro
                 </dt>
-                <dd className="mt-1 font-light">
+                <dd className="mt-1 font-normal">
                   {suscripcion.proximo_cobro
                     ? FECHA_LARGA.format(fechaLocal(suscripcion.proximo_cobro))
                     : "—"}
@@ -153,7 +153,7 @@ export default async function MiSuscripcion() {
                     <p className="text-sm font-medium text-violeta-800">
                       {MONEDA.format(Number(p.monto))}
                     </p>
-                    <p className="mt-1 text-xs font-light text-violeta-900/50">
+                    <p className="mt-1 text-xs font-normal text-violeta-900/50">
                       {FECHA_LARGA.format(new Date(p.fecha))}
                     </p>
                   </div>
@@ -164,7 +164,7 @@ export default async function MiSuscripcion() {
               ))}
             </ul>
           ) : (
-            <p className="text-sm font-light text-violeta-900/45">
+            <p className="text-sm font-normal text-violeta-900/45">
               Todavía no hay pagos registrados.
             </p>
           )}

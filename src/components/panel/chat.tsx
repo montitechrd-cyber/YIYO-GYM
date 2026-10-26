@@ -128,12 +128,12 @@ export function Chat({
   return (
     <div className="flex h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-4xl border border-lila-200 bg-white shadow-suave">
       <header className="flex items-center gap-3 border-b border-lila-200 px-6 py-4">
-        <span className="flex h-11 w-11 items-center justify-center rounded-full fondo-degradado text-xs font-medium text-white">
+        <span className="flex h-11 w-11 items-center justify-center rounded-sm fondo-degradado text-xs font-medium text-white">
           {inicialesOtro}
         </span>
         <div>
           <p className="font-medium text-violeta-800">{nombreOtro}</p>
-          <p className="text-[11px] font-light text-violeta-900/45">
+          <p className="text-[11px] font-normal text-violeta-900/45">
             Los mensajes llegan al instante
           </p>
         </div>
@@ -141,7 +141,7 @@ export function Chat({
 
       <div className="flex-1 space-y-3 overflow-y-auto bg-lila-50/60 px-6 py-6">
         {mensajes.length === 0 && (
-          <p className="mt-16 text-center text-sm font-light text-violeta-900/45">
+          <p className="mt-16 text-center text-sm font-normal text-violeta-900/45">
             Todavía no hay mensajes. Escribe el primero.
           </p>
         )}
@@ -166,7 +166,7 @@ export function Chat({
                       : "rounded-bl-lg border border-lila-200 bg-white text-violeta-900"
                   )}
                 >
-                  <p className="text-sm leading-relaxed font-light whitespace-pre-wrap">
+                  <p className="text-sm leading-relaxed font-normal whitespace-pre-wrap">
                     {m.contenido}
                   </p>
                   <p
@@ -189,7 +189,7 @@ export function Chat({
         {errorEnvio && (
           <p
             role="alert"
-            className="mb-3 rounded-2xl bg-rose-50 px-4 py-2.5 text-xs font-light text-rose-700"
+            className="mb-3 rounded-2xl bg-rose-50 px-4 py-2.5 text-xs font-normal text-rose-700"
           >
             {errorEnvio}
           </p>
@@ -212,7 +212,7 @@ export function Chat({
           <button
             onClick={enviar}
             disabled={enviando || !texto.trim()}
-            className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full fondo-degradado text-white shadow-suave transition-all hover:brightness-110 disabled:opacity-40"
+            className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-sm fondo-degradado text-white shadow-suave transition-all hover:brightness-110 disabled:opacity-40"
             aria-label="Enviar mensaje"
           >
             {enviando ? (

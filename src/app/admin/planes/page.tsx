@@ -99,7 +99,7 @@ export default async function PlanesYPagos() {
             </div>
 
             <p
-              className={`mt-4 text-4xl font-light ${
+              className={`mt-4 text-4xl font-normal ${
                 p.destacado ? "text-white" : "text-violeta-800"
               }`}
             >
@@ -128,7 +128,7 @@ export default async function PlanesYPagos() {
                     <p className="text-sm font-medium text-violeta-800">
                       {nombreDe(s.cliente_id)}
                     </p>
-                    <p className="mt-1 text-xs font-light text-violeta-900/50">
+                    <p className="mt-1 text-xs font-normal text-violeta-900/50">
                       {planPorId.get(s.plan_id)?.nombre ?? "Plan eliminado"}
                       {s.proximo_cobro
                         ? ` · próximo cobro ${FECHA_LARGA.format(fechaLocal(s.proximo_cobro))}`
@@ -142,7 +142,7 @@ export default async function PlanesYPagos() {
               ))}
             </ul>
           ) : (
-            <p className="text-sm font-light text-violeta-900/45">
+            <p className="text-sm font-normal text-violeta-900/45">
               Todavía no hay suscripciones.
             </p>
           )}
@@ -161,7 +161,7 @@ export default async function PlanesYPagos() {
                     <p className="text-sm font-medium text-violeta-800">
                       {nombreDe(p.cliente_id)}
                     </p>
-                    <p className="mt-1 text-xs font-light text-violeta-900/50">
+                    <p className="mt-1 text-xs font-normal text-violeta-900/50">
                       {FECHA_LARGA.format(new Date(p.fecha))}
                     </p>
                   </div>
@@ -172,7 +172,7 @@ export default async function PlanesYPagos() {
               ))}
             </ul>
           ) : (
-            <p className="text-sm font-light text-violeta-900/45">
+            <p className="text-sm font-normal text-violeta-900/45">
               Todavía no hay pagos registrados.
             </p>
           )}

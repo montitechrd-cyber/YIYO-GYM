@@ -59,20 +59,20 @@ export function PanelNotas({
               className="group rounded-3xl bg-lila-50 px-5 py-4 transition-colors hover:bg-lila-100"
             >
               <div className="flex items-start justify-between gap-3">
-                <p className="text-sm leading-relaxed font-light whitespace-pre-wrap text-violeta-900/80">
+                <p className="text-sm leading-relaxed font-normal whitespace-pre-wrap text-violeta-900/80">
                   {n.contenido}
                 </p>
                 <form action={borrarNota.bind(null, n.id, clienteId)}>
                   <button
                     type="submit"
-                    className="cursor-pointer rounded-full p-1.5 text-violeta-900/25 opacity-0 transition-all group-hover:opacity-100 hover:bg-rose-100 hover:text-rose-600"
+                    className="cursor-pointer rounded-sm p-1.5 text-violeta-900/25 opacity-0 transition-all group-hover:opacity-100 hover:bg-rose-100 hover:text-rose-600"
                     aria-label="Borrar nota"
                   >
                     <Trash2 size={14} />
                   </button>
                 </form>
               </div>
-              <p className="mt-2 text-[11px] font-light text-violeta-900/40">
+              <p className="mt-2 text-[11px] font-normal text-violeta-900/40">
                 {n.autor} ·{" "}
                 {new Date(n.creado_en).toLocaleDateString("es-DO", {
                   day: "numeric",
@@ -85,7 +85,7 @@ export function PanelNotas({
           ))}
         </ul>
       ) : (
-        <p className="border-t border-lila-100 pt-5 text-sm font-light text-violeta-900/45">
+        <p className="border-t border-lila-100 pt-5 text-sm font-normal text-violeta-900/45">
           Todavía no hay notas para esta clienta.
         </p>
       )}

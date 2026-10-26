@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Poppins, Dancing_Script } from "next/font/google";
+import { Archivo, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
-// Solo los pesos que se usan de verdad: cada peso extra es un archivo más que
-// el navegador descarga antes de poder pintar el texto.
-const poppins = Poppins({
-  variable: "--font-poppins",
+// Display: Archivo variable con eje de ancho (wdth), para el titular
+// condensado de cartel. Texto: Hanken Grotesk. Solo los pesos en uso.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  axes: ["wdth"],
   display: "swap",
 });
 
-const dancing = Dancing_Script({
-  variable: "--font-dancing",
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -29,12 +29,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     // Las variables de las fuentes van en <html> y no en <body>: el tema de
-    // Tailwind define `--font-sans` y `--font-script` sobre `:root`, que es
-    // el propio <html>. Puestas en <body> quedaban en un descendiente, y
-    // desde `:root` no se veían: ambas se quedaban sin resolver y todo el
-    // sitio caía a la tipografía del sistema —la cursiva de la marca no
-    // llegó a mostrarse nunca—.
-    <html lang="es" className={`${poppins.variable} ${dancing.variable}`}>
+    // Tailwind define `--font-sans` y `--font-display` sobre `:root`, que es
+    // el propio <html>; puestas en <body> no se resolverían desde ahí.
+    <html lang="es" className={`${archivo.variable} ${hanken.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

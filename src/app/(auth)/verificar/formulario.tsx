@@ -81,7 +81,7 @@ export function FormularioVerificar() {
       <form action={salir}>
         <button
           type="submit"
-          className="w-full cursor-pointer text-center text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+          className="w-full cursor-pointer text-center text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
         >
           Entrar con otra cuenta
         </button>

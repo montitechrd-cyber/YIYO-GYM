@@ -39,23 +39,23 @@ export default async function Usuarios() {
                 <tr key={u.id} className="border-b border-lila-100 last:border-0">
                   <td className="px-2 py-4">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full fondo-degradado text-[11px] font-medium text-white">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm fondo-degradado text-[11px] font-medium text-white">
                         {iniciales(u.nombre_completo, u.correo)}
                       </span>
                       <span className="min-w-0">
                         <span className="block truncate font-medium text-violeta-800">
                           {u.nombre_completo || "Sin nombre"}
                         </span>
-                        <span className="block truncate text-xs font-light text-violeta-900/50">
+                        <span className="block truncate text-xs font-normal text-violeta-900/50">
                           {u.correo}
                         </span>
                       </span>
                     </div>
                   </td>
-                  <td className="px-2 py-4 font-light whitespace-nowrap text-violeta-900/60">
+                  <td className="px-2 py-4 font-normal whitespace-nowrap text-violeta-900/60">
                     {FECHA_LARGA.format(new Date(u.creado_en))}
                   </td>
-                  <td className="px-2 py-4 font-light text-violeta-900/60">
+                  <td className="px-2 py-4 font-normal text-violeta-900/60">
                     {u.telefono || "—"}
                   </td>
                   <td className="px-2 py-4">

@@ -164,7 +164,7 @@ export function VerificacionDosPasos({
               <span className="block text-sm font-medium text-violeta-800">
                 {activo ? "Activada" : "Desactivada"}
               </span>
-              <span className="block text-xs font-light text-violeta-900/55">
+              <span className="block text-xs font-normal text-violeta-900/55">
                 {activo
                   ? "Al entrar te pediremos un código de tu app."
                   : "Añade un código extra para proteger tu cuenta."}
@@ -190,7 +190,7 @@ export function VerificacionDosPasos({
         <div className="space-y-5 rounded-3xl border border-lila-200 bg-lila-50/60 p-6">
           <div className="flex items-start gap-3">
             <Smartphone size={17} className="mt-0.5 shrink-0 text-violeta-500" />
-            <p className="text-sm leading-relaxed font-light text-violeta-900/75">
+            <p className="text-sm leading-relaxed font-normal text-violeta-900/75">
               Abre tu app autenticadora (Google Authenticator, Authy o la de tu
               gestor de contraseñas) y escanea este código.
             </p>
@@ -210,7 +210,7 @@ export function VerificacionDosPasos({
             </div>
           </div>
 
-          <details className="text-xs font-light text-violeta-900/60">
+          <details className="text-xs font-normal text-violeta-900/60">
             <summary className="cursor-pointer">
               ¿No puedes escanear? Escribe el código a mano
             </summary>

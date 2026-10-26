@@ -69,7 +69,7 @@ export default async function Dietas({
         <h2 className="text-[11px] tracking-[0.2em] text-violeta-500 uppercase">
           Dietas asignadas
         </h2>
-        <p className="mt-1.5 mb-6 text-sm font-light text-violeta-900/55">
+        <p className="mt-1.5 mb-6 text-sm font-normal text-violeta-900/55">
           {asignados.length} plan{asignados.length === 1 ? "" : "es"} activos o
           en curso, ya sea del catálogo o armados a mano.
         </p>
@@ -99,12 +99,12 @@ export default async function Dietas({
                   </Insignia>
                 </div>
 
-                <p className="mt-2 flex items-center gap-2 text-sm font-light text-violeta-900/70">
+                <p className="mt-2 flex items-center gap-2 text-sm font-normal text-violeta-900/70">
                   {p.emoji && <span aria-hidden>{p.emoji}</span>}
                   {p.nombre}
                 </p>
 
-                <div className="mt-5 border-t border-lila-100 pt-4 text-xs font-light text-violeta-900/55">
+                <div className="mt-5 border-t border-lila-100 pt-4 text-xs font-normal text-violeta-900/55">
                   <p className="flex items-center gap-1.5">
                     <CalendarRange size={13} className="text-lila-400" />
                     {FECHA_LARGA.format(fechaLocal(p.inicio))} →{" "}
@@ -124,7 +124,7 @@ export default async function Dietas({
             ))}
           </div>
         ) : (
-          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-10 text-center text-sm font-light text-violeta-900/45">
+          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-10 text-center text-sm font-normal text-violeta-900/45">
             <Salad size={20} className="mx-auto mb-2 text-lila-400" />
             Todavía no le has asignado ningún plan a nadie.
           </p>

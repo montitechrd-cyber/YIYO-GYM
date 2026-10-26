@@ -16,7 +16,7 @@ export function CancelarSuscripcion({ id }: { id: string }) {
     <>
       <button
         onClick={() => setAbierto(true)}
-        className="cursor-pointer text-xs font-light text-lila-100 underline-offset-4 hover:underline"
+        className="cursor-pointer text-xs font-normal text-lila-100 underline-offset-4 hover:underline"
       >
         Cancelar suscripción
       </button>

@@ -16,10 +16,10 @@ export default async function PaginaEntrar({
 
   return (
     <div>
-      <h1 className="text-4xl font-light text-violeta-900">
-        Hola de nuevo <span className="font-script text-degradado">✿</span>
+      <h1 className="text-6xl text-violeta-900">
+        Hola de nuevo
       </h1>
-      <p className="mt-3 text-sm font-light text-violeta-900/60">
+      <p className="mt-3 text-sm text-violeta-900/75">
         Entra a tu cuenta y sigue justo donde lo dejaste.
       </p>
 
@@ -37,11 +37,11 @@ export default async function PaginaEntrar({
         </p>
       </div>
 
-      <p className="mt-8 text-center text-sm font-light text-violeta-900/60">
+      <p className="mt-8 text-center text-sm text-violeta-900/75">
         ¿Todavía no tienes cuenta?{" "}
         <Link
           href="/registro"
-          className="font-medium text-violeta-600 underline-offset-4 hover:underline"
+          className="font-semibold text-violeta-700 underline underline-offset-4 hover:underline"
         >
           Empieza aquí
         </Link>

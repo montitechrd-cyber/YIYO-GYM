@@ -220,7 +220,7 @@ export default async function Analytics() {
           <Tarjeta>
             <TituloTarjeta>
               Entrenamientos registrados
-              <span className="ml-2 font-light normal-case">
+              <span className="ml-2 font-normal normal-case">
                 · {clientasActivasMes} clientas activas este mes
               </span>
             </TituloTarjeta>
@@ -246,13 +246,13 @@ export default async function Analytics() {
                       <Insignia tono={TONO_ESTADO_CLIENTE[x.estado]}>
                         {ESTADOS_CLIENTE[x.estado]}
                       </Insignia>
-                      <span className="text-sm font-light text-violeta-900/60">
+                      <span className="text-sm font-normal text-violeta-900/60">
                         {x.total} · {pct}%
                       </span>
                     </div>
-                    <div className="h-2 overflow-hidden rounded-full bg-lila-100">
+                    <div className="h-2 overflow-hidden rounded-sm bg-lila-100">
                       <div
-                        className="h-full rounded-full fondo-degradado transition-all duration-700"
+                        className="h-full rounded-sm fondo-degradado transition-all duration-700"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
@@ -275,11 +275,11 @@ export default async function Analytics() {
                       <p className="text-sm font-medium text-violeta-800">
                         {d.nombre}
                       </p>
-                      <p className="mt-1 text-xs font-light text-violeta-900/50">
+                      <p className="mt-1 text-xs font-normal text-violeta-900/50">
                         {d.clientas} clientas · {d.activas} activas
                       </p>
                     </div>
-                    <span className="flex items-center gap-1.5 text-sm font-light text-violeta-700">
+                    <span className="flex items-center gap-1.5 text-sm font-normal text-violeta-700">
                       <Activity size={14} className="text-lila-400" />
                       {d.entrenamientos}
                     </span>

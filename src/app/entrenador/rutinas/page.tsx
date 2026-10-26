@@ -66,7 +66,7 @@ export default async function Rutinas({
         <h2 className="text-[11px] tracking-[0.2em] text-violeta-500 uppercase">
           Ya asignadas
         </h2>
-        <p className="mt-1.5 mb-6 text-sm font-light text-violeta-900/55">
+        <p className="mt-1.5 mb-6 text-sm font-normal text-violeta-900/55">
           {asignadas.length} rutina{asignadas.length === 1 ? "" : "s"} activas o
           en curso, ya sea del catálogo o armadas a mano.
         </p>
@@ -92,17 +92,17 @@ export default async function Rutinas({
                   </div>
 
                   {r.descripcion && (
-                    <p className="mt-3 line-clamp-2 text-xs leading-relaxed font-light text-violeta-900/60">
+                    <p className="mt-3 line-clamp-2 text-xs leading-relaxed font-normal text-violeta-900/60">
                       {r.descripcion}
                     </p>
                   )}
 
-                  <div className="mt-5 flex items-center gap-2 border-t border-lila-100 pt-4 text-xs font-light text-violeta-900/55">
+                  <div className="mt-5 flex items-center gap-2 border-t border-lila-100 pt-4 text-xs font-normal text-violeta-900/55">
                     <User size={13} className="text-lila-400" />
                     {p ? nombreVisible(p) : "Sin clienta asignada"}
                   </div>
 
-                  <p className="mt-2 text-[11px] font-light text-violeta-900/40">
+                  <p className="mt-2 text-[11px] font-normal text-violeta-900/40">
                     {r.dias_por_semana} días/semana · {r.semanas} semanas · creada
                     el {FECHA_LARGA.format(new Date(r.creado_en))}
                   </p>
@@ -111,7 +111,7 @@ export default async function Rutinas({
             })}
           </div>
         ) : (
-          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-10 text-center text-sm font-light text-violeta-900/45">
+          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-10 text-center text-sm font-normal text-violeta-900/45">
             <ListChecks size={20} className="mx-auto mb-2 text-lila-400" />
             Todavía no le has asignado ninguna rutina a nadie.
           </p>

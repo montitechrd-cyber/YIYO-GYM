@@ -89,7 +89,7 @@ export default async function ResumenEntrenador() {
             extra={
               <Link
                 href="/entrenador/clientes"
-                className="text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+                className="text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
               >
                 Ver todas
               </Link>
@@ -109,14 +109,14 @@ export default async function ResumenEntrenador() {
                       className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4 transition-colors hover:border-lila-400 hover:bg-lila-50"
                     >
                       <div className="flex min-w-0 items-center gap-3">
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full fondo-degradado text-[11px] font-medium text-white">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm fondo-degradado text-[11px] font-medium text-white">
                           {iniciales(p?.nombre_completo, p?.correo)}
                         </span>
                         <span className="min-w-0">
                           <span className="block truncate text-sm font-medium text-violeta-800">
                             {nombreVisible(p)}
                           </span>
-                          <span className="block truncate text-xs font-light text-violeta-900/50">
+                          <span className="block truncate text-xs font-normal text-violeta-900/50">
                             {p?.correo}
                           </span>
                         </span>
@@ -141,7 +141,7 @@ export default async function ResumenEntrenador() {
             extra={
               <Link
                 href="/entrenador/calendario"
-                className="text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+                className="text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
               >
                 Calendario
               </Link>
@@ -159,7 +159,7 @@ export default async function ResumenEntrenador() {
                     <p className="text-sm font-medium text-violeta-800">
                       {nombreVisible(p)}
                     </p>
-                    <p className="mt-1 text-xs font-light text-violeta-900/50">
+                    <p className="mt-1 text-xs font-normal text-violeta-900/50">
                       {new Date(s.fecha + "T00:00:00").toLocaleDateString("es-DO", {
                         weekday: "short",
                         day: "numeric",

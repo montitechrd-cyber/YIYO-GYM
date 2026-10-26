@@ -96,7 +96,7 @@ export default async function ResumenAdmin() {
             extra={
               <Link
                 href="/admin/planes"
-                className="text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+                className="text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
               >
                 Planes y pagos
               </Link>
@@ -116,7 +116,7 @@ export default async function ResumenAdmin() {
                   >
                     <div>
                       <p className="text-sm font-medium text-violeta-800">{nombre}</p>
-                      <p className="mt-1 text-xs font-light text-violeta-900/50">
+                      <p className="mt-1 text-xs font-normal text-violeta-900/50">
                         {new Date(p.fecha).toLocaleDateString("es-DO", {
                           day: "numeric",
                           month: "long",

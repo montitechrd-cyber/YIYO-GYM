@@ -94,7 +94,7 @@ Definida en `src/app/globals.css` y usada en toda la app.
 | `violeta-700` | `#6A2CAB` | Titulares, CTAs |
 | `crema` | `#FFFDFA` | Fondo general |
 
-Tipografías: **Poppins** (texto) y **Dancing Script** (acentos femeninos).
+Tipografías: **Archivo** condensada en mayúsculas (titulares) y **Hanken Grotesk** (texto). Esquinas casi rectas, filetes de tinta violeta y bloques de color sólidos.
 El isotipo está recreado en SVG en `src/components/brand/logo.tsx`, así que escala sin pérdida.
 
 ---

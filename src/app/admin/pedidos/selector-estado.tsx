@@ -48,7 +48,7 @@ export function SelectorEstado({
           });
         }}
         className={cn(
-          "cursor-pointer appearance-none rounded-full px-4 py-2 pr-8 text-xs font-medium transition-colors",
+          "cursor-pointer appearance-none rounded-sm px-4 py-2 pr-8 text-xs font-medium transition-colors",
           fallo ? "bg-rose-100 text-rose-700" : tono,
           guardando && "opacity-60"
         )}

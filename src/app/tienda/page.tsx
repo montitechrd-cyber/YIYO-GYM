@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { Navegacion } from "@/components/marketing/navegacion";
 import { Pie } from "@/components/marketing/pie";
-import { Auroras, Puntitos } from "@/components/brand/decoraciones";
-import { Isotipo } from "@/components/brand/logo";
 import { Catalogo } from "./catalogo";
 
 export const metadata: Metadata = {
@@ -32,21 +30,13 @@ export default async function Tienda() {
           ningún sitio. Solo la vuelta al inicio. */}
       <Navegacion soloInicio />
 
-      <main className="relative overflow-hidden bg-gradient-to-b from-lila-100 via-crema to-crema pt-36 pb-24 md:pt-44">
-        <Auroras />
-        <Puntitos className="opacity-20" />
-        <Isotipo className="animate-flotar absolute top-32 right-[6%] hidden h-20 opacity-[0.12] lg:block" />
-
-        <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
-          <header className="text-center">
-            <p className="text-[11px] tracking-[0.28em] text-violeta-500 uppercase">
-              Tienda
-            </p>
-            <h1 className="mt-4 text-4xl font-light text-violeta-900 md:text-6xl">
-              Lleva <span className="font-script text-degradado text-5xl md:text-7xl">YIYO</span>{" "}
-              contigo
+      <main className="bg-crema pt-28 pb-24 md:pt-32">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <header className="flex flex-col justify-between gap-5 border-b-2 border-violeta-900 pb-8 md:flex-row md:items-end">
+            <h1 className="text-6xl text-violeta-900 md:text-[6rem]">
+              Lleva <span className="text-violeta-600">YIYO</span> contigo
             </h1>
-            <p className="mx-auto mt-5 max-w-xl font-light text-violeta-900/65">
+            <p className="max-w-sm text-base leading-7 text-violeta-900/80">
               Elige lo tuyo, arma tu pedido y me llega directo por WhatsApp.
               Coordinamos entrega y pago por ahí mismo
             </p>

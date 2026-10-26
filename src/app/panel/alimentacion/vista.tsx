@@ -80,7 +80,7 @@ export function VistaAlimentacion({
               </span>
               <span
                 className={cn(
-                  "block text-[11px] font-light",
+                  "block text-[11px] font-normal",
                   d.id === dia?.id ? "text-lila-100" : "text-violeta-900/45"
                 )}
               >
@@ -107,7 +107,7 @@ export function VistaAlimentacion({
             ))}
           </div>
         ) : (
-          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-14 text-center text-sm font-light text-violeta-900/45">
+          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-14 text-center text-sm font-normal text-violeta-900/45">
             Este día todavía no tiene comidas asignadas.
           </p>
         )}
@@ -124,19 +124,19 @@ export function VistaAlimentacion({
             <p className="text-[10px] tracking-[0.2em] text-violeta-500 uppercase">
               Ya cumplido hoy
             </p>
-            <p className="mt-2 text-2xl font-light text-violeta-800">
+            <p className="mt-2 text-2xl font-normal text-violeta-800">
               {Math.round(macrosCumplidos.calorias)}
               <span className="ml-1 text-sm text-violeta-900/40">
                 de {Math.round(dia!.macros.calorias)} kcal
               </span>
             </p>
-            <p className="mt-2 text-xs font-light text-violeta-900/55">
+            <p className="mt-2 text-xs font-normal text-violeta-900/55">
               {marcadas.length} de {dia!.comidas.length} comidas marcadas
             </p>
           </div>
         )}
 
-        <p className="mt-4 px-2 text-[11px] leading-relaxed font-light text-violeta-900/45">
+        <p className="mt-4 px-2 text-[11px] leading-relaxed font-normal text-violeta-900/45">
           Marca cada comida cuando la hagas. Yiyo ve tu seguimiento y puede
           ajustar el plan si hace falta.
         </p>
@@ -171,7 +171,7 @@ function Comida({
         <div>
           <h3 className="font-medium text-violeta-800">{comida.nombre}</h3>
           {comida.hora && (
-            <p className="mt-0.5 flex items-center gap-1.5 text-[11px] font-light text-violeta-900/45">
+            <p className="mt-0.5 flex items-center gap-1.5 text-[11px] font-normal text-violeta-900/45">
               <Clock size={11} />
               {comida.hora.slice(0, 5)}
             </p>
@@ -179,7 +179,7 @@ function Comida({
         </div>
 
         <div className="flex items-center gap-3">
-          <p className="text-xs font-light text-violeta-900/60">
+          <p className="text-xs font-normal text-violeta-900/60">
             <span className="font-medium text-violeta-700">{m.calorias} kcal</span>
             {" · "}P {m.proteina} · C {m.carbohidratos} · G {m.grasa}
           </p>
@@ -203,7 +203,7 @@ function Comida({
                 });
               }}
               className={cn(
-                "flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-colors",
+                "flex cursor-pointer items-center gap-2 rounded-sm px-4 py-2 text-xs font-medium transition-colors",
                 fallo
                   ? "bg-rose-100 text-rose-700 hover:bg-rose-200"
                   : marcada
@@ -232,14 +232,14 @@ function Comida({
               className="flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-lila-50 px-4 py-3"
             >
               <span className="text-sm text-violeta-800">{ing.alimento.nombre}</span>
-              <span className="text-xs font-light text-violeta-900/55">
+              <span className="text-xs font-normal text-violeta-900/55">
                 {textoCantidad(ing.alimento, Number(ing.cantidad))}
               </span>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="text-xs font-light text-violeta-900/45">
+        <p className="text-xs font-normal text-violeta-900/45">
           Sin alimentos asignados.
         </p>
       )}

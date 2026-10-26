@@ -84,7 +84,7 @@ export function FilaBloque({
       {/* Punto de la línea de tiempo */}
       <span
         className={cn(
-          "h-2.5 w-2.5 shrink-0 rounded-full",
+          "h-2.5 w-2.5 shrink-0 rounded-sm",
           esEjercicio ? "bg-violeta-500" : "bg-lila-300"
         )}
         aria-hidden="true"
@@ -125,19 +125,19 @@ export function FilaBloque({
               <p className="truncate text-sm font-medium text-violeta-800">
                 {ejercicio?.nombre ?? "Ejercicio sin definir"}
               </p>
-              <p className="mt-0.5 truncate text-xs font-light text-violeta-900/55">
+              <p className="mt-0.5 truncate text-xs font-normal text-violeta-900/55">
                 {bloque.series} × {bloque.repeticiones}
                 {bloque.peso_sugerido ? ` · ${bloque.peso_sugerido}` : ""}
                 {` · descanso ${formatearDuracion(bloque.descanso_seg)}`}
               </p>
               {bloque.notas && (
-                <p className="mt-0.5 truncate text-[11px] font-light text-violeta-900/40">
+                <p className="mt-0.5 truncate text-[11px] font-normal text-violeta-900/40">
                   {bloque.notas}
                 </p>
               )}
             </>
           ) : bloque.tipo === "descanso" ? (
-            <p className="text-sm font-light text-violeta-900/70">
+            <p className="text-sm font-normal text-violeta-900/70">
               Descanso de {formatearDuracion(bloque.descanso_seg)}
             </p>
           ) : (

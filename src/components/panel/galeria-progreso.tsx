@@ -12,7 +12,7 @@ export function GaleriaProgreso({ fotos }: { fotos: FotoProgreso[] }) {
     return (
       <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-lila-300 px-6 py-12 text-center">
         <ImageOff size={26} strokeWidth={1.3} className="text-violeta-500/40" />
-        <p className="mt-4 text-sm font-light text-violeta-900/50">
+        <p className="mt-4 text-sm font-normal text-violeta-900/50">
           Todavía no hay fotos de progreso.
         </p>
       </div>
@@ -33,7 +33,7 @@ export function GaleriaProgreso({ fotos }: { fotos: FotoProgreso[] }) {
             className="aspect-[3/4] w-full object-cover"
             loading="lazy"
           />
-          <figcaption className="px-3 py-2 text-center text-[10px] font-light text-violeta-900/50">
+          <figcaption className="px-3 py-2 text-center text-[10px] font-normal text-violeta-900/50">
             {FECHA_LARGA.format(fechaLocal(f.fecha))}
           </figcaption>
         </figure>

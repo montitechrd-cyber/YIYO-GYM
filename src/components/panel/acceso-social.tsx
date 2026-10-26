@@ -73,7 +73,7 @@ export function AccesoSocial({ texto = "Entrar con" }: { texto?: string }) {
               type="button"
               onClick={() => entrar(p)}
               disabled={cargando !== null}
-              className="flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-full border border-lila-300 bg-white text-sm font-medium text-violeta-800 transition-all duration-300 hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
+              className="flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-sm border border-lila-300 bg-white text-sm font-medium text-violeta-800 transition-all duration-300 hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
             >
               {cargando === p ? (
                 <Loader2 size={17} className="animate-spin" />

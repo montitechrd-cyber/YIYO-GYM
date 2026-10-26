@@ -66,7 +66,7 @@ export default async function ListaClientes({
           </Seleccion>
           <button
             type="submit"
-            className="h-11 cursor-pointer rounded-full fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
+            className="h-11 cursor-pointer rounded-sm fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
           >
             Filtrar
           </button>
@@ -88,14 +88,14 @@ export default async function ListaClientes({
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full fondo-degradado text-xs font-medium text-white">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm fondo-degradado text-xs font-medium text-white">
                       {iniciales(p?.nombre_completo, p?.correo)}
                     </span>
                     <span className="min-w-0">
                       <span className="block truncate font-medium text-violeta-800">
                         {nombreVisible(p)}
                       </span>
-                      <span className="block truncate text-xs font-light text-violeta-900/50">
+                      <span className="block truncate text-xs font-normal text-violeta-900/50">
                         {p?.correo}
                       </span>
                     </span>
@@ -105,7 +105,7 @@ export default async function ListaClientes({
                   </Insignia>
                 </div>
 
-                <dl className="mt-5 space-y-2 border-t border-lila-100 pt-4 text-xs font-light">
+                <dl className="mt-5 space-y-2 border-t border-lila-100 pt-4 text-xs font-normal">
                   <div className="flex justify-between gap-3">
                     <dt className="text-violeta-900/45">Objetivo</dt>
                     <dd className="text-right text-violeta-900/75">
@@ -125,7 +125,7 @@ export default async function ListaClientes({
                     {c.etiquetas.slice(0, 4).map((e) => (
                       <span
                         key={e}
-                        className="rounded-full bg-lila-100 px-2.5 py-1 text-[10px] text-violeta-600"
+                        className="rounded-sm bg-lila-100 px-2.5 py-1 text-[10px] text-violeta-600"
                       >
                         {e}
                       </span>

@@ -11,7 +11,6 @@ import { exigirPerfil, clienteActual } from "@/lib/autenticacion";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { Encabezado, Metrica, Tarjeta, TituloTarjeta, Vacio, Insignia } from "@/components/panel/piezas";
 import { BotonEnlace } from "@/components/ui/boton";
-import { Corazon } from "@/components/brand/decoraciones";
 import { hoyTexto } from "@/lib/programacion";
 
 function saludo() {
@@ -101,9 +100,7 @@ export default async function ResumenCliente() {
       <Encabezado
         titulo={
           <>
-            {saludo()}, {perfil.nombre_completo.split(" ")[0] || "guerrera"}{" "}
-            <Corazon className="inline h-6 w-6 text-lila-400" />
-          </>
+            {saludo()}, {perfil.nombre_completo.split(" ")[0] || "guerrera"}          </>
         }
         descripcion="Este es tu espacio. Aquí vive todo tu proceso"
         acciones={
@@ -159,7 +156,7 @@ export default async function ResumenCliente() {
             extra={
               <Link
                 href="/panel/calendario"
-                className="text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+                className="text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
               >
                 Ver calendario
               </Link>
@@ -179,7 +176,7 @@ export default async function ResumenCliente() {
                     <p className="truncate text-sm font-medium text-violeta-800">
                       {s.titulo}
                     </p>
-                    <p className="mt-1 text-xs font-light text-violeta-900/50 first-letter:uppercase">
+                    <p className="mt-1 text-xs font-normal text-violeta-900/50 first-letter:uppercase">
                       {FORMATO_FECHA.format(new Date(s.fecha + "T00:00:00"))}
                       {s.hora ? ` · ${s.hora.slice(0, 5)}` : ""}
                     </p>
@@ -204,7 +201,7 @@ export default async function ResumenCliente() {
             extra={
               <Link
                 href="/panel/progreso"
-                className="text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+                className="text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
               >
                 Ver todo
               </Link>
@@ -215,11 +212,11 @@ export default async function ResumenCliente() {
 
           {progresos && progresos.length > 0 ? (
             <div className="space-y-4">
-              <p className="text-5xl font-light text-violeta-700">
+              <p className="text-5xl font-normal text-violeta-700">
                 {progresos[0].peso_kg ?? "—"}
                 <span className="ml-1 text-lg text-violeta-900/40">kg</span>
               </p>
-              <p className="text-xs font-light text-violeta-900/50">
+              <p className="text-xs font-normal text-violeta-900/50">
                 Registrado el{" "}
                 {new Date(progresos[0].fecha + "T00:00:00").toLocaleDateString("es-DO", {
                   day: "numeric",
@@ -227,7 +224,7 @@ export default async function ResumenCliente() {
                 })}
               </p>
               {progresos[0].grasa_pct != null && (
-                <p className="text-sm font-light text-violeta-900/70">
+                <p className="text-sm font-normal text-violeta-900/70">
                   Grasa corporal: {progresos[0].grasa_pct}%
                 </p>
               )}

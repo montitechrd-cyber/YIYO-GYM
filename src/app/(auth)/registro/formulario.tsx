@@ -84,7 +84,7 @@ export function FormularioRegistro() {
         {pendiente ? "Creando tu cuenta…" : "Crear mi cuenta"}
       </Boton>
 
-      <p className="text-center text-[11px] leading-relaxed font-light text-violeta-900/45">
+      <p className="text-center text-[11px] leading-relaxed font-normal text-violeta-900/45">
         Al crear tu cuenta aceptas nuestros términos de servicio y política de
         privacidad.
       </p>

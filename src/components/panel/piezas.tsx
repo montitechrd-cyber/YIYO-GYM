@@ -14,14 +14,14 @@ export function Encabezado({
   return (
     <div
       className={cn(
-        "mb-8 flex flex-wrap items-end justify-between gap-4",
+        "mb-10 flex flex-wrap items-end justify-between gap-4 border-b-2 border-violeta-900 pb-5",
         className
       )}
     >
       <div>
-        <h1 className="text-3xl font-light text-violeta-900">{titulo}</h1>
+        <h1 className="text-5xl text-violeta-900 md:text-6xl">{titulo}</h1>
         {descripcion && (
-          <p className="mt-2 text-sm font-light text-violeta-900/60">{descripcion}</p>
+          <p className="mt-3 max-w-prose text-sm text-violeta-900/70">{descripcion}</p>
         )}
       </div>
       {acciones && <div className="flex flex-wrap gap-3">{acciones}</div>}
@@ -39,7 +39,7 @@ export function Tarjeta({
   return (
     <section
       className={cn(
-        "rounded-4xl border border-lila-200 bg-white p-7 shadow-suave",
+        "rounded-sm border border-violeta-900/20 border-t-[3px] border-t-violeta-900 bg-white p-6 md:p-7",
         className
       )}
     >
@@ -57,7 +57,7 @@ export function TituloTarjeta({
 }) {
   return (
     <div className="mb-6 flex items-center justify-between gap-4">
-      <h2 className="text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
+      <h2 className="text-xl text-violeta-900">
         {children}
       </h2>
       {extra}
@@ -81,33 +81,33 @@ export function Metrica({
   return (
     <div
       className={cn(
-        "rounded-4xl border p-6 transition-all duration-500",
+        "rounded-sm border p-5 transition-colors duration-200",
         destacada
-          ? "fondo-degradado border-transparent text-white shadow-suave"
-          : "border-lila-200 bg-white text-violeta-900 hover:border-lila-400 hover:shadow-suave"
+          ? "border-violeta-700 bg-violeta-700 text-white"
+          : "border-violeta-900/20 bg-white text-violeta-900 hover:border-violeta-900"
       )}
     >
       <div className="flex items-start justify-between">
         <p
           className={cn(
-            "text-[10px] tracking-[0.2em] uppercase",
-            destacada ? "text-lila-100" : "text-violeta-500"
+            "text-[11px] font-semibold tracking-[0.14em] uppercase",
+            destacada ? "text-lila-200" : "text-violeta-700"
           )}
         >
           {etiqueta}
         </p>
         {Icono && (
-          <span className={destacada ? "text-lila-100" : "text-lila-400"}>
+          <span className={destacada ? "text-lila-200" : "text-violeta-500"}>
             <Icono size={18} strokeWidth={1.6} />
           </span>
         )}
       </div>
-      <p className="mt-4 text-4xl font-light">{valor}</p>
+      <p className="cifra mt-5 text-6xl">{valor}</p>
       {detalle && (
         <p
           className={cn(
-            "mt-2 text-xs font-light",
-            destacada ? "text-lila-100/80" : "text-violeta-900/50"
+            "mt-2 text-xs",
+            destacada ? "text-lila-100" : "text-violeta-900/65"
           )}
         >
           {detalle}
@@ -118,12 +118,12 @@ export function Metrica({
 }
 
 const TONOS_INSIGNIA = {
-  lila: "bg-lila-100 text-violeta-700",
-  violeta: "bg-violeta-500 text-white",
-  verde: "bg-emerald-50 text-emerald-700",
-  ambar: "bg-amber-50 text-amber-700",
-  rosa: "bg-rose-50 text-rose-700",
-  gris: "bg-lila-50 text-violeta-900/50",
+  lila: "bg-lila-200 text-violeta-900",
+  violeta: "bg-violeta-700 text-white",
+  verde: "bg-emerald-100 text-emerald-900",
+  ambar: "bg-amber-100 text-amber-900",
+  rosa: "bg-rose-100 text-rose-900",
+  gris: "border border-violeta-900/20 text-violeta-900/65",
 } as const;
 
 export function Insignia({
@@ -138,7 +138,7 @@ export function Insignia({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-medium tracking-wide",
+        "inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] uppercase",
         TONOS_INSIGNIA[tono],
         className
       )}
@@ -160,15 +160,15 @@ export function Vacio({
   icono?: React.ComponentType<{ size?: number; strokeWidth?: number }>;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-4xl border border-dashed border-lila-300 bg-lila-50/60 px-8 py-16 text-center">
+    <div className="flex flex-col items-center justify-center rounded-sm border border-dashed border-violeta-900/40 bg-lila-50 px-8 py-16 text-center">
       {Icono && (
-        <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-lila-100 text-violeta-500">
+        <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-sm bg-violeta-700 text-white">
           <Icono size={24} strokeWidth={1.4} />
         </span>
       )}
-      <p className="text-lg font-light text-violeta-800">{titulo}</p>
+      <p className="font-display text-3xl font-extrabold uppercase text-violeta-900 [font-stretch:72%]">{titulo}</p>
       {descripcion && (
-        <p className="mt-2 max-w-sm text-sm font-light text-violeta-900/55">
+        <p className="mt-2 max-w-sm text-sm text-violeta-900/70">
           {descripcion}
         </p>
       )}

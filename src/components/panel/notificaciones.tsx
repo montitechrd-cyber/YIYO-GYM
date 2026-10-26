@@ -124,12 +124,12 @@ export function CentroNotificaciones({
     <div className="relative" ref={contenedor}>
       <button
         onClick={() => setAbierto((v) => !v)}
-        className="relative cursor-pointer rounded-full p-2.5 text-violeta-700 transition-colors hover:bg-lila-100"
+        className="relative cursor-pointer rounded-sm p-2.5 text-violeta-700 transition-colors hover:bg-lila-100"
         aria-label={`Notificaciones${sinLeer ? ` (${sinLeer} sin leer)` : ""}`}
       >
         <Bell size={19} strokeWidth={1.6} />
         {sinLeer > 0 && (
-          <span className="absolute top-1 right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-violeta-500 px-1 text-[9px] font-medium text-white">
+          <span className="absolute top-1 right-1 flex h-4 min-w-4 items-center justify-center rounded-sm bg-violeta-500 px-1 text-[9px] font-medium text-white">
             {sinLeer > 9 ? "9+" : sinLeer}
           </span>
         )}
@@ -152,7 +152,7 @@ export function CentroNotificaciones({
                   setNotificaciones((ns) => ns.map((n) => ({ ...n, leida: true })));
                   marcarTodasLeidas();
                 }}
-                className="cursor-pointer text-[11px] font-light text-violeta-600 underline-offset-4 hover:underline"
+                className="cursor-pointer text-[11px] font-normal text-violeta-600 underline-offset-4 hover:underline"
               >
                 Marcar todas
               </button>
@@ -181,18 +181,18 @@ export function CentroNotificaciones({
                           className={cn(
                             "block text-sm",
                             n.leida
-                              ? "font-light text-violeta-900/60"
+                              ? "font-normal text-violeta-900/60"
                               : "font-medium text-violeta-800"
                           )}
                         >
                           {n.titulo}
                         </span>
                         {n.cuerpo && (
-                          <span className="mt-0.5 block truncate text-xs font-light text-violeta-900/50">
+                          <span className="mt-0.5 block truncate text-xs font-normal text-violeta-900/50">
                             {n.cuerpo}
                           </span>
                         )}
-                        <span className="mt-1 block text-[10px] font-light text-violeta-900/35">
+                        <span className="mt-1 block text-[10px] font-normal text-violeta-900/35">
                           {haceCuanto(n.creado_en)}
                         </span>
                       </span>
@@ -230,7 +230,7 @@ export function CentroNotificaciones({
                 })}
               </ul>
             ) : (
-              <p className="px-5 py-12 text-center text-sm font-light text-violeta-900/45">
+              <p className="px-5 py-12 text-center text-sm font-normal text-violeta-900/45">
                 No tienes notificaciones.
               </p>
             )}
