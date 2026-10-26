@@ -237,7 +237,7 @@ export function VistaPreviaVideo({
           aria-label={`Reproducir el video de ${titulo}`}
           className="group absolute inset-0 flex cursor-pointer items-center justify-center bg-violeta-900/30 transition-colors hover:bg-violeta-900/10"
         >
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-violeta-700 shadow-elevada transition-transform duration-300 group-hover:scale-110">
+          <span className="flex h-14 w-14 items-center justify-center rounded-sm bg-white/90 text-violeta-700 shadow-elevada transition-transform duration-300 group-hover:scale-110">
             <Play size={22} className="ml-0.5" fill="currentColor" />
           </span>
         </button>
@@ -248,7 +248,7 @@ export function VistaPreviaVideo({
           type="button"
           onClick={cerrar}
           aria-label="Cerrar el video"
-          className="absolute top-3 right-3 z-20 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-violeta-900/70 text-white shadow-suave backdrop-blur transition-colors hover:bg-violeta-900/90"
+          className="absolute top-3 right-3 z-20 flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm bg-violeta-900/70 text-white shadow-suave backdrop-blur transition-colors hover:bg-violeta-900/90"
         >
           <X size={16} />
         </button>

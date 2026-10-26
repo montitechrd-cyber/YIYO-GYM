@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { Isotipo, Logo } from "@/components/brand/logo";
-import { Auroras, Corazon, Hoja, Puntitos } from "@/components/brand/decoraciones";
+import { Logo } from "@/components/brand/logo";
 
 export default function LayoutAuth({
   children,
@@ -10,43 +9,32 @@ export default function LayoutAuth({
 }) {
   return (
     <div className="flex min-h-dvh">
-      {/* Panel de marca */}
-      <aside className="relative hidden w-[46%] overflow-hidden fondo-degradado lg:flex lg:flex-col lg:justify-between lg:p-14">
-        <Puntitos className="opacity-15" />
-        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-white/15 blur-3xl" />
-        <div className="absolute -right-24 -bottom-32 h-96 w-96 rounded-full bg-lila-200/25 blur-3xl" />
-        <Hoja className="animate-flotar absolute top-1/4 right-16 h-24 w-24 text-white/15" />
-
-        <Link href="/" className="relative">
+      {/* Panel de marca: un bloque sólido de violeta con el lema a escala de cartel */}
+      <aside className="hidden w-[46%] flex-col justify-between border-r border-violeta-900 bg-violeta-700 p-14 text-white lg:flex">
+        <Link href="/">
           <Logo invertido />
         </Link>
 
-        <div className="relative">
-          <Isotipo className="animate-flotar h-28" invertido />
-          <p className="mt-10 max-w-sm text-4xl leading-tight font-light text-white">
-            No se trata de ser la mejor.
-            <span className="mt-2 block font-normal">
-              Se trata de ser tu mejor versión.
-            </span>
+        <div>
+          <p className="font-display text-[5.5rem] leading-[0.9] font-extrabold uppercase [font-stretch:72%]">
+            Tu mejor <span className="text-lila-300">versión</span>
           </p>
-          <p className="font-script mt-6 text-2xl text-lila-200">
-            Fuerza que te transforma <Corazon className="inline h-5 w-5 align-baseline" />
+          <p className="mt-6 max-w-xs text-base leading-7 text-white/85">
+            No se trata de ser la mejor. Se trata de ser tu mejor versión.
           </p>
         </div>
 
-        <p className="letra-ancha relative text-[10px] text-lila-200/60 uppercase">
+        <p className="border-t border-white/40 pt-5 text-xs font-semibold tracking-[0.18em] uppercase">
           Fuerza · Disciplina · Evolución
         </p>
       </aside>
 
       {/* Formulario */}
-      <main className="relative flex flex-1 items-center justify-center overflow-hidden bg-crema px-6 py-14">
-        <Auroras className="opacity-60 lg:opacity-40" />
-
-        <div className="relative w-full max-w-md">
+      <main className="flex flex-1 items-center justify-center bg-crema px-6 py-14">
+        <div className="w-full max-w-md">
           <Link
             href="/"
-            className="mb-9 inline-flex items-center gap-2 text-xs font-light tracking-wide text-violeta-600 transition-colors hover:text-violeta-800"
+            className="mb-9 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.12em] text-violeta-800 uppercase hover:underline"
           >
             <ArrowLeft size={14} />
             Volver al inicio

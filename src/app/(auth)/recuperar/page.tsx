@@ -11,10 +11,10 @@ export default async function PaginaRecuperar({ searchParams }: {
   const { error } = await searchParams;
   return (
     <div>
-      <h1 className="text-4xl font-light text-violeta-900">
-        Recuperar <span className="font-script text-degradado">acceso</span>
+      <h1 className="text-6xl text-violeta-900">
+        Recuperar <span className="text-violeta-600">acceso</span>
       </h1>
-      <p className="mt-3 text-sm font-light text-violeta-900/60">
+      <p className="mt-3 text-sm text-violeta-900/75">
         Escribe tu correo y te enviamos un enlace para crear una contraseña nueva.
       </p>
 
@@ -23,10 +23,10 @@ export default async function PaginaRecuperar({ searchParams }: {
         <FormularioRecuperar />
       </div>
 
-      <p className="mt-8 text-center text-sm font-light text-violeta-900/60">
+      <p className="mt-8 text-center text-sm text-violeta-900/75">
         <Link
           href="/entrar"
-          className="font-medium text-violeta-600 underline-offset-4 hover:underline"
+          className="font-semibold text-violeta-700 underline underline-offset-4 hover:underline"
         >
           Volver a iniciar sesión
         </Link>

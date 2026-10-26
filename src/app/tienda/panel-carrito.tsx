@@ -58,7 +58,7 @@ export function PanelCarrito() {
         <button
           type="button"
           onClick={() => setAbierto(true)}
-          className="fixed right-5 bottom-5 z-40 flex cursor-pointer items-center gap-2 rounded-full fondo-degradado px-5 py-3.5 text-sm font-medium text-white shadow-elevada transition-transform duration-300 hover:scale-105"
+          className="fixed right-5 bottom-5 z-40 flex cursor-pointer items-center gap-2 rounded-sm fondo-degradado px-5 py-3.5 text-sm font-medium text-white shadow-elevada transition-transform duration-300 hover:scale-105"
         >
           <ShoppingBag size={17} />
           {unidades} {unidades === 1 ? "artículo" : "artículos"}
@@ -76,7 +76,7 @@ export function PanelCarrito() {
               setPagando(false);
               setConfirmado(null);
             }}
-            className="fixed inset-0 z-40 cursor-default bg-violeta-900/35 backdrop-blur-[2px]"
+            className="fixed inset-0 z-40 cursor-default bg-violeta-900/55"
           />
 
           <aside className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-crema shadow-elevada">
@@ -92,7 +92,7 @@ export function PanelCarrito() {
                   setConfirmado(null);
                 }}
                 aria-label="Cerrar"
-                className="cursor-pointer rounded-full p-2 text-violeta-600 transition-colors hover:bg-lila-100"
+                className="cursor-pointer rounded-sm p-2 text-violeta-600 transition-colors hover:bg-lila-100"
               >
                 <X size={18} />
               </button>
@@ -103,7 +103,7 @@ export function PanelCarrito() {
             ) : (
               <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
                 {lineas.length === 0 ? (
-                  <p className="mt-10 text-center text-sm font-light text-violeta-900/50">
+                  <p className="mt-10 text-center text-sm font-normal text-violeta-900/50">
                     Tu carrito está vacío
                   </p>
                 ) : pagando ? (
@@ -154,7 +154,7 @@ export function PanelCarrito() {
                     <button
                       type="button"
                       onClick={() => setPagando(false)}
-                      className="w-full cursor-pointer text-center text-xs font-light text-violeta-600 hover:underline"
+                      className="w-full cursor-pointer text-center text-xs font-normal text-violeta-600 hover:underline"
                     >
                       Volver al carrito
                     </button>
@@ -181,7 +181,7 @@ export function PanelCarrito() {
                             {l.nombre}
                           </p>
                           {l.talla && (
-                            <p className="text-xs font-light text-violeta-900/50">
+                            <p className="text-xs font-normal text-violeta-900/50">
                               Talla {l.talla}
                             </p>
                           )}
@@ -213,7 +213,7 @@ export function PanelCarrito() {
                               type="button"
                               onClick={() => quitar(l.productoId, l.talla)}
                               aria-label={`Quitar ${l.nombre} del carrito`}
-                              className="ml-auto cursor-pointer rounded-full p-2 text-rose-500 transition-colors hover:bg-rose-50"
+                              className="ml-auto cursor-pointer rounded-sm p-2 text-rose-500 transition-colors hover:bg-rose-50"
                             >
                               <Trash2 size={14} />
                             </button>
@@ -264,7 +264,7 @@ function BotonCantidad({
       type="button"
       onClick={onClick}
       aria-label={etiqueta}
-      className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-lila-300 text-violeta-700 transition-colors hover:border-violeta-400 hover:bg-lila-50"
+      className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-sm border border-lila-300 text-violeta-700 transition-colors hover:border-violeta-400 hover:bg-lila-50"
     >
       {children}
     </button>
@@ -280,13 +280,13 @@ function Confirmacion({
 }) {
   return (
     <div className="min-h-0 flex-1 overflow-y-auto px-5 py-8 text-center">
-      <p className="text-[11px] tracking-[0.2em] text-violeta-500 uppercase">
+      <p className="text-[11px] font-bold tracking-[0.14em] text-violeta-700 uppercase">
         Pedido #{datos.numero}
       </p>
-      <h3 className="mt-3 text-2xl font-light text-violeta-900">
-        Ya lo tengo anotado <span className="font-script text-degradado">✿</span>
+      <h3 className="mt-3 text-4xl text-violeta-900">
+        Ya lo tengo anotado
       </h3>
-      <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed font-light text-violeta-900/65">
+      <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed font-normal text-violeta-900/65">
         Tu pedido quedó registrado. Envíamelo por WhatsApp y coordinamos la
         entrega y el pago por ahí mismo
       </p>
@@ -295,7 +295,7 @@ function Confirmacion({
         href={datos.enlace}
         target="_blank"
         rel="noreferrer"
-        className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-medium text-white shadow-suave transition-transform duration-300 hover:scale-[1.02]"
+        className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#25D366] px-6 py-4 text-sm font-medium text-white shadow-suave transition-transform duration-300 hover:scale-[1.02]"
       >
         <IconoWhatsApp className="h-5 w-5" />
         Enviar mi pedido por WhatsApp
@@ -304,7 +304,7 @@ function Confirmacion({
       <button
         type="button"
         onClick={alCerrar}
-        className="mt-5 w-full cursor-pointer text-xs font-light text-violeta-600 hover:underline"
+        className="mt-5 w-full cursor-pointer text-xs font-normal text-violeta-600 hover:underline"
       >
         Seguir viendo la tienda
       </button>

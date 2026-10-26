@@ -200,7 +200,7 @@ export default async function MiProgreso() {
                   }))}
                 />
               ) : (
-                <p className="py-12 text-center text-sm font-light text-violeta-900/45">
+                <p className="py-12 text-center text-sm font-normal text-violeta-900/45">
                   Registra tus medidas para verlas aquí.
                 </p>
               )}
@@ -246,7 +246,7 @@ export default async function MiProgreso() {
                     <th className="px-2 py-3 font-normal">Notas</th>
                   </tr>
                 </thead>
-                <tbody className="font-light text-violeta-900/75">
+                <tbody className="font-normal text-violeta-900/75">
                   {[...lista].reverse().map((r) => (
                     <tr key={r.id} className="border-b border-lila-100 last:border-0">
                       <td className="px-2 py-3 whitespace-nowrap">

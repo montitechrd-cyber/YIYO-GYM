@@ -43,7 +43,7 @@ export function RegistrarEntrenamiento({
           <p className="text-[10px] tracking-[0.22em] text-lila-100 uppercase">
             Hoy toca
           </p>
-          <p className="mt-2 text-2xl font-light">
+          <p className="mt-2 text-2xl font-normal">
             {dias[0]?.nombre ?? "Entrenamiento"}
           </p>
         </div>
@@ -105,7 +105,7 @@ export function RegistrarEntrenamiento({
                   <p className="text-sm font-medium text-violeta-800">
                     {a.ejercicio.nombre}
                   </p>
-                  <p className="mt-1 text-[11px] font-light text-violeta-900/50">
+                  <p className="mt-1 text-[11px] font-normal text-violeta-900/50">
                     Objetivo: {a.series} × {a.repeticiones}
                     {a.peso_sugerido ? ` · ${a.peso_sugerido}` : ""}
                   </p>
@@ -122,7 +122,7 @@ export function RegistrarEntrenamiento({
                         key={n}
                         className="grid grid-cols-[2.5rem_1fr_1fr_1fr] items-center gap-2"
                       >
-                        <span className="text-sm font-light text-violeta-900/45">
+                        <span className="text-sm font-normal text-violeta-900/45">
                           {n}
                         </span>
                         <Entrada

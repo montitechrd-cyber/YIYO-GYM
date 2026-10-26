@@ -180,7 +180,7 @@ export function ConstructorDia({
       <header className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h3 className="text-lg font-medium text-violeta-800">{nombreDia}</h3>
-          <p className="mt-1 flex items-center gap-1.5 text-xs font-light text-violeta-900/55">
+          <p className="mt-1 flex items-center gap-1.5 text-xs font-normal text-violeta-900/55">
             <Clock size={12} />
             Tiempo estimado: {formatearDuracion(total)} · {bloques.length} bloque
             {bloques.length === 1 ? "" : "s"}
@@ -189,7 +189,7 @@ export function ConstructorDia({
 
         <div className="flex items-center gap-3">
           {sinGuardar && (
-            <span className="text-xs font-light text-amber-700">Sin guardar</span>
+            <span className="text-xs font-normal text-amber-700">Sin guardar</span>
           )}
           <Boton
             tamano="sm"
@@ -261,7 +261,7 @@ export function ConstructorDia({
                     Circuito ×{tramo.veces}
                   </span>
                   <div className="flex items-center gap-2">
-                    <label className="text-xs font-light text-violeta-900/60">
+                    <label className="text-xs font-normal text-violeta-900/60">
                       Repeticiones
                     </label>
                     <Entrada
@@ -328,7 +328,7 @@ export function ConstructorDia({
           )}
         </div>
       ) : (
-        <p className="rounded-3xl border border-dashed border-lila-300 px-5 py-10 text-center text-sm font-light text-violeta-900/45">
+        <p className="rounded-3xl border border-dashed border-lila-300 px-5 py-10 text-center text-sm font-normal text-violeta-900/45">
           Día vacío. Añade ejercicios abajo, o déjalo así como día de descanso.
         </p>
       )}
@@ -408,7 +408,7 @@ export function ConstructorDia({
               key={e.id}
               type="button"
               onClick={() => anadirEjercicio(e.id)}
-              className="flex h-fit cursor-pointer items-center gap-2 rounded-full border border-lila-300 bg-white px-4 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave"
+              className="flex h-fit cursor-pointer items-center gap-2 rounded-sm border border-lila-300 bg-white px-4 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave"
             >
               <Plus size={12} className="text-violeta-500" />
               {e.nombre}
@@ -416,7 +416,7 @@ export function ConstructorDia({
             </button>
           ))}
           {candidatos.length === 0 && (
-            <p className="text-xs font-light text-violeta-900/45">
+            <p className="text-xs font-normal text-violeta-900/45">
               Ningún ejercicio coincide con la búsqueda.
             </p>
           )}

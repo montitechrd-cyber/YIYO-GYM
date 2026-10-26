@@ -113,7 +113,7 @@ export default async function MisEntrenamientos() {
                             )}
                             {a.ejercicio.nombre}
                           </p>
-                          <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-light text-violeta-900/55">
+                          <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-normal text-violeta-900/55">
                             <span>{GRUPOS[a.ejercicio.grupo]}</span>
                             <span>
                               {a.series} × {a.repeticiones}
@@ -127,7 +127,7 @@ export default async function MisEntrenamientos() {
                       ))}
                     </ul>
                     {d.ejercicios.length > 4 && (
-                      <p className="mt-3 text-[11px] font-light text-violeta-900/45">
+                      <p className="mt-3 text-[11px] font-normal text-violeta-900/45">
                         y {d.ejercicios.length - 4} más…
                       </p>
                     )}
@@ -140,7 +140,7 @@ export default async function MisEntrenamientos() {
                     </p>
                   </>
                 ) : (
-                  <p className="rounded-3xl border border-dashed border-lila-300 px-4 py-8 text-center text-xs font-light text-violeta-900/45">
+                  <p className="rounded-3xl border border-dashed border-lila-300 px-4 py-8 text-center text-xs font-normal text-violeta-900/45">
                     Día de descanso.
                   </p>
                 )}
@@ -175,13 +175,13 @@ export default async function MisEntrenamientos() {
                     <p className="text-sm font-medium text-violeta-800 first-letter:uppercase">
                       {FECHA_LARGA.format(fechaLocal(r.fecha))}
                     </p>
-                    <p className="mt-1 text-xs font-light text-violeta-900/50">
+                    <p className="mt-1 text-xs font-normal text-violeta-900/50">
                       {r.duracion_min ? `${r.duracion_min} min` : "Duración no anotada"}
                       {r.esfuerzo_rpe ? ` · RPE ${r.esfuerzo_rpe}/10` : ""}
                       {r.sensacion ? ` · ${r.sensacion}` : ""}
                     </p>
                     {r.notas && (
-                      <p className="mt-2 text-xs font-light text-violeta-900/60">
+                      <p className="mt-2 text-xs font-normal text-violeta-900/60">
                         {r.notas}
                       </p>
                     )}
@@ -191,7 +191,7 @@ export default async function MisEntrenamientos() {
               ))}
             </ul>
           ) : (
-            <p className="text-sm font-light text-violeta-900/45">
+            <p className="text-sm font-normal text-violeta-900/45">
               Todavía no has registrado ningún entrenamiento.
             </p>
           )}

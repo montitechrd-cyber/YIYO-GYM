@@ -26,7 +26,7 @@ export function Catalogo({
 
   if (productos.length === 0) {
     return (
-      <p className="mt-16 text-center font-light text-violeta-900/55">
+      <p className="mt-16 text-center font-normal text-violeta-900/55">
         La tienda abre pronto
       </p>
     );
@@ -72,7 +72,7 @@ function Filtro({
       type="button"
       onClick={onClick}
       className={cn(
-        "cursor-pointer rounded-full px-4 py-2 text-xs font-medium transition-colors",
+        "cursor-pointer rounded-sm px-4 py-2 text-xs font-medium transition-colors",
         activo
           ? "bg-violeta-600 text-white"
           : "border border-lila-300 bg-white/70 text-violeta-700 hover:border-violeta-400"
@@ -131,7 +131,7 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
         <h2 className="mt-2 text-lg font-medium text-violeta-800">
           {producto.nombre}
         </h2>
-        <p className="mt-2 line-clamp-2 text-xs leading-relaxed font-light text-violeta-900/60">
+        <p className="mt-2 line-clamp-2 text-xs leading-relaxed font-normal text-violeta-900/60">
           {producto.descripcion}
         </p>
 
@@ -142,7 +142,7 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
         <button
           type="button"
           onClick={() => setDetalle(true)}
-          className="mt-2 cursor-pointer self-start text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+          className="mt-2 cursor-pointer self-start text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
         >
           Ver detalles
         </button>
@@ -198,16 +198,16 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
         descripcion={producto.descripcion}
         ancho="max-w-lg"
       >
-        <ul className="space-y-1.5 text-sm font-light text-violeta-900/70">
+        <ul className="space-y-1.5 text-sm font-normal text-violeta-900/70">
           {producto.especificaciones.map((e) => (
             <li key={e} className="flex gap-2">
-              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-lila-400" />
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-sm bg-lila-400" />
               {e}
             </li>
           ))}
         </ul>
         {producto.cuidado && (
-          <p className="mt-4 border-t border-lila-100 pt-3 text-sm font-light text-violeta-900/50">
+          <p className="mt-4 border-t border-lila-100 pt-3 text-sm font-normal text-violeta-900/50">
             {producto.cuidado}
           </p>
         )}

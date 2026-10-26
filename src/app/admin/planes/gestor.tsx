@@ -137,7 +137,7 @@ export function GestorPlan({
               />
             </Campo>
 
-            <label className="flex cursor-pointer items-center gap-3 pt-7 text-sm font-light text-violeta-900/75">
+            <label className="flex cursor-pointer items-center gap-3 pt-7 text-sm font-normal text-violeta-900/75">
               <input
                 type="checkbox"
                 name="destacado"
@@ -147,7 +147,7 @@ export function GestorPlan({
               Destacado
             </label>
 
-            <label className="flex cursor-pointer items-center gap-3 pt-7 text-sm font-light text-violeta-900/75">
+            <label className="flex cursor-pointer items-center gap-3 pt-7 text-sm font-normal text-violeta-900/75">
               <input
                 type="checkbox"
                 name="activo"

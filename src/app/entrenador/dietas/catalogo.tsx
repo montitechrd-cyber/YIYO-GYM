@@ -31,7 +31,7 @@ export function CatalogoDietas({
       <h2 className="text-[11px] tracking-[0.2em] text-violeta-500 uppercase">
         Alimentación
       </h2>
-      <p className="mt-1.5 mb-6 text-sm font-light text-violeta-900/55">
+      <p className="mt-1.5 mb-6 text-sm font-normal text-violeta-900/55">
         Planes de 7 días con todas las comidas armadas. Las cantidades se
         ajustan solas a las calorías de cada chica.
       </p>
@@ -44,9 +44,9 @@ export function CatalogoDietas({
           >
             <span className="text-3xl">{p.emoji}</span>
             <h3 className="mt-3 text-xl font-medium text-violeta-800">{p.nombre}</h3>
-            <p className="mt-1 text-xs font-light text-violeta-900/55">{p.resumen}</p>
+            <p className="mt-1 text-xs font-normal text-violeta-900/55">{p.resumen}</p>
 
-            <dl className="mt-6 space-y-2 text-xs font-light text-violeta-900/60">
+            <dl className="mt-6 space-y-2 text-xs font-normal text-violeta-900/60">
               <div className="flex items-center gap-2">
                 <Flame size={13} className="shrink-0 text-lila-400" />
                 {p.calorias_base} kcal de referencia
@@ -214,7 +214,7 @@ function DialogoAsignarDieta({
                 </Campo>
               </div>
 
-              <p className="flex gap-3 rounded-2xl border border-lila-200 bg-lila-50/60 px-5 py-3 text-xs leading-relaxed font-light text-violeta-900/65">
+              <p className="flex gap-3 rounded-2xl border border-lila-200 bg-lila-50/60 px-5 py-3 text-xs leading-relaxed font-normal text-violeta-900/65">
                 <Salad size={15} className="mt-0.5 shrink-0 text-lila-400" />
                 <span>
                   El plan está escrito para {plan.calorias_base} kcal. Al

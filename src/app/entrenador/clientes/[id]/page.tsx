@@ -63,7 +63,7 @@ export default async function FichaCliente({
     <div>
       <Link
         href="/entrenador/clientes"
-        className="mb-6 inline-flex items-center gap-2 text-xs font-light text-violeta-600 transition-colors hover:text-violeta-800"
+        className="mb-6 inline-flex items-center gap-2 text-xs font-normal text-violeta-600 transition-colors hover:text-violeta-800"
       >
         <ArrowLeft size={14} />
         Volver a clientes
@@ -71,14 +71,14 @@ export default async function FichaCliente({
 
       <header className="mb-8 flex flex-wrap items-center justify-between gap-5">
         <div className="flex items-center gap-4">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full fondo-degradado text-lg font-medium text-white shadow-suave">
+          <span className="flex h-16 w-16 items-center justify-center rounded-sm fondo-degradado text-lg font-medium text-white shadow-suave">
             {iniciales(perfil?.nombre_completo, perfil?.correo)}
           </span>
           <div>
-            <h1 className="text-3xl font-light text-violeta-900">
+            <h1 className="text-3xl font-normal text-violeta-900">
               {nombreVisible(perfil)}
             </h1>
-            <p className="mt-1 text-sm font-light text-violeta-900/55">
+            <p className="mt-1 text-sm font-normal text-violeta-900/55">
               {perfil?.correo} · Alta el{" "}
               {FECHA_LARGA.format(fechaLocal(cliente.fecha_alta))}
             </p>
@@ -141,7 +141,7 @@ export default async function FichaCliente({
               extra={
                 <Link
                   href={`/entrenador/clientes/${cliente.id}/evaluacion`}
-                  className="text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+                  className="text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
                 >
                   Nueva evaluación
                 </Link>
@@ -167,7 +167,7 @@ export default async function FichaCliente({
                       <p className="text-[10px] tracking-[0.16em] text-violeta-500 uppercase">
                         {m.et}
                       </p>
-                      <p className="mt-2 text-2xl font-light text-violeta-800">
+                      <p className="mt-2 text-2xl font-normal text-violeta-800">
                         {m.v ?? "—"}
                         {m.v != null && (
                           <span className="ml-0.5 text-xs text-violeta-900/40">
@@ -184,7 +184,7 @@ export default async function FichaCliente({
                     <p className="mb-3 flex items-center gap-2 text-[11px] tracking-[0.16em] text-violeta-500 uppercase">
                       <Ruler size={12} /> Medidas (cm)
                     </p>
-                    <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm font-light sm:grid-cols-3">
+                    <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm font-normal sm:grid-cols-3">
                       {MEDIDAS.filter((m) => ultima.medidas[m.clave] != null).map(
                         (m) => (
                           <div key={m.clave} className="flex justify-between gap-2">
@@ -199,7 +199,7 @@ export default async function FichaCliente({
                   </div>
                 )}
 
-                <dl className="space-y-4 border-t border-lila-100 pt-5 text-sm font-light">
+                <dl className="space-y-4 border-t border-lila-100 pt-5 text-sm font-normal">
                   {[
                     { et: "Objetivos", v: ultima.objetivos },
                     { et: "Condiciones médicas", v: ultima.condiciones_medicas },
@@ -230,7 +230,7 @@ export default async function FichaCliente({
                 </dl>
 
                 {(evaluaciones?.length ?? 0) > 1 && (
-                  <p className="text-xs font-light text-violeta-900/45">
+                  <p className="text-xs font-normal text-violeta-900/45">
                     {evaluaciones!.length} evaluaciones registradas. Mostrando la más
                     reciente ({FECHA_LARGA.format(fechaLocal(ultima.fecha))}).
                   </p>
@@ -255,7 +255,7 @@ export default async function FichaCliente({
 
           <Tarjeta>
             <TituloTarjeta>Resumen</TituloTarjeta>
-            <dl className="space-y-3 text-sm font-light">
+            <dl className="space-y-3 text-sm font-normal">
               {[
                 {
                   et: "Objetivo",

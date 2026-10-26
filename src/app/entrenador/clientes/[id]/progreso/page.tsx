@@ -81,7 +81,7 @@ export default async function ProgresoDeCliente({
     <div>
       <Link
         href={`/entrenador/clientes/${id}`}
-        className="mb-6 inline-flex items-center gap-2 text-xs font-light text-violeta-600 transition-colors hover:text-violeta-800"
+        className="mb-6 inline-flex items-center gap-2 text-xs font-normal text-violeta-600 transition-colors hover:text-violeta-800"
       >
         <ArrowLeft size={14} />
         Volver a la ficha
@@ -160,7 +160,7 @@ export default async function ProgresoDeCliente({
                   }))}
                 />
               ) : (
-                <p className="py-12 text-center text-sm font-light text-violeta-900/45">
+                <p className="py-12 text-center text-sm font-normal text-violeta-900/45">
                   Sin medidas registradas.
                 </p>
               )}
@@ -196,13 +196,13 @@ export default async function ProgresoDeCliente({
                   <p className="text-sm font-medium text-violeta-800 first-letter:uppercase">
                     {FECHA_LARGA.format(fechaLocal(e.fecha))}
                   </p>
-                  <p className="mt-1 text-xs font-light text-violeta-900/50">
+                  <p className="mt-1 text-xs font-normal text-violeta-900/50">
                     {e.duracion_min ? `${e.duracion_min} min` : "Sin duración"}
                     {e.esfuerzo_rpe ? ` · RPE ${e.esfuerzo_rpe}/10` : ""}
                     {e.sensacion ? ` · ${e.sensacion}` : ""}
                   </p>
                   {e.notas && (
-                    <p className="mt-2 text-xs leading-relaxed font-light text-violeta-900/65">
+                    <p className="mt-2 text-xs leading-relaxed font-normal text-violeta-900/65">
                       {e.notas}
                     </p>
                   )}
@@ -210,7 +210,7 @@ export default async function ProgresoDeCliente({
               ))}
             </ul>
           ) : (
-            <p className="text-sm font-light text-violeta-900/45">
+            <p className="text-sm font-normal text-violeta-900/45">
               Todavía no ha registrado entrenamientos.
             </p>
           )}

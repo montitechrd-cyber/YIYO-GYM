@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowLeft, Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { BotonEnlace } from "@/components/ui/boton";
-import { cn } from "@/lib/utils";
 
 const enlaces = [
   { href: "#metodo", texto: "Método" },
@@ -17,34 +16,18 @@ const enlaces = [
 ];
 
 /**
- * Barra superior del sitio público.
+ * Barra superior del sitio público: papel sólido con filete de tinta.
  *
- * Casi todos sus enlaces son anclas de la portada —«Método», «Sobre Yiyo»…—,
- * así que fuera de ella no llevan a ninguna parte: en la tienda se pulsaban
- * y no pasaba nada. Por eso hay una versión reducida con lo único que tiene
- * sentido desde otra página: volver a la portada.
+ * Casi todos sus enlaces son anclas de la portada, así que fuera de ella no
+ * llevan a ninguna parte (en la tienda se pulsaban y no pasaba nada). Por
+ * eso hay una versión reducida: solo volver a la portada.
  */
 export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
-  const [fija, setFija] = useState(false);
   const [abierto, setAbierto] = useState(false);
 
-  useEffect(() => {
-    const alScroll = () => setFija(window.scrollY > 24);
-    alScroll();
-    window.addEventListener("scroll", alScroll, { passive: true });
-    return () => window.removeEventListener("scroll", alScroll);
-  }, []);
-
   return (
-    <header className="fixed inset-x-0 top-0 z-50 py-1">
-      <nav
-        className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-colors duration-300 max-md:border-0 md:py-2 md:transition-all md:duration-500",
-          fija || abierto
-            ? "bg-white/70 backdrop-blur-lg md:vidrio md:shadow-suave"
-            : "bg-transparent"
-        )}
-      >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-violeta-900 bg-crema">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link href="/" aria-label="YIYO GYM — inicio">
           <Logo tamano="sm" />
         </Link>
@@ -56,21 +39,20 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
           </BotonEnlace>
         ) : (
           <>
-            <ul className="hidden items-center gap-9 md:flex">
+            <ul className="hidden items-center gap-8 md:flex">
               {enlaces.map((e) => (
                 <li key={e.href}>
                   <a
                     href={e.href}
-                    className="group relative text-sm font-light tracking-wide text-violeta-800/80 transition-colors hover:text-violeta-700"
+                    className="text-[13px] font-semibold tracking-[0.1em] text-violeta-900 uppercase decoration-2 underline-offset-8 hover:underline"
                   >
                     {e.texto}
-                    <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-violeta-500 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </li>
               ))}
             </ul>
 
-            <div className="hidden items-center gap-3 md:flex">
+            <div className="hidden items-center gap-2 md:flex">
               <BotonEnlace href="/entrar" variante="fantasma" tamano="sm">
                 Entrar
               </BotonEnlace>
@@ -81,50 +63,34 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
 
             <button
               onClick={() => setAbierto((v) => !v)}
-              className="rounded-full p-2 text-violeta-700 transition-colors hover:bg-lila-100 md:hidden"
+              className="rounded-sm p-2 text-violeta-900 transition-colors hover:bg-lila-200 md:hidden"
               aria-label="Abrir menú"
               aria-expanded={abierto}
             >
-              {abierto ? <X size={20} /> : <Menu size={20} />}
+              {abierto ? <X size={22} /> : <Menu size={22} />}
             </button>
           </>
         )}
       </nav>
 
       {!soloInicio && abierto && (
-        <button
-          type="button"
-          onClick={() => setAbierto(false)}
-          aria-label="Cerrar menú"
-          className="fixed inset-0 -z-10 cursor-default bg-violeta-900/25 backdrop-blur-[2px] md:hidden"
-        />
-      )}
-
-      {!soloInicio && abierto && (
-        <div className="animate-aparecer absolute inset-x-0 top-full mx-auto mt-2 max-w-6xl px-4 md:hidden">
-          {/* Blanco sólido, no `vidrio`: ese cristal es blanco al 72% y con
-              el titular del hero detrás las opciones no se leían. */}
-          <div className="flex flex-col gap-1 rounded-4xl border border-lila-200 bg-white p-4 shadow-elevada">
+        <div className="animate-aparecer border-t border-violeta-900 bg-crema md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col px-6 pb-5">
             {enlaces.map((e) => (
               <a
                 key={e.href}
                 href={e.href}
                 onClick={() => setAbierto(false)}
-                className="rounded-2xl px-4 py-3 text-sm text-violeta-800 transition-colors hover:bg-lila-100"
+                className="border-b border-violeta-900/15 py-4 font-display text-3xl font-extrabold text-violeta-900 uppercase [font-stretch:72%]"
               >
                 {e.texto}
               </a>
             ))}
-            <div className="mt-2 flex gap-2 px-1">
-              <BotonEnlace
-                href="/entrar"
-                variante="contorno"
-                tamano="sm"
-                className="flex-1"
-              >
+            <div className="mt-5 flex gap-2">
+              <BotonEnlace href="/entrar" variante="contorno" tamano="md" className="flex-1">
                 Entrar
               </BotonEnlace>
-              <BotonEnlace href="/registro" tamano="sm" className="flex-1">
+              <BotonEnlace href="/registro" tamano="md" className="flex-1">
                 Empezar
               </BotonEnlace>
             </div>

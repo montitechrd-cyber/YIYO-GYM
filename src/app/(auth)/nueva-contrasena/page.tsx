@@ -21,10 +21,10 @@ export default async function PaginaNuevaContrasena({ searchParams }: {
   }
   return (
     <div>
-      <h1 className="text-4xl font-light text-violeta-900">
-        Crea tu <span className="font-script text-degradado">nueva clave</span>
+      <h1 className="text-6xl text-violeta-900">
+        Crea tu <span className="text-violeta-600">nueva clave</span>
       </h1>
-      <p className="mt-3 text-sm font-light text-violeta-900/60">
+      <p className="mt-3 text-sm text-violeta-900/75">
         Elige una contraseña que recuerdes y que nadie más pueda adivinar.
       </p>
 

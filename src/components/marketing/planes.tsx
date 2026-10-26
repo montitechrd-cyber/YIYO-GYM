@@ -1,7 +1,5 @@
 import { Check } from "lucide-react";
 import { BotonEnlace } from "@/components/ui/boton";
-import { Isotipo } from "@/components/brand/logo";
-import { Separador } from "@/components/brand/decoraciones";
 import { cn } from "@/lib/utils";
 
 const planes = [
@@ -44,77 +42,66 @@ const planes = [
 
 export function Planes() {
   return (
-    <section id="planes" className="relative overflow-hidden bg-crema py-24">
-      {/* Marca de agua: aquí es donde la clienta decide, y el sello de la
-          casa detrás refuerza a quién le está confiando el proceso. */}
-      <Isotipo className="pointer-events-none absolute -right-16 top-1/2 hidden h-[28rem] -translate-y-1/2 opacity-[0.045] lg:block" />
-
-      <div className="relative mx-auto max-w-6xl px-6">
-        <div className="text-center">
-          <p className="text-[11px] tracking-[0.28em] text-violeta-500 uppercase">
-            Planes
-          </p>
-          <h2 className="mt-4 text-4xl font-light text-violeta-900 md:text-5xl">
+    <section id="planes" className="bg-crema py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <h2 className="max-w-3xl text-6xl text-violeta-900 md:text-[6rem]">
             Elige cómo quieres que te acompañe
           </h2>
-          <p className="mx-auto mt-5 max-w-xl font-light text-violeta-900/65">
+          <p className="max-w-sm text-base leading-7 text-violeta-900/80">
             Sin permanencia. Cancela cuando quieras desde tu propio panel. Los
             precios se muestran al crear tu cuenta.
           </p>
-          <Separador className="mt-8" />
         </div>
 
-        <div className="mt-16 grid items-start gap-6 lg:grid-cols-3">
+        <div className="mt-14 grid items-stretch gap-0 border-2 border-violeta-900 lg:grid-cols-3">
           {planes.map((p) => (
             <article
               key={p.nombre}
               className={cn(
-                "relative overflow-hidden rounded-4xl p-9 transition-all duration-500",
-                p.destacado
-                  ? "fondo-degradado text-white shadow-elevada lg:-translate-y-4 lg:scale-[1.03]"
-                  : "border border-lila-200 bg-white text-violeta-900 hover:-translate-y-1.5 hover:border-lila-400 hover:shadow-suave"
+                "flex flex-col p-8 md:p-10",
+                "border-b-2 border-violeta-900 last:border-b-0 lg:border-r-2 lg:border-b-0 lg:last:border-r-0",
+                p.destacado ? "bg-violeta-700 text-white" : "bg-white text-violeta-900"
               )}
             >
-              {p.destacado && (
-                <span className="absolute top-7 right-7 rounded-full bg-white/20 px-3 py-1 text-[10px] tracking-[0.18em] text-white uppercase backdrop-blur">
-                  Más elegido
-                </span>
-              )}
-
-              <h3
-                className={cn(
-                  "text-sm tracking-[0.22em] uppercase",
-                  p.destacado ? "text-lila-100" : "text-violeta-500"
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-5xl uppercase">{p.nombre}</h3>
+                {p.destacado && (
+                  <span className="shrink-0 bg-crema px-2 py-1 text-[10px] font-bold tracking-[0.14em] text-violeta-900 uppercase">
+                    Más elegido
+                  </span>
                 )}
-              >
-                {p.nombre}
-              </h3>
+              </div>
 
               <p
                 className={cn(
-                  "mt-6 text-sm leading-relaxed font-light",
-                  p.destacado ? "text-lila-100/85" : "text-violeta-900/60"
+                  "mt-5 text-[15px] leading-6",
+                  p.destacado ? "text-white/90" : "text-violeta-900/75"
                 )}
               >
                 {p.resumen}
               </p>
 
-              <ul className="mt-8 space-y-3.5">
+              <ul
+                className={cn(
+                  "mt-8 flex-1 border-t",
+                  p.destacado ? "border-white/40" : "border-violeta-900/25"
+                )}
+              >
                 {p.beneficios.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-sm font-light">
-                    <span
-                      className={cn(
-                        "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
-                        p.destacado
-                          ? "bg-white/20 text-white"
-                          : "bg-lila-100 text-violeta-600"
-                      )}
-                    >
-                      <Check size={12} strokeWidth={2.5} />
-                    </span>
-                    <span className={p.destacado ? "text-lila-50" : "text-violeta-900/75"}>
-                      {b}
-                    </span>
+                  <li
+                    key={b}
+                    className={cn(
+                      "flex items-start gap-3 border-b py-3 text-sm",
+                      p.destacado ? "border-white/20" : "border-violeta-900/15"
+                    )}
+                  >
+                    <Check
+                      size={16}
+                      strokeWidth={3}
+                      className={cn("mt-0.5 shrink-0", p.destacado ? "text-lila-200" : "text-violeta-700")}
+                    />
+                    <span>{b}</span>
                   </li>
                 ))}
               </ul>

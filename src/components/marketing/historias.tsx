@@ -1,6 +1,3 @@
-import { Quote } from "lucide-react";
-import { Hoja } from "@/components/brand/decoraciones";
-
 const historias = [
   {
     nombre: "Alejandra M.",
@@ -27,48 +24,25 @@ const historias = [
 
 export function Historias() {
   return (
-    <section
-      id="historias"
-      className="relative overflow-hidden bg-gradient-to-b from-crema to-lila-100 py-24"
-    >
-      <Hoja className="absolute top-16 right-[6%] hidden h-20 w-20 rotate-12 text-lila-300/60 lg:block" />
+    <section id="historias" className="bg-lila-100 py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6">
+        <h2 className="max-w-3xl text-6xl text-violeta-900 md:text-[6rem]">
+          Ellas ya son <span className="text-violeta-600">Yiyo</span>
+        </h2>
 
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="max-w-2xl">
-          <p className="text-[11px] tracking-[0.28em] text-violeta-500 uppercase">
-            Historias reales
-          </p>
-          <h2 className="mt-4 text-4xl font-light text-violeta-900 md:text-5xl">
-            Ellas ya son{" "}
-            <span className="font-script text-degradado text-5xl md:text-6xl">Yiyo</span>
-          </h2>
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-px border-y-2 border-violeta-900 bg-violeta-900/30 md:grid-cols-3">
           {historias.map((h) => (
-            <figure
-              key={h.nombre}
-              className="group relative flex flex-col justify-between rounded-4xl border border-lila-200 bg-white/80 p-8 backdrop-blur transition-all duration-500 hover:-translate-y-1.5 hover:shadow-elevada"
-            >
-              <Quote
-                size={30}
-                strokeWidth={1.2}
-                className="text-lila-300 transition-colors duration-500 group-hover:text-violeta-500"
-              />
-              <blockquote className="mt-5 text-sm leading-relaxed font-light text-violeta-900/75">
+            <figure key={h.nombre} className="flex flex-col justify-between bg-lila-100 py-8 md:px-8 md:first:pl-0 md:last:pr-0">
+              <blockquote className="text-lg leading-7 font-medium text-violeta-900">
                 «{h.texto}»
               </blockquote>
-              <figcaption className="mt-7 flex items-center gap-3 border-t border-lila-200 pt-6">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full fondo-degradado text-xs font-medium tracking-wider text-white">
+              <figcaption className="mt-8 flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-violeta-700 text-xs font-bold tracking-wider text-white">
                   {h.iniciales}
                 </span>
                 <span>
-                  <span className="block text-sm font-medium text-violeta-800">
-                    {h.nombre}
-                  </span>
-                  <span className="block text-[11px] font-light text-violeta-900/50">
-                    {h.detalle}
-                  </span>
+                  <span className="block text-sm font-semibold text-violeta-900">{h.nombre}</span>
+                  <span className="block text-xs text-violeta-900/70">{h.detalle}</span>
                 </span>
               </figcaption>
             </figure>

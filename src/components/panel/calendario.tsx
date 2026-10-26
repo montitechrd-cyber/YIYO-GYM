@@ -139,26 +139,26 @@ export function Calendario({
       )}
     >
       <div className="mb-7 flex items-center justify-between">
-        <h2 className="text-xl font-light text-violeta-900 first-letter:uppercase">
+        <h2 className="text-xl font-normal text-violeta-900 first-letter:uppercase">
           {MESES[mes]} {anio}
         </h2>
         <div className="flex gap-2">
           <button
             onClick={() => mover(-1)}
-            className="cursor-pointer rounded-full p-2 text-violeta-600 transition-colors hover:bg-lila-100"
+            className="cursor-pointer rounded-sm p-2 text-violeta-600 transition-colors hover:bg-lila-100"
             aria-label="Mes anterior"
           >
             <ChevronLeft size={18} />
           </button>
           <button
             onClick={irAHoy}
-            className="cursor-pointer rounded-full px-4 text-xs font-light text-violeta-600 transition-colors hover:bg-lila-100"
+            className="cursor-pointer rounded-sm px-4 text-xs font-normal text-violeta-600 transition-colors hover:bg-lila-100"
           >
             Hoy
           </button>
           <button
             onClick={() => mover(1)}
-            className="cursor-pointer rounded-full p-2 text-violeta-600 transition-colors hover:bg-lila-100"
+            className="cursor-pointer rounded-sm p-2 text-violeta-600 transition-colors hover:bg-lila-100"
             aria-label="Mes siguiente"
           >
             <ChevronRight size={18} />
@@ -228,7 +228,7 @@ export function Calendario({
                   {hayEntreno && (
                     <span
                       className={cn(
-                        "h-1.5 w-1.5 rounded-full",
+                        "h-1.5 w-1.5 rounded-sm",
                         elegido ? "bg-white" : "bg-violeta-500"
                       )}
                     />
@@ -236,7 +236,7 @@ export function Calendario({
                   {hayComida && (
                     <span
                       className={cn(
-                        "h-1.5 w-1.5 rounded-full",
+                        "h-1.5 w-1.5 rounded-sm",
                         elegido ? "bg-white/70" : "bg-rose-400"
                       )}
                     />
@@ -247,7 +247,7 @@ export function Calendario({
               {porCliente && cuantas > 0 && (
                 <span
                   className={cn(
-                    "text-[10px] font-light",
+                    "text-[10px] font-normal",
                     elegido ? "text-white/80" : "text-violeta-900/45"
                   )}
                 >
@@ -259,13 +259,13 @@ export function Calendario({
         })}
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-lila-100 pt-4 text-[11px] font-light text-violeta-900/50">
+      <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-lila-100 pt-4 text-[11px] font-normal text-violeta-900/50">
         <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-violeta-500" />
+          <span className="h-1.5 w-1.5 rounded-sm bg-violeta-500" />
           Entrenamiento
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
+          <span className="h-1.5 w-1.5 rounded-sm bg-rose-400" />
           Alimentación
         </span>
       </div>
@@ -287,7 +287,7 @@ export function Calendario({
       </h3>
 
       {!seleccionado ? (
-        <p className="mt-6 text-sm font-light text-violeta-900/45">
+        <p className="mt-6 text-sm font-normal text-violeta-900/45">
           Toca cualquier día del calendario para ver lo que hay.
         </p>
       ) : porCliente ? (
@@ -361,7 +361,7 @@ function PorClienta({
 
   if (clientes.length === 0) {
     return (
-      <p className="mt-6 rounded-3xl border border-dashed border-lila-300 px-5 py-10 text-center text-sm font-light text-violeta-900/45">
+      <p className="mt-6 rounded-3xl border border-dashed border-lila-300 px-5 py-10 text-center text-sm font-normal text-violeta-900/45">
         Ninguna clienta tiene nada este día.
       </p>
     );
@@ -386,7 +386,7 @@ function PorClienta({
                 <p className="truncate text-sm font-medium text-violeta-800">
                   {nombres[id] ?? "Clienta"}
                 </p>
-                <p className="mt-1 flex flex-wrap items-center gap-2 text-xs font-light text-violeta-900/55">
+                <p className="mt-1 flex flex-wrap items-center gap-2 text-xs font-normal text-violeta-900/55">
                   {entrenos.length > 0 && (
                     <span className="flex items-center gap-1">
                       <Dumbbell size={11} className="text-violeta-500" />
@@ -456,7 +456,7 @@ function MiDia({
     return (
       <p
         className={cn(
-          "rounded-3xl border border-dashed border-lila-300 px-5 py-10 text-center text-sm font-light text-violeta-900/45",
+          "rounded-3xl border border-dashed border-lila-300 px-5 py-10 text-center text-sm font-normal text-violeta-900/45",
           !compacto && "mt-6"
         )}
       >
@@ -474,7 +474,7 @@ function MiDia({
               <p className="truncate text-sm font-medium text-violeta-800">
                 {s.titulo}
               </p>
-              <p className="mt-1 text-xs font-light text-violeta-900/55">
+              <p className="mt-1 text-xs font-normal text-violeta-900/55">
                 {s.hora ? `${s.hora.slice(0, 5)} · ` : ""}
                 {s.duracion_min} min
               </p>
@@ -485,7 +485,7 @@ function MiDia({
           </div>
 
           {s.notas && (
-            <p className="mt-3 text-xs leading-relaxed font-light text-violeta-900/60">
+            <p className="mt-3 text-xs leading-relaxed font-normal text-violeta-900/60">
               {s.notas}
             </p>
           )}
@@ -505,7 +505,7 @@ function MiDia({
               <form action={cambiarEstadoSesion.bind(null, s.id, "completada")}>
                 <button
                   type="submit"
-                  className="flex cursor-pointer items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-[11px] text-emerald-700 transition-colors hover:bg-emerald-100"
+                  className="flex cursor-pointer items-center gap-1.5 rounded-sm bg-emerald-50 px-3 py-1.5 text-[11px] text-emerald-700 transition-colors hover:bg-emerald-100"
                 >
                   <Check size={12} />
                   Completada
@@ -516,7 +516,7 @@ function MiDia({
               <form action={cambiarEstadoSesion.bind(null, s.id, "omitida")}>
                 <button
                   type="submit"
-                  className="flex cursor-pointer items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-[11px] text-amber-700 transition-colors hover:bg-amber-100"
+                  className="flex cursor-pointer items-center gap-1.5 rounded-sm bg-amber-50 px-3 py-1.5 text-[11px] text-amber-700 transition-colors hover:bg-amber-100"
                 >
                   <X size={12} />
                   Omitida
@@ -527,7 +527,7 @@ function MiDia({
               <form action={borrarSesion.bind(null, s.id)}>
                 <button
                   type="submit"
-                  className="flex cursor-pointer items-center gap-1.5 rounded-full bg-rose-50 px-3 py-1.5 text-[11px] text-rose-700 transition-colors hover:bg-rose-100"
+                  className="flex cursor-pointer items-center gap-1.5 rounded-sm bg-rose-50 px-3 py-1.5 text-[11px] text-rose-700 transition-colors hover:bg-rose-100"
                 >
                   <Trash2 size={12} />
                   Borrar
@@ -548,7 +548,7 @@ function MiDia({
               <p className="truncate text-sm font-medium text-violeta-800">
                 {dia.planNombre}
               </p>
-              <p className="mt-1 text-xs font-light text-violeta-900/55">
+              <p className="mt-1 text-xs font-normal text-violeta-900/55">
                 {dia.empieza ? "Empieza hoy · " : ""}
                 {dia.comidas.length}{" "}
                 {dia.comidas.length === 1 ? "comida" : "comidas"}
@@ -572,13 +572,13 @@ function MiDia({
                 <p className="flex items-baseline justify-between gap-2 text-xs font-medium text-violeta-800">
                   {c.nombre}
                   {c.hora && (
-                    <span className="font-light text-violeta-900/45">
+                    <span className="font-normal text-violeta-900/45">
                       {c.hora.slice(0, 5)}
                     </span>
                   )}
                 </p>
                 {c.alimentos.length > 0 && (
-                  <p className="mt-1 text-xs leading-relaxed font-light text-violeta-900/55">
+                  <p className="mt-1 text-xs leading-relaxed font-normal text-violeta-900/55">
                     {c.alimentos.join(" · ")}
                   </p>
                 )}

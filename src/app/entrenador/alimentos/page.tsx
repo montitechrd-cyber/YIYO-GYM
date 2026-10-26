@@ -55,7 +55,7 @@ export default async function CatalogoAlimentos({
           </Seleccion>
           <button
             type="submit"
-            className="h-11 cursor-pointer rounded-full fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
+            className="h-11 cursor-pointer rounded-sm fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
           >
             Filtrar
           </button>
@@ -77,7 +77,7 @@ export default async function CatalogoAlimentos({
                   <th className="px-6 py-4 font-normal"></th>
                 </tr>
               </thead>
-              <tbody className="font-light text-violeta-900/75">
+              <tbody className="font-normal text-violeta-900/75">
                 {alimentos.map((a) => (
                   <tr key={a.id} className="border-b border-lila-100 last:border-0">
                     <td className="px-6 py-4">

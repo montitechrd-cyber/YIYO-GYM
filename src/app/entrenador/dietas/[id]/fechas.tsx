@@ -86,7 +86,7 @@ export function EditorFechas({ plan }: { plan: PlanAlimentacion }) {
           </div>
 
           {finPrevisto && (
-            <p className="rounded-3xl bg-lila-50 px-5 py-4 text-sm font-light text-violeta-900/70">
+            <p className="rounded-3xl bg-lila-50 px-5 py-4 text-sm font-normal text-violeta-900/70">
               Termina el{" "}
               <strong className="font-medium text-violeta-800">
                 {FECHA_LARGA.format(fechaLocal(finPrevisto))}

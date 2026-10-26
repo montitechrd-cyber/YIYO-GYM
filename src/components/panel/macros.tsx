@@ -40,7 +40,7 @@ export function ResumenMacros({
     return (
       <p
         className={cn(
-          "flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-light text-violeta-900/60",
+          "flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-normal text-violeta-900/60",
           className
         )}
       >
@@ -59,7 +59,7 @@ export function ResumenMacros({
           <p className="text-[10px] tracking-[0.2em] text-violeta-500 uppercase">
             Calorías
           </p>
-          <p className="mt-1 text-3xl font-light text-violeta-800">
+          <p className="mt-1 text-3xl font-normal text-violeta-800">
             {m.calorias}
             {objetivos?.calorias ? (
               <span className="ml-1 text-base text-violeta-900/40">
@@ -71,17 +71,17 @@ export function ResumenMacros({
           </p>
         </div>
         {objetivos?.calorias && (
-          <p className="text-xs font-light text-violeta-900/55">
+          <p className="text-xs font-normal text-violeta-900/55">
             {diferencia(m.calorias, objetivos.calorias)}
           </p>
         )}
       </div>
 
       {objetivos?.calorias && (
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-lila-200">
+        <div className="mt-3 h-2 overflow-hidden rounded-sm bg-lila-200">
           <div
             className={cn(
-              "h-full rounded-full transition-all duration-700",
+              "h-full rounded-sm transition-all duration-700",
               pctCalorias > 110 ? "bg-amber-400" : "fondo-degradado"
             )}
             style={{ width: `${Math.min(pctCalorias, 100)}%` }}
@@ -99,16 +99,16 @@ export function ResumenMacros({
               <dt className="text-[10px] tracking-[0.16em] text-violeta-500 uppercase">
                 {b.etiqueta}
               </dt>
-              <dd className="mt-1 text-lg font-light text-violeta-800">
+              <dd className="mt-1 text-lg font-normal text-violeta-800">
                 {valor}
                 <span className="text-xs text-violeta-900/40">
                   {objetivo ? ` / ${objetivo} g` : " g"}
                 </span>
               </dd>
               {objetivo ? (
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-lila-200">
+                <div className="mt-2 h-1.5 overflow-hidden rounded-sm bg-lila-200">
                   <div
-                    className={cn("h-full rounded-full", b.color)}
+                    className={cn("h-full rounded-sm", b.color)}
                     style={{ width: `${Math.min(pct, 100)}%` }}
                   />
                 </div>
@@ -119,7 +119,7 @@ export function ResumenMacros({
       </dl>
 
       {m.fibra > 0 && (
-        <p className="mt-4 text-[11px] font-light text-violeta-900/45">
+        <p className="mt-4 text-[11px] font-normal text-violeta-900/45">
           Fibra: {m.fibra} g
         </p>
       )}

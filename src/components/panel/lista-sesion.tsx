@@ -54,7 +54,7 @@ function Bloque({
 
   if (tipo === "descanso") {
     return (
-      <p className="flex items-center gap-2.5 rounded-3xl bg-lila-100/70 px-5 py-3 text-sm font-light text-violeta-900/70">
+      <p className="flex items-center gap-2.5 rounded-3xl bg-lila-100/70 px-5 py-3 text-sm font-normal text-violeta-900/70">
         <Timer size={15} className="text-violeta-500" />
         Descansa {formatearDuracion(bloque.descanso_seg)}
       </p>

@@ -72,7 +72,7 @@ export function FormularioDieta({
           </p>
 
           {s ? (
-            <p className="mb-4 text-xs leading-relaxed font-light text-violeta-900/60">
+            <p className="mb-4 text-xs leading-relaxed font-normal text-violeta-900/60">
               Propuesta a partir de sus datos: gasto basal {s.gastoBasal} kcal,
               gasto total estimado {s.gastoTotal} kcal. Es una referencia
               orientativa — ajústala con tu criterio.

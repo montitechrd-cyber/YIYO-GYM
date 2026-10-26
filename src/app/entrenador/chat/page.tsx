@@ -88,7 +88,7 @@ export default async function ChatEntrenador({
                   >
                     <span
                       className={cn(
-                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[11px] font-medium",
+                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-sm text-[11px] font-medium",
                         esActiva
                           ? "bg-white/25 text-white"
                           : "fondo-degradado text-white"
@@ -107,7 +107,7 @@ export default async function ChatEntrenador({
                       </span>
                       <span
                         className={cn(
-                          "block truncate text-[11px] font-light",
+                          "block truncate text-[11px] font-normal",
                           esActiva ? "text-lila-100/80" : "text-violeta-900/45"
                         )}
                       >

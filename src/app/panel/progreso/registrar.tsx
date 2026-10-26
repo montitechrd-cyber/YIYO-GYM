@@ -116,7 +116,7 @@ export function RegistrarProgreso({
               type="file"
               accept="image/*"
               multiple
-              className="file:mr-3 file:cursor-pointer file:rounded-full file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
+              className="file:mr-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
             />
           </Campo>
 

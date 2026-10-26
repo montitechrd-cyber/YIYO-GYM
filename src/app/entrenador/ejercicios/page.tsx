@@ -102,7 +102,7 @@ export default async function BibliotecaEjercicios({
           </Seleccion>
           <button
             type="submit"
-            className="h-11 cursor-pointer rounded-full fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
+            className="h-11 cursor-pointer rounded-sm fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
           >
             Filtrar
           </button>
@@ -117,7 +117,7 @@ export default async function BibliotecaEjercicios({
                 <h2 className="text-lg font-medium text-violeta-800">
                   {seccion.titulo}
                 </h2>
-                <span className="text-xs font-light text-violeta-900/45">
+                <span className="text-xs font-normal text-violeta-900/45">
                   {seccion.lista.length}
                 </span>
                 <span className="h-px flex-1 bg-lila-200" />
@@ -139,7 +139,7 @@ export default async function BibliotecaEjercicios({
                       ) : e.imagen_url ? (
                         <Demostracion url={e.imagen_url} titulo={e.nombre} />
                       ) : (
-                        <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-gradient-to-br from-lila-100 to-lila-200">
+                        <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-lila-100">
                           <Dumbbell
                             size={34}
                             strokeWidth={1.2}
@@ -157,7 +157,7 @@ export default async function BibliotecaEjercicios({
                       <h3 className="line-clamp-2 text-sm leading-snug font-medium text-violeta-800">
                         {e.nombre}
                       </h3>
-                      <p className="mt-1 truncate text-[11px] font-light text-violeta-900/50">
+                      <p className="mt-1 truncate text-[11px] font-normal text-violeta-900/50">
                         {NIVELES[e.nivel]}
                         {e.equipo ? ` · ${e.equipo}` : ""}
                       </p>

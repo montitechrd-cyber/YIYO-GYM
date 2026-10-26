@@ -107,7 +107,7 @@ export function Demostracion({
           type="button"
           onClick={parar}
           aria-label={`Detener la demostración de ${titulo}`}
-          className="absolute top-3 right-3 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-violeta-900/70 text-white backdrop-blur transition-colors hover:bg-violeta-900"
+          className="absolute top-3 right-3 flex h-9 w-9 cursor-pointer items-center justify-center rounded-sm bg-violeta-900/70 text-white backdrop-blur transition-colors hover:bg-violeta-900"
         >
           <X size={16} />
         </button>
@@ -118,7 +118,7 @@ export function Demostracion({
           aria-label={`Ver la demostración de ${titulo}`}
           className="group absolute inset-0 flex cursor-pointer items-center justify-center bg-violeta-900/10 transition-colors hover:bg-violeta-900/20"
         >
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-violeta-700 shadow-elevada transition-transform duration-300 group-hover:scale-110">
+          <span className="flex h-14 w-14 items-center justify-center rounded-sm bg-white/90 text-violeta-700 shadow-elevada transition-transform duration-300 group-hover:scale-110">
             <Play size={22} className="ml-0.5" fill="currentColor" />
           </span>
         </button>

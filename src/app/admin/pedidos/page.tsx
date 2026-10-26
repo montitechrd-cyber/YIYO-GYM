@@ -56,7 +56,7 @@ export default async function Pedidos() {
         </Tarjeta>
       ) : (
         <>
-          <p className="mb-5 text-xs font-light text-violeta-900/50">
+          <p className="mb-5 text-xs font-normal text-violeta-900/50">
             {(pedidos ?? []).length} pedidos · {MONEDA.format(facturado)} sin
             contar los cancelados
           </p>
@@ -74,7 +74,7 @@ export default async function Pedidos() {
                       <h2 className="mt-1 truncate text-lg font-medium text-violeta-800">
                         {p.nombre}
                       </h2>
-                      <p className="text-xs font-light text-violeta-900/50">
+                      <p className="text-xs font-normal text-violeta-900/50">
                         {FECHA_LARGA.format(new Date(p.creado_en))}
                       </p>
                     </div>
@@ -93,7 +93,7 @@ export default async function Pedidos() {
                         key={l.id}
                         className="flex items-baseline justify-between gap-3 text-sm"
                       >
-                        <span className="min-w-0 font-light text-violeta-900/75">
+                        <span className="min-w-0 font-normal text-violeta-900/75">
                           <span className="font-medium text-violeta-800">
                             {l.cantidad}×
                           </span>{" "}
@@ -112,7 +112,7 @@ export default async function Pedidos() {
                     ))}
                   </ul>
 
-                  <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-lila-100 pt-4 text-xs font-light text-violeta-900/65">
+                  <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-lila-100 pt-4 text-xs font-normal text-violeta-900/65">
                     <a
                       href={`https://wa.me/${soloDigitos(p.telefono)}`}
                       target="_blank"
@@ -140,7 +140,7 @@ export default async function Pedidos() {
                   </div>
 
                   {p.notas && (
-                    <p className="mt-3 rounded-2xl bg-lila-50 px-4 py-3 text-xs font-light text-violeta-900/70">
+                    <p className="mt-3 rounded-2xl bg-lila-50 px-4 py-3 text-xs font-normal text-violeta-900/70">
                       {p.notas}
                     </p>
                   )}
@@ -151,7 +151,7 @@ export default async function Pedidos() {
         </>
       )}
 
-      <p className="mt-8 text-center text-[11px] font-light text-violeta-900/40">
+      <p className="mt-8 text-center text-[11px] font-normal text-violeta-900/40">
         Los pedidos llegan también a tu WhatsApp {WHATSAPP_YIYO.replace(/^1/, "+1 ")}
       </p>
     </div>

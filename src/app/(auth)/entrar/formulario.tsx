@@ -54,7 +54,7 @@ export function FormularioEntrar() {
       <div className="flex justify-end">
         <Link
           href="/recuperar"
-          className="text-xs font-light text-violeta-600 underline-offset-4 hover:underline"
+          className="text-xs font-normal text-violeta-600 underline-offset-4 hover:underline"
         >
           Olvidé mi contraseña
         </Link>

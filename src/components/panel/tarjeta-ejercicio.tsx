@@ -71,7 +71,7 @@ export function TarjetaEjercicio({
           onCambioReproduccion={setVideoActivo}
         />
       ) : (
-        <div className="flex aspect-square w-full items-center justify-center bg-gradient-to-br from-lila-100 to-lila-200">
+        <div className="flex aspect-square w-full items-center justify-center bg-lila-100">
           <Dumbbell size={40} strokeWidth={1.1} className="text-violeta-500/40" />
         </div>
       )}
@@ -85,7 +85,7 @@ export function TarjetaEjercicio({
             <h3 className="mt-1.5 text-xl font-medium text-violeta-800">
               {ejercicio.nombre}
             </h3>
-            <p className="mt-1 text-xs font-light text-violeta-900/50">
+            <p className="mt-1 text-xs font-normal text-violeta-900/50">
               {GRUPOS[ejercicio.grupo]} · {NIVELES[ejercicio.nivel]}
               {ejercicio.equipo ? ` · ${ejercicio.equipo}` : ""}
             </p>
@@ -114,7 +114,7 @@ export function TarjetaEjercicio({
         )}
 
         {prescripcion?.notas && (
-          <p className="mt-5 rounded-2xl border border-lila-200 bg-lila-50/60 px-5 py-3 text-sm leading-relaxed font-light text-violeta-900/75">
+          <p className="mt-5 rounded-2xl border border-lila-200 bg-lila-50/60 px-5 py-3 text-sm leading-relaxed font-normal text-violeta-900/75">
             <span className="font-medium text-violeta-700">Nota de Yiyo: </span>
             {prescripcion.notas}
           </p>
@@ -125,7 +125,7 @@ export function TarjetaEjercicio({
             <p className="text-[10px] tracking-[0.18em] text-violeta-500 uppercase">
               Cómo hacerlo
             </p>
-            <p className="mt-2 text-sm leading-relaxed font-light text-violeta-900/75">
+            <p className="mt-2 text-sm leading-relaxed font-normal text-violeta-900/75">
               {ejercicio.instrucciones}
             </p>
           </div>
@@ -136,7 +136,7 @@ export function TarjetaEjercicio({
             <p className="text-[10px] tracking-[0.18em] text-violeta-500 uppercase">
               Consejos
             </p>
-            <p className="mt-2 text-sm leading-relaxed font-light text-violeta-900/75">
+            <p className="mt-2 text-sm leading-relaxed font-normal text-violeta-900/75">
               {ejercicio.consejos}
             </p>
           </div>

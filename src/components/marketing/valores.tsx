@@ -1,5 +1,4 @@
 import { Dumbbell, Heart, Flower2, TrendingUp, Users } from "lucide-react";
-import { Separador } from "@/components/brand/decoraciones";
 
 const valores = [
   {
@@ -31,43 +30,33 @@ const valores = [
 
 export function Valores() {
   return (
-    <section className="relative bg-crema py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center">
-          <p className="text-[11px] tracking-[0.28em] text-violeta-500 uppercase">
-            Somos Yiyo
-          </p>
-          <h2 className="mt-4 text-4xl font-light text-violeta-900 md:text-5xl">
-            Un espacio para <span className="font-script text-degradado text-5xl md:text-6xl">ti</span>
+    <section className="bg-crema py-20 md:py-28">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <h2 className="text-6xl text-violeta-900 md:text-[6rem]">
+            Un espacio
+            <span className="block text-violeta-600">para ti</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-xl font-light text-violeta-900/65">
-            Para tu cuerpo, tu mente y tu crecimiento. Cinco pilares que sostienen
-            cada plan que diseño.
+          <p className="mt-6 max-w-sm text-base leading-7 text-violeta-900/80">
+            Para tu cuerpo, tu mente y tu crecimiento. Cinco pilares que
+            sostienen cada plan que diseño.
           </p>
-          <Separador className="mt-8" />
         </div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {valores.map((v, i) => (
-            <article
+        <ol className="border-t-2 border-violeta-900">
+          {valores.map((v) => (
+            <li
               key={v.titulo}
-              className={`group relative overflow-hidden rounded-4xl border border-lila-200 bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-lila-400 hover:shadow-elevada ${
-                i === 0 ? "sm:col-span-2 lg:col-span-1" : ""
-              }`}
+              className="grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-1 border-b border-violeta-900/25 py-7 transition-colors duration-200 hover:bg-lila-100 sm:grid-cols-[3rem_13rem_1fr] sm:px-3"
             >
-              <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-lila-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-              <div className="relative">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-lila-100 text-violeta-600 transition-colors duration-500 group-hover:bg-violeta-500 group-hover:text-white">
-                  <v.icono size={24} strokeWidth={1.5} />
-                </span>
-                <h3 className="mt-6 text-xl font-medium text-violeta-800">{v.titulo}</h3>
-                <p className="mt-3 text-sm leading-relaxed font-light text-violeta-900/65">
-                  {v.texto}
-                </p>
-              </div>
-            </article>
+              <v.icono size={26} strokeWidth={1.8} className="row-span-2 text-violeta-700 sm:row-span-1" />
+              <h3 className="text-4xl text-violeta-900 uppercase">{v.titulo}</h3>
+              <p className="col-start-2 text-[15px] leading-6 text-violeta-900/75 sm:col-start-3">
+                {v.texto}
+              </p>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

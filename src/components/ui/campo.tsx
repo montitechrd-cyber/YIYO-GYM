@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const baseControl =
-  "w-full rounded-2xl border border-lila-300 bg-white/80 px-4 py-3 text-sm text-violeta-900 outline-none transition-all duration-300 placeholder:text-violeta-900/35 focus:border-violeta-500 focus:bg-white focus:ring-4 focus:ring-lila-200/60 disabled:opacity-60";
+  "w-full rounded-sm border border-violeta-900/35 bg-white px-3.5 py-3 text-[15px] text-violeta-900 outline-none transition-colors duration-200 placeholder:text-violeta-900/45 hover:border-violeta-900 focus:border-violeta-700 focus:ring-2 focus:ring-violeta-700 disabled:opacity-60";
 
 export function Entrada({
   className,
@@ -39,7 +39,7 @@ export function Etiqueta({
   return (
     <label
       className={cn(
-        "mb-2 block text-[11px] tracking-[0.16em] text-violeta-600 uppercase",
+        "mb-2 block text-[11px] font-semibold tracking-[0.14em] text-violeta-800 uppercase",
         className
       )}
       {...props}
@@ -66,7 +66,7 @@ export function Campo({
     <div className={className}>
       <Etiqueta htmlFor={htmlFor}>{etiqueta}</Etiqueta>
       {children}
-      {ayuda && <p className="mt-2 text-xs font-light text-violeta-900/50">{ayuda}</p>}
+      {ayuda && <p className="mt-2 text-xs text-violeta-900/65">{ayuda}</p>}
     </div>
   );
 }

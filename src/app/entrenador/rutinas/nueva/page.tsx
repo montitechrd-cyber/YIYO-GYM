@@ -24,7 +24,7 @@ export default async function NuevaRutina({
     <div className="max-w-3xl">
       <Link
         href="/entrenador/rutinas"
-        className="mb-6 inline-flex items-center gap-2 text-xs font-light text-violeta-600 transition-colors hover:text-violeta-800"
+        className="mb-6 inline-flex items-center gap-2 text-xs font-normal text-violeta-600 transition-colors hover:text-violeta-800"
       >
         <ArrowLeft size={14} />
         Volver a rutinas

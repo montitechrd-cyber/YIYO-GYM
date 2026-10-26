@@ -80,7 +80,7 @@ export function GestorEjercicios({
         <div className="space-y-5">
           {errorBorrado && <Aviso tono="error">{errorBorrado}</Aviso>}
 
-          <p className="text-sm leading-relaxed font-light text-violeta-900/70">
+          <p className="text-sm leading-relaxed font-normal text-violeta-900/70">
             {paso === 1 ? (
               <>
                 Vas a borrar{" "}
@@ -253,12 +253,12 @@ export function GestorEjercicios({
                 name="video"
                 type="file"
                 accept="video/*"
-                className="file:mr-3 file:cursor-pointer file:rounded-full file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
+                className="file:mr-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
               />
             </Campo>
 
             {ejercicio?.video_url && (
-              <p className="mt-3 text-xs font-light text-violeta-900/55">
+              <p className="mt-3 text-xs font-normal text-violeta-900/55">
                 Ya tiene video cargado. Deja todo vacío para conservarlo.
               </p>
             )}
@@ -278,7 +278,7 @@ export function GestorEjercicios({
               name="imagen"
               type="file"
               accept="image/*"
-              className="file:mr-3 file:cursor-pointer file:rounded-full file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
+              className="file:mr-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
             />
           </Campo>
 

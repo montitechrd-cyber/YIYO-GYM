@@ -5,15 +5,15 @@ type Tono = "error" | "exito" | "info";
 
 const tonos: Record<Tono, { caja: string; icono: React.ElementType }> = {
   error: {
-    caja: "border-rose-200 bg-rose-50 text-rose-800",
+    caja: "border-rose-700 bg-rose-50 text-rose-900",
     icono: AlertCircle,
   },
   exito: {
-    caja: "border-emerald-200 bg-emerald-50 text-emerald-800",
+    caja: "border-emerald-700 bg-emerald-50 text-emerald-900",
     icono: CheckCircle2,
   },
   info: {
-    caja: "border-lila-300 bg-lila-100 text-violeta-800",
+    caja: "border-violeta-700 bg-lila-100 text-violeta-900",
     icono: Info,
   },
 };
@@ -31,7 +31,7 @@ export function Aviso({
   return (
     <div
       className={cn(
-        "flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm font-light",
+        "flex items-start gap-3 rounded-sm border px-4 py-3 text-sm font-medium",
         caja,
         className
       )}

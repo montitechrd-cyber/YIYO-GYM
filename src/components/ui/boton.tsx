@@ -6,22 +6,22 @@ type Tamano = "sm" | "md" | "lg";
 
 const variantes: Record<Variante, string> = {
   primario:
-    "fondo-degradado text-white shadow-suave hover:shadow-elevada hover:brightness-110",
-  suave: "bg-lila-200 text-violeta-800 hover:bg-lila-300",
+    "bg-violeta-700 text-white border border-violeta-700 hover:bg-violeta-900 hover:border-violeta-900",
+  suave: "bg-lila-200 text-violeta-900 border border-lila-200 hover:bg-lila-300 hover:border-lila-300",
   contorno:
-    "border border-lila-400 bg-white/60 text-violeta-700 hover:bg-lila-100 hover:border-violeta-500",
-  fantasma: "text-violeta-700 hover:bg-lila-100",
-  claro: "bg-white text-violeta-700 shadow-suave hover:bg-lila-50",
+    "border border-violeta-900 bg-transparent text-violeta-900 hover:bg-violeta-900 hover:text-white",
+  fantasma: "text-violeta-800 hover:bg-lila-100 border border-transparent",
+  claro: "bg-crema text-violeta-900 border border-crema hover:bg-lila-200 hover:border-lila-200",
 };
 
 const tamanos: Record<Tamano, string> = {
-  sm: "h-9 px-4 text-xs",
-  md: "h-11 px-6 text-sm",
-  lg: "h-14 px-9 text-base",
+  sm: "h-9 px-4 text-[11px]",
+  md: "h-11 px-6 text-xs",
+  lg: "h-14 px-9 text-sm",
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violeta-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
+  "inline-flex items-center justify-center gap-2 rounded-sm font-semibold tracking-[0.12em] uppercase transition-colors duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violeta-700 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variante?: Variante;

@@ -66,7 +66,7 @@ export function ConstructorDieta({
                 <span className="block text-sm font-medium">{d.nombre}</span>
                 <span
                   className={cn(
-                    "block text-[11px] font-light",
+                    "block text-[11px] font-normal",
                     d.id === dia?.id ? "text-lila-100" : "text-violeta-900/45"
                   )}
                 >
@@ -98,7 +98,7 @@ export function ConstructorDieta({
             grasa: plan.grasa_objetivo_g,
           }}
         />
-        <p className="mt-4 px-2 text-[11px] leading-relaxed font-light text-violeta-900/45">
+        <p className="mt-4 px-2 text-[11px] leading-relaxed font-normal text-violeta-900/45">
           Los macros se calculan sumando los alimentos de cada comida. Si cambias
           una cantidad, el total se actualiza solo.
         </p>
@@ -271,7 +271,7 @@ function ComidaEditable({
             className="cursor-pointer text-left"
           >
             <h3 className="font-medium text-violeta-800">{comida.nombre}</h3>
-            <p className="mt-0.5 text-[11px] font-light text-violeta-900/45">
+            <p className="mt-0.5 text-[11px] font-normal text-violeta-900/45">
               {comida.hora ? comida.hora.slice(0, 5) : "sin hora"} · toca para
               renombrar
             </p>
@@ -279,7 +279,7 @@ function ComidaEditable({
         )}
 
         <div className="flex items-center gap-3">
-          <p className="text-xs font-light text-violeta-900/60">
+          <p className="text-xs font-normal text-violeta-900/60">
             <span className="font-medium text-violeta-700">{m.calorias} kcal</span>
             {" · "}P {m.proteina} · C {m.carbohidratos} · G {m.grasa}
           </p>
@@ -325,7 +325,7 @@ function ComidaEditable({
                   {ing.alimento.unidad === "unidad" ? "uds" : ing.alimento.unidad}
                 </label>
 
-                <span className="text-[11px] font-light text-violeta-900/55">
+                <span className="text-[11px] font-normal text-violeta-900/55">
                   {im.calorias} kcal · P {im.proteina} · C {im.carbohidratos} · G{" "}
                   {im.grasa}
                 </span>
@@ -343,7 +343,7 @@ function ComidaEditable({
           })}
         </ul>
       ) : (
-        <p className="mb-4 rounded-3xl border border-dashed border-lila-300 px-4 py-6 text-center text-xs font-light text-violeta-900/45">
+        <p className="mb-4 rounded-3xl border border-dashed border-lila-300 px-4 py-6 text-center text-xs font-normal text-violeta-900/45">
           Sin alimentos todavía.
         </p>
       )}
@@ -407,7 +407,7 @@ function ComidaEditable({
                 disabled={enCurso}
                 onClick={() => anadir(a)}
                 onMouseEnter={() => setElegido(a)}
-                className="flex h-fit cursor-pointer items-center gap-2 rounded-full border border-lila-300 bg-white px-3.5 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
+                className="flex h-fit cursor-pointer items-center gap-2 rounded-sm border border-lila-300 bg-white px-3.5 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
               >
                 <Plus size={12} className="text-violeta-500" />
                 {a.nombre}
@@ -416,14 +416,14 @@ function ComidaEditable({
             );
           })}
           {candidatos.length === 0 && (
-            <p className="text-xs font-light text-violeta-900/45">
+            <p className="text-xs font-normal text-violeta-900/45">
               Ningún alimento coincide. Añádelo en la sección Alimentos.
             </p>
           )}
         </div>
 
         {elegido && (
-          <p className="mt-3 flex items-center gap-1.5 text-[11px] font-light text-violeta-900/45">
+          <p className="mt-3 flex items-center gap-1.5 text-[11px] font-normal text-violeta-900/45">
             <UtensilsCrossed size={11} />
             {textoCantidad(elegido, Number(cantidad) || 0)} de {elegido.nombre} ={" "}
             {redondear(macrosDe(elegido, Number(cantidad) || 0)).calorias} kcal
@@ -432,7 +432,7 @@ function ComidaEditable({
       </div>
 
       {enCurso && (
-        <p className="mt-3 flex items-center gap-2 text-xs font-light text-violeta-600">
+        <p className="mt-3 flex items-center gap-2 text-xs font-normal text-violeta-600">
           <Loader2 size={13} className="animate-spin" />
           Guardando…
         </p>

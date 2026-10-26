@@ -55,7 +55,7 @@ export default async function MiPerfil() {
                   <p className="text-[10px] tracking-[0.16em] text-violeta-500 uppercase">
                     {m.et}
                   </p>
-                  <p className="mt-2 text-2xl font-light text-violeta-800">
+                  <p className="mt-2 text-2xl font-normal text-violeta-800">
                     {m.v ?? "—"}
                     {m.v != null && (
                       <span className="ml-0.5 text-xs text-violeta-900/40">{m.u}</span>
@@ -66,7 +66,7 @@ export default async function MiPerfil() {
             </div>
 
             {Object.keys(evaluacion.medidas ?? {}).length > 0 && (
-              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-lila-100 pt-5 text-sm font-light sm:grid-cols-3">
+              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-lila-100 pt-5 text-sm font-normal sm:grid-cols-3">
                 {MEDIDAS.filter((m) => evaluacion.medidas[m.clave] != null).map((m) => (
                   <div key={m.clave} className="flex justify-between gap-2">
                     <dt className="text-violeta-900/50">{m.etiqueta}</dt>
@@ -79,7 +79,7 @@ export default async function MiPerfil() {
             )}
 
             {cliente && (
-              <dl className="mt-6 space-y-3 border-t border-lila-100 pt-5 text-sm font-light">
+              <dl className="mt-6 space-y-3 border-t border-lila-100 pt-5 text-sm font-normal">
                 <div className="flex justify-between gap-4">
                   <dt className="text-violeta-900/45">Objetivo</dt>
                   <dd className="text-violeta-900/80">

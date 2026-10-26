@@ -14,15 +14,15 @@ export function SelectorPlanes({ planes }: { planes: Plan[] }) {
           <article key={p.id} className="rounded-4xl border border-lila-200 bg-white p-7">
             <h3 className="text-sm font-medium text-violeta-800">{p.nombre}</h3>
             {p.descripcion && (
-              <p className="mt-3 text-sm font-light text-violeta-900/60">{p.descripcion}</p>
+              <p className="mt-3 text-sm font-normal text-violeta-900/60">{p.descripcion}</p>
             )}
-            <p className="mt-4 text-2xl font-light text-violeta-800">
+            <p className="mt-4 text-2xl font-normal text-violeta-800">
               {MONEDA.format(Number(p.precio_mensual))}
               <span className="ml-1 text-sm">/mes</span>
             </p>
             <ul className="mt-6 space-y-2.5">
               {p.beneficios.map((beneficio) => (
-                <li key={beneficio} className="flex items-start gap-2.5 text-xs font-light text-violeta-900/70">
+                <li key={beneficio} className="flex items-start gap-2.5 text-xs font-normal text-violeta-900/70">
                   <Check size={13} className="mt-0.5 shrink-0 text-violeta-500" />
                   {beneficio}
                 </li>
