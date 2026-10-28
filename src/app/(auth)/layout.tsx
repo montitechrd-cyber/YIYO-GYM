@@ -30,11 +30,11 @@ export default function LayoutAuth({
       </aside>
 
       {/* Formulario */}
-      <main className="flex flex-1 items-center justify-center bg-crema px-6 py-14">
-        <div className="w-full max-w-md">
+      <main className="flex min-w-0 flex-1 items-center justify-center bg-crema px-5 py-10 sm:px-6 sm:py-14">
+        <div className="w-full min-w-0 max-w-md">
           <Link
             href="/"
-            className="mb-9 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.12em] text-violeta-800 uppercase hover:underline"
+            className="mb-7 inline-flex sm:mb-9 items-center gap-2 text-xs font-semibold tracking-[0.12em] text-violeta-800 uppercase hover:underline"
           >
             <ArrowLeft size={14} />
             Volver al inicio

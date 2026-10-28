@@ -49,7 +49,7 @@ export function CasillaHecho({
       aria-pressed={hecho}
       aria-label={hecho ? "Marcar como no hecho" : "Marcar como hecho"}
       className={cn(
-        "absolute top-4 right-4 z-10 flex h-9 items-center gap-1.5 rounded-sm px-3 text-xs font-medium shadow-suave transition-all duration-300",
+        "absolute top-3 right-3 z-10 flex h-9 sm:top-4 sm:right-4 items-center gap-1.5 rounded-sm px-3 text-xs font-medium shadow-suave transition-all duration-300",
         pendiente && "opacity-70",
         fallo
           ? "bg-rose-500 text-white"

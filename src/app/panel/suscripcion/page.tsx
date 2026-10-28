@@ -81,11 +81,11 @@ export default async function MiSuscripcion() {
         <div className="space-y-5">
           <Tarjeta className="fondo-degradado border-transparent text-white">
             <div className="flex flex-wrap items-start justify-between gap-5">
-              <div>
+              <div className="min-w-0">
                 <p className="text-[10px] tracking-[0.22em] text-lila-100 uppercase">
                   Plan actual
                 </p>
-                <p className="mt-3 text-4xl font-normal">{planActual.nombre}</p>
+                <p className="mt-3 text-3xl font-normal break-words sm:text-4xl">{planActual.nombre}</p>
                 <p className="mt-2 text-lila-100/85">
                   {MONEDA.format(Number(planActual.precio_mensual))} / mes
                 </p>
@@ -98,7 +98,7 @@ export default async function MiSuscripcion() {
               </Insignia>
             </div>
 
-            <dl className="mt-8 grid gap-5 border-t border-white/20 pt-6 sm:grid-cols-2">
+            <dl className="mt-8 grid grid-cols-1 gap-5 border-t border-white/20 pt-6 sm:grid-cols-2">
               <div>
                 <dt className="text-[10px] tracking-[0.18em] text-lila-100 uppercase">
                   Inicio
@@ -147,9 +147,9 @@ export default async function MiSuscripcion() {
               {pagos.map((p) => (
                 <li
                   key={p.id}
-                  className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4"
+                  className="flex items-center justify-between gap-3 rounded-3xl border border-lila-200 px-4 py-3.5 sm:gap-4 sm:px-5 sm:py-4"
                 >
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-violeta-800">
                       {MONEDA.format(Number(p.monto))}
                     </p>

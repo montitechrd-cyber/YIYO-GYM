@@ -22,7 +22,7 @@ export default async function MiPerfil() {
     : { data: null };
 
   return (
-    <div className="max-w-4xl">
+    <div className="min-w-0 max-w-4xl">
       <Encabezado
         titulo="Mi perfil"
         descripcion="Tus datos personales y tu evaluación inicial"
@@ -45,17 +45,17 @@ export default async function MiPerfil() {
               Evaluación del {FECHA_LARGA.format(fechaLocal(evaluacion.fecha))}
             </TituloTarjeta>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {[
                 { et: "Altura", v: evaluacion.altura_cm, u: "cm" },
                 { et: "Peso", v: evaluacion.peso_kg, u: "kg" },
                 { et: "Grasa", v: evaluacion.grasa_pct, u: "%" },
               ].map((m) => (
-                <div key={m.et} className="rounded-3xl bg-lila-50 px-4 py-4 text-center">
-                  <p className="text-[10px] tracking-[0.16em] text-violeta-500 uppercase">
+                <div key={m.et} className="min-w-0 rounded-3xl bg-lila-50 px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <p className="text-[10px] tracking-[0.12em] text-violeta-500 uppercase sm:tracking-[0.16em]">
                     {m.et}
                   </p>
-                  <p className="mt-2 text-2xl font-normal text-violeta-800">
+                  <p className="mt-2 text-xl font-normal break-words text-violeta-800 sm:text-2xl">
                     {m.v ?? "—"}
                     {m.v != null && (
                       <span className="ml-0.5 text-xs text-violeta-900/40">{m.u}</span>
@@ -66,11 +66,11 @@ export default async function MiPerfil() {
             </div>
 
             {Object.keys(evaluacion.medidas ?? {}).length > 0 && (
-              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-lila-100 pt-5 text-sm font-normal sm:grid-cols-3">
+              <dl className="mt-6 grid grid-cols-1 gap-x-6 gap-y-2 border-t border-lila-100 pt-5 text-sm font-normal min-[420px]:grid-cols-2 sm:grid-cols-3">
                 {MEDIDAS.filter((m) => evaluacion.medidas[m.clave] != null).map((m) => (
                   <div key={m.clave} className="flex justify-between gap-2">
-                    <dt className="text-violeta-900/50">{m.etiqueta}</dt>
-                    <dd className="text-violeta-900/80">
+                    <dt className="min-w-0 text-violeta-900/50">{m.etiqueta}</dt>
+                    <dd className="shrink-0 text-violeta-900/80">
                       {evaluacion.medidas[m.clave]} cm
                     </dd>
                   </div>
@@ -82,13 +82,13 @@ export default async function MiPerfil() {
               <dl className="mt-6 space-y-3 border-t border-lila-100 pt-5 text-sm font-normal">
                 <div className="flex justify-between gap-4">
                   <dt className="text-violeta-900/45">Objetivo</dt>
-                  <dd className="text-violeta-900/80">
+                  <dd className="min-w-0 text-right break-words text-violeta-900/80">
                     {cliente.objetivo ? OBJETIVOS[cliente.objetivo] : "Sin definir"}
                   </dd>
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-violeta-900/45">Nivel</dt>
-                  <dd className="text-violeta-900/80">
+                  <dd className="min-w-0 text-right break-words text-violeta-900/80">
                     {cliente.nivel ? NIVELES[cliente.nivel] : "Sin definir"}
                   </dd>
                 </div>

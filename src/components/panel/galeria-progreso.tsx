@@ -10,7 +10,7 @@ export type FotoProgreso = { fecha: string; url: string };
 export function GaleriaProgreso({ fotos }: { fotos: FotoProgreso[] }) {
   if (fotos.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-lila-300 px-6 py-12 text-center">
+      <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-lila-300 px-4 py-10 text-center sm:px-6 sm:py-12">
         <ImageOff size={26} strokeWidth={1.3} className="text-violeta-500/40" />
         <p className="mt-4 text-sm font-normal text-violeta-900/50">
           Todavía no hay fotos de progreso.
@@ -20,11 +20,11 @@ export function GaleriaProgreso({ fotos }: { fotos: FotoProgreso[] }) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-3 lg:grid-cols-4">
       {fotos.map((f) => (
         <figure
           key={f.url}
-          className="overflow-hidden rounded-3xl border border-lila-200 bg-lila-50"
+          className="min-w-0 overflow-hidden rounded-3xl border border-lila-200 bg-lila-50"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

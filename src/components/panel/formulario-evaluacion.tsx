@@ -41,7 +41,7 @@ export function FormularioEvaluacion({
   const hoy = hoyTexto();
 
   return (
-    <form action={accion} className="space-y-10">
+    <form action={accion} className="space-y-8 sm:space-y-10">
       <input type="hidden" name="cliente_id" value={clienteId} />
       {evaluacion && (
         <input type="hidden" name="evaluacion_id" value={evaluacion.id} />
@@ -101,7 +101,7 @@ export function FormularioEvaluacion({
           <h3 className="mb-5 text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
             Medidas corporales (cm)
           </h3>
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
             {MEDIDAS.map((m) => (
               <Campo key={m.clave} etiqueta={m.etiqueta} htmlFor={`medida_${m.clave}`}>
                 <Entrada
@@ -122,7 +122,7 @@ export function FormularioEvaluacion({
         <h3 className="mb-5 text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
           Objetivo y experiencia
         </h3>
-        <div className="grid gap-5 sm:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <Campo etiqueta="Objetivo principal" htmlFor="objetivo">
             <Seleccion id="objetivo" name="objetivo" defaultValue={objetivoActual ?? ""}>
               <option value="">Elegir…</option>
@@ -265,7 +265,7 @@ export function FormularioEvaluacion({
         </div>
       </section>
 
-      <Boton type="submit" tamano="lg" disabled={pendiente}>
+      <Boton type="submit" tamano="lg" disabled={pendiente} className="w-full sm:w-auto">
         {pendiente && <Loader2 size={16} className="animate-spin" />}
         {pendiente ? "Guardando…" : textoBoton}
       </Boton>

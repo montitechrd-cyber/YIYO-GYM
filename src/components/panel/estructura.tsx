@@ -101,14 +101,14 @@ export function EstructuraPanel({
             href={e.href}
             onClick={() => setAbierto(false)}
             className={cn(
-              "group flex items-center gap-3 rounded-sm px-3 py-2.5 text-[13px] font-semibold tracking-wide transition-colors duration-200",
+              "group flex min-w-0 items-center gap-3 rounded-sm px-3 py-2.5 text-[13px] font-semibold tracking-wide transition-colors duration-200",
               activo
                 ? "bg-violeta-700 text-white"
                 : "text-violeta-900/75 hover:bg-lila-200 hover:text-violeta-900"
             )}
           >
-            <Icono size={18} strokeWidth={2} />
-            {e.texto}
+            <Icono size={18} strokeWidth={2} className="shrink-0" />
+            <span className="min-w-0 truncate">{e.texto}</span>
           </Link>
         );
       })}
@@ -135,7 +135,7 @@ export function EstructuraPanel({
           type="submit"
           className="flex w-full cursor-pointer items-center gap-3 rounded-sm px-3 py-2.5 text-[13px] font-semibold text-violeta-900/70 transition-colors hover:bg-rose-100 hover:text-rose-900"
         >
-          <LogOut size={17} strokeWidth={2} />
+          <LogOut size={17} strokeWidth={2} className="shrink-0" />
           Cerrar sesión
         </button>
       </form>
@@ -145,9 +145,9 @@ export function EstructuraPanel({
   return (
     <div className="min-h-dvh bg-crema">
       {/* Barra superior móvil */}
-      <header className="vidrio sticky top-0 z-40 flex items-center justify-between px-5 py-3 lg:hidden">
+      <header className="vidrio sticky top-0 z-40 flex items-center justify-between gap-2 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-5 lg:hidden">
         <Logo tamano="sm" />
-        <div className="flex items-center gap-1">
+        <div className="flex shrink-0 items-center gap-1">
           <CentroNotificaciones perfilId={perfil.id} iniciales={notificaciones} />
           <button
             onClick={() => setAbierto(true)}
@@ -169,8 +169,8 @@ export function EstructuraPanel({
             enlaces quedaban fuera de la pantalla y no había forma de
             llegar a ellos. */}
         <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col gap-6 border-r border-violeta-900 bg-lila-50 p-6 lg:flex">
-          <div className="flex shrink-0 items-start justify-between">
-            <div>
+          <div className="flex shrink-0 items-start justify-between gap-2">
+            <div className="min-w-0">
               <Link href="/">
                 <Logo tamano="sm" />
               </Link>
@@ -195,9 +195,9 @@ export function EstructuraPanel({
               className="absolute inset-0 bg-violeta-900/60"
               onClick={() => setAbierto(false)}
             />
-            <aside className="animate-aparecer absolute top-0 left-0 flex h-full w-72 flex-col gap-6 border-r border-violeta-900 bg-lila-50 p-6">
-              <div className="flex shrink-0 items-start justify-between">
-                <div>
+            <aside className="animate-aparecer absolute top-0 left-0 flex h-full w-72 max-w-[calc(100vw-3rem)] flex-col gap-6 border-r border-violeta-900 bg-lila-50 p-5 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-6 sm:pt-[max(1.5rem,env(safe-area-inset-top))] sm:pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+              <div className="flex shrink-0 items-start justify-between gap-2">
+                <div className="min-w-0">
                   <Logo tamano="sm" />
                   <p className="mt-5 inline-block bg-violeta-900 px-2 py-1 text-[10px] font-bold tracking-[0.16em] text-white uppercase">
                     {ETIQUETA_ROL[perfil.rol]}
@@ -205,7 +205,7 @@ export function EstructuraPanel({
                 </div>
                 <button
                   onClick={() => setAbierto(false)}
-                  className="rounded-sm p-2 text-violeta-900 hover:bg-lila-200"
+                  className="shrink-0 rounded-sm p-2 text-violeta-900 hover:bg-lila-200"
                   aria-label="Cerrar menú"
                 >
                   <X size={18} />
@@ -217,7 +217,7 @@ export function EstructuraPanel({
           </div>
         )}
 
-        <main className="min-w-0 flex-1 px-5 py-8 lg:px-12 lg:py-12">{children}</main>
+        <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 sm:py-8 lg:px-12 lg:py-12">{children}</main>
       </div>
     </div>
   );

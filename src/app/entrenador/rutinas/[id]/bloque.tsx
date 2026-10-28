@@ -32,7 +32,7 @@ function Accion({
       aria-label={etiqueta}
       title={etiqueta}
       className={cn(
-        "cursor-pointer rounded-xl p-2 text-violeta-900/35 transition-colors",
+        "cursor-pointer rounded-xl p-2.5 text-violeta-900/35 transition-colors",
         peligro
           ? "hover:bg-rose-100 hover:text-rose-600"
           : "hover:bg-lila-200 hover:text-violeta-700"
@@ -92,7 +92,7 @@ export function FilaBloque({
 
       <div
         className={cn(
-          "flex min-w-0 flex-1 items-center gap-3 rounded-3xl px-4 py-3",
+          "flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-1 rounded-3xl px-3 py-3 sm:flex-nowrap sm:px-4",
           esEjercicio
             ? "border border-lila-200 bg-white"
             : bloque.tipo === "descanso"
@@ -119,7 +119,7 @@ export function FilaBloque({
           </span>
         )}
 
-        <div className="min-w-0 flex-1">
+        <div className="min-w-32 flex-1">
           {esEjercicio ? (
             <>
               <p className="truncate text-sm font-medium text-violeta-800">
@@ -141,13 +141,13 @@ export function FilaBloque({
               Descanso de {formatearDuracion(bloque.descanso_seg)}
             </p>
           ) : (
-            <p className="text-sm font-medium tracking-wide text-violeta-800">
+            <p className="text-sm font-medium tracking-wide break-words text-violeta-800">
               {bloque.texto}
             </p>
           )}
         </div>
 
-        <div className="flex shrink-0 items-center">
+        <div className="ml-auto flex shrink-0 items-center">
           <Accion etiqueta="Editar" onClick={alEditar}>
             <Pencil size={15} />
           </Accion>
@@ -158,7 +158,7 @@ export function FilaBloque({
             <Trash2 size={15} />
           </Accion>
           <span
-            className="cursor-grab p-2 text-violeta-900/25 active:cursor-grabbing"
+            className="hidden cursor-grab p-2 sm:inline-block text-violeta-900/25 active:cursor-grabbing"
             title="Arrastra para reordenar"
           >
             <GripVertical size={15} />

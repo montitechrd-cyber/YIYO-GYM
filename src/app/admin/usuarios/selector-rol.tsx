@@ -28,7 +28,7 @@ export function SelectorRol({
       <Seleccion
         defaultValue={rol}
         disabled={guardando}
-        className="w-44 px-3 py-2 text-sm"
+        className="w-full min-w-36 px-3 py-2 text-sm sm:w-44"
         onChange={(e) => {
           const nuevo = e.target.value as RolUsuario;
           iniciar(async () => {

@@ -56,16 +56,16 @@ export function PanelNotas({
           {notas.map((n) => (
             <li
               key={n.id}
-              className="group rounded-3xl bg-lila-50 px-5 py-4 transition-colors hover:bg-lila-100"
+              className="group rounded-3xl bg-lila-50 px-4 py-4 sm:px-5 transition-colors hover:bg-lila-100"
             >
               <div className="flex items-start justify-between gap-3">
-                <p className="text-sm leading-relaxed font-normal whitespace-pre-wrap text-violeta-900/80">
+                <p className="min-w-0 text-sm leading-relaxed font-normal break-words whitespace-pre-wrap text-violeta-900/80">
                   {n.contenido}
                 </p>
                 <form action={borrarNota.bind(null, n.id, clienteId)}>
                   <button
                     type="submit"
-                    className="cursor-pointer rounded-sm p-1.5 text-violeta-900/25 opacity-0 transition-all group-hover:opacity-100 hover:bg-rose-100 hover:text-rose-600"
+                    className="shrink-0 cursor-pointer rounded-sm p-2 text-violeta-900/25 transition-all sm:opacity-0 sm:group-hover:opacity-100 focus-visible:opacity-100 hover:bg-rose-100 hover:text-rose-600"
                     aria-label="Borrar nota"
                   >
                     <Trash2 size={14} />

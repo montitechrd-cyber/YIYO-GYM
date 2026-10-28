@@ -37,7 +37,7 @@ export function EditorObjetivos({ plan }: { plan: PlanAlimentacion }) {
           <input type="hidden" name="plan_id" value={plan.id} />
           {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
 
-          <div className="grid gap-4 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-4">
             {[
               { n: "calorias_objetivo", e: "Calorías", v: plan.calorias_objetivo },
               {
@@ -65,7 +65,7 @@ export function EditorObjetivos({ plan }: { plan: PlanAlimentacion }) {
             ))}
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Boton type="submit" disabled={pendiente}>
               {pendiente && <Loader2 size={15} className="animate-spin" />}
               {pendiente ? "Guardando…" : "Guardar"}

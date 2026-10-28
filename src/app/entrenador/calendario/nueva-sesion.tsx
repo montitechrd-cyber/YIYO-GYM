@@ -103,7 +103,7 @@ export function NuevaSesion({
             />
           </Campo>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <Campo etiqueta="Fecha" htmlFor="fecha">
               <Entrada
                 id="fecha"
@@ -150,7 +150,7 @@ export function NuevaSesion({
             />
           </Campo>
 
-          <div className="flex gap-3 pt-2">
+          <div className="flex flex-wrap gap-3 pt-2">
             <Boton type="submit" disabled={pendiente}>
               {pendiente && <Loader2 size={15} className="animate-spin" />}
               {pendiente ? "Creando…" : "Programar"}

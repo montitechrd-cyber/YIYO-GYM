@@ -47,7 +47,7 @@ export function RegistrarProgreso({
           {clienteId && <input type="hidden" name="cliente_id" value={clienteId} />}
           {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
 
-          <div className="grid gap-5 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <Campo etiqueta="Fecha" htmlFor="fecha">
               <Entrada
                 id="fecha"
@@ -89,7 +89,7 @@ export function RegistrarProgreso({
             <h3 className="mb-4 text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
               Medidas (cm)
             </h3>
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {MEDIDAS.map((m) => (
                 <Campo key={m.clave} etiqueta={m.etiqueta} htmlFor={`medida_${m.clave}`}>
                   <Entrada
@@ -116,7 +116,7 @@ export function RegistrarProgreso({
               type="file"
               accept="image/*"
               multiple
-              className="file:mr-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
+              className="file:mr-3 file:cursor-pointer min-w-0 file:rounded-sm file:border-0 file:bg-lila-200 file:px-4 file:py-1.5 file:text-xs file:text-violeta-700"
             />
           </Campo>
 
@@ -129,7 +129,7 @@ export function RegistrarProgreso({
             />
           </Campo>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Boton type="submit" disabled={pendiente}>
               {pendiente && <Loader2 size={15} className="animate-spin" />}
               {pendiente ? "Guardando…" : "Guardar"}

@@ -98,7 +98,7 @@ export default async function ProgresoDeCliente({
         }
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <Metrica
           etiqueta="Peso actual"
           valor={ultimo?.peso_kg != null ? `${ultimo.peso_kg} kg` : "—"}
@@ -137,7 +137,7 @@ export default async function ProgresoDeCliente({
             <GraficaArea datos={serie} clave="peso" etiqueta="Peso" unidad=" kg" />
           </Tarjeta>
 
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 [&>*]:min-w-0">
             <Tarjeta>
               <TituloTarjeta>Composición corporal</TituloTarjeta>
               <GraficaLineas
@@ -160,7 +160,7 @@ export default async function ProgresoDeCliente({
                   }))}
                 />
               ) : (
-                <p className="py-12 text-center text-sm font-normal text-violeta-900/45">
+                <p className="py-8 text-center text-sm font-normal text-violeta-900/45">
                   Sin medidas registradas.
                 </p>
               )}
@@ -192,7 +192,7 @@ export default async function ProgresoDeCliente({
           {entrenamientos && entrenamientos.length > 0 ? (
             <ul className="space-y-3">
               {entrenamientos.map((e) => (
-                <li key={e.id} className="rounded-3xl border border-lila-200 px-5 py-4">
+                <li key={e.id} className="rounded-3xl border border-lila-200 px-4 py-4 sm:px-5">
                   <p className="text-sm font-medium text-violeta-800 first-letter:uppercase">
                     {FECHA_LARGA.format(fechaLocal(e.fecha))}
                   </p>
@@ -202,7 +202,7 @@ export default async function ProgresoDeCliente({
                     {e.sensacion ? ` · ${e.sensacion}` : ""}
                   </p>
                   {e.notas && (
-                    <p className="mt-2 text-xs leading-relaxed font-normal text-violeta-900/65">
+                    <p className="mt-2 text-xs leading-relaxed font-normal break-words text-violeta-900/65">
                       {e.notas}
                     </p>
                   )}

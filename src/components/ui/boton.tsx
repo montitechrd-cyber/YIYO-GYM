@@ -15,13 +15,13 @@ const variantes: Record<Variante, string> = {
 };
 
 const tamanos: Record<Tamano, string> = {
-  sm: "h-9 px-4 text-[11px]",
-  md: "h-11 px-6 text-xs",
-  lg: "h-14 px-9 text-sm",
+  sm: "min-h-9 px-4 py-1.5 text-[11px]",
+  md: "min-h-11 px-4 py-2 text-xs sm:px-6",
+  lg: "min-h-14 px-6 py-3 text-sm sm:px-9",
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-sm font-semibold tracking-[0.12em] uppercase transition-colors duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violeta-700 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
+  "inline-flex max-w-full items-center justify-center gap-2 rounded-sm text-center leading-tight font-semibold tracking-[0.12em] uppercase transition-colors duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violeta-700 active:translate-y-px disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variante?: Variante;

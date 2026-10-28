@@ -51,9 +51,9 @@ export default async function DetalleDieta({
       </Link>
 
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-normal text-violeta-900">{plan.nombre}</h1>
-          <p className="mt-2 flex items-center gap-2 text-sm font-normal text-violeta-900/55">
+        <div className="min-w-0">
+          <h1 className="text-2xl font-normal break-words text-violeta-900 sm:text-3xl">{plan.nombre}</h1>
+          <p className="mt-2 flex flex-wrap items-center gap-x-2 text-sm font-normal text-violeta-900/55">
             <User size={14} className="text-lila-400" />
             {nombreCliente}
             {diasConContenido > 0 && (
@@ -65,7 +65,7 @@ export default async function DetalleDieta({
             )}
           </p>
           {plan.descripcion && (
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed font-normal text-violeta-900/65">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed break-words font-normal text-violeta-900/65">
               {plan.descripcion}
             </p>
           )}

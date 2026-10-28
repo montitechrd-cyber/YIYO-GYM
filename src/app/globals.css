@@ -180,3 +180,25 @@ textarea {
 @utility filete {
   border: 1px solid var(--color-violeta-900);
 }
+
+/* ---- Red de seguridad responsive (en capa base: las utilidades la superan) ---- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    min-width: 320px;
+    overflow-wrap: break-word;
+  }
+  img,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+}

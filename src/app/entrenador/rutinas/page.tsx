@@ -72,17 +72,17 @@ export default async function Rutinas({
         </p>
 
         {asignadas.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             {asignadas.map((r) => {
               const p = r.cliente_id ? perfilPorCliente.get(r.cliente_id) : null;
               return (
                 <Link
                   key={r.id}
                   href={`/entrenador/rutinas/${r.id}`}
-                  className="group rounded-4xl border border-lila-200 bg-white p-7 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
+                  className="group rounded-4xl border border-lila-200 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada sm:p-7"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="flex items-center gap-2 font-medium text-violeta-800">
+                    <h3 className="flex min-w-0 items-center gap-2 font-medium break-words text-violeta-800">
                       {r.emoji && <span aria-hidden>{r.emoji}</span>}
                       {r.nombre}
                     </h3>
@@ -97,9 +97,9 @@ export default async function Rutinas({
                     </p>
                   )}
 
-                  <div className="mt-5 flex items-center gap-2 border-t border-lila-100 pt-4 text-xs font-normal text-violeta-900/55">
-                    <User size={13} className="text-lila-400" />
-                    {p ? nombreVisible(p) : "Sin clienta asignada"}
+                  <div className="mt-5 flex min-w-0 items-center gap-2 border-t border-lila-100 pt-4 text-xs font-normal text-violeta-900/55">
+                    <User size={13} className="shrink-0 text-lila-400" />
+                    <span className="min-w-0 truncate">{p ? nombreVisible(p) : "Sin clienta asignada"}</span>
                   </div>
 
                   <p className="mt-2 text-[11px] font-normal text-violeta-900/40">
@@ -111,7 +111,7 @@ export default async function Rutinas({
             })}
           </div>
         ) : (
-          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-10 text-center text-sm font-normal text-violeta-900/45">
+          <p className="rounded-4xl border border-dashed border-lila-300 px-4 py-10 sm:px-6 text-center text-sm font-normal text-violeta-900/45">
             <ListChecks size={20} className="mx-auto mb-2 text-lila-400" />
             Todavía no le has asignado ninguna rutina a nadie.
           </p>

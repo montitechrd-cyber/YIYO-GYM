@@ -100,7 +100,7 @@ export default async function MiProgreso() {
         <h2 className="mb-4 text-[11px] tracking-[0.2em] text-violeta-500 uppercase">
           Tu semana
         </h2>
-        <div className="grid gap-5 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3">
           <Metrica
             etiqueta="Ejercicios hechos"
             valor={semana.ejerciciosSemana}
@@ -130,7 +130,7 @@ export default async function MiProgreso() {
         </div>
       </section>
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4">
         <Metrica
           etiqueta="Peso actual"
           valor={ultimo?.peso_kg != null ? `${ultimo.peso_kg} kg` : "—"}
@@ -177,7 +177,7 @@ export default async function MiProgreso() {
             <GraficaArea datos={serie} clave="peso" etiqueta="Peso" unidad=" kg" />
           </Tarjeta>
 
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[repeat(2,minmax(0,1fr))]">
             <Tarjeta>
               <TituloTarjeta>Composición corporal</TituloTarjeta>
               <GraficaLineas
@@ -200,7 +200,7 @@ export default async function MiProgreso() {
                   }))}
                 />
               ) : (
-                <p className="py-12 text-center text-sm font-normal text-violeta-900/45">
+                <p className="py-8 text-center text-sm font-normal sm:py-12 text-violeta-900/45">
                   Registra tus medidas para verlas aquí.
                 </p>
               )}

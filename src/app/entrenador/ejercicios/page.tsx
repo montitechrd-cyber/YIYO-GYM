@@ -74,8 +74,8 @@ export default async function BibliotecaEjercicios({
       />
 
       <Tarjeta className="mb-6">
-        <form className="flex flex-wrap items-end gap-4">
-          <div className="relative min-w-56 flex-1">
+        <form className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:gap-4">
+          <div className="relative min-w-0 flex-1 sm:min-w-56">
             <Search
               size={16}
               className="absolute top-1/2 left-4 -translate-y-1/2 text-violeta-400"
@@ -87,7 +87,7 @@ export default async function BibliotecaEjercicios({
               className="pl-11"
             />
           </div>
-          <Seleccion name="grupo" defaultValue={grupo} className="w-52">
+          <Seleccion name="grupo" defaultValue={grupo} className="w-full sm:w-52">
             <option value="">Todos los grupos</option>
             {Object.entries(GRUPOS).map(([v, t]) => (
               <option key={v} value={v}>
@@ -95,14 +95,14 @@ export default async function BibliotecaEjercicios({
               </option>
             ))}
           </Seleccion>
-          <Seleccion name="ver" defaultValue={ver} className="w-44">
+          <Seleccion name="ver" defaultValue={ver} className="w-full sm:w-44">
             <option value="">En la biblioteca</option>
             <option value="ocultos">Ocultos</option>
             <option value="todos">Todos</option>
           </Seleccion>
           <button
             type="submit"
-            className="h-11 cursor-pointer rounded-sm fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
+            className="h-11 w-full cursor-pointer sm:w-auto rounded-sm fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
           >
             Filtrar
           </button>
@@ -114,7 +114,7 @@ export default async function BibliotecaEjercicios({
           {porGrupo.map((seccion) => (
             <section key={seccion.grupo}>
               <div className="mb-4 flex items-baseline gap-3">
-                <h2 className="text-lg font-medium text-violeta-800">
+                <h2 className="min-w-0 break-words text-lg font-medium text-violeta-800">
                   {seccion.titulo}
                 </h2>
                 <span className="text-xs font-normal text-violeta-900/45">
@@ -127,11 +127,11 @@ export default async function BibliotecaEjercicios({
                   en `xl`: una pantalla de portátil con la escala de Windows
                   al 150 % reporta menos de 1280 px, así que con `xl` nunca
                   llegaba a cuatro por mucho que la pantalla fuera grande. */}
-              <div className="grid gap-5 grid-cols-2 md:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 md:grid-cols-4">
                 {seccion.lista.map((e) => (
                   <article
                     key={e.id}
-                    className="group overflow-hidden rounded-4xl border border-lila-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
+                    className="group min-w-0 overflow-hidden rounded-4xl border border-lila-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
                   >
                     <div className="relative">
                       {e.video_url ? (
@@ -153,8 +153,8 @@ export default async function BibliotecaEjercicios({
                         cada línea que se añada aquí aleja la tarjeta del
                         cuadrado. El nombre a dos líneas como mucho, y las
                         instrucciones no se asoman —se leen al editar—. */}
-                    <div className="p-4">
-                      <h3 className="line-clamp-2 text-sm leading-snug font-medium text-violeta-800">
+                    <div className="p-3 sm:p-4">
+                      <h3 className="line-clamp-2 text-sm break-words leading-snug font-medium text-violeta-800">
                         {e.nombre}
                       </h3>
                       <p className="mt-1 truncate text-[11px] font-normal text-violeta-900/50">

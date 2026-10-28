@@ -18,12 +18,12 @@ function Dato({
   valor: string;
 }) {
   return (
-    <div className="rounded-2xl bg-lila-50 px-4 py-3">
+    <div className="min-w-0 rounded-2xl bg-lila-50 px-3 py-3 sm:px-4">
       <p className="flex items-center gap-1.5 text-[10px] tracking-[0.14em] text-violeta-500 uppercase">
         <Icono size={11} strokeWidth={1.8} />
         {etiqueta}
       </p>
-      <p className="mt-1.5 text-sm font-medium text-violeta-800">{valor}</p>
+      <p className="mt-1.5 text-sm font-medium break-words text-violeta-800">{valor}</p>
     </div>
   );
 }
@@ -76,16 +76,16 @@ export function TarjetaEjercicio({
         </div>
       )}
 
-      <div className="p-7">
+      <div className="p-4 sm:p-7">
         <div className="flex items-start justify-between gap-3">
-          <div>
+          <div className="min-w-0">
             <p className="text-[10px] tracking-[0.2em] text-violeta-500 uppercase">
               {orden != null ? `Ejercicio ${orden}` : GRUPOS[ejercicio.grupo]}
             </p>
-            <h3 className="mt-1.5 text-xl font-medium text-violeta-800">
+            <h3 className="mt-1.5 text-xl font-medium break-words text-violeta-800">
               {ejercicio.nombre}
             </h3>
-            <p className="mt-1 text-xs font-normal text-violeta-900/50">
+            <p className="mt-1 text-xs font-normal break-words text-violeta-900/50">
               {GRUPOS[ejercicio.grupo]} · {NIVELES[ejercicio.nivel]}
               {ejercicio.equipo ? ` · ${ejercicio.equipo}` : ""}
             </p>
@@ -114,7 +114,7 @@ export function TarjetaEjercicio({
         )}
 
         {prescripcion?.notas && (
-          <p className="mt-5 rounded-2xl border border-lila-200 bg-lila-50/60 px-5 py-3 text-sm leading-relaxed font-normal text-violeta-900/75">
+          <p className="mt-5 rounded-2xl border border-lila-200 bg-lila-50/60 px-4 py-3 text-sm leading-relaxed break-words font-normal text-violeta-900/75">
             <span className="font-medium text-violeta-700">Nota de Yiyo: </span>
             {prescripcion.notas}
           </p>
@@ -125,7 +125,7 @@ export function TarjetaEjercicio({
             <p className="text-[10px] tracking-[0.18em] text-violeta-500 uppercase">
               Cómo hacerlo
             </p>
-            <p className="mt-2 text-sm leading-relaxed font-normal text-violeta-900/75">
+            <p className="mt-2 text-sm leading-relaxed font-normal break-words text-violeta-900/75">
               {ejercicio.instrucciones}
             </p>
           </div>
@@ -136,7 +136,7 @@ export function TarjetaEjercicio({
             <p className="text-[10px] tracking-[0.18em] text-violeta-500 uppercase">
               Consejos
             </p>
-            <p className="mt-2 text-sm leading-relaxed font-normal text-violeta-900/75">
+            <p className="mt-2 text-sm leading-relaxed font-normal break-words text-violeta-900/75">
               {ejercicio.consejos}
             </p>
           </div>

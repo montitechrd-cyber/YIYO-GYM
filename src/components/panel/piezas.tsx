@@ -14,17 +14,17 @@ export function Encabezado({
   return (
     <div
       className={cn(
-        "mb-10 flex flex-wrap items-end justify-between gap-4 border-b-2 border-violeta-900 pb-5",
+        "mb-6 flex flex-wrap items-end justify-between gap-4 border-b-2 border-violeta-900 pb-4 sm:mb-10 sm:pb-5",
         className
       )}
     >
-      <div>
-        <h1 className="text-5xl text-violeta-900 md:text-6xl">{titulo}</h1>
+      <div className="min-w-0">
+        <h1 className="text-[clamp(2.25rem,9vw,3rem)] leading-none break-words text-violeta-900 md:text-6xl">{titulo}</h1>
         {descripcion && (
-          <p className="mt-3 max-w-prose text-sm text-violeta-900/70">{descripcion}</p>
+          <p className="mt-3 max-w-prose text-sm break-words text-violeta-900/70">{descripcion}</p>
         )}
       </div>
-      {acciones && <div className="flex flex-wrap gap-3">{acciones}</div>}
+      {acciones && <div className="flex min-w-0 flex-wrap gap-2 sm:gap-3">{acciones}</div>}
     </div>
   );
 }
@@ -39,7 +39,7 @@ export function Tarjeta({
   return (
     <section
       className={cn(
-        "rounded-sm border border-violeta-900/20 border-t-[3px] border-t-violeta-900 bg-white p-6 md:p-7",
+        "rounded-sm border border-violeta-900/20 border-t-[3px] border-t-violeta-900 bg-white p-4 sm:p-6 md:p-7",
         className
       )}
     >
@@ -56,8 +56,8 @@ export function TituloTarjeta({
   extra?: React.ReactNode;
 }) {
   return (
-    <div className="mb-6 flex items-center justify-between gap-4">
-      <h2 className="text-xl text-violeta-900">
+    <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 sm:mb-6">
+      <h2 className="min-w-0 text-xl break-words text-violeta-900">
         {children}
       </h2>
       {extra}
@@ -81,32 +81,32 @@ export function Metrica({
   return (
     <div
       className={cn(
-        "rounded-sm border p-5 transition-colors duration-200",
+        "min-w-0 rounded-sm border p-4 transition-colors sm:p-5 duration-200",
         destacada
           ? "border-violeta-700 bg-violeta-700 text-white"
           : "border-violeta-900/20 bg-white text-violeta-900 hover:border-violeta-900"
       )}
     >
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between gap-2">
         <p
           className={cn(
-            "text-[11px] font-semibold tracking-[0.14em] uppercase",
+            "min-w-0 break-words text-[11px] font-semibold tracking-[0.14em] uppercase",
             destacada ? "text-lila-200" : "text-violeta-700"
           )}
         >
           {etiqueta}
         </p>
         {Icono && (
-          <span className={destacada ? "text-lila-200" : "text-violeta-500"}>
+          <span className={cn("shrink-0", destacada ? "text-lila-200" : "text-violeta-500")}>
             <Icono size={18} strokeWidth={1.6} />
           </span>
         )}
       </div>
-      <p className="cifra mt-5 text-6xl">{valor}</p>
+      <p className="cifra mt-4 text-5xl break-words sm:mt-5 sm:text-6xl">{valor}</p>
       {detalle && (
         <p
           className={cn(
-            "mt-2 text-xs",
+            "mt-2 text-xs break-words",
             destacada ? "text-lila-100" : "text-violeta-900/65"
           )}
         >
@@ -138,7 +138,7 @@ export function Insignia({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] uppercase",
+        "inline-flex max-w-full items-center gap-1.5 rounded-sm px-2.5 py-1 text-[10px] leading-tight font-bold tracking-[0.12em] uppercase",
         TONOS_INSIGNIA[tono],
         className
       )}
@@ -160,13 +160,13 @@ export function Vacio({
   icono?: React.ComponentType<{ size?: number; strokeWidth?: number }>;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-sm border border-dashed border-violeta-900/40 bg-lila-50 px-8 py-16 text-center">
+    <div className="flex flex-col items-center justify-center rounded-sm border border-dashed border-violeta-900/40 bg-lila-50 px-4 py-10 text-center sm:px-8 sm:py-16">
       {Icono && (
         <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-sm bg-violeta-700 text-white">
           <Icono size={24} strokeWidth={1.4} />
         </span>
       )}
-      <p className="font-display text-3xl font-extrabold uppercase text-violeta-900 [font-stretch:72%]">{titulo}</p>
+      <p className="font-display text-2xl font-extrabold uppercase break-words text-violeta-900 [font-stretch:72%] sm:text-3xl">{titulo}</p>
       {descripcion && (
         <p className="mt-2 max-w-sm text-sm text-violeta-900/70">
           {descripcion}

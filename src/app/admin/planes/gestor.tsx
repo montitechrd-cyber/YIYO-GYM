@@ -32,7 +32,7 @@ export function GestorPlan({
           Nuevo plan
         </Boton>
       ) : (
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Boton
             variante={plan?.destacado ? "claro" : "suave"}
             tamano="sm"
@@ -78,7 +78,7 @@ export function GestorPlan({
           {plan && <input type="hidden" name="id" value={plan.id} />}
           {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
 
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             <Campo etiqueta="Nombre" htmlFor="nombre" className="sm:col-span-2">
               <Entrada
                 id="nombre"
@@ -127,7 +127,7 @@ export function GestorPlan({
           </Campo>
 
 
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             <Campo etiqueta="Orden" htmlFor="orden">
               <Entrada
                 id="orden"
@@ -137,7 +137,7 @@ export function GestorPlan({
               />
             </Campo>
 
-            <label className="flex cursor-pointer items-center gap-3 pt-7 text-sm font-normal text-violeta-900/75">
+            <label className="flex cursor-pointer items-center gap-3 sm:pt-7 text-sm font-normal text-violeta-900/75">
               <input
                 type="checkbox"
                 name="destacado"
@@ -147,7 +147,7 @@ export function GestorPlan({
               Destacado
             </label>
 
-            <label className="flex cursor-pointer items-center gap-3 pt-7 text-sm font-normal text-violeta-900/75">
+            <label className="flex cursor-pointer items-center gap-3 sm:pt-7 text-sm font-normal text-violeta-900/75">
               <input
                 type="checkbox"
                 name="activo"
@@ -158,7 +158,7 @@ export function GestorPlan({
             </label>
           </div>
 
-          <div className="flex gap-3 pt-2">
+          <div className="flex flex-wrap gap-3 pt-2">
             <Boton type="submit" disabled={pendiente}>
               {pendiente && <Loader2 size={15} className="animate-spin" />}
               {pendiente ? "Guardando…" : "Guardar"}

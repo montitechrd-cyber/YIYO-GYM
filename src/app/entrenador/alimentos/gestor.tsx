@@ -36,7 +36,7 @@ export function GestorAlimento({
           Nuevo alimento
         </Boton>
       ) : (
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Boton variante="suave" tamano="sm" onClick={() => setAbierto(true)}>
             <Pencil size={13} />
             Editar
@@ -74,7 +74,7 @@ export function GestorAlimento({
           {alimento && <input type="hidden" name="id" value={alimento.id} />}
           {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <Campo etiqueta="Nombre" htmlFor="nombre">
               <Entrada
                 id="nombre"
@@ -119,11 +119,11 @@ export function GestorAlimento({
             </Campo>
           </div>
 
-          <div className="rounded-3xl border border-lila-200 bg-lila-50/60 p-5">
+          <div className="rounded-3xl border border-lila-200 bg-lila-50/60 p-4 sm:p-5">
             <p className="mb-4 text-[11px] tracking-[0.18em] text-violeta-500 uppercase">
               Valores {referencia}
             </p>
-            <div className="grid gap-4 sm:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
               {[
                 { n: "calorias", e: "Calorías", v: alimento?.calorias },
                 { n: "proteina_g", e: "Proteína (g)", v: alimento?.proteina_g },
@@ -171,7 +171,7 @@ export function GestorAlimento({
             )}
           </div>
 
-          <div className="flex gap-3 pt-2">
+          <div className="flex flex-wrap gap-3 pt-2">
             <Boton type="submit" disabled={pendiente}>
               {pendiente && <Loader2 size={15} className="animate-spin" />}
               {pendiente ? "Guardando…" : "Guardar"}

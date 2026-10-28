@@ -70,21 +70,21 @@ export default async function FichaCliente({
       </Link>
 
       <header className="mb-8 flex flex-wrap items-center justify-between gap-5">
-        <div className="flex items-center gap-4">
-          <span className="flex h-16 w-16 items-center justify-center rounded-sm fondo-degradado text-lg font-medium text-white shadow-suave">
+        <div className="flex min-w-0 items-center gap-4">
+          <span className="flex h-14 w-14 shrink-0 items-center sm:h-16 sm:w-16 justify-center rounded-sm fondo-degradado text-lg font-medium text-white shadow-suave">
             {iniciales(perfil?.nombre_completo, perfil?.correo)}
           </span>
-          <div>
-            <h1 className="text-3xl font-normal text-violeta-900">
+          <div className="min-w-0">
+            <h1 className="text-2xl font-normal break-words text-violeta-900 sm:text-3xl">
               {nombreVisible(perfil)}
             </h1>
-            <p className="mt-1 text-sm font-normal text-violeta-900/55">
+            <p className="mt-1 text-sm font-normal break-words text-violeta-900/55">
               {perfil?.correo} · Alta el{" "}
               {FECHA_LARGA.format(fechaLocal(cliente.fecha_alta))}
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Insignia tono={TONO_ESTADO_CLIENTE[cliente.estado]}>
             {ESTADOS_CLIENTE[cliente.estado]}
           </Insignia>
@@ -112,8 +112,8 @@ export default async function FichaCliente({
         </div>
       </header>
 
-      <div className="grid gap-5 xl:grid-cols-[1fr_1.15fr]">
-        <div className="space-y-5">
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
+        <div className="min-w-0 space-y-5">
           <Tarjeta>
             <TituloTarjeta>Ficha de seguimiento</TituloTarjeta>
             <FormularioFicha cliente={cliente} />
@@ -135,7 +135,7 @@ export default async function FichaCliente({
           </Tarjeta>
         </div>
 
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
           <Tarjeta>
             <TituloTarjeta
               extra={
@@ -154,7 +154,7 @@ export default async function FichaCliente({
 
             {ultima ? (
               <div className="space-y-6">
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-2 sm:gap-3">
                   {[
                     { et: "Altura", v: ultima.altura_cm, u: "cm" },
                     { et: "Peso", v: ultima.peso_kg, u: "kg" },
@@ -162,9 +162,9 @@ export default async function FichaCliente({
                   ].map((m) => (
                     <div
                       key={m.et}
-                      className="rounded-3xl bg-lila-50 px-4 py-4 text-center"
+                      className="min-w-0 rounded-3xl bg-lila-50 px-2 py-4 text-center sm:px-4"
                     >
-                      <p className="text-[10px] tracking-[0.16em] text-violeta-500 uppercase">
+                      <p className="truncate text-[10px] tracking-[0.16em] text-violeta-500 uppercase">
                         {m.et}
                       </p>
                       <p className="mt-2 text-2xl font-normal text-violeta-800">
@@ -184,10 +184,10 @@ export default async function FichaCliente({
                     <p className="mb-3 flex items-center gap-2 text-[11px] tracking-[0.16em] text-violeta-500 uppercase">
                       <Ruler size={12} /> Medidas (cm)
                     </p>
-                    <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm font-normal sm:grid-cols-3">
+                    <dl className="grid grid-cols-1 gap-x-6 gap-y-2 text-sm min-[420px]:grid-cols-2 font-normal sm:grid-cols-3">
                       {MEDIDAS.filter((m) => ultima.medidas[m.clave] != null).map(
                         (m) => (
-                          <div key={m.clave} className="flex justify-between gap-2">
+                          <div key={m.clave} className="flex min-w-0 justify-between gap-2">
                             <dt className="text-violeta-900/50">{m.etiqueta}</dt>
                             <dd className="text-violeta-900/80">
                               {ultima.medidas[m.clave]}
@@ -222,7 +222,7 @@ export default async function FichaCliente({
                         <dt className="text-[11px] tracking-[0.14em] text-violeta-500 uppercase">
                           {x.et}
                         </dt>
-                        <dd className="mt-1 leading-relaxed text-violeta-900/75">
+                        <dd className="mt-1 leading-relaxed break-words text-violeta-900/75">
                           {x.v}
                         </dd>
                       </div>
@@ -268,8 +268,8 @@ export default async function FichaCliente({
                 { et: "Origen", v: cliente.origen || "No indicado" },
               ].map((x) => (
                 <div key={x.et} className="flex justify-between gap-4">
-                  <dt className="text-violeta-900/45">{x.et}</dt>
-                  <dd className="text-right text-violeta-900/80">{x.v}</dd>
+                  <dt className="shrink-0 text-violeta-900/45">{x.et}</dt>
+                  <dd className="min-w-0 text-right break-words text-violeta-900/80">{x.v}</dd>
                 </div>
               ))}
             </dl>

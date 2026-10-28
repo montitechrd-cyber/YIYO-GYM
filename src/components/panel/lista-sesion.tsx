@@ -46,7 +46,7 @@ function Bloque({
 
   if (tipo === "etiqueta") {
     return (
-      <p className="pt-3 text-[11px] tracking-[0.24em] text-violeta-500 uppercase">
+      <p className="pt-3 text-[11px] tracking-[0.24em] break-words text-violeta-500 uppercase">
         {bloque.texto}
       </p>
     );
@@ -54,8 +54,8 @@ function Bloque({
 
   if (tipo === "descanso") {
     return (
-      <p className="flex items-center gap-2.5 rounded-3xl bg-lila-100/70 px-5 py-3 text-sm font-normal text-violeta-900/70">
-        <Timer size={15} className="text-violeta-500" />
+      <p className="flex items-center gap-2.5 rounded-3xl bg-lila-100/70 px-4 py-3 text-sm sm:px-5 font-normal text-violeta-900/70">
+        <Timer size={15} className="shrink-0 text-violeta-500" />
         Descansa {formatearDuracion(bloque.descanso_seg)}
       </p>
     );
@@ -125,7 +125,7 @@ export function ListaSesion({
         return (
           <section
             key={`circuito-${tramo.grupo}`}
-            className="rounded-4xl border-2 border-dashed border-violeta-500/35 bg-lila-50/50 p-5"
+            className="rounded-4xl border-2 border-dashed border-violeta-500/35 bg-lila-50/50 p-3 sm:p-5"
           >
             <p className="mb-4 flex items-center gap-2 text-[11px] tracking-[0.2em] text-violeta-600 uppercase">
               <Layers size={13} />

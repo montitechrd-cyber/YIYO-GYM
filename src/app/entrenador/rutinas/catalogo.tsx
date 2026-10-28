@@ -79,7 +79,7 @@ function Seccion({
         {descripcion}
       </p>
 
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
         {programas.map((p) => (
           <TarjetaPrograma key={p.id} programa={p} alElegir={alElegir} />
         ))}
@@ -96,26 +96,26 @@ function TarjetaPrograma({
   alElegir: (p: ProgramaDelCatalogo) => void;
 }) {
   return (
-    <article className="flex flex-col rounded-4xl border border-lila-200 bg-white p-7 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada">
+    <article className="flex flex-col rounded-4xl border border-lila-200 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada sm:p-7">
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <span className="text-3xl">{p.emoji}</span>
-          <h3 className="mt-3 text-xl font-medium text-violeta-800">{p.nombre}</h3>
+          <h3 className="mt-3 text-xl font-medium break-words text-violeta-800">{p.nombre}</h3>
           <p className="mt-1 text-xs font-normal text-violeta-900/55">{p.resumen}</p>
         </div>
         {p.nivel && <Insignia tono="lila">{p.nivel}</Insignia>}
       </div>
 
       <dl className="mt-6 space-y-2 text-xs font-normal text-violeta-900/60">
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2">
           <CalendarDays size={13} className="shrink-0 text-lila-400" />
           {p.frecuencia}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2">
           <Clock size={13} className="shrink-0 text-lila-400" />
           {p.duracion_desde}–{p.duracion_hasta} min por sesión
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2">
           <Dumbbell size={13} className="shrink-0 text-lila-400" />
           {p.totalEjercicios} ejercicios repartidos en {p.dias.length} días
         </div>
@@ -123,7 +123,7 @@ function TarjetaPrograma({
 
       <ul className="mt-5 space-y-1.5 border-t border-lila-100 pt-5">
         {p.dias.map((d) => (
-          <li key={d.numero} className="text-xs font-normal text-violeta-900/70">
+          <li key={d.numero} className="text-xs break-words font-normal text-violeta-900/70">
             <span className="text-violeta-900/35">Día {d.numero}</span> · {d.nombre}
           </li>
         ))}
@@ -220,7 +220,7 @@ function DialogoAsignar({
                 </Campo>
               </div>
 
-              <p className="rounded-2xl border border-lila-200 bg-lila-50/60 px-5 py-3 text-xs leading-relaxed font-normal text-violeta-900/65">
+              <p className="rounded-2xl border border-lila-200 bg-lila-50/60 px-4 py-3 text-xs leading-relaxed font-normal text-violeta-900/65">
                 Se le crea su propia copia del programa y se le llenan las
                 sesiones en el calendario. Después puedes ajustarle series,
                 repeticiones o ejercicios sin que afecte a nadie más.

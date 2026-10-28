@@ -9,12 +9,12 @@ export function SelectorPlanes({ planes }: { planes: Plan[] }) {
   return (
     <Tarjeta>
       <TituloTarjeta>Conoce nuestros planes</TituloTarjeta>
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[repeat(3,minmax(0,1fr))]">
         {planes.map((p) => (
-          <article key={p.id} className="rounded-4xl border border-lila-200 bg-white p-7">
-            <h3 className="text-sm font-medium text-violeta-800">{p.nombre}</h3>
+          <article key={p.id} className="min-w-0 rounded-4xl border border-lila-200 bg-white p-5 sm:p-7">
+            <h3 className="text-sm font-medium break-words text-violeta-800">{p.nombre}</h3>
             {p.descripcion && (
-              <p className="mt-3 text-sm font-normal text-violeta-900/60">{p.descripcion}</p>
+              <p className="mt-3 text-sm font-normal break-words text-violeta-900/60">{p.descripcion}</p>
             )}
             <p className="mt-4 text-2xl font-normal text-violeta-800">
               {MONEDA.format(Number(p.precio_mensual))}
@@ -22,7 +22,7 @@ export function SelectorPlanes({ planes }: { planes: Plan[] }) {
             </p>
             <ul className="mt-6 space-y-2.5">
               {p.beneficios.map((beneficio) => (
-                <li key={beneficio} className="flex items-start gap-2.5 text-xs font-normal text-violeta-900/70">
+                <li key={beneficio} className="flex min-w-0 items-start break-words gap-2.5 text-xs font-normal text-violeta-900/70">
                   <Check size={13} className="mt-0.5 shrink-0 text-violeta-500" />
                   {beneficio}
                 </li>

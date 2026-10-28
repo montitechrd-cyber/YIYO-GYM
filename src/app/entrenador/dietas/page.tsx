@@ -75,12 +75,12 @@ export default async function Dietas({
         </p>
 
         {asignados.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             {asignados.map((p) => (
               <Link
                 key={p.id}
                 href={`/entrenador/dietas/${p.id}`}
-                className="group rounded-4xl border border-lila-200 bg-white p-7 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
+                className="group rounded-4xl border border-lila-200 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada sm:p-7"
               >
                 {/* La clienta manda: esta pantalla se lee buscando a una
                     persona, y el nombre del plan solo sirve una vez que ya
@@ -99,14 +99,14 @@ export default async function Dietas({
                   </Insignia>
                 </div>
 
-                <p className="mt-2 flex items-center gap-2 text-sm font-normal text-violeta-900/70">
+                <p className="mt-2 flex items-center gap-2 text-sm font-normal break-words text-violeta-900/70">
                   {p.emoji && <span aria-hidden>{p.emoji}</span>}
                   {p.nombre}
                 </p>
 
                 <div className="mt-5 border-t border-lila-100 pt-4 text-xs font-normal text-violeta-900/55">
-                  <p className="flex items-center gap-1.5">
-                    <CalendarRange size={13} className="text-lila-400" />
+                  <p className="flex items-start gap-1.5">
+                    <CalendarRange size={13} className="mt-0.5 shrink-0 text-lila-400" />
                     {FECHA_LARGA.format(fechaLocal(p.inicio))} →{" "}
                     {FECHA_LARGA.format(
                       fechaLocal(finDePlan(p.inicio, p.semanas))
@@ -124,7 +124,7 @@ export default async function Dietas({
             ))}
           </div>
         ) : (
-          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-10 text-center text-sm font-normal text-violeta-900/45">
+          <p className="rounded-4xl border border-dashed border-lila-300 px-4 py-10 sm:px-6 text-center text-sm font-normal text-violeta-900/45">
             <Salad size={20} className="mx-auto mb-2 text-lila-400" />
             Todavía no le has asignado ningún plan a nadie.
           </p>

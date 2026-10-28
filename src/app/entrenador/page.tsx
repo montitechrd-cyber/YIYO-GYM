@@ -55,7 +55,7 @@ export default async function ResumenEntrenador() {
         }
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <Metrica
           etiqueta="Clientas activas"
           valor={activos}
@@ -83,7 +83,7 @@ export default async function ResumenEntrenador() {
         />
       </div>
 
-      <div className="mt-6 grid gap-5 lg:grid-cols-[1.25fr_1fr]">
+      <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] [&>*]:min-w-0">
         <Tarjeta>
           <TituloTarjeta
             extra={
@@ -106,7 +106,7 @@ export default async function ResumenEntrenador() {
                   <li key={c.id}>
                     <Link
                       href={`/entrenador/clientes/${c.id}`}
-                      className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4 transition-colors hover:border-lila-400 hover:bg-lila-50"
+                      className="flex items-center justify-between gap-3 rounded-3xl border border-lila-200 px-4 py-4 transition-colors sm:gap-4 sm:px-5 hover:border-lila-400 hover:bg-lila-50"
                     >
                       <div className="flex min-w-0 items-center gap-3">
                         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm fondo-degradado text-[11px] font-medium text-white">
@@ -121,7 +121,7 @@ export default async function ResumenEntrenador() {
                           </span>
                         </span>
                       </div>
-                      <Insignia tono={TONO_ESTADO[c.estado]}>{c.estado}</Insignia>
+                      <Insignia className="shrink-0" tono={TONO_ESTADO[c.estado]}>{c.estado}</Insignia>
                     </Link>
                   </li>
                 );
@@ -155,11 +155,11 @@ export default async function ResumenEntrenador() {
               {agenda.map((s) => {
                 const p = clientesPorId.get(s.cliente_id)?.perfil ?? null;
                 return (
-                  <li key={s.id} className="rounded-3xl border border-lila-200 px-5 py-4">
-                    <p className="text-sm font-medium text-violeta-800">
+                  <li key={s.id} className="rounded-3xl border border-lila-200 px-4 py-4 sm:px-5">
+                    <p className="truncate text-sm font-medium text-violeta-800">
                       {nombreVisible(p)}
                     </p>
-                    <p className="mt-1 text-xs font-normal text-violeta-900/50">
+                    <p className="mt-1 break-words text-xs font-normal text-violeta-900/50">
                       {new Date(s.fecha + "T00:00:00").toLocaleDateString("es-DO", {
                         weekday: "short",
                         day: "numeric",

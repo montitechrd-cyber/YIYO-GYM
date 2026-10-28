@@ -19,16 +19,16 @@ const bloques = [
 
 export function SobreYiyo() {
   return (
-    <section id="yiyo" className="bg-violeta-700 py-20 text-white md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
-          <div className="border border-white/40 p-10 text-center">
+    <section id="yiyo" className="bg-violeta-700 py-14 text-white sm:py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+          <div className="border border-white/40 p-6 sm:p-10 text-center">
             {/* La marca completa en vertical: aquí sobra altura. */}
-            <Logo orientacion="vertical" className="mx-auto h-48" invertido />
+            <Logo orientacion="vertical" className="mx-auto h-40 sm:h-48" invertido />
           </div>
 
           <div>
-            <h2 className="text-6xl md:text-[6rem]">Daniela «Yiyo» Chacón</h2>
+            <h2 className="text-[clamp(2.75rem,12vw,6rem)] break-words">Daniela «Yiyo» Chacón</h2>
             <p className="mt-8 max-w-2xl text-base leading-7 text-white/90">
               Venezolana, licenciada en Comunicación Social, entrenadora personal
               y coach de bienestar integral. Desde Santo Domingo, combino la
@@ -45,7 +45,7 @@ export function SobreYiyo() {
           </div>
         </div>
 
-        <dl className="mt-16 grid border-t border-white/50 md:grid-cols-3">
+        <dl className="mt-12 sm:mt-16 grid grid-cols-1 border-t border-white/50 md:grid-cols-3">
           {bloques.map((b) => (
             <div
               key={b.titulo}

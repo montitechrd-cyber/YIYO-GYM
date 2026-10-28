@@ -30,10 +30,10 @@ export default async function Tienda() {
           ningún sitio. Solo la vuelta al inicio. */}
       <Navegacion soloInicio />
 
-      <main className="bg-crema pt-28 pb-24 md:pt-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+      <main className="bg-crema pt-24 pb-16 sm:pt-28 sm:pb-24 md:pt-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <header className="flex flex-col justify-between gap-5 border-b-2 border-violeta-900 pb-8 md:flex-row md:items-end">
-            <h1 className="text-6xl text-violeta-900 md:text-[6rem]">
+            <h1 className="text-[clamp(2.75rem,12vw,6rem)] break-words text-violeta-900">
               Lleva <span className="text-violeta-600">YIYO</span> contigo
             </h1>
             <p className="max-w-sm text-base leading-7 text-violeta-900/80">

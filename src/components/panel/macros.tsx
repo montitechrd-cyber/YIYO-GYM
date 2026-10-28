@@ -53,13 +53,13 @@ export function ResumenMacros({
   }
 
   return (
-    <div className={cn("rounded-4xl bg-lila-50 p-6", className)}>
+    <div className={cn("rounded-4xl bg-lila-50 p-4 sm:p-6", className)}>
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <p className="text-[10px] tracking-[0.2em] text-violeta-500 uppercase">
             Calorías
           </p>
-          <p className="mt-1 text-3xl font-normal text-violeta-800">
+          <p className="mt-1 text-2xl font-normal break-words text-violeta-800 sm:text-3xl">
             {m.calorias}
             {objetivos?.calorias ? (
               <span className="ml-1 text-base text-violeta-900/40">
@@ -89,17 +89,17 @@ export function ResumenMacros({
         </div>
       )}
 
-      <dl className="mt-6 grid grid-cols-3 gap-4">
+      <dl className="mt-6 grid grid-cols-3 gap-2 sm:gap-4">
         {BARRAS.map((b) => {
           const valor = m[b.clave];
           const objetivo = objetivos?.[b.clave];
           const pct = porcentaje(valor, objetivo);
           return (
-            <div key={b.clave}>
-              <dt className="text-[10px] tracking-[0.16em] text-violeta-500 uppercase">
+            <div key={b.clave} className="min-w-0">
+              <dt className="text-[10px] tracking-[0.16em] text-violeta-500 uppercase break-words">
                 {b.etiqueta}
               </dt>
-              <dd className="mt-1 text-lg font-normal text-violeta-800">
+              <dd className="mt-1 text-base font-normal break-words text-violeta-800 sm:text-lg">
                 {valor}
                 <span className="text-xs text-violeta-900/40">
                   {objetivo ? ` / ${objetivo} g` : " g"}

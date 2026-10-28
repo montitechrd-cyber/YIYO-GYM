@@ -32,9 +32,9 @@ const BENEFICIOS = [
  */
 export function Comienza() {
   return (
-    <section id="empieza" className="bg-violeta-900 py-20 text-white md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <h2 className="max-w-4xl text-6xl md:text-[6rem]">
+    <section id="empieza" className="bg-violeta-900 py-14 text-white sm:py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <h2 className="max-w-4xl text-[clamp(2.75rem,12vw,6rem)] break-words">
           Tu transformación empieza con{" "}
           <span className="text-lila-300">tres pasos</span>
         </h2>
@@ -43,13 +43,13 @@ export function Comienza() {
           y tu alimentación listas para empezar.
         </p>
 
-        <ol className="mt-14 grid border-t border-white/50 md:grid-cols-3">
+        <ol className="mt-10 sm:mt-14 grid grid-cols-1 border-t border-white/50 md:grid-cols-3">
           {PASOS.map((p) => (
             <li
               key={p.numero}
               className="border-b border-white/25 py-8 md:border-r md:border-b-0 md:px-6 md:first:pl-0 md:last:border-r-0"
             >
-              <span className="cifra block text-[6rem] text-lila-300">{p.numero}</span>
+              <span className="cifra block text-[clamp(4.5rem,24vw,6rem)] text-lila-300">{p.numero}</span>
               <h3 className="mt-3 text-3xl uppercase">{p.titulo}</h3>
               <p className="mt-3 max-w-xs text-[15px] leading-6 text-white/80">{p.detalle}</p>
             </li>

@@ -32,12 +32,12 @@ export default async function Bienvenida() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <div className="mb-8 rounded-sm bg-violeta-700 px-8 py-10 text-white">
+      <div className="mb-8 rounded-sm bg-violeta-700 px-5 py-8 text-white sm:px-8 sm:py-10">
         <span className="inline-flex items-center gap-2 rounded-sm bg-crema px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-violeta-900 uppercase">
           <Sparkles size={12} />
           Primer paso
         </span>
-        <h1 className="mt-5 text-6xl">
+        <h1 className="mt-5 text-[clamp(2.25rem,11vw,3.75rem)] break-words">
           Bienvenida, {perfil.nombre_completo.split(" ")[0] || "guerrera"}        </h1>
         <p className="mt-4 max-w-xl leading-relaxed text-white/90">
           Cuéntame de dónde partes. Con esta información diseño tu plan de

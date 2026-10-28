@@ -176,18 +176,18 @@ export function ConstructorDia({
   }, [bloques]);
 
   return (
-    <section className="rounded-4xl border border-lila-200 bg-white p-7 shadow-suave">
-      <header className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h3 className="text-lg font-medium text-violeta-800">{nombreDia}</h3>
-          <p className="mt-1 flex items-center gap-1.5 text-xs font-normal text-violeta-900/55">
+    <section className="rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-7">
+      <header className="mb-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0">
+          <h3 className="text-lg font-medium break-words text-violeta-800">{nombreDia}</h3>
+          <p className="mt-1 flex flex-wrap items-center gap-1.5 text-xs font-normal text-violeta-900/55">
             <Clock size={12} />
             Tiempo estimado: {formatearDuracion(total)} · {bloques.length} bloque
             {bloques.length === 1 ? "" : "s"}
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           {sinGuardar && (
             <span className="text-xs font-normal text-amber-700">Sin guardar</span>
           )}
@@ -253,14 +253,14 @@ export function ConstructorDia({
             ) : (
               <div
                 key={`circuito-${tramo.grupo}`}
-                className="rounded-4xl border-2 border-dashed border-violeta-500/35 bg-lila-50/60 p-4"
+                className="rounded-4xl border-2 border-dashed border-violeta-500/35 bg-lila-50/60 p-2.5 sm:p-4"
               >
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3 px-1">
                   <span className="flex items-center gap-2 text-[11px] tracking-[0.16em] text-violeta-600 uppercase">
                     <Layers size={13} />
                     Circuito ×{tramo.veces}
                   </span>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <label className="text-xs font-normal text-violeta-900/60">
                       Repeticiones
                     </label>
@@ -334,9 +334,9 @@ export function ConstructorDia({
       )}
 
       {/* Alta rápida */}
-      <div className="mt-6 rounded-4xl bg-lila-50 p-5">
+      <div className="mt-6 rounded-4xl bg-lila-50 p-3 sm:p-5">
         <div className="flex flex-wrap items-end gap-3">
-          <div className="relative min-w-52 flex-1">
+          <div className="relative w-full min-w-0 sm:w-auto sm:min-w-52 sm:flex-1">
             <Search
               size={15}
               className="absolute top-1/2 left-4 -translate-y-1/2 text-violeta-400"
@@ -351,7 +351,7 @@ export function ConstructorDia({
           <Seleccion
             value={grupoFiltro}
             onChange={(e) => setGrupoFiltro(e.target.value)}
-            className="w-40 bg-white"
+            className="w-full bg-white sm:w-40"
           >
             <option value="">Todos</option>
             {Object.entries(GRUPOS).map(([v, t]) => (
@@ -360,7 +360,7 @@ export function ConstructorDia({
               </option>
             ))}
           </Seleccion>
-          <div className="flex items-end gap-2">
+          <div className="flex w-full flex-wrap items-end gap-2 sm:w-auto">
             <label className="text-[10px] tracking-widest text-violeta-500 uppercase">
               <span className="mb-1 block">Series</span>
               <Entrada
@@ -369,7 +369,7 @@ export function ConstructorDia({
                 max={20}
                 value={series}
                 onChange={(e) => setSeries(Math.max(1, Number(e.target.value) || 1))}
-                className="w-20 bg-white px-3 py-2 text-sm"
+                className="w-20 max-w-full bg-white px-3 py-2 text-sm"
               />
             </label>
             <label className="text-[10px] tracking-widest text-violeta-500 uppercase">
@@ -408,7 +408,7 @@ export function ConstructorDia({
               key={e.id}
               type="button"
               onClick={() => anadirEjercicio(e.id)}
-              className="flex h-fit cursor-pointer items-center gap-2 rounded-sm border border-lila-300 bg-white px-4 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave"
+              className="flex h-fit max-w-full min-w-0 cursor-pointer items-center gap-2 rounded-sm text-left break-words border border-lila-300 bg-white px-4 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave"
             >
               <Plus size={12} className="text-violeta-500" />
               {e.nombre}
@@ -464,7 +464,7 @@ function EditorBloque({
   alCerrar: () => void;
 }) {
   return (
-    <li className="ml-6 rounded-3xl border border-violeta-500/30 bg-lila-50 p-5">
+    <li className="ml-2 min-w-0 rounded-3xl border border-violeta-500/30 bg-lila-50 p-4 sm:ml-6 sm:p-5">
       {bloque.tipo === "etiqueta" ? (
         <label className="block text-[10px] tracking-widest text-violeta-500 uppercase">
           <span className="mb-1.5 block">Título de la sección</span>
@@ -486,11 +486,11 @@ function EditorBloque({
             onChange={(e) =>
               alCambiar({ descanso_seg: Math.max(5, Number(e.target.value) || 5) })
             }
-            className="w-40 bg-white"
+            className="w-full max-w-40 bg-white"
           />
         </label>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:grid-cols-4">
           <label className="text-[10px] tracking-widest text-violeta-500 uppercase">
             <span className="mb-1.5 block">Series</span>
             <Entrada
@@ -534,7 +534,7 @@ function EditorBloque({
               className="bg-white"
             />
           </label>
-          <label className="text-[10px] tracking-widest text-violeta-500 uppercase sm:col-span-4">
+          <label className="text-[10px] tracking-widest text-violeta-500 uppercase min-[480px]:col-span-2 lg:col-span-4">
             <span className="mb-1.5 block">Nota para la clienta</span>
             <Entrada
               value={bloque.notas ?? ""}

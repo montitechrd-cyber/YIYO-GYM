@@ -27,7 +27,7 @@ export function SelectorEstado({
   const tono = ETAPAS.find((e) => e.valor === actual)?.tono ?? "";
 
   return (
-    <span className="relative inline-flex items-center">
+    <span className="relative inline-flex flex-wrap items-center">
       <select
         value={actual}
         disabled={guardando}

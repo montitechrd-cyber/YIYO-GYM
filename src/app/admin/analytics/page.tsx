@@ -168,7 +168,7 @@ export default async function Analytics() {
         descripcion="Los últimos 6 meses del negocio"
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <Metrica
           etiqueta="Ingresos del mes"
           valor={MONEDA.format(ingresosMes)}
@@ -200,7 +200,7 @@ export default async function Analytics() {
         />
       </div>
 
-      <div className="mt-6 space-y-5">
+      <div className="mt-6 min-w-0 space-y-5">
         <Tarjeta>
           <TituloTarjeta>Ingresos por mes</TituloTarjeta>
           <GraficaArea
@@ -211,7 +211,7 @@ export default async function Analytics() {
           />
         </Tarjeta>
 
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 [&>*]:min-w-0">
           <Tarjeta>
             <TituloTarjeta>Altas de clientas</TituloTarjeta>
             <GraficaBarras datos={altasPorMes} clave="altas" etiqueta="Altas" />
@@ -232,7 +232,7 @@ export default async function Analytics() {
           </Tarjeta>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 [&>*]:min-w-0">
           <Tarjeta>
             <TituloTarjeta>Clientas por estado</TituloTarjeta>
             <ul className="space-y-3">
@@ -269,17 +269,17 @@ export default async function Analytics() {
                 {desempeno.map((d) => (
                   <li
                     key={d.id}
-                    className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4"
+                    className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-4 py-4 sm:px-5"
                   >
-                    <div>
-                      <p className="text-sm font-medium text-violeta-800">
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-medium text-violeta-800">
                         {d.nombre}
                       </p>
                       <p className="mt-1 text-xs font-normal text-violeta-900/50">
                         {d.clientas} clientas · {d.activas} activas
                       </p>
                     </div>
-                    <span className="flex items-center gap-1.5 text-sm font-normal text-violeta-700">
+                    <span className="flex shrink-0 items-center gap-1.5 text-sm font-normal text-violeta-700">
                       <Activity size={14} className="text-lila-400" />
                       {d.entrenamientos}
                     </span>

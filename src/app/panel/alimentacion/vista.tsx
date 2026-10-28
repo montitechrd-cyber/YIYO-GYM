@@ -50,7 +50,7 @@ export function VistaAlimentacion({
   };
 
   return (
-    <div className="grid gap-5 xl:grid-cols-[1fr_20rem]">
+    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0">
         <div className="mb-5 flex flex-wrap gap-2">
           {dias.map((d) => (
@@ -59,7 +59,7 @@ export function VistaAlimentacion({
               type="button"
               onClick={() => setDiaActivo(d.id)}
               className={cn(
-                "cursor-pointer rounded-2xl px-4 py-2.5 text-left transition-all duration-300",
+                "cursor-pointer rounded-2xl px-3 py-2 text-left sm:px-4 sm:py-2.5 transition-all duration-300",
                 d.id === dia?.id
                   ? "fondo-degradado text-white shadow-suave"
                   : "border border-lila-200 bg-white text-violeta-800 hover:border-lila-400"
@@ -107,7 +107,7 @@ export function VistaAlimentacion({
             ))}
           </div>
         ) : (
-          <p className="rounded-4xl border border-dashed border-lila-300 px-6 py-14 text-center text-sm font-normal text-violeta-900/45">
+          <p className="rounded-4xl border border-dashed border-lila-300 px-4 py-10 text-center text-sm font-normal text-violeta-900/45 sm:px-6 sm:py-14">
             Este día todavía no tiene comidas asignadas.
           </p>
         )}
@@ -120,7 +120,7 @@ export function VistaAlimentacion({
         />
 
         {esHoy && macrosCumplidos && (
-          <div className="mt-4 rounded-4xl border border-lila-200 bg-white p-6">
+          <div className="mt-4 rounded-4xl border border-lila-200 bg-white p-4 sm:p-6">
             <p className="text-[10px] tracking-[0.2em] text-violeta-500 uppercase">
               Ya cumplido hoy
             </p>
@@ -163,13 +163,13 @@ function Comida({
   return (
     <section
       className={cn(
-        "rounded-4xl border bg-white p-6 shadow-suave transition-colors",
+        "min-w-0 rounded-4xl border bg-white p-4 shadow-suave sm:p-6 transition-colors",
         marcada ? "border-emerald-300 bg-emerald-50/40" : "border-lila-200"
       )}
     >
       <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h3 className="font-medium text-violeta-800">{comida.nombre}</h3>
+        <div className="min-w-0">
+          <h3 className="font-medium break-words text-violeta-800">{comida.nombre}</h3>
           {comida.hora && (
             <p className="mt-0.5 flex items-center gap-1.5 text-[11px] font-normal text-violeta-900/45">
               <Clock size={11} />
@@ -178,7 +178,7 @@ function Comida({
           )}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <p className="text-xs font-normal text-violeta-900/60">
             <span className="font-medium text-violeta-700">{m.calorias} kcal</span>
             {" · "}P {m.proteina} · C {m.carbohidratos} · G {m.grasa}
@@ -203,7 +203,7 @@ function Comida({
                 });
               }}
               className={cn(
-                "flex cursor-pointer items-center gap-2 rounded-sm px-4 py-2 text-xs font-medium transition-colors",
+                "flex shrink-0 cursor-pointer items-center gap-2 rounded-sm px-4 py-2 text-xs font-medium transition-colors",
                 fallo
                   ? "bg-rose-100 text-rose-700 hover:bg-rose-200"
                   : marcada
@@ -231,7 +231,7 @@ function Comida({
               key={ing.id}
               className="flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-lila-50 px-4 py-3"
             >
-              <span className="text-sm text-violeta-800">{ing.alimento.nombre}</span>
+              <span className="min-w-0 text-sm break-words text-violeta-800">{ing.alimento.nombre}</span>
               <span className="text-xs font-normal text-violeta-900/55">
                 {textoCantidad(ing.alimento, Number(ing.cantidad))}
               </span>

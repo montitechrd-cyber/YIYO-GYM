@@ -24,13 +24,13 @@ const historias = [
 
 export function Historias() {
   return (
-    <section id="historias" className="bg-lila-100 py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <h2 className="max-w-3xl text-6xl text-violeta-900 md:text-[6rem]">
+    <section id="historias" className="bg-lila-100 py-14 sm:py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <h2 className="max-w-3xl text-[clamp(2.75rem,12vw,6rem)] break-words text-violeta-900">
           Ellas ya son <span className="text-violeta-600">Yiyo</span>
         </h2>
 
-        <div className="mt-14 grid gap-px border-y-2 border-violeta-900 bg-violeta-900/30 md:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-px border-y-2 border-violeta-900 bg-violeta-900/30 md:grid-cols-3">
           {historias.map((h) => (
             <figure key={h.nombre} className="flex flex-col justify-between bg-lila-100 py-8 md:px-8 md:first:pl-0 md:last:pr-0">
               <blockquote className="text-lg leading-7 font-medium text-violeta-900">

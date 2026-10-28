@@ -73,12 +73,12 @@ export function AccesoSocial({ texto = "Entrar con" }: { texto?: string }) {
               type="button"
               onClick={() => entrar(p)}
               disabled={cargando !== null}
-              className="flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-sm border border-lila-300 bg-white text-sm font-medium text-violeta-800 transition-all duration-300 hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
+              className="flex min-h-12 w-full min-w-0 cursor-pointer items-center justify-center gap-3 rounded-sm border px-3 py-2 text-center border-lila-300 bg-white text-sm font-medium text-violeta-800 transition-all duration-300 hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
             >
               {cargando === p ? (
-                <Loader2 size={17} className="animate-spin" />
+                <Loader2 size={17} className="shrink-0 animate-spin" />
               ) : (
-                <Icono className="h-[18px] w-[18px]" />
+                <Icono className="h-[18px] w-[18px] shrink-0" />
               )}
               {texto} {nombre}
             </button>
@@ -86,9 +86,9 @@ export function AccesoSocial({ texto = "Entrar con" }: { texto?: string }) {
         })}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
         <span className="h-px flex-1 bg-lila-200" />
-        <span className="text-[10px] tracking-[0.2em] text-violeta-500 uppercase">
+        <span className="text-center text-[10px] tracking-[0.2em] text-violeta-500 uppercase">
           o con tu correo
         </span>
         <span className="h-px flex-1 bg-lila-200" />
