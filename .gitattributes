@@ -1,4 +1,4 @@
-# Los saltos de línea se guardan siempre al estilo Unix. Railway compila en
+# Los saltos de línea se guardan siempre al estilo Unix. el compilador corre en
 # Linux y un script con saltos de Windows falla con «bad interpreter».
 * text=auto eol=lf
 

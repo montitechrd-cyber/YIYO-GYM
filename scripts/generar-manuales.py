@@ -18,7 +18,7 @@ for name in ['Regular','Medium','SemiBold']:
     pdfmetrics.registerFont(TTFont('Poppins'+name,str(f)))
 pdfmetrics.registerFontFamily('PoppinsRegular',normal='PoppinsRegular',bold='PoppinsSemiBold',italic='PoppinsRegular',boldItalic='PoppinsSemiBold')
 V=HexColor('#6A2CAB'); DARK=HexColor('#3F1A6B'); L=HexColor('#E9D6FF'); CREAM=HexColor('#FFFDFA'); GRAY=HexColor('#655572')
-W,H=595.28,841.89; BASE='https://web-production-6bd61.up.railway.app'
+W,H=595.28,841.89; BASE='https://yiyo-gym.yiyo-gym.workers.dev'
 styles={
  'title':ParagraphStyle('title',fontName='PoppinsMedium',fontSize=27,leading=34,textColor=DARK,spaceAfter=14),
  'body':ParagraphStyle('body',fontName='PoppinsRegular',fontSize=10,leading=16,textColor=DARK,spaceAfter=10),

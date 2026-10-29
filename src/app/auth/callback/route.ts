@@ -12,7 +12,7 @@ import { origenPublico } from "@/lib/url-publica";
  */
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
-  // Detrás del proxy de Railway, `url.origin` es el puerto interno.
+  // Detrás de un proxy, `url.origin` es el puerto interno.
   const origen = origenPublico(request);
   const codigo = url.searchParams.get("code");
   const siguiente = destinoPedido(url.searchParams.get("siguiente"));
