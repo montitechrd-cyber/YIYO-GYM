@@ -54,3 +54,6 @@ next-env.d.ts
 .open-next
 .wrangler
 .dev.vars
+
+# Excepción: variables NEXT_PUBLIC (públicas) para compilar en Cloudflare
+!.env.production
