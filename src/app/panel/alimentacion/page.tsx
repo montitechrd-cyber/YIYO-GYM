@@ -2,7 +2,7 @@ import { Salad } from "lucide-react";
 import { exigirPerfil, clienteActual } from "@/lib/autenticacion";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { planActivoDe } from "@/lib/dietas";
-import { hoyTexto } from "@/lib/programacion";
+import { ahoraLocal, hoyTexto } from "@/lib/programacion";
 import { Encabezado, Vacio } from "@/components/panel/piezas";
 import { BotonEnlace } from "@/components/ui/boton";
 import { VistaAlimentacion } from "./vista";
@@ -49,7 +49,7 @@ export default async function MiAlimentacion() {
     .eq("fecha", hoyTexto());
 
   // getDay(): domingo = 0; el plan usa lunes = 1 … domingo = 7.
-  const diaSemana = ((new Date().getDay() + 6) % 7) + 1;
+  const diaSemana = ((ahoraLocal().getDay() + 6) % 7) + 1;
 
   return (
     <div>

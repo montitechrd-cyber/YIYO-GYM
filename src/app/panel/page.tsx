@@ -11,14 +11,9 @@ import { exigirPerfil, clienteActual } from "@/lib/autenticacion";
 import { crearClienteServidor } from "@/lib/supabase/servidor";
 import { Encabezado, Metrica, Tarjeta, TituloTarjeta, Vacio, Insignia } from "@/components/panel/piezas";
 import { BotonEnlace } from "@/components/ui/boton";
-import { hoyTexto } from "@/lib/programacion";
+import { hoyTexto, saludoSegunHora } from "@/lib/programacion";
 
-function saludo() {
-  const h = new Date().getHours();
-  if (h < 12) return "Buenos días";
-  if (h < 19) return "Buenas tardes";
-  return "Buenas noches";
-}
+const saludo = saludoSegunHora;
 
 const FORMATO_FECHA = new Intl.DateTimeFormat("es-DO", {
   weekday: "long",
@@ -150,7 +145,7 @@ export default async function ResumenCliente() {
         />
       </div>
 
-      <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+      <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] [&>*]:min-w-0">
         <Tarjeta>
           <TituloTarjeta
             extra={
@@ -173,7 +168,7 @@ export default async function ResumenCliente() {
                   className="flex items-center justify-between gap-3 rounded-3xl border border-lila-200 px-4 py-3.5 sm:gap-4 sm:px-5 sm:py-4 transition-colors hover:border-lila-400 hover:bg-lila-50"
                 >
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-violeta-800">
+                    <p className="text-sm font-medium break-words text-violeta-800">
                       {s.titulo}
                     </p>
                     <p className="mt-1 text-xs font-normal text-violeta-900/50 first-letter:uppercase">
@@ -181,7 +176,7 @@ export default async function ResumenCliente() {
                       {s.hora ? ` · ${s.hora.slice(0, 5)}` : ""}
                     </p>
                   </div>
-                  <Insignia tono={s.estado === "completada" ? "verde" : "lila"}>
+                  <Insignia className="shrink-0" tono={s.estado === "completada" ? "verde" : "lila"}>
                     {s.estado}
                   </Insignia>
                 </li>

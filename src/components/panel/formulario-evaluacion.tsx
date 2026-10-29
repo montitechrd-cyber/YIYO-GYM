@@ -54,7 +54,7 @@ export function FormularioEvaluacion({
         <h3 className="mb-5 text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
           Datos básicos
         </h3>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <Campo etiqueta="Fecha" htmlFor="fecha">
             <Entrada
               id="fecha"
@@ -122,7 +122,7 @@ export function FormularioEvaluacion({
         <h3 className="mb-5 text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
           Objetivo y experiencia
         </h3>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <Campo etiqueta="Objetivo principal" htmlFor="objetivo">
             <Seleccion id="objetivo" name="objetivo" defaultValue={objetivoActual ?? ""}>
               <option value="">Elegir…</option>
@@ -194,7 +194,7 @@ export function FormularioEvaluacion({
         <h3 className="mb-5 text-[11px] tracking-[0.22em] text-violeta-500 uppercase">
           Salud e historial
         </h3>
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <Campo etiqueta="Condiciones médicas" htmlFor="condiciones_medicas">
             <AreaTexto
               id="condiciones_medicas"
@@ -233,7 +233,7 @@ export function FormularioEvaluacion({
           </Campo>
         </div>
 
-        <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
           <Campo etiqueta="Horas de sueño" htmlFor="habitos_sueno">
             <Seleccion
               id="habitos_sueno"

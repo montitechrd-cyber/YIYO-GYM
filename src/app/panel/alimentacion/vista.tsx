@@ -50,7 +50,7 @@ export function VistaAlimentacion({
   };
 
   return (
-    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_20rem]">
+    <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0">
         <div className="mb-5 flex flex-wrap gap-2">
           {dias.map((d) => (

@@ -27,9 +27,35 @@ export function fechaATexto(fecha: Date) {
   return `${fecha.getFullYear()}-${m}-${d}`;
 }
 
-/** Hoy, en formato `AAAA-MM-DD` local. */
+/**
+ * Zona horaria de la plataforma. Los servidores (Cloudflare, Railway…) corren
+ * en UTC: sin esto, a partir de las 8 pm de República Dominicana «hoy» ya
+ * era mañana y el saludo salía desfasado.
+ */
+export const ZONA_HORARIA = "America/Santo_Domingo";
+
+/**
+ * El momento actual con la hora de pared de ZONA_HORARIA: un `Date` cuyos
+ * getHours/getDay/getDate devuelven lo que marca el reloj allá, sin importar
+ * en qué zona corra el servidor.
+ */
+export function ahoraLocal(): Date {
+  return new Date(new Date().toLocaleString("en-US", { timeZone: ZONA_HORARIA }));
+}
+
+/** Hoy, en formato `AAAA-MM-DD` de la hora de República Dominicana. */
 export function hoyTexto() {
-  return fechaATexto(new Date());
+  return fechaATexto(ahoraLocal());
+}
+
+/**
+ * Saludo según la hora local: buenos días de 5:00 a 11:59, buenas tardes de
+ * 12:00 a 17:59 y buenas noches de 18:00 a 4:59.
+ */
+export function saludoSegunHora(hora: number = ahoraLocal().getHours()) {
+  if (hora >= 5 && hora < 12) return "Buenos días";
+  if (hora >= 12 && hora < 18) return "Buenas tardes";
+  return "Buenas noches";
 }
 
 /** Lunes de la semana de `fecha`, o la misma fecha si ya es lunes. */
@@ -85,9 +111,9 @@ export function calcularSesiones(
  * filas acotado.
  */
 export function ventanaCalendario(mesesAtras = 6, mesesAdelante = 12) {
-  const desde = new Date();
+  const desde = ahoraLocal();
   desde.setMonth(desde.getMonth() - mesesAtras);
-  const hasta = new Date();
+  const hasta = ahoraLocal();
   hasta.setMonth(hasta.getMonth() + mesesAdelante);
   return { desde: fechaATexto(desde), hasta: fechaATexto(hasta) };
 }
