@@ -89,6 +89,12 @@ export function EstructuraPanel({
   const [perfilAbierto, setPerfilAbierto] = useState(false);
   const barra = useRef<HTMLElement>(null);
 
+  // Solo un enlace activo: gana el más específico. Sin esto «/panel» (Resumen)
+  // también coincidía con «/panel/entrenamientos» y se marcaban los dos.
+  const hrefActivo = enlaces
+    .filter((e) => ruta === e.href || ruta.startsWith(e.href + "/"))
+    .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+
   // En el teléfono, el enlace activo queda a la vista dentro de la barra.
   useEffect(() => {
     barra.current
@@ -99,7 +105,7 @@ export function EstructuraPanel({
   const menu = (
     <nav className="flex flex-1 flex-col gap-1">
       {enlaces.map((e) => {
-        const activo = ruta === e.href || ruta.startsWith(e.href + "/");
+        const activo = e.href === hrefActivo;
         const Icono = ICONOS[e.icono];
         return (
           <Link
@@ -232,7 +238,7 @@ export function EstructuraPanel({
         className="sin-barra fixed inset-x-0 bottom-0 z-40 flex overflow-x-auto overscroll-x-contain border-t-2 border-violeta-900 bg-lila-50 pb-[env(safe-area-inset-bottom)] lg:hidden"
       >
         {enlaces.map((e) => {
-          const activo = ruta === e.href || ruta.startsWith(e.href + "/");
+          const activo = e.href === hrefActivo;
           const Icono = ICONOS[e.icono];
           return (
             <Link
