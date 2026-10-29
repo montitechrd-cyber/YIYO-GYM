@@ -4,7 +4,8 @@ import { useActionState } from "react";
 import { Loader2 } from "lucide-react";
 import { cambiarContrasena, type EstadoFormulario } from "../acciones";
 import { Boton } from "@/components/ui/boton";
-import { Campo, Entrada } from "@/components/ui/campo";
+import { Campo } from "@/components/ui/campo";
+import { EntradaClave } from "@/components/ui/entrada-clave";
 import { Aviso } from "@/components/ui/aviso";
 
 const inicial: EstadoFormulario = {};
@@ -17,10 +18,9 @@ export function FormularioNuevaContrasena() {
       {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
 
       <Campo etiqueta="Nueva contraseña" htmlFor="contrasena" ayuda="Mínimo 8 caracteres.">
-        <Entrada
+        <EntradaClave
           id="contrasena"
           name="contrasena"
-          type="password"
           autoComplete="new-password"
           placeholder="••••••••"
           minLength={8}
@@ -29,10 +29,9 @@ export function FormularioNuevaContrasena() {
       </Campo>
 
       <Campo etiqueta="Repetir contraseña" htmlFor="repetir">
-        <Entrada
+        <EntradaClave
           id="repetir"
           name="repetir"
-          type="password"
           autoComplete="new-password"
           placeholder="••••••••"
           minLength={8}
