@@ -70,7 +70,7 @@ export function RegistrarEntrenamiento({
           {sesionHoy && <input type="hidden" name="sesion_id" value={sesionHoy} />}
           {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <Campo etiqueta="Día de la rutina" htmlFor="dia">
               <Seleccion
                 id="dia"
@@ -154,7 +154,7 @@ export function RegistrarEntrenamiento({
             </div>
           )}
 
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             <Campo etiqueta="Duración (min)" htmlFor="duracion_min">
               <Entrada
                 id="duracion_min"

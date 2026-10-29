@@ -1,3 +1,4 @@
+import { ahoraLocal } from "./programacion";
 import type { Alimento, ObjetivoFitness } from "./supabase/tipos";
 
 export type Macros = {
@@ -157,7 +158,7 @@ export function edadDesde(fechaNacimiento?: string | null): number | null {
   const nacimiento = new Date(fechaNacimiento + "T00:00:00");
   if (Number.isNaN(nacimiento.getTime())) return null;
 
-  const hoy = new Date();
+  const hoy = ahoraLocal();
   let edad = hoy.getFullYear() - nacimiento.getFullYear();
   const mes = hoy.getMonth() - nacimiento.getMonth();
   if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) edad--;
