@@ -126,7 +126,7 @@ export function Chat({
   );
 
   return (
-    <div className="flex h-[calc(100dvh-9rem)] min-h-[24rem] flex-col overflow-hidden sm:h-[calc(100dvh-11rem)] rounded-4xl border border-lila-200 bg-white shadow-suave">
+    <div className="flex h-[calc(100dvh-13.5rem)] min-h-[24rem] flex-col overflow-hidden rounded-4xl border border-lila-200 bg-white shadow-suave">
       <header className="flex items-center gap-3 border-b border-lila-200 px-4 py-3 sm:px-6 sm:py-4">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm fondo-degradado text-xs font-medium text-white">
           {inicialesOtro}

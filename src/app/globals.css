@@ -202,3 +202,11 @@ textarea {
     max-width: 100%;
   }
 }
+
+/* Fila deslizable sin barra visible (la barra de marca global la pisaría). */
+.sin-barra {
+  scrollbar-width: none;
+}
+.sin-barra::-webkit-scrollbar {
+  display: none;
+}
