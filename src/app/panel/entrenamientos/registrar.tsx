@@ -38,12 +38,12 @@ export function RegistrarEntrenamiento({
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-4xl fondo-degradado px-8 py-7 text-white shadow-suave">
-        <div>
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-4xl fondo-degradado px-5 py-6 text-white shadow-suave sm:px-8 sm:py-7">
+        <div className="min-w-0">
           <p className="text-[10px] tracking-[0.22em] text-lila-100 uppercase">
             Hoy toca
           </p>
-          <p className="mt-2 text-2xl font-normal">
+          <p className="mt-2 text-2xl font-normal break-words">
             {dias[0]?.nombre ?? "Entrenamiento"}
           </p>
         </div>
@@ -101,8 +101,8 @@ export function RegistrarEntrenamiento({
               </h3>
 
               {dia.ejercicios.map((a) => (
-                <div key={a.id} className="rounded-3xl bg-lila-50 p-5">
-                  <p className="text-sm font-medium text-violeta-800">
+                <div key={a.id} className="min-w-0 rounded-3xl bg-lila-50 p-4 sm:p-5">
+                  <p className="text-sm font-medium break-words text-violeta-800">
                     {a.ejercicio.nombre}
                   </p>
                   <p className="mt-1 text-[11px] font-normal text-violeta-900/50">
@@ -111,7 +111,7 @@ export function RegistrarEntrenamiento({
                   </p>
 
                   <div className="mt-4 space-y-2">
-                    <div className="grid grid-cols-[2.5rem_1fr_1fr_1fr] gap-2 text-[10px] tracking-[0.14em] text-violeta-500 uppercase">
+                    <div className="grid grid-cols-[1.5rem_repeat(3,minmax(0,1fr))] gap-2 text-[10px] sm:grid-cols-[2.5rem_repeat(3,minmax(0,1fr))] tracking-[0.14em] text-violeta-500 uppercase">
                       <span>#</span>
                       <span>Peso (kg)</span>
                       <span>Reps</span>
@@ -120,7 +120,7 @@ export function RegistrarEntrenamiento({
                     {Array.from({ length: a.series }, (_, i) => i + 1).map((n) => (
                       <div
                         key={n}
-                        className="grid grid-cols-[2.5rem_1fr_1fr_1fr] items-center gap-2"
+                        className="grid grid-cols-[1.5rem_repeat(3,minmax(0,1fr))] items-center gap-2 sm:grid-cols-[2.5rem_repeat(3,minmax(0,1fr))]"
                       >
                         <span className="text-sm font-normal text-violeta-900/45">
                           {n}
@@ -130,13 +130,13 @@ export function RegistrarEntrenamiento({
                           type="number"
                           step="0.5"
                           placeholder="—"
-                          className="px-3 py-2 text-sm"
+                          className="min-w-0 px-2 py-2 text-sm sm:px-3"
                         />
                         <Entrada
                           name={`serie_${a.ejercicio_id}_${n}_reps`}
                           type="number"
                           placeholder={a.repeticiones}
-                          className="px-3 py-2 text-sm"
+                          className="min-w-0 px-2 py-2 text-sm sm:px-3"
                         />
                         <Entrada
                           name={`serie_${a.ejercicio_id}_${n}_rpe`}
@@ -144,7 +144,7 @@ export function RegistrarEntrenamiento({
                           min={1}
                           max={10}
                           placeholder="1-10"
-                          className="px-3 py-2 text-sm"
+                          className="min-w-0 px-2 py-2 text-sm sm:px-3"
                         />
                       </div>
                     ))}
@@ -196,7 +196,7 @@ export function RegistrarEntrenamiento({
             />
           </Campo>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Boton type="submit" tamano="lg" disabled={pendiente}>
               {pendiente ? (
                 <Loader2 size={16} className="animate-spin" />

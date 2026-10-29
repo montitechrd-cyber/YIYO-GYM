@@ -62,7 +62,7 @@ export default async function ResumenAdmin() {
         }
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
         <Metrica
           etiqueta="Ingresos del mes"
           valor={MONEDA.format(ingresos)}
@@ -112,10 +112,10 @@ export default async function ResumenAdmin() {
                 return (
                   <li
                     key={p.id}
-                    className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4"
+                    className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-3xl border border-lila-200 px-4 py-4 sm:px-5"
                   >
-                    <div>
-                      <p className="text-sm font-medium text-violeta-800">{nombre}</p>
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-medium text-violeta-800">{nombre}</p>
                       <p className="mt-1 text-xs font-normal text-violeta-900/50">
                         {new Date(p.fecha).toLocaleDateString("es-DO", {
                           day: "numeric",
@@ -124,7 +124,7 @@ export default async function ResumenAdmin() {
                         })}
                       </p>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex shrink-0 items-center gap-3">
                       <Insignia tono={p.estado === "completado" ? "verde" : "ambar"}>
                         {p.estado}
                       </Insignia>

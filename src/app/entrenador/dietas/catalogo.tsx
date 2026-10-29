@@ -36,14 +36,14 @@ export function CatalogoDietas({
         ajustan solas a las calorías de cada chica.
       </p>
 
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
         {planes.map((p) => (
           <article
             key={p.id}
-            className="flex flex-col rounded-4xl border border-lila-200 bg-white p-7 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
+            className="flex flex-col rounded-4xl border border-lila-200 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada sm:p-7"
           >
             <span className="text-3xl">{p.emoji}</span>
-            <h3 className="mt-3 text-xl font-medium text-violeta-800">{p.nombre}</h3>
+            <h3 className="mt-3 text-xl font-medium break-words text-violeta-800">{p.nombre}</h3>
             <p className="mt-1 text-xs font-normal text-violeta-900/55">{p.resumen}</p>
 
             <dl className="mt-6 space-y-2 text-xs font-normal text-violeta-900/60">
@@ -167,7 +167,7 @@ function DialogoAsignarDieta({
                 </Aviso>
               )}
 
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 {/* La clave reinicia el campo al cambiar de clienta, para que
                     tome su propuesta sin necesidad de un efecto. */}
                 <Campo etiqueta="Calorías al día" htmlFor="calorias_objetivo">
@@ -214,7 +214,7 @@ function DialogoAsignarDieta({
                 </Campo>
               </div>
 
-              <p className="flex gap-3 rounded-2xl border border-lila-200 bg-lila-50/60 px-5 py-3 text-xs leading-relaxed font-normal text-violeta-900/65">
+              <p className="flex gap-3 rounded-2xl border border-lila-200 bg-lila-50/60 px-4 py-3 text-xs leading-relaxed font-normal text-violeta-900/65">
                 <Salad size={15} className="mt-0.5 shrink-0 text-lila-400" />
                 <span>
                   El plan está escrito para {plan.calorias_base} kcal. Al

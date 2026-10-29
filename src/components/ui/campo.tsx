@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const baseControl =
-  "w-full rounded-sm border border-violeta-900/35 bg-white px-3.5 py-3 text-[15px] text-violeta-900 outline-none transition-colors duration-200 placeholder:text-violeta-900/45 hover:border-violeta-900 focus:border-violeta-700 focus:ring-2 focus:ring-violeta-700 disabled:opacity-60";
+  "w-full min-w-0 rounded-sm border border-violeta-900/35 bg-white px-3.5 py-3 text-[15px] text-violeta-900 outline-none transition-colors duration-200 placeholder:text-violeta-900/45 hover:border-violeta-900 focus:border-violeta-700 focus:ring-2 focus:ring-violeta-700 disabled:opacity-60";
 
 export function Entrada({
   className,
@@ -63,10 +63,10 @@ export function Campo({
   children: React.ReactNode;
 }) {
   return (
-    <div className={className}>
+    <div className={cn("min-w-0", className)}>
       <Etiqueta htmlFor={htmlFor}>{etiqueta}</Etiqueta>
       {children}
-      {ayuda && <p className="mt-2 text-xs text-violeta-900/65">{ayuda}</p>}
+      {ayuda && <p className="mt-2 text-xs break-words text-violeta-900/65">{ayuda}</p>}
     </div>
   );
 }

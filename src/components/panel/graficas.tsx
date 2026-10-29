@@ -47,7 +47,8 @@ export function GraficaArea({
   alto?: number;
 }) {
   return (
-    <ResponsiveContainer width="100%" height={alto}>
+    <div className="w-full min-w-0" style={{ height: alto }}>
+    <ResponsiveContainer width="100%" height="100%" minWidth={0}>
       <AreaChart data={datos} margin={{ top: 10, right: 8, left: -18, bottom: 0 }}>
         <defs>
           <linearGradient id={`grad-${clave}`} x1="0" y1="0" x2="0" y2="1">
@@ -56,8 +57,8 @@ export function GraficaArea({
           </linearGradient>
         </defs>
         <CartesianGrid strokeDasharray="4 6" stroke="#E9D6FF" vertical={false} />
-        <XAxis dataKey="fecha" {...ejeComun} />
-        <YAxis {...ejeComun} domain={["auto", "auto"]} width={46} />
+        <XAxis dataKey="fecha" {...ejeComun} minTickGap={16} />
+        <YAxis {...ejeComun} domain={["auto", "auto"]} width={44} />
         <Tooltip
           contentStyle={estiloTooltip}
           formatter={(v) => [`${v ?? "—"}${unidad}`, etiqueta]}
@@ -75,6 +76,7 @@ export function GraficaArea({
         />
       </AreaChart>
     </ResponsiveContainer>
+    </div>
   );
 }
 
@@ -88,11 +90,12 @@ export function GraficaLineas({
   alto?: number;
 }) {
   return (
-    <ResponsiveContainer width="100%" height={alto}>
+    <div className="w-full min-w-0" style={{ height: alto }}>
+    <ResponsiveContainer width="100%" height="100%" minWidth={0}>
       <LineChart data={datos} margin={{ top: 10, right: 8, left: -18, bottom: 0 }}>
         <CartesianGrid strokeDasharray="4 6" stroke="#E9D6FF" vertical={false} />
-        <XAxis dataKey="fecha" {...ejeComun} />
-        <YAxis {...ejeComun} domain={["auto", "auto"]} width={46} />
+        <XAxis dataKey="fecha" {...ejeComun} minTickGap={16} />
+        <YAxis {...ejeComun} domain={["auto", "auto"]} width={44} />
         <Tooltip contentStyle={estiloTooltip} />
         <Legend
           iconType="circle"
@@ -112,6 +115,7 @@ export function GraficaLineas({
         ))}
       </LineChart>
     </ResponsiveContainer>
+    </div>
   );
 }
 
@@ -127,11 +131,12 @@ export function GraficaBarras({
   alto?: number;
 }) {
   return (
-    <ResponsiveContainer width="100%" height={alto}>
+    <div className="w-full min-w-0" style={{ height: alto }}>
+    <ResponsiveContainer width="100%" height="100%" minWidth={0}>
       <BarChart data={datos} margin={{ top: 10, right: 8, left: -18, bottom: 0 }}>
         <CartesianGrid strokeDasharray="4 6" stroke="#E9D6FF" vertical={false} />
-        <XAxis dataKey="fecha" {...ejeComun} />
-        <YAxis {...ejeComun} allowDecimals={false} width={46} />
+        <XAxis dataKey="fecha" {...ejeComun} minTickGap={16} />
+        <YAxis {...ejeComun} allowDecimals={false} width={44} />
         <Tooltip
           cursor={{ fill: "#F3EAFF" }}
           contentStyle={estiloTooltip}
@@ -140,5 +145,6 @@ export function GraficaBarras({
         <Bar dataKey={clave} name={etiqueta} fill="#9170F5" radius={[10, 10, 4, 4]} />
       </BarChart>
     </ResponsiveContainer>
+    </div>
   );
 }

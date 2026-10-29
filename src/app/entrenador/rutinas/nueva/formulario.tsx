@@ -60,7 +60,7 @@ export function FormularioRutina({
         </Seleccion>
       </Campo>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Campo etiqueta="Días por semana" htmlFor="dias_por_semana">
           <Seleccion id="dias_por_semana" name="dias_por_semana" defaultValue="3">
             {[1, 2, 3, 4, 5, 6, 7].map((d) => (
@@ -95,7 +95,7 @@ export function FormularioRutina({
         />
       </Campo>
 
-      <Boton type="submit" tamano="lg" disabled={pendiente}>
+      <Boton type="submit" tamano="lg" disabled={pendiente} className="w-full sm:w-auto">
         {pendiente && <Loader2 size={16} className="animate-spin" />}
         {pendiente ? "Creando…" : "Crear rutina"}
       </Boton>

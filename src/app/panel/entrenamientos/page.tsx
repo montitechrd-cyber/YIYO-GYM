@@ -82,21 +82,21 @@ export default async function MisEntrenamientos() {
 
           {/* Dos por fila como en la biblioteca: la demostración se lee bien
               grande, y a tres el muñeco quedaba diminuto. */}
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             {dias.map((d) => (
               <Link
                 key={d.id}
                 href={`/panel/entrenamientos/${d.id}`}
-                className="group rounded-4xl border border-lila-200 bg-white p-7 shadow-suave transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
+                className="group block min-w-0 rounded-4xl border border-lila-200 bg-white p-5 shadow-suave sm:p-7 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
               >
                 <div className="mb-5 flex items-center justify-between gap-3">
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[10px] tracking-[0.22em] text-violeta-500 uppercase">
                       Día {d.numero}
                     </p>
-                    <h3 className="mt-1 font-medium text-violeta-800">{d.nombre}</h3>
+                    <h3 className="mt-1 font-medium break-words text-violeta-800">{d.nombre}</h3>
                   </div>
-                  <Insignia>{d.ejercicios.length} ej.</Insignia>
+                  <span className="shrink-0"><Insignia>{d.ejercicios.length} ej.</Insignia></span>
                 </div>
 
                 {d.ejercicios.length > 0 ? (
@@ -104,7 +104,7 @@ export default async function MisEntrenamientos() {
                     <ul className="space-y-2.5">
                       {d.ejercicios.slice(0, 4).map((a) => (
                         <li key={a.id} className="rounded-3xl bg-lila-50 px-4 py-3">
-                          <p className="flex items-center gap-2 text-sm font-medium text-violeta-800">
+                          <p className="flex items-center gap-2 text-sm font-medium break-words text-violeta-800">
                             {a.ejercicio.video_url && (
                               <PlayCircle
                                 size={13}
@@ -169,9 +169,9 @@ export default async function MisEntrenamientos() {
               {registros.map((r) => (
                 <li
                   key={r.id}
-                  className="flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-lila-200 px-5 py-4"
+                  className="flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-lila-200 px-4 py-3.5 sm:px-5 sm:py-4"
                 >
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-violeta-800 first-letter:uppercase">
                       {FECHA_LARGA.format(fechaLocal(r.fecha))}
                     </p>
@@ -181,7 +181,7 @@ export default async function MisEntrenamientos() {
                       {r.sensacion ? ` · ${r.sensacion}` : ""}
                     </p>
                     {r.notas && (
-                      <p className="mt-2 text-xs font-normal text-violeta-900/60">
+                      <p className="mt-2 text-xs font-normal break-words text-violeta-900/60">
                         {r.notas}
                       </p>
                     )}

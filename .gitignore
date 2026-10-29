@@ -49,3 +49,8 @@ next-env.d.ts
 # La plantilla de configuración sí se versiona: no lleva claves, solo dice
 # qué variables hacen falta.
 !.env.local.example
+
+# cloudflare
+.open-next
+.wrangler
+.dev.vars

@@ -45,7 +45,7 @@ export function ConstructorDieta({
   const dia = dias.find((d) => d.id === diaActivo) ?? dias[0];
 
   return (
-    <div className="grid gap-5 xl:grid-cols-[1fr_20rem]">
+    <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0">
         {/* Selector de día */}
         <div className="mb-5 flex flex-wrap gap-2">
@@ -57,7 +57,7 @@ export function ConstructorDieta({
                 type="button"
                 onClick={() => setDiaActivo(d.id)}
                 className={cn(
-                  "cursor-pointer rounded-2xl px-4 py-2.5 text-left transition-all duration-300",
+                  "min-w-0 cursor-pointer rounded-2xl px-3 py-2.5 text-left sm:px-4 transition-all duration-300",
                   d.id === dia?.id
                     ? "fondo-degradado text-white shadow-suave"
                     : "border border-lila-200 bg-white text-violeta-800 hover:border-lila-400"
@@ -147,11 +147,11 @@ function DiaDeDieta({
           Añadir comida
         </Boton>
 
-        <div className="flex items-center gap-2">
+        <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
           <Seleccion
             value={origenCopia}
             onChange={(e) => setOrigenCopia(e.target.value)}
-            className="w-44 px-3 py-2 text-sm"
+            className="w-full px-3 py-2 text-sm sm:w-44"
           >
             <option value="">Copiar desde…</option>
             {dias
@@ -235,20 +235,20 @@ function ComidaEditable({
   };
 
   return (
-    <section className="rounded-4xl border border-lila-200 bg-white p-6 shadow-suave">
+    <section className="rounded-4xl border border-lila-200 bg-white p-4 shadow-suave sm:p-6">
       <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
         {editandoNombre ? (
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex w-full min-w-0 flex-wrap items-center gap-2 sm:w-auto">
             <Entrada
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="w-48 px-3 py-2 text-sm"
+              className="w-full px-3 py-2 text-sm sm:w-48"
             />
             <Entrada
               type="time"
               value={hora}
               onChange={(e) => setHora(e.target.value)}
-              className="w-32 px-3 py-2 text-sm"
+              className="w-32 max-w-full px-3 py-2 text-sm"
             />
             <Boton
               tamano="sm"
@@ -268,9 +268,9 @@ function ComidaEditable({
           <button
             type="button"
             onClick={() => setEditandoNombre(true)}
-            className="cursor-pointer text-left"
+            className="min-w-0 cursor-pointer text-left"
           >
-            <h3 className="font-medium text-violeta-800">{comida.nombre}</h3>
+            <h3 className="font-medium break-words text-violeta-800">{comida.nombre}</h3>
             <p className="mt-0.5 text-[11px] font-normal text-violeta-900/45">
               {comida.hora ? comida.hora.slice(0, 5) : "sin hora"} · toca para
               renombrar
@@ -278,7 +278,7 @@ function ComidaEditable({
           </button>
         )}
 
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center gap-3">
           <p className="text-xs font-normal text-violeta-900/60">
             <span className="font-medium text-violeta-700">{m.calorias} kcal</span>
             {" · "}P {m.proteina} · C {m.carbohidratos} · G {m.grasa}
@@ -302,9 +302,9 @@ function ComidaEditable({
             return (
               <li
                 key={ing.id}
-                className="flex flex-wrap items-center gap-3 rounded-3xl bg-lila-50 px-4 py-3"
+                className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-3xl bg-lila-50 px-3 py-3 sm:px-4"
               >
-                <span className="min-w-40 flex-1 text-sm text-violeta-800">
+                <span className="w-full min-w-0 flex-1 text-sm break-words text-violeta-800 sm:w-auto sm:min-w-40">
                   {ing.alimento.nombre}
                 </span>
 
@@ -325,7 +325,7 @@ function ComidaEditable({
                   {ing.alimento.unidad === "unidad" ? "uds" : ing.alimento.unidad}
                 </label>
 
-                <span className="text-[11px] font-normal text-violeta-900/55">
+                <span className="min-w-0 flex-1 text-[11px] font-normal text-violeta-900/55">
                   {im.calorias} kcal · P {im.proteina} · C {im.carbohidratos} · G{" "}
                   {im.grasa}
                 </span>
@@ -349,7 +349,7 @@ function ComidaEditable({
       )}
 
       {/* Alta rápida de ingredientes */}
-      <div className="rounded-3xl bg-lila-50/70 p-4">
+      <div className="rounded-3xl bg-lila-50/70 p-3 sm:p-4">
         {error && (
           <Aviso tono="error" className="mb-3">
             {error}
@@ -357,7 +357,7 @@ function ComidaEditable({
         )}
 
         <div className="flex flex-wrap items-end gap-3">
-          <div className="relative min-w-44 flex-1">
+          <div className="relative w-full min-w-0 sm:w-auto sm:min-w-44 sm:flex-1">
             <Search
               size={14}
               className="absolute top-1/2 left-3.5 -translate-y-1/2 text-violeta-400"
@@ -372,7 +372,7 @@ function ComidaEditable({
           <Seleccion
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
-            className="w-36 bg-white px-3 py-2 text-sm"
+            className="w-full bg-white px-3 py-2 text-sm sm:w-36"
           >
             <option value="">Todas</option>
             {Object.entries(CATEGORIAS_ALIMENTO).map(([v, t]) => (
@@ -388,7 +388,7 @@ function ComidaEditable({
               min="1"
               value={cantidad}
               onChange={(e) => setCantidad(e.target.value)}
-              className="w-24 bg-white px-3 py-2 text-sm"
+              className="w-24 max-w-full bg-white px-3 py-2 text-sm"
             />
           </label>
         </div>
@@ -407,7 +407,7 @@ function ComidaEditable({
                 disabled={enCurso}
                 onClick={() => anadir(a)}
                 onMouseEnter={() => setElegido(a)}
-                className="flex h-fit cursor-pointer items-center gap-2 rounded-sm border border-lila-300 bg-white px-3.5 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
+                className="flex h-fit max-w-full min-w-0 cursor-pointer items-center gap-2 rounded-sm text-left break-words border border-lila-300 bg-white px-3.5 py-2 text-xs text-violeta-800 transition-all hover:border-violeta-500 hover:shadow-suave disabled:opacity-50"
               >
                 <Plus size={12} className="text-violeta-500" />
                 {a.nombre}

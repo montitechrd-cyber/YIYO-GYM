@@ -64,7 +64,7 @@ export function FormularioVerificar() {
           maxLength={6}
           autoFocus
           placeholder="123456"
-          className="text-center text-2xl tracking-[0.5em]"
+          className="text-center text-xl tracking-[0.35em] sm:text-2xl sm:tracking-[0.5em]"
         />
       </Campo>
 

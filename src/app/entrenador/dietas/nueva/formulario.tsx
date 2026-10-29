@@ -65,7 +65,7 @@ export function FormularioDieta({
       </Campo>
 
       {clienteId && (
-        <div className="rounded-3xl border border-lila-200 bg-lila-50/60 p-5">
+        <div className="rounded-3xl border border-lila-200 bg-lila-50/60 p-4 sm:p-5">
           <p className="mb-1 flex items-center gap-2 text-[11px] tracking-[0.18em] text-violeta-500 uppercase">
             <Calculator size={13} />
             Objetivo diario
@@ -91,7 +91,7 @@ export function FormularioDieta({
         </div>
       )}
 
-      <Boton type="submit" tamano="lg" disabled={pendiente}>
+      <Boton type="submit" tamano="lg" disabled={pendiente} className="w-full sm:w-auto">
         {pendiente && <Loader2 size={16} className="animate-spin" />}
         {pendiente ? "Creando…" : "Crear dieta"}
       </Boton>
@@ -115,7 +115,7 @@ function CamposObjetivo({ sugerencia }: { sugerencia: Sugerencia | null }) {
   ] as const;
 
   return (
-    <div className="grid gap-4 sm:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:grid-cols-4">
       {campos.map((c) => (
         <Campo key={c.n} etiqueta={c.e} htmlFor={c.n}>
           <Entrada

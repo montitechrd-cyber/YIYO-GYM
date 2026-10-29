@@ -21,7 +21,7 @@ export function FormularioFicha({ cliente }: { cliente: Cliente }) {
       {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
       {estado.exito && <Aviso tono="exito">{estado.exito}</Aviso>}
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Campo etiqueta="Estado" htmlFor="estado">
           <Seleccion id="estado" name="estado" defaultValue={cliente.estado}>
             {Object.entries(ESTADOS_CLIENTE).map(([v, t]) => (

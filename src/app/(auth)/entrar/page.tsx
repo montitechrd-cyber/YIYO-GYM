@@ -16,7 +16,7 @@ export default async function PaginaEntrar({
 
   return (
     <div>
-      <h1 className="text-6xl text-violeta-900">
+      <h1 className="text-[clamp(2.5rem,13vw,3.75rem)] break-words text-violeta-900">
         Hola de nuevo
       </h1>
       <p className="mt-3 text-sm text-violeta-900/75">

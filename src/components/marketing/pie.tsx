@@ -32,17 +32,17 @@ const navegacion = [
   { href: "/tienda", texto: "Tienda" },
 ];
 
-const enlace = "text-sm text-white/75 transition-colors hover:text-white hover:underline underline-offset-4";
+const enlace = "min-w-0 break-words text-sm text-white/75 transition-colors hover:text-white hover:underline underline-offset-4";
 
 export function Pie() {
   return (
-    <footer className="border-t-8 border-violeta-700 bg-violeta-900 pt-16 pb-8 text-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <p className="font-display text-[clamp(3.5rem,11vw,6rem)] leading-[0.9] font-extrabold uppercase [font-stretch:72%]">
+    <footer className="border-t-8 border-violeta-700 bg-violeta-900 pt-12 pb-8 sm:pt-16 text-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <p className="font-display text-[clamp(2.75rem,12vw,6rem)] break-words leading-[0.9] font-extrabold uppercase [font-stretch:72%]">
           Fuerza que te transforma
         </p>
 
-        <div className="mt-14 grid gap-12 border-t border-white/30 pt-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="mt-10 grid grid-cols-1 gap-10 border-t border-white/30 pt-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Logo invertido />
             <p className="mt-6 max-w-sm text-sm leading-6 text-white/70">
@@ -69,7 +69,7 @@ export function Pie() {
             <h3 className="text-xl uppercase">Contacto</h3>
             <ul className="mt-4 space-y-2.5">
               {contacto.map((c) => (
-                <li key={c.texto} className="flex items-center gap-3">
+                <li key={c.texto} className="flex min-w-0 items-center gap-3">
                   <c.icono className="h-4 w-4 shrink-0 text-lila-300" />
                   {c.href ? (
                     <a

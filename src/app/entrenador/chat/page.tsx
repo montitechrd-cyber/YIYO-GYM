@@ -69,9 +69,9 @@ export default async function ChatEntrenador({
         descripcion={`${lista.length} conversación${lista.length === 1 ? "" : "es"}`}
       />
 
-      <div className="grid gap-5 lg:grid-cols-[19rem_1fr]">
-        <Tarjeta className="h-fit p-4">
-          <ul className="space-y-1.5">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[19rem_minmax(0,1fr)]">
+        <Tarjeta className="h-fit min-w-0 p-3 sm:p-4">
+          <ul className="max-h-60 space-y-1.5 overflow-y-auto lg:max-h-none lg:overflow-visible">
             {lista.map((cv) => {
               const p = perfiles.get(perfilPorCliente.get(cv.cliente_id) ?? "");
               const esActiva = cv.id === activa.id;
@@ -96,7 +96,7 @@ export default async function ChatEntrenador({
                     >
                       {iniciales(p?.nombre_completo, p?.correo)}
                     </span>
-                    <span className="min-w-0">
+                    <span className="min-w-0 flex-1">
                       <span
                         className={cn(
                           "block truncate text-sm font-medium",

@@ -43,8 +43,8 @@ export default async function ListaClientes({
       />
 
       <Tarjeta className="mb-6">
-        <form className="flex flex-wrap items-end gap-4">
-          <div className="relative min-w-56 flex-1">
+        <form className="flex flex-wrap items-end gap-3 sm:gap-4">
+          <div className="relative w-full min-w-0 sm:w-auto sm:min-w-56 sm:flex-1">
             <Search
               size={16}
               className="absolute top-1/2 left-4 -translate-y-1/2 text-violeta-400"
@@ -56,7 +56,7 @@ export default async function ListaClientes({
               className="pl-11"
             />
           </div>
-          <Seleccion name="estado" defaultValue={estado} className="w-48">
+          <Seleccion name="estado" defaultValue={estado} className="w-full sm:w-48">
             <option value="">Todos los estados</option>
             {Object.entries(ESTADOS_CLIENTE).map(([valor, texto]) => (
               <option key={valor} value={valor}>
@@ -66,7 +66,7 @@ export default async function ListaClientes({
           </Seleccion>
           <button
             type="submit"
-            className="h-11 cursor-pointer rounded-sm fondo-degradado px-7 text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
+            className="h-11 w-full cursor-pointer rounded-sm fondo-degradado px-7 sm:w-auto text-sm font-medium text-white shadow-suave transition-all hover:brightness-110"
           >
             Filtrar
           </button>
@@ -74,7 +74,7 @@ export default async function ListaClientes({
       </Tarjeta>
 
       {visibles.length > 0 ? (
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {visibles.map((c) => {
             const p = c.perfil;
             return (
@@ -84,7 +84,7 @@ export default async function ListaClientes({
                 // `min-w-0`: una celda de rejilla no encoge por debajo del
                 // ancho mínimo de su contenido salvo que se le diga. Sin esto
                 // la tarjeta se salía de la pantalla en móviles estrechos.
-                className="group min-w-0 rounded-4xl border border-lila-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada"
+                className="group min-w-0 rounded-4xl border border-lila-200 bg-white p-4 transition-all duration-500 hover:-translate-y-1 hover:border-lila-400 hover:shadow-elevada sm:p-6"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">
@@ -107,14 +107,14 @@ export default async function ListaClientes({
 
                 <dl className="mt-5 space-y-2 border-t border-lila-100 pt-4 text-xs font-normal">
                   <div className="flex justify-between gap-3">
-                    <dt className="text-violeta-900/45">Objetivo</dt>
-                    <dd className="text-right text-violeta-900/75">
+                    <dt className="shrink-0 text-violeta-900/45">Objetivo</dt>
+                    <dd className="min-w-0 text-right break-words text-violeta-900/75">
                       {c.objetivo ? OBJETIVOS[c.objetivo] : "Sin definir"}
                     </dd>
                   </div>
                   <div className="flex justify-between gap-3">
-                    <dt className="text-violeta-900/45">Alta</dt>
-                    <dd className="text-right text-violeta-900/75">
+                    <dt className="shrink-0 text-violeta-900/45">Alta</dt>
+                    <dd className="min-w-0 text-right text-violeta-900/75">
                       {FECHA_LARGA.format(fechaLocal(c.fecha_alta))}
                     </dd>
                   </div>
@@ -125,7 +125,7 @@ export default async function ListaClientes({
                     {c.etiquetas.slice(0, 4).map((e) => (
                       <span
                         key={e}
-                        className="rounded-sm bg-lila-100 px-2.5 py-1 text-[10px] text-violeta-600"
+                        className="max-w-full truncate rounded-sm bg-lila-100 px-2.5 py-1 text-[10px] text-violeta-600"
                       >
                         {e}
                       </span>

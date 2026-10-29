@@ -30,10 +30,10 @@ const valores = [
 
 export function Valores() {
   return (
-    <section className="bg-crema py-20 md:py-28">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+    <section className="bg-crema py-14 sm:py-20 md:py-28">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <h2 className="text-6xl text-violeta-900 md:text-[6rem]">
+          <h2 className="text-[clamp(2.75rem,12vw,6rem)] break-words text-violeta-900">
             Un espacio
             <span className="block text-violeta-600">para ti</span>
           </h2>
@@ -47,10 +47,10 @@ export function Valores() {
           {valores.map((v) => (
             <li
               key={v.titulo}
-              className="grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-1 border-b border-violeta-900/25 py-7 transition-colors duration-200 hover:bg-lila-100 sm:grid-cols-[3rem_13rem_1fr] sm:px-3"
+              className="grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-1 border-b border-violeta-900/25 py-7 transition-colors duration-200 hover:bg-lila-100 sm:grid-cols-[3rem_minmax(0,13rem)_1fr] sm:px-3"
             >
               <v.icono size={26} strokeWidth={1.8} className="row-span-2 text-violeta-700 sm:row-span-1" />
-              <h3 className="text-4xl text-violeta-900 uppercase">{v.titulo}</h3>
+              <h3 className="min-w-0 break-words text-4xl text-violeta-900 uppercase">{v.titulo}</h3>
               <p className="col-start-2 text-[15px] leading-6 text-violeta-900/75 sm:col-start-3">
                 {v.texto}
               </p>

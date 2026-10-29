@@ -60,7 +60,7 @@ export function EditorFechas({ plan }: { plan: PlanAlimentacion }) {
           <input type="hidden" name="plan_id" value={plan.id} />
           {estado.error && <Aviso tono="error">{estado.error}</Aviso>}
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Campo etiqueta="Empieza el" htmlFor="inicio">
               <Entrada
                 id="inicio"
@@ -86,7 +86,7 @@ export function EditorFechas({ plan }: { plan: PlanAlimentacion }) {
           </div>
 
           {finPrevisto && (
-            <p className="rounded-3xl bg-lila-50 px-5 py-4 text-sm font-normal text-violeta-900/70">
+            <p className="rounded-3xl bg-lila-50 px-4 py-4 text-sm sm:px-5 font-normal text-violeta-900/70">
               Termina el{" "}
               <strong className="font-medium text-violeta-800">
                 {FECHA_LARGA.format(fechaLocal(finPrevisto))}
@@ -95,7 +95,7 @@ export function EditorFechas({ plan }: { plan: PlanAlimentacion }) {
             </p>
           )}
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Boton type="submit" disabled={pendiente}>
               {pendiente && <Loader2 size={15} className="animate-spin" />}
               {pendiente ? "Guardando…" : "Guardar"}

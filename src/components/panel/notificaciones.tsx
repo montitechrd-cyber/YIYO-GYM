@@ -142,7 +142,7 @@ export function CentroNotificaciones({
             alinear === "izquierda" ? "left-0" : "right-0"
           )}
         >
-          <header className="flex items-center justify-between border-b border-lila-200 px-5 py-4">
+          <header className="flex items-center justify-between gap-3 border-b border-lila-200 px-4 py-3 sm:px-5 sm:py-4">
             <h3 className="text-[11px] tracking-[0.2em] text-violeta-500 uppercase">
               Notificaciones
             </h3>
@@ -152,14 +152,14 @@ export function CentroNotificaciones({
                   setNotificaciones((ns) => ns.map((n) => ({ ...n, leida: true })));
                   marcarTodasLeidas();
                 }}
-                className="cursor-pointer text-[11px] font-normal text-violeta-600 underline-offset-4 hover:underline"
+                className="shrink-0 cursor-pointer text-[11px] font-normal text-violeta-600 underline-offset-4 hover:underline"
               >
                 Marcar todas
               </button>
             )}
           </header>
 
-          <div className="max-h-96 overflow-y-auto">
+          <div className="max-h-[min(24rem,calc(100dvh-10rem))] overflow-y-auto overscroll-contain">
             {notificaciones.length > 0 ? (
               <ul>
                 {notificaciones.map((n) => {
@@ -179,7 +179,7 @@ export function CentroNotificaciones({
                       <span className="min-w-0 flex-1">
                         <span
                           className={cn(
-                            "block text-sm",
+                            "block text-sm break-words",
                             n.leida
                               ? "font-normal text-violeta-900/60"
                               : "font-medium text-violeta-800"
@@ -188,7 +188,7 @@ export function CentroNotificaciones({
                           {n.titulo}
                         </span>
                         {n.cuerpo && (
-                          <span className="mt-0.5 block truncate text-xs font-normal text-violeta-900/50">
+                          <span className="mt-0.5 line-clamp-2 block text-xs break-words font-normal text-violeta-900/50">
                             {n.cuerpo}
                           </span>
                         )}
@@ -200,7 +200,7 @@ export function CentroNotificaciones({
                   );
 
                   const clases = cn(
-                    "flex w-full items-start gap-3 border-b border-lila-100 px-5 py-4 text-left transition-colors last:border-0",
+                    "flex w-full items-start gap-3 border-b border-lila-100 px-4 py-3 text-left sm:px-5 sm:py-4 transition-colors last:border-0",
                     n.leida ? "hover:bg-lila-50" : "bg-lila-50/60 hover:bg-lila-100"
                   );
 
@@ -230,7 +230,7 @@ export function CentroNotificaciones({
                 })}
               </ul>
             ) : (
-              <p className="px-5 py-12 text-center text-sm font-normal text-violeta-900/45">
+              <p className="px-5 py-10 text-center text-sm font-normal text-violeta-900/45">
                 No tienes notificaciones.
               </p>
             )}

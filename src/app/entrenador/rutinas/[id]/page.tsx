@@ -53,15 +53,15 @@ export default async function DetalleRutina({
       </Link>
 
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-normal text-violeta-900">{rutina.nombre}</h1>
-          <p className="mt-2 flex items-center gap-2 text-sm font-normal text-violeta-900/55">
+        <div className="min-w-0">
+          <h1 className="text-2xl font-normal break-words text-violeta-900 sm:text-3xl">{rutina.nombre}</h1>
+          <p className="mt-2 flex flex-wrap items-center gap-x-2 text-sm font-normal text-violeta-900/55">
             <User size={14} className="text-lila-400" />
             {nombreCliente ?? "Plantilla sin asignar"} · {rutina.dias_por_semana}{" "}
             días/semana · {rutina.semanas} semanas
           </p>
           {rutina.descripcion && (
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed font-normal text-violeta-900/65">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed break-words font-normal text-violeta-900/65">
               {rutina.descripcion}
             </p>
           )}

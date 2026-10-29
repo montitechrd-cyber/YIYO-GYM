@@ -10,9 +10,9 @@ const PILARES = ["Entrenamiento", "Nutrición", "Hábitos"];
 export function Hero() {
   return (
     <section className="relative bg-crema pt-24 lg:pt-28">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] [&>*]:min-w-0 lg:gap-14">
         <div className="animate-aparecer flex flex-col justify-center py-4 lg:py-10">
-          <h1 className="text-[clamp(4.25rem,15vw,6rem)] text-violeta-900">
+          <h1 className="text-[clamp(2.25rem,calc((100vw-2rem)/7.1),6rem)] whitespace-nowrap text-violeta-900 sm:text-[clamp(2.25rem,calc((100vw-3rem)/7.1),6rem)] lg:text-[clamp(3rem,calc((100vw-7rem)*0.575/7.1),6rem)]">
             Fuerza que
             <span className="block text-violeta-600">transforma</span>
           </h1>

@@ -61,7 +61,7 @@ export default async function DiaDeEntrenamiento({
   );
 
   return (
-    <div className="max-w-3xl">
+    <div className="min-w-0 max-w-3xl">
       <Link
         href="/panel/entrenamientos"
         className="mb-6 inline-flex items-center gap-2 text-xs font-normal text-violeta-600 transition-colors hover:text-violeta-800"
@@ -82,7 +82,7 @@ export default async function DiaDeEntrenamiento({
       />
 
       {siguiente && (
-        <p className="mb-7 flex items-center gap-2 rounded-3xl border border-lila-200 bg-lila-50 px-5 py-4 text-sm font-normal text-violeta-900/70">
+        <p className="mb-7 flex items-center gap-2 rounded-3xl border border-lila-200 bg-lila-50 px-4 py-3.5 text-sm font-normal text-violeta-900/70 sm:px-5 sm:py-4">
           <CalendarDays size={15} className="shrink-0 text-violeta-500" />
           <span className="first-letter:uppercase">
             Próxima vez: {FECHA_LARGA.format(fechaLocal(siguiente.fecha))}
@@ -92,7 +92,7 @@ export default async function DiaDeEntrenamiento({
       )}
 
       {dia.notas && (
-        <p className="mb-7 text-sm leading-relaxed font-normal text-violeta-900/70">
+        <p className="mb-7 text-sm leading-relaxed font-normal break-words text-violeta-900/70">
           {dia.notas}
         </p>
       )}

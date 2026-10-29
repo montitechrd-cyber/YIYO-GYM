@@ -111,7 +111,7 @@ export default async function ResumenCliente() {
         }
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4">
         <Metrica
           etiqueta="Entrenamientos este mes"
           valor={esteMs}
@@ -150,7 +150,7 @@ export default async function ResumenCliente() {
         />
       </div>
 
-      <div className="mt-6 grid gap-5 lg:grid-cols-[1.3fr_1fr]">
+      <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
         <Tarjeta>
           <TituloTarjeta
             extra={
@@ -170,7 +170,7 @@ export default async function ResumenCliente() {
               {sesiones.map((s) => (
                 <li
                   key={s.id}
-                  className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4 transition-colors hover:border-lila-400 hover:bg-lila-50"
+                  className="flex items-center justify-between gap-3 rounded-3xl border border-lila-200 px-4 py-3.5 sm:gap-4 sm:px-5 sm:py-4 transition-colors hover:border-lila-400 hover:bg-lila-50"
                 >
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium text-violeta-800">
@@ -212,7 +212,7 @@ export default async function ResumenCliente() {
 
           {progresos && progresos.length > 0 ? (
             <div className="space-y-4">
-              <p className="text-5xl font-normal text-violeta-700">
+              <p className="text-4xl font-normal break-words text-violeta-700 sm:text-5xl">
                 {progresos[0].peso_kg ?? "—"}
                 <span className="ml-1 text-lg text-violeta-900/40">kg</span>
               </p>

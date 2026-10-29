@@ -149,18 +149,18 @@ export function VerificacionDosPasos({
       {exito && <Aviso tono="exito">{exito}</Aviso>}
 
       {!inscribiendo && (
-        <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4">
-          <span className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-lila-200 px-4 py-4 sm:px-5">
+          <span className="flex min-w-0 items-center gap-3">
             <span
               className={
                 activo
-                  ? "flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600"
-                  : "flex h-10 w-10 items-center justify-center rounded-2xl bg-lila-100 text-violeta-500"
+                  ? "flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600"
+                  : "flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-lila-100 text-violeta-500"
               }
             >
               {activo ? <ShieldCheck size={18} /> : <ShieldOff size={18} />}
             </span>
-            <span>
+            <span className="min-w-0">
               <span className="block text-sm font-medium text-violeta-800">
                 {activo ? "Activada" : "Desactivada"}
               </span>
@@ -187,7 +187,7 @@ export function VerificacionDosPasos({
       )}
 
       {inscribiendo && (
-        <div className="space-y-5 rounded-3xl border border-lila-200 bg-lila-50/60 p-6">
+        <div className="space-y-5 rounded-3xl border border-lila-200 bg-lila-50/60 p-4 sm:p-6">
           <div className="flex items-start gap-3">
             <Smartphone size={17} className="mt-0.5 shrink-0 text-violeta-500" />
             <p className="text-sm leading-relaxed font-normal text-violeta-900/75">
@@ -197,7 +197,7 @@ export function VerificacionDosPasos({
           </div>
 
           <div className="flex justify-center">
-            <div className="rounded-3xl bg-white p-4 shadow-suave">
+            <div className="max-w-full rounded-3xl bg-white p-3 shadow-suave sm:p-4">
               {/* El QR llega como SVG incrustado en la propia URL, así que
                   no hay nada que optimizar y `next/image` solo estorba. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -206,6 +206,7 @@ export function VerificacionDosPasos({
                 alt="Código QR para la verificación en dos pasos"
                 width={180}
                 height={180}
+                className="h-auto max-w-full"
               />
             </div>
           </div>

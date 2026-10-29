@@ -21,7 +21,7 @@ export default async function PaginaNuevaContrasena({ searchParams }: {
   }
   return (
     <div>
-      <h1 className="text-6xl text-violeta-900">
+      <h1 className="text-[clamp(2.5rem,13vw,3.75rem)] break-words text-violeta-900">
         Crea tu <span className="text-violeta-600">nueva clave</span>
       </h1>
       <p className="mt-3 text-sm text-violeta-900/75">

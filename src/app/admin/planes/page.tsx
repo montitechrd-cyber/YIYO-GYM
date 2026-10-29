@@ -72,11 +72,11 @@ export default async function PlanesYPagos() {
         el historial; coordina los nuevos pagos directamente con tus clientas.
       </Aviso>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {listaPlanes.map((p) => (
           <article
             key={p.id}
-            className={`rounded-4xl border p-7 transition-all duration-500 ${
+            className={`min-w-0 rounded-4xl border p-5 transition-all duration-500 sm:p-7 ${
               p.destacado
                 ? "fondo-degradado border-transparent text-white shadow-suave"
                 : "border-lila-200 bg-white"
@@ -84,7 +84,7 @@ export default async function PlanesYPagos() {
           >
             <div className="flex items-start justify-between gap-3">
               <p
-                className={`text-[10px] tracking-[0.22em] uppercase ${
+                className={`min-w-0 break-words text-[10px] tracking-[0.22em] uppercase ${
                   p.destacado ? "text-lila-100" : "text-violeta-500"
                 }`}
               >
@@ -99,7 +99,7 @@ export default async function PlanesYPagos() {
             </div>
 
             <p
-              className={`mt-4 text-4xl font-normal ${
+              className={`mt-4 text-3xl font-normal sm:text-4xl ${
                 p.destacado ? "text-white" : "text-violeta-800"
               }`}
             >
@@ -114,7 +114,7 @@ export default async function PlanesYPagos() {
         ))}
       </div>
 
-      <div className="mt-6 grid gap-5 xl:grid-cols-2">
+      <div className="mt-6 grid grid-cols-1 gap-5 xl:grid-cols-2">
         <Tarjeta>
           <TituloTarjeta>Suscripciones</TituloTarjeta>
           {listaSuscripciones.length > 0 ? (
@@ -122,10 +122,10 @@ export default async function PlanesYPagos() {
               {listaSuscripciones.map((s) => (
                 <li
                   key={s.id}
-                  className="flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-lila-200 px-5 py-4"
+                  className="flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-lila-200 px-4 py-4 sm:px-5"
                 >
-                  <div>
-                    <p className="text-sm font-medium text-violeta-800">
+                  <div className="min-w-0">
+                    <p className="break-words text-sm font-medium text-violeta-800">
                       {nombreDe(s.cliente_id)}
                     </p>
                     <p className="mt-1 text-xs font-normal text-violeta-900/50">
@@ -155,17 +155,17 @@ export default async function PlanesYPagos() {
               {listaPagos.map((p) => (
                 <li
                   key={p.id}
-                  className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-5 py-4"
+                  className="flex items-center justify-between gap-4 rounded-3xl border border-lila-200 px-4 py-4 sm:px-5"
                 >
-                  <div>
-                    <p className="text-sm font-medium text-violeta-800">
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-medium text-violeta-800">
                       {nombreDe(p.cliente_id)}
                     </p>
                     <p className="mt-1 text-xs font-normal text-violeta-900/50">
                       {FECHA_LARGA.format(new Date(p.fecha))}
                     </p>
                   </div>
-                  <span className="text-sm font-medium text-violeta-700">
+                  <span className="shrink-0 text-sm font-medium text-violeta-700">
                     {MONEDA.format(Number(p.monto))}
                   </span>
                 </li>

@@ -49,7 +49,7 @@ export function Catalogo({
         </div>
       )}
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {visibles.map((p) => (
           <TarjetaProducto key={p.id} producto={p} />
         ))}
@@ -124,11 +124,11 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
         <p className="text-[10px] tracking-[0.18em] text-violeta-500 uppercase">
           {producto.categoria}
         </p>
-        <h2 className="mt-2 text-lg font-medium text-violeta-800">
+        <h2 className="mt-2 break-words text-lg font-medium text-violeta-800">
           {producto.nombre}
         </h2>
         <p className="mt-2 line-clamp-2 text-xs leading-relaxed font-normal text-violeta-900/60">
@@ -181,7 +181,7 @@ function TarjetaProducto({ producto }: { producto: Producto }) {
         )}
 
         <div className="mt-auto flex items-center justify-between gap-3 pt-5">
-          <span className="text-xl font-medium text-violeta-800">
+          <span className="min-w-0 break-words text-xl font-medium text-violeta-800">
             {dinero(Number(producto.precio))}
           </span>
           <Boton onClick={alAnadir} className="shrink-0">

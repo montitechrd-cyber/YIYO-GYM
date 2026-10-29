@@ -126,20 +126,20 @@ export function Chat({
   );
 
   return (
-    <div className="flex h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-4xl border border-lila-200 bg-white shadow-suave">
-      <header className="flex items-center gap-3 border-b border-lila-200 px-6 py-4">
-        <span className="flex h-11 w-11 items-center justify-center rounded-sm fondo-degradado text-xs font-medium text-white">
+    <div className="flex h-[calc(100dvh-9rem)] min-h-[24rem] flex-col overflow-hidden sm:h-[calc(100dvh-11rem)] rounded-4xl border border-lila-200 bg-white shadow-suave">
+      <header className="flex items-center gap-3 border-b border-lila-200 px-4 py-3 sm:px-6 sm:py-4">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm fondo-degradado text-xs font-medium text-white">
           {inicialesOtro}
         </span>
-        <div>
-          <p className="font-medium text-violeta-800">{nombreOtro}</p>
+        <div className="min-w-0">
+          <p className="truncate font-medium text-violeta-800">{nombreOtro}</p>
           <p className="text-[11px] font-normal text-violeta-900/45">
             Los mensajes llegan al instante
           </p>
         </div>
       </header>
 
-      <div className="flex-1 space-y-3 overflow-y-auto bg-lila-50/60 px-6 py-6">
+      <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain bg-lila-50/60 px-3 py-4 sm:px-6 sm:py-6">
         {mensajes.length === 0 && (
           <p className="mt-16 text-center text-sm font-normal text-violeta-900/45">
             Todavía no hay mensajes. Escribe el primero.
@@ -160,13 +160,13 @@ export function Chat({
               <div className={cn("flex", mio ? "justify-end" : "justify-start")}>
                 <div
                   className={cn(
-                    "max-w-[78%] rounded-3xl px-5 py-3",
+                    "max-w-[88%] min-w-0 rounded-3xl px-4 py-2.5 sm:max-w-[78%] sm:px-5 sm:py-3",
                     mio
                       ? "fondo-degradado rounded-br-lg text-white"
                       : "rounded-bl-lg border border-lila-200 bg-white text-violeta-900"
                   )}
                 >
-                  <p className="text-sm leading-relaxed font-normal whitespace-pre-wrap">
+                  <p className="text-sm leading-relaxed font-normal break-words whitespace-pre-wrap">
                     {m.contenido}
                   </p>
                   <p
@@ -185,7 +185,7 @@ export function Chat({
         <div ref={finRef} />
       </div>
 
-      <footer className="border-t border-lila-200 px-5 py-4">
+      <footer className="border-t border-lila-200 px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-5 sm:py-4">
         {errorEnvio && (
           <p
             role="alert"
@@ -194,7 +194,7 @@ export function Chat({
             {errorEnvio}
           </p>
         )}
-        <div className="flex items-end gap-3">
+        <div className="flex items-end gap-2 sm:gap-3">
           <textarea
             value={texto}
             onChange={(e) => setTexto(e.target.value)}
@@ -207,7 +207,7 @@ export function Chat({
             rows={1}
             aria-label="Escribe tu mensaje"
             placeholder="Escribe tu mensaje…"
-            className="max-h-32 min-h-11 flex-1 resize-none rounded-3xl border border-lila-300 bg-lila-50/60 px-5 py-3 text-sm text-violeta-900 outline-none transition-all placeholder:text-violeta-900/35 focus:border-violeta-500 focus:bg-white focus:ring-4 focus:ring-lila-200/60"
+            className="max-h-32 min-h-11 min-w-0 flex-1 resize-none rounded-3xl border border-lila-300 bg-lila-50/60 px-4 py-3 text-base text-violeta-900 outline-none sm:px-5 sm:text-sm transition-all placeholder:text-violeta-900/35 focus:border-violeta-500 focus:bg-white focus:ring-4 focus:ring-lila-200/60"
           />
           <button
             onClick={enviar}

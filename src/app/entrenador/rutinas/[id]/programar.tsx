@@ -56,7 +56,7 @@ export function ProgramarRutina({
             />
           </Campo>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Boton type="submit" disabled={pendiente}>
               {pendiente && <Loader2 size={15} className="animate-spin" />}
               {pendiente ? "Programando…" : "Programar"}

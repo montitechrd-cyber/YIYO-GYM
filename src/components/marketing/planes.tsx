@@ -42,10 +42,10 @@ const planes = [
 
 export function Planes() {
   return (
-    <section id="planes" className="bg-crema py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="planes" className="bg-crema py-14 sm:py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="max-w-3xl text-6xl text-violeta-900 md:text-[6rem]">
+          <h2 className="max-w-3xl text-[clamp(2.75rem,12vw,6rem)] break-words text-violeta-900">
             Elige cómo quieres que te acompañe
           </h2>
           <p className="max-w-sm text-base leading-7 text-violeta-900/80">
@@ -54,18 +54,18 @@ export function Planes() {
           </p>
         </div>
 
-        <div className="mt-14 grid items-stretch gap-0 border-2 border-violeta-900 lg:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 items-stretch gap-0 border-2 border-violeta-900 lg:grid-cols-3">
           {planes.map((p) => (
             <article
               key={p.nombre}
               className={cn(
-                "flex flex-col p-8 md:p-10",
+                "flex min-w-0 flex-col p-5 sm:p-8 md:p-10",
                 "border-b-2 border-violeta-900 last:border-b-0 lg:border-r-2 lg:border-b-0 lg:last:border-r-0",
                 p.destacado ? "bg-violeta-700 text-white" : "bg-white text-violeta-900"
               )}
             >
               <div className="flex items-start justify-between gap-3">
-                <h3 className="text-5xl uppercase">{p.nombre}</h3>
+                <h3 className="min-w-0 break-words text-[clamp(2.25rem,10vw,3rem)] uppercase">{p.nombre}</h3>
                 {p.destacado && (
                   <span className="shrink-0 bg-crema px-2 py-1 text-[10px] font-bold tracking-[0.14em] text-violeta-900 uppercase">
                     Más elegido

@@ -31,14 +31,14 @@ export function Aviso({
   return (
     <div
       className={cn(
-        "flex items-start gap-3 rounded-sm border px-4 py-3 text-sm font-medium",
+        "flex items-start gap-3 rounded-sm border px-3 py-3 sm:px-4 text-sm font-medium",
         caja,
         className
       )}
       role={tono === "error" ? "alert" : "status"}
     >
       <Icono size={17} className="mt-0.5 shrink-0" strokeWidth={1.8} />
-      <span>{children}</span>
+      <span className="min-w-0 break-words">{children}</span>
     </div>
   );
 }

@@ -66,12 +66,12 @@ export default async function Pedidos() {
               const lineas = porPedido.get(p.id) ?? [];
               return (
                 <Tarjeta key={p.id}>
-                  <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
                     <div className="min-w-0">
                       <p className="text-[11px] tracking-[0.18em] text-violeta-500 uppercase">
                         Pedido #{p.numero}
                       </p>
-                      <h2 className="mt-1 truncate text-lg font-medium text-violeta-800">
+                      <h2 className="mt-1 text-lg break-words font-medium text-violeta-800">
                         {p.nombre}
                       </h2>
                       <p className="text-xs font-normal text-violeta-900/50">
@@ -79,7 +79,7 @@ export default async function Pedidos() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       <span className="text-xl font-medium text-violeta-800">
                         {MONEDA.format(Number(p.total))}
                       </span>
@@ -93,7 +93,7 @@ export default async function Pedidos() {
                         key={l.id}
                         className="flex items-baseline justify-between gap-3 text-sm"
                       >
-                        <span className="min-w-0 font-normal text-violeta-900/75">
+                        <span className="min-w-0 break-words font-normal text-violeta-900/75">
                           <span className="font-medium text-violeta-800">
                             {l.cantidad}×
                           </span>{" "}
@@ -117,22 +117,22 @@ export default async function Pedidos() {
                       href={`https://wa.me/${soloDigitos(p.telefono)}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-1.5 text-violeta-600 hover:underline"
+                      className="flex min-w-0 items-center gap-1.5 text-violeta-600 hover:underline"
                     >
-                      <Phone size={13} />
+                      <Phone size={13} className="shrink-0" />
                       {p.telefono}
                     </a>
                     {p.correo && (
                       <a
                         href={`mailto:${p.correo}`}
-                        className="flex items-center gap-1.5 text-violeta-600 hover:underline"
+                        className="flex min-w-0 items-center gap-1.5 text-violeta-600 hover:underline"
                       >
-                        <Mail size={13} />
-                        {p.correo}
+                        <Mail size={13} className="shrink-0" />
+                        <span className="min-w-0 break-all">{p.correo}</span>
                       </a>
                     )}
                     {p.entrega && (
-                      <span className="flex items-center gap-1.5">
+                      <span className="flex min-w-0 items-start gap-1.5 break-words">
                         <MapPin size={13} className="shrink-0 text-lila-400" />
                         {p.entrega}
                       </span>
@@ -140,7 +140,7 @@ export default async function Pedidos() {
                   </div>
 
                   {p.notas && (
-                    <p className="mt-3 rounded-2xl bg-lila-50 px-4 py-3 text-xs font-normal text-violeta-900/70">
+                    <p className="mt-3 rounded-2xl bg-lila-50 px-4 py-3 text-xs break-words font-normal text-violeta-900/70">
                       {p.notas}
                     </p>
                   )}

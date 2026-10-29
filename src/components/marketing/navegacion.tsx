@@ -27,7 +27,7 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-violeta-900 bg-crema">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link href="/" aria-label="YIYO GYM — inicio">
           <Logo tamano="sm" />
         </Link>
@@ -75,7 +75,7 @@ export function Navegacion({ soloInicio = false }: { soloInicio?: boolean }) {
 
       {!soloInicio && abierto && (
         <div className="animate-aparecer border-t border-violeta-900 bg-crema md:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col px-6 pb-5">
+          <div className="mx-auto flex max-w-7xl flex-col px-4 sm:px-6 pb-5">
             {enlaces.map((e) => (
               <a
                 key={e.href}
