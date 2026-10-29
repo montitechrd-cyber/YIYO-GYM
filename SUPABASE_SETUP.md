@@ -85,11 +85,11 @@ Se puede ejecutar más de una vez sin duplicar nada.
 
 **Authentication** → **URL Configuration**:
 
-- **Site URL:** `https://web-production-6bd61.up.railway.app`
-- **Redirect URLs:** añade `https://web-production-6bd61.up.railway.app/auth/callback`
-  y `https://web-production-6bd61.up.railway.app/auth/callback?siguiente=%2Fnueva-contrasena`.
+- **Site URL:** `https://yiyo-gym.yiyo-gym.workers.dev`
+- **Redirect URLs:** añade `https://yiyo-gym.yiyo-gym.workers.dev/auth/callback`
+  y `https://yiyo-gym.yiyo-gym.workers.dev/auth/callback?siguiente=%2Fnueva-contrasena`.
   Conserva las URLs de proveedores sociales que ya utilices.
-- `NEXT_PUBLIC_SITE_URL` en Railway debe coincidir con Site URL (sin barra final).
+- `NEXT_PUBLIC_SITE_URL` en Cloudflare (secreto del Worker y `.env.local` al compilar) debe coincidir con Site URL (sin barra final).
 - Para desarrollo añade por separado las mismas rutas con `http://localhost:3000`.
 
 **Authentication → Email:**
@@ -103,7 +103,7 @@ Se puede ejecutar más de una vez sin duplicar nada.
 3. En **Reset password**, pega `supabase/correos/recuperar-contrasena.html` y usa
    el asunto `Recupera tu contraseña — YIYO GYM`.
 4. Guarda ambas plantillas. Editar los archivos del repositorio o desplegar
-   Railway **no actualiza** las plantillas guardadas en Supabase.
+   Cloudflare **no actualiza** las plantillas guardadas en Supabase.
 5. Comprueba con un correo de prueba autorizado: recepción, activación,
    recuperación, guardado de contraseña e inicio de sesión con la nueva clave.
    Prueba abrir las plantillas personalizadas desde otro navegador también.

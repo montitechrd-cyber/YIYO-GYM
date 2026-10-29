@@ -11,11 +11,11 @@ Plataforma web de coaching fitness y nutrición de Daniela «Yiyo» Chacón.
 | Pieza | Servicio |
 |---|---|
 | Código | [GitHub](https://github.com/montitechrd-cyber/YIYO-GYM) |
-| Despliegue | Railway — se publica solo al subir a `main` |
+| Despliegue | Cloudflare Workers (OpenNext) — `npm run deploy` |
 | Base de datos, cuentas y archivos | Supabase |
 | Dominio | Hostinger |
 
-En producción: **https://web-production-6bd61.up.railway.app**
+En producción: **https://yiyo-gym.yiyo-gym.workers.dev**
 
 ---
 
@@ -142,3 +142,16 @@ npm run build   # compilación de producción
 npm start       # servir la compilación
 npm run lint    # revisar el código
 ```
+
+## Despliegue en Cloudflare
+
+```bash
+npx wrangler login          # una vez
+npm run deploy              # compila con OpenNext y publica el Worker «yiyo-gym»
+npx wrangler secret bulk .env.local   # carga las variables como secretos
+```
+
+Las variables `NEXT_PUBLIC_*` se incorporan al compilar (leen `.env.local`), por
+eso `NEXT_PUBLIC_SITE_URL` debe tener la URL pública definitiva antes de
+`npm run deploy`. Al cambiar de dominio hay que actualizarla también en
+Supabase (Site URL y Redirect URLs) y en el webhook de PayPal.

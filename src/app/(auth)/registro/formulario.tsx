@@ -1,18 +1,18 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState } from "react";
 import Link from "next/link";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { registrar, type EstadoFormulario } from "../acciones";
 import { Boton } from "@/components/ui/boton";
 import { Campo, Entrada } from "@/components/ui/campo";
+import { EntradaClave } from "@/components/ui/entrada-clave";
 import { Aviso } from "@/components/ui/aviso";
 
 const inicial: EstadoFormulario = {};
 
 export function FormularioRegistro() {
   const [estado, accion, pendiente] = useActionState(registrar, inicial);
-  const [verClave, setVerClave] = useState(false);
 
   return (
     <form action={accion} className="space-y-5">
@@ -45,33 +45,20 @@ export function FormularioRegistro() {
         htmlFor="contrasena"
         ayuda="Mínimo 8 caracteres."
       >
-        <div className="relative">
-          <Entrada
-            id="contrasena"
-            name="contrasena"
-            type={verClave ? "text" : "password"}
-            autoComplete="new-password"
-            placeholder="••••••••"
-            className="pr-12"
-            minLength={8}
-            required
-          />
-          <button
-            type="button"
-            onClick={() => setVerClave((v) => !v)}
-            className="absolute top-1/2 right-4 -translate-y-1/2 text-violeta-500 transition-colors hover:text-violeta-700"
-            aria-label={verClave ? "Ocultar contraseña" : "Mostrar contraseña"}
-          >
-            {verClave ? <EyeOff size={17} /> : <Eye size={17} />}
-          </button>
-        </div>
+        <EntradaClave
+          id="contrasena"
+          name="contrasena"
+          autoComplete="new-password"
+          placeholder="••••••••"
+          minLength={8}
+          required
+        />
       </Campo>
 
       <Campo etiqueta="Repetir contraseña" htmlFor="repetir">
-        <Entrada
+        <EntradaClave
           id="repetir"
           name="repetir"
-          type={verClave ? "text" : "password"}
           autoComplete="new-password"
           placeholder="••••••••"
           minLength={8}

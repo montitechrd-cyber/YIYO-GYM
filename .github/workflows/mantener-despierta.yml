@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Llamar al latido
         run: |
-          URL="https://web-production-6bd61.up.railway.app/api/latido"
+          URL="https://yiyo-gym.yiyo-gym.workers.dev/api/latido"
           # Tres intentos: un despliegue en curso no debería dar la alarma.
           for i in 1 2 3; do
             RESPUESTA=$(curl -s -m 30 -w "\n%{http_code}" "$URL" || true)

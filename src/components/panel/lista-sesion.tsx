@@ -98,7 +98,7 @@ export function ListaSesion({
   let contador = 0;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {porTramos(bloques).map((tramo, i) => {
         const contenido = tramo.bloques.map((b) => {
           if ((b.tipo ?? "ejercicio") === "ejercicio") contador++;
@@ -116,7 +116,7 @@ export function ListaSesion({
 
         if (tramo.grupo == null) {
           return (
-            <div key={`suelto-${i}`} className="space-y-4">
+            <div key={`suelto-${i}`} className="space-y-3 sm:space-y-4">
               {contenido}
             </div>
           );

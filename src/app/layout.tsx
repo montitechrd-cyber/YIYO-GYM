@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   description:
     "Plataforma de coaching fitness y nutrición de Daniela «Yiyo» Chacón. Entrenamiento personalizado, planes de nutrición y seguimiento real de tu progreso.",
 };
+
+// viewport-fit=cover: sin esto env(safe-area-inset-*) vale 0 y la barra inferior
+// quedaría bajo la barra de gestos del teléfono.
+export const viewport: Viewport = { viewportFit: "cover" };
 
 export default function RootLayout({
   children,

@@ -1,7 +1,7 @@
 /**
  * La dirección pública de la plataforma, para construir redirecciones.
  *
- * `new URL(request.url)` no sirve detrás de un proxy. Railway atiende dentro
+ * `new URL(request.url)` no sirve detrás de un proxy. Un host con proxy atiende dentro
  * del contenedor en su propio puerto y pone el dominio público por delante,
  * así que en un route handler `request.url` llega como
  * `http://localhost:8080/...`. Redirigir contra ese origen mandaba a la

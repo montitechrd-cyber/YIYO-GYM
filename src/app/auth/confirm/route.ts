@@ -26,7 +26,7 @@ const TIPOS: EmailOtpType[] = [
  */
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
-  // Detrás del proxy de Railway, `url.origin` es el puerto interno.
+  // Detrás de un proxy, `url.origin` es el puerto interno.
   const origen = origenPublico(request);
   const tokenHash = url.searchParams.get("token_hash");
   const tipo = url.searchParams.get("type") as EmailOtpType | null;
