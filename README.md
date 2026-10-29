@@ -155,3 +155,29 @@ Las variables `NEXT_PUBLIC_*` se incorporan al compilar (leen `.env.local`), por
 eso `NEXT_PUBLIC_SITE_URL` debe tener la URL pública definitiva antes de
 `npm run deploy`. Al cambiar de dominio hay que actualizarla también en
 Supabase (Site URL y Redirect URLs) y en el webhook de PayPal.
+
+### Despliegue automático (Workers Builds)
+
+Cloudflare compila y publica solo cada vez que se fusiona algo en `main`.
+Se configura una vez en **Workers & Pages → yiyo-gym → Settings → Builds → Connect**:
+
+| Campo | Valor |
+|---|---|
+| Repositorio | `montitechrd-cyber/YIYO-GYM`, rama `main` |
+| Build command | `npx opennextjs-cloudflare build` |
+| Deploy command | `npx opennextjs-cloudflare deploy` |
+| Root directory | `/` |
+
+En **Build → Variables and secrets** (variables de compilación, no del Worker)
+hacen falta las mismas `NEXT_PUBLIC_*` que en `.env.local`, porque Next las
+incorpora al compilar:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_SITE_URL` (la URL pública definitiva)
+- `NEXT_PUBLIC_PAYPAL_CLIENT_ID`
+- `NEXT_PUBLIC_PROVEEDORES_OAUTH`
+
+Los secretos del servidor (`SUPABASE_SERVICE_ROLE_KEY`, `PAYPAL_*`) viven en el
+Worker (`npx wrangler secret bulk .env.local`) y no hay que repetirlos en el build.
+La versión de Node sale de `.node-version`.
